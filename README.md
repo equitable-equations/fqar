@@ -5,11 +5,11 @@ Floristic quality assessments (FQA's) are a method of assessing the quality of e
 
 ## Installation
 
-The development version can be installed from [GitHub](https://github.com/flavorcat/fqar2).
+The development version can be installed from [GitHub](https://github.com/equitable-equations/fqar).
 
 ```{r install}
 # Install development version from GitHub 
-devtools::install_github("flavorcat/fqar2")
+devtools::install_github("equitable-equations/fqar")
 ```
 
 ## Usage 
@@ -80,8 +80,8 @@ In addition, transect-level data includes physiognometric data that can be isola
 survey_phys <- transect_phys(survey)
 ```
 
-More examples can be found in the [vignette](https://github.com/flavorcat/fqar2/blob/main/vignettes/fqar.Rmd).
+More examples can be found in the [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd).
 
 ## Learn More 
-* Read the ${\tt fqar}$ [vignette](https://github.com/flavorcat/fqar2/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQA’s with fqar.
+* Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQA’s with fqar.
 * View the help files of any function in *fqar* for more examples 
