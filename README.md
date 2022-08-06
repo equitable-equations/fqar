@@ -1,7 +1,6 @@
-# fqar
 # fqar <img src="man/figures/logo.png" align="right" height="138" />
 
-Floristic quality assessments (FQA's) are a method of assessing the quality of ecological communities and other natural areas. The ${\tt fqar}$ package provides tools to analyze and download FQA’s from www.universalfqa.org.
+Floristic quality assessments (FQA's) are a method of assessing the quality of ecological communities and other natural areas. The ${\tt \{fqar\}$ package provides tools to download and analyze FQA’s from www.universalfqa.org.
 
 ## Installation
 
@@ -84,4 +83,4 @@ More examples can be found in the [vignette](https://github.com/equitable-equati
 
 ## Learn More 
 * Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQA’s with fqar.
-* View the help files of any function in *fqar* for more examples 
+* View the help files of any function in {fqar} for more examples 
