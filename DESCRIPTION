@@ -1,0 +1,26 @@
+Package: fqar
+Type: Package
+Title: Floristic Quality Assessment Tools for R
+Version: 0.1.0
+Authors@R: c(
+  person("Myers", "Alexia", , email = "myersaj@lakeforest.edu", role = c("aut")),
+  person("Gard", "Andrew", ,email = "agard@lakeforest.edu", role = c("aut", "cre"))
+  )
+Description: Tools for downloading and analyzing floristic quality assessment data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    jsonlite,
+    rlang,
+    tidyr
+RoxygenNote: 7.2.0
+Suggests: 
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat
+Depends: 
+    R (>= 4.1.0)
+VignetteBuilder: knitr
