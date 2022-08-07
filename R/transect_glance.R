@@ -74,7 +74,7 @@
 #'
 #' @export
 transect_glance <- function(data_set){
-    
+
     if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)}
 
     data_set[data_set == ""] <- NA
@@ -117,6 +117,14 @@ transect_glance <- function(data_set){
 
     selected <- cut |> select(1:2)
 
+    if ("Custom FQA DB Name:" %in% selected$one) {
+      stop("Custom databases are not currently supported by transect_glance.")
+    }
+
+    if (selected[8, 1] != "FQA DB Region:") {
+      selected <- selected[-8, ]
+    }
+
     pivoted <- selected |> pivot_wider(names_from = .data$`one`,
                                         values_from = .data$`two`)
 
@@ -126,7 +134,7 @@ transect_glance <- function(data_set){
       select(-.data$`Duration Metrics:`, -.data$`Conservatism-Based Metrics:`)
 
     names(data) <- gsub(":", "", names(data))
-    
+
     data
 
 }
