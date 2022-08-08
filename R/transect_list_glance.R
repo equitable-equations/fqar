@@ -1,7 +1,7 @@
 #' Glance multiple FQA Transects in one Data Frame
 #'
 #' @param list a list of downloaded transects that were downloaded with download_transect_list().
-#' @return A data frame with 53 columns:
+#' @return A data frame with 55 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (POSIXct)
@@ -10,6 +10,9 @@
 #'    \item County (character)
 #'    \item State (character)
 #'    \item Country (character)
+#'    \item Omernik Level 3 Ecoregion (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
@@ -43,7 +46,6 @@
 #'    \item % C value 1-3 (numeric)
 #'    \item % C value 4-6 (numeric)
 #'    \item % C value 7-10 (numeric)
-#'    \item Species Richness (numeric)
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
 #'    \item Non-native Species (numeric)

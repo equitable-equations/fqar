@@ -120,7 +120,7 @@ transect_glance <- function(data_set){
     }
 
     selected[11:14, 1] <- gsub("Original ", "", selected[11:14, 1])
-
+    selected[28, 2] <- gsub("m", "", selected[28, 2])
 
     pivoted <- selected |> pivot_wider(names_from = .data$one,
                                         values_from = .data$two)

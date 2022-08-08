@@ -10,7 +10,7 @@ transect_list_glance(list)
 \item{list}{a list of downloaded transects that were downloaded with download_transect_list().}
 }
 \value{
-A data frame with 53 columns:
+A data frame with 55 columns:
 \itemize{
    \item Title (character)
    \item Date (POSIXct)
@@ -19,6 +19,9 @@ A data frame with 53 columns:
    \item County (character)
    \item State (character)
    \item Country (character)
+   \item Omernik Level 3 Ecoregion (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
@@ -52,7 +55,6 @@ A data frame with 53 columns:
    \item % C value 1-3 (numeric)
    \item % C value 4-6 (numeric)
    \item % C value 7-10 (numeric)
-   \item Species Richness (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
    \item Non-native Species (numeric)
