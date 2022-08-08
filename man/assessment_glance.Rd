@@ -22,6 +22,8 @@ A data frame with 52 columns:
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item Practitioner (character)
    \item Latitude (character)
    \item Longitude (character)
@@ -42,11 +44,9 @@ A data frame with 52 columns:
    \item Native Tree Mean C (numeric)
    \item Native Shrub Mean C (numeric)
    \item Native Herbaceous Mean C (numeric)
-   \item Species Richness (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
    \item Non-native Species (numeric)
-   \item Species Wetness (numeric)
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Tree (numeric)
@@ -71,15 +71,7 @@ Obtain Overview Information From a Universal FQA Inventory as a Data Frame
 }
 \examples{
 \dontrun{
-## assessment_glance can be used with a .csv file downloaded from the universal FQA website:
-
-assessment_glance(open_dunes)
-
-## or with a download function:
-
-assessment_glance(download_assessment(25002))
-
-## assessment_glance can also be used with saved data from a download function:
+## assessment_glance can be used with a .csv file downloaded directly from the universal FQA website or with a download function:
 
 df <- download_assessment(25002)
 assessment_glance(df)

@@ -77,9 +77,6 @@ assessment_list_glance <- function(list){
 
   bind <- do.call(rbind, applied)
 
-  data <- bind |>
-    mutate(across(.cols=19:52, .fns=as.numeric))
-
 }
 
 

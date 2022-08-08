@@ -13,6 +13,8 @@
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item Practitioner (character)
 #'    \item Latitude (character)
 #'    \item Longitude (character)
@@ -33,11 +35,9 @@
 #'    \item Native Tree Mean C (numeric)
 #'    \item Native Shrub Mean C (numeric)
 #'    \item Native Herbaceous Mean C (numeric)
-#'    \item Species Richness (numeric)
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
 #'    \item Non-native Species (numeric)
-#'    \item Species Wetness (numeric)
 #'    \item Mean Wetness (numeric)
 #'    \item Native Mean Wetness (numeric)
 #'    \item Tree (numeric)
@@ -61,15 +61,7 @@
 #' @importFrom rlang .data
 #'
 #' @examples \dontrun{
-#' ## assessment_glance can be used with a .csv file downloaded from the universal FQA website:
-#'
-#' assessment_glance(open_dunes)
-#'
-#' ## or with a download function:
-#'
-#' assessment_glance(download_assessment(25002))
-#'
-#' ## assessment_glance can also be used with saved data from a download function:
+#' ## assessment_glance can be used with a .csv file downloaded directly from the universal FQA website or with a download function:
 #'
 #' df <- download_assessment(25002)
 #' assessment_glance(df)
@@ -78,110 +70,73 @@
 #' @export
 assessment_glance <- function(data_set) {
 
-  if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)}
-
-  # when an fqa is downloaded from universalfqa.org to a computer as a .csv file and uploaded to R, the output is a single column data frame. This if-else statement fixes that issue.
-  # Each set should have a row "Physiognomy Metrics:" that is near the bottom of the set.
-  # one row might look like this -> Private/Public:,Public however, each set has different data.
+  if (!is.data.frame(data_set)) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    }
+  if (!("Physiognomy Metrics:" %in% data_set[ ,1])) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
   if (ncol(data_set) == 1) {
-
     new <- rbind(names(data_set), data_set)
 
-    data <- separate(new,
+    data_set <- separate(new,
                      col = 1,
                      sep = ",",
                      into = c("V1", "V2", "V3", "V4",
-                              "V5", "V6", "V7", "V8", "V9"))
+                              "V5", "V6", "V7", "V8", "V9"),
+                     fill = "right")
+  }
 
-    data[data == ""] <- NA
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
 
-    data[1, 2] <- data[1, 1]
-    data[1, 1] <- "Title"
-    data[2, 2] <- data[2, 1]
-    data[2, 1] <- "Date"
-    data[3, 2] <- data[3, 1]
-    data[3, 1] <- "Site Name"
-    data[4, 2] <- data[4, 1]
-    data[4, 1] <- "City"
-    data[5, 2] <- data[5, 1]
-    data[5, 1] <- "County"
-    data[6, 2] <- data[6, 1]
-    data[6, 1] <- "State"
-    data[7, 2] <- data[7, 1]
-    data[7, 1] <- "Country"
+  data_set[1, 2] <- data_set[1, 1]
+  data_set[1, 1] <- "Title:"
+  data_set[2, 2] <- data_set[2, 1]
+  data_set[2, 1] <- "Date:"
+  data_set[3, 2] <- data_set[3, 1]
+  data_set[3, 1] <- "Site Name:"
+  data_set[4, 2] <- data_set[4, 1]
+  data_set[4, 1] <- "City:"
+  data_set[5, 2] <- data_set[5, 1]
+  data_set[5, 1] <- "County:"
+  data_set[6, 2] <- data_set[6, 1]
+  data_set[6, 1] <- "State:"
+  data_set[7, 2] <- data_set[7, 1]
+  data_set[7, 1] <- "Country:"
 
-    renamed <- data |>
-      rename("one" = 1,
-             "two" = 2,
-             "three" = 3,
-             "four" = 4,
-             "five" = 5,
-             "six" = 6,
-             "seven" = 7,
-             "eight" = 8,
-             "nine" = 9)
+  names(data_set)[1:2] <- c("V1", "V2")
 
-    selected <- renamed |>
-      select(1:2) |> drop_na(1)
+  selected <- data_set |>
+    select(1:2) |>
+    drop_na(1)
 
-    small <- selected |>
-      filter(row_number() < which(.data$`one` == "Species:"))
-
-    pivoted <- small |> pivot_wider(names_from = .data$`one`,
-                                    values_from = .data$`two`)
-
-    pivoted <- pivoted |> mutate(across(20:55, as.double),
-                                 `Date:` = as.POSIXct(.data$`Date:`))
-    select(-.data$`Duration Metrics:`, -.data$`Physiognomy Metrics:`, -.data$`Conservatism-Based Metrics:`)
-
+  if (selected[8, 1] == "FQA DB Region:") {
+    new_rows <- data.frame(V1 = c("Custom FQA DB Name",
+                                   "Custom FQA DB Description"),
+                           V2 = c(NA, NA))
+    selected <- rbind(selected[1:10, ], new_rows, selected[-(1:10), ])
   } else {
+    selected[1:12, ] <- selected[c(1:7, 10:12, 8:9), ]
+    selected[8:10, 1] <- gsub("Original ", "", selected[8:10, 1])
+  }
 
-    data_set[data_set == ""] <- NA
+  small <- selected |>
+    filter(row_number() < which(.data$V1 == "Species:"))
 
-    data_set[1, 2] <- data_set[1, 1]
-    data_set[1, 1] <- "Title:"
-    data_set[2, 2] <- data_set[2, 1]
-    data_set[2, 1] <- "Date:"
-    data_set[3, 2] <- data_set[3, 1]
-    data_set[3, 1] <- "Site Name:"
-    data_set[4, 2] <- data_set[4, 1]
-    data_set[4, 1] <- "City:"
-    data_set[5, 2] <- data_set[5, 1]
-    data_set[5, 1] <- "County:"
-    data_set[6, 2] <- data_set[6, 1]
-    data_set[6, 1] <- "State:"
-    data_set[7, 2] <- data_set[7, 1]
-    data_set[7, 1] <- "Country:"
+    pivoted <- pivoted <- small |> pivot_wider(names_from = .data$V1,
+                                               values_from = .data$V2)
 
-    renamed <- data_set |>
-      rename("one" = 1,
-             "two" = 2,
-             "three" = 3,
-             "four" = 4,
-             "five" = 5,
-             "six" = 6,
-             "seven" = 7,
-             "eight" = 8,
-             "nine" = 9)
-
-    selected <- renamed |>
-      select(1:2) |> drop_na(1)
-
-    small <- selected |>
-      filter(row_number() < which(.data$`one` == "Species:"))
-
-    pivoted <- pivoted <- small |> pivot_wider(names_from = .data$`one`,
-                                               values_from = .data$`two`)
-
-    final <- pivoted |> mutate(across(20:55, as.double),
-                               `Date:` = as.POSIXct(.data$`Date:`)) |>
-      select(-.data$`Duration Metrics:`, -.data$`Physiognomy Metrics:`, -.data$`Conservatism-Based Metrics:`)
+    final <- pivoted |> mutate(across(22:57, as.double),
+                               `Date:` = as.Date(.data$`Date:`)) |>
+      select(-c(.data$`Duration Metrics:`,
+             .data$`Physiognomy Metrics:`,
+             .data$`Conservatism-Based Metrics:`,
+             .data$`Species Richness:`,
+             .data$`Species Wetness:`))
 
     names(final) <- gsub(":", "", names(final))
 
-  }
-
   final
-
 }

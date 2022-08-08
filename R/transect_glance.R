@@ -1,7 +1,7 @@
 #' Obtain Overview Information From a Universal FQA Transect as a Data Frame
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
-#' @return A data frame with 55 columns:
+#' @return A data frame with 54 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (POSIXct)
@@ -49,7 +49,6 @@
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
 #'    \item Non-native Species (numeric)
-#'    \item Species Wetness (numeric)
 #'    \item Mean Wetness (numeric)
 #'    \item Native Mean Wetness (numeric)
 #'    \item Annual (numeric)
@@ -79,8 +78,6 @@ transect_glance <- function(data_set){
 
     if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)}
 
-    data_set[data_set == ""] <- NA
-
     data_set[1, 2] <- data_set[1, 1]
     data_set[1, 1] <- "Title"
     data_set[2, 2] <- data_set[2, 1]
@@ -98,6 +95,9 @@ transect_glance <- function(data_set){
     data_set[8, 2] <- data_set[8, 1]
     data_set[8, 1] <- "Omernik Level 3 Ecoregion"
 
+    data_set <- na_if(data_set, "n/a")
+    data_set <- na_if(data_set, "")
+
     renamed <- data_set |>
       rename("one" = 1,
              "two" = 2)
@@ -105,7 +105,8 @@ transect_glance <- function(data_set){
     dropped <- renamed |> drop_na(1) |>
       filter(.data$one != "Conservatism-Based Metrics:",
              .data$one != "Species Richness:",
-             .data$one != "Duration Metrics:")
+             .data$one != "Duration Metrics:",
+             .data$one != "Species Wetness:")
 
     cut <- dropped |>
       filter(row_number() < which(.data$`one` == "Physiognomic Relative Importance Values:"))
@@ -125,7 +126,7 @@ transect_glance <- function(data_set){
     pivoted <- selected |> pivot_wider(names_from = .data$one,
                                         values_from = .data$two)
 
-    data <- pivoted |> mutate(across(c(26:28, 32:55), as.numeric),
+    data <- pivoted |> mutate(across(c(26:28, 32:54), as.numeric),
                               Date = as.POSIXct(.data$Date))
 
     names(data) <- gsub(":", "", names(data))
