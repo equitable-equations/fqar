@@ -2,12 +2,27 @@ test_that("transect_glance works", {
 
   expect_error(transect_glance("hi"))
 
-  test_custom <- download_transect(7025) # 7025 is custom
-  expect_error(transect_glance(test_custom))
+  test_normal <- download_transect(4492) |>
+    transect_glance()  # 4492 is ordinary
+  expect_equal(ncol(test_normal), 55)
+  expect_equal(nrow(test_normal), 1)
+  expect_equal(names(test_normal)[9], "Custom FQA DB Name")
+  expect_equal(names(test_normal)[11], "FQA DB Region")
+  expect_equal(typeof(test_normal$`Total Mean C`), "double")
 
-  test_ok <- download_transect(4492) |> transect_glance()
+  test_custom <- download_transect(7025) |>
+    transect_glance()  # 7025 is custom
+  expect_equal(ncol(test_custom), 55)
+  expect_equal(nrow(test_custom), 1)
+  expect_equal(names(test_custom)[9], "Custom FQA DB Name")
+  expect_equal(names(test_custom)[11], "FQA DB Region")
+  expect_equal(typeof(test_custom$`Total Mean C`), "double")
 
-  expect_equal(ncol(test_ok), 53)
-  expect_equal(nrow(test_ok), 1)
-  expect_equal(typeof(test_ok$`Total Mean C`), "double")
+  test_omernik <- download_transect(6444) |>
+    transect_glance()  # 6444 includes an omernik classification
+  expect_equal(ncol(test_omernik), 55)
+  expect_equal(nrow(test_omernik), 1)
+  expect_equal(names(test_omernik)[9], "Custom FQA DB Name")
+  expect_equal(names(test_omernik)[11], "FQA DB Region")
+  expect_equal(typeof(test_omernik$`Total Mean C`), "double")
 })

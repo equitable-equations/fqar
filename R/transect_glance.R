@@ -1,7 +1,7 @@
 #' Obtain Overview Information From a Universal FQA Transect as a Data Frame
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
-#' @return A data frame with 53 columns:
+#' @return A data frame with 55 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (POSIXct)
@@ -10,6 +10,9 @@
 #'    \item County (character)
 #'    \item State (character)
 #'    \item Country (character)
+#'    \item Omernik Level 3 Ecoregion (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
@@ -43,7 +46,6 @@
 #'    \item % C value 1-3 (numeric)
 #'    \item % C value 4-6 (numeric)
 #'    \item % C value 7-10 (numeric)
-#'    \item Species Richness (numeric)
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
 #'    \item Non-native Species (numeric)
@@ -93,45 +95,38 @@ transect_glance <- function(data_set){
     data_set[6, 1] <- "State"
     data_set[7, 2] <- data_set[7, 1]
     data_set[7, 1] <- "Country"
+    data_set[8, 2] <- data_set[8, 1]
+    data_set[8, 1] <- "Omernik Level 3 Ecoregion"
 
     renamed <- data_set |>
       rename("one" = 1,
-             "two" = 2,
-             "three" = 3,
-             "four" = 4,
-             "five" = 5,
-             "six" = 6,
-             "seven" = 7,
-             "eight" = 8,
-             "nine" = 9,
-             "ten" = 10,
-             "eleven" = 11,
-             "twelve" = 12,
-             "thirteen" = 13,
-             "fourteen" = 14)
+             "two" = 2)
 
-    dropped <- renamed |> drop_na(1)
+    dropped <- renamed |> drop_na(1) |>
+      filter(.data$one != "Conservatism-Based Metrics:",
+             .data$one != "Species Richness:",
+             .data$one != "Duration Metrics:")
 
     cut <- dropped |>
       filter(row_number() < which(.data$`one` == "Physiognomic Relative Importance Values:"))
 
     selected <- cut |> select(1:2)
 
-    if ("Custom FQA DB Name:" %in% selected$one) {
-      stop("Custom databases are not currently supported by transect_glance.")
+    if (selected[9, 1] == "FQA DB Region:") {
+      new_rows <- data.frame(one = c("Custom FQA DB Name",
+                                     "Custom FQA DB Description"),
+                             two = c(NA, NA))
+      selected <- rbind(selected[1:8, ], new_rows, selected[-(1:8), ])
     }
 
-    if (selected[8, 1] != "FQA DB Region:") {
-      selected <- selected[-8, ]
-    }
-
-    pivoted <- selected |> pivot_wider(names_from = .data$`one`,
-                                        values_from = .data$`two`)
+    selected[11:14, 1] <- gsub("Original ", "", selected[11:14, 1])
 
 
-    data <- pivoted |> mutate(across(c(23:25, 30:55), as.numeric),
-                              Date = as.POSIXct(.data$`Date`))  |>
-      select(-.data$`Duration Metrics:`, -.data$`Conservatism-Based Metrics:`)
+    pivoted <- selected |> pivot_wider(names_from = .data$one,
+                                        values_from = .data$two)
+
+    data <- pivoted |> mutate(across(c(26:28, 32:55), as.numeric),
+                              Date = as.POSIXct(.data$Date))
 
     names(data) <- gsub(":", "", names(data))
 
