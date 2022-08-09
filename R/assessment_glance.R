@@ -73,7 +73,7 @@ assessment_glance <- function(data_set) {
   if (!is.data.frame(data_set)) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
     }
-  if (!("Physiognomy Metrics:" %in% data_set[ ,1])) {
+  if (!("Species Richness:" %in% data_set[[1]])) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
 

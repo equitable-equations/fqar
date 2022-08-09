@@ -11,12 +11,12 @@
 #'    \item State (character)
 #'    \item Country (character)
 #'    \item Omernik Level 3 Ecoregion (character)
-#'    \item Custom FQA DB Name (character)
-#'    \item Custom FQA DB Description (character)
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
 #'    \item FQA DB Selection Name (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item Practitioner (character)
 #'    \item Latitude (character)
 #'    \item Longitude (character)
@@ -76,63 +76,79 @@
 #' @export
 transect_glance <- function(data_set){
 
-    if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)}
+  if (!is.data.frame(data_set)) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)
+    }
+  if (!("Species Richness:" %in% data_set[[1]])) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
-    data_set[1, 2] <- data_set[1, 1]
-    data_set[1, 1] <- "Title"
-    data_set[2, 2] <- data_set[2, 1]
-    data_set[2, 1] <- "Date"
-    data_set[3, 2] <- data_set[3, 1]
-    data_set[3, 1] <- "Site Name"
-    data_set[4, 2] <- data_set[4, 1]
-    data_set[4, 1] <- "City"
-    data_set[5, 2] <- data_set[5, 1]
-    data_set[5, 1] <- "County"
-    data_set[6, 2] <- data_set[6, 1]
-    data_set[6, 1] <- "State"
-    data_set[7, 2] <- data_set[7, 1]
-    data_set[7, 1] <- "Country"
-    data_set[8, 2] <- data_set[8, 1]
-    data_set[8, 1] <- "Omernik Level 3 Ecoregion"
+  if (ncol(data_set) == 1) {
+    new <- rbind(names(data_set), data_set)
 
-    data_set <- na_if(data_set, "n/a")
-    data_set <- na_if(data_set, "")
+    data_set <- separate(new,
+                         col = 1,
+                         sep = ",",
+                         into = paste0("V", 1:15),
+                         fill = "right")
+  }
 
-    renamed <- data_set |>
-      rename("one" = 1,
-             "two" = 2)
+  data_set[1, 2] <- data_set[1, 1]
+  data_set[1, 1] <- "Title"
+  data_set[2, 2] <- data_set[2, 1]
+  data_set[2, 1] <- "Date"
+  data_set[3, 2] <- data_set[3, 1]
+  data_set[3, 1] <- "Site Name"
+  data_set[4, 2] <- data_set[4, 1]
+  data_set[4, 1] <- "City"
+  data_set[5, 2] <- data_set[5, 1]
+  data_set[5, 1] <- "County"
+  data_set[6, 2] <- data_set[6, 1]
+  data_set[6, 1] <- "State"
+  data_set[7, 2] <- data_set[7, 1]
+  data_set[7, 1] <- "Country"
+  data_set[8, 2] <- data_set[8, 1]
+  data_set[8, 1] <- "Omernik Level 3 Ecoregion"
 
-    dropped <- renamed |> drop_na(1) |>
-      filter(.data$one != "Conservatism-Based Metrics:",
-             .data$one != "Species Richness:",
-             .data$one != "Duration Metrics:",
-             .data$one != "Species Wetness:")
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
 
-    cut <- dropped |>
-      filter(row_number() < which(.data$`one` == "Physiognomic Relative Importance Values:"))
+  renamed <- data_set |>
+    rename("V1" = 1,
+           "V2" = 2)
 
-    selected <- cut |> select(1:2)
+  dropped <- renamed |> drop_na(1) |>
+    filter(.data$V1 != "Conservatism-Based Metrics:",
+           .data$V1 != "Species Richness:",
+           .data$V1 != "Duration Metrics:",
+           .data$V1 != "Species Wetness:")
 
-    if (selected[9, 1] == "FQA DB Region:") {
-      new_rows <- data.frame(one = c("Custom FQA DB Name",
-                                     "Custom FQA DB Description"),
-                             two = c(NA, NA))
-      selected <- rbind(selected[1:8, ], new_rows, selected[-(1:8), ])
+  cut <- dropped |>
+    filter(row_number() < which(.data$V1 == "Physiognomic Relative Importance Values:"))
+
+  selected <- cut |> select(1:2)
+
+  if (selected[9, 1] == "FQA DB Region:") {
+    new_rows <- data.frame(V1 = c("Custom FQA DB Name",
+                                   "Custom FQA DB Description"),
+                           V2 = c(NA, NA))
+    selected <- rbind(selected[1:12, ], new_rows, selected[-(1:12), ])
+  } else {
+    selected[1:14, ] <- selected[c(1:8, 11:14, 9:10), ]
     }
 
-    selected[11:14, 1] <- gsub("Original ", "", selected[11:14, 1])
-    selected[28, 2] <- gsub("m", "", selected[28, 2])
+  selected$V1 <- gsub("Original ", "", selected$V1)
+  selected$V2[28] <- sub("m", "", selected$V2[28])
 
-    pivoted <- selected |> pivot_wider(names_from = .data$one,
-                                        values_from = .data$two)
+  pivoted <- selected |> pivot_wider(names_from = .data$V1,
+                                     values_from = .data$V2)
 
-    data <- pivoted |> mutate(across(c(26:28, 32:54), as.numeric),
-                              Date = as.POSIXct(.data$Date))
+  data <- pivoted |> mutate(across(c(26:28, 32:54), as.numeric),
+                            Date = as.POSIXct(.data$Date))
 
-    names(data) <- gsub(":", "", names(data))
+  names(data) <- gsub(":", "", names(data))
 
-    data
-
+  data
 }
 
 

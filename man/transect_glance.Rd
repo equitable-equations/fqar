@@ -10,7 +10,7 @@ transect_glance(data_set)
 \item{data_set}{a data frame downloaded from Universal FQA using download_transect() or other similar function}
 }
 \value{
-A data frame with 55 columns:
+A data frame with 54 columns:
 \itemize{
    \item Title (character)
    \item Date (POSIXct)
@@ -20,12 +20,12 @@ A data frame with 55 columns:
    \item State (character)
    \item Country (character)
    \item Omernik Level 3 Ecoregion (character)
-   \item Custom FQA DB Name (character)
-   \item Custom FQA DB Description (character)
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
    \item FQA DB Selection Name (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item Practitioner (character)
    \item Latitude (character)
    \item Longitude (character)
@@ -58,7 +58,6 @@ A data frame with 55 columns:
    \item Total Species (numeric)
    \item Native Species (numeric)
    \item Non-native Species (numeric)
-   \item Species Wetness (numeric)
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Annual (numeric)
