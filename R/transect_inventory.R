@@ -1,4 +1,4 @@
-#' Obtain Species Information From a Universal FQA Transect as a Data Frame
+#' Obtain species details for a specified floristic quality transect assessment
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
 #' @return A data frame with 6 columns:
@@ -21,48 +21,54 @@
 #' @import dplyr tidyr
 #' @importFrom rlang .data
 #'
-#' @examples ## transect_inventory can be used with a download function:
+#' @examples \dontrun{
+#' ## while transect_glance can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_transect}}:
 #'
-#' transect_inventory(download_transect(6325))
+#' tyler <- download_transect(6352)
+#' transect_glance(tyler)
+#' }
 #'
-#' ## transect_inventory can also be used with saved data from a download function:
-#'
-#' df <- download_transect(6325)
-#' transect_inventory(df)
 #' @export
 
 transect_inventory <- function(data_set) {
-  
-  if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)}
 
-  renamed <- data_set %>%
-    rename("one" = 1,
-           "two" = 2,
-           "three" = 3,
-           "four" = 4,
-           "five" = 5,
-           "six" = 6,
-           "seven" = 7,
-           "eight" = 8,
-           "nine" = 9,
-           "ten" = 10,
-           "eleven" = 11,
-           "twelve" = 12,
-           "thirteen" = 13,
-           "fourteen" = 14)
+  if (!is.data.frame(data_set)) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
+  if (!("Species Richness:" %in% data_set[[1]])) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
-  selected <- renamed |> select(1:13)
+  if (ncol(data_set) == 1) {
 
-  data <- selected |>
-    filter(row_number() > which(.data$`one` == "Species Relative Importance Values:")) %>%
-    filter(row_number() < which(.data$`one` == "Quadrat/Subplot Level Metrics:"))
+    new <- rbind(names(data_set), data_set)
 
-  dropped <- data |>  drop_na(c(1))
+    data_set <- separate(new,
+                         col = 1,
+                         sep = ",",
+                         into = paste0("V", 1:14),
+                         fill = "right")
+  }
+
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
+
+  data_set <- data_set |> select(1:13)
+
+  start_row <- 1 + which(data_set$V1 == "Species Relative Importance Values:")
+  end_row <- -2 + which(data_set$V1 == "Quadrat/Subplot Level Metrics:")
+  if (end_row < start_row) {
+    stop("No species listings found.")
+    }
+
+  dropped <- data_set[start_row:end_row, ]
 
   names(dropped) <- lapply(dropped[1, ], as.character)
-  new <- dropped[-1,]
+  dropped <- dropped[-1, ]
 
-#  new |> mutate_at(c(5:6), as.double) |> mutate_at(c(9:13), as.double)
+  new <- dropped |> mutate(across(c(5:6, 9:13), as.double))
 
-  new <- new |> mutate(across(c(5:6, 9:13), as.double))
+  class(new) <- c("tbl_df", "tbl", "data.frame")
+
+  new
 }

@@ -1,7 +1,7 @@
-#' Obtain Overview Information From a Universal FQA Transect as a Data Frame
+#' Obtain Tidy Summary Information For a Floristic Quality Transect Assessment
 #'
-#' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
-#' @return A data frame with 54 columns:
+#' @param data_set a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().#' @return A data frame with 54 columns:
+#' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (POSIXct)
@@ -63,14 +63,10 @@
 #' @importFrom rlang .data
 #'
 #' @examples \dontrun{
-#' ## transect_glance can be used with a download function:
+#' ## while transect_glance can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_transect}}:
 #'
-#' transect_glance(download_transect(6325))
-#'
-#' ## transect_glance can also be used with saved data from a download function:
-#'
-#' df <- download_transect(6325)
-#' transect_glance(df)
+#' tyler <- download_transect(6352)
+#' transect_glance(tyler)
 #' }
 #'
 #' @export
@@ -89,9 +85,13 @@ transect_glance <- function(data_set){
     data_set <- separate(new,
                          col = 1,
                          sep = ",",
-                         into = paste0("V", 1:15),
+                         into = paste0("V", 1:14),
                          fill = "right")
   }
+
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
+  data_set <- na_if(data_set, "0000-00-00")
 
   data_set[1, 2] <- data_set[1, 1]
   data_set[1, 1] <- "Title"
@@ -110,14 +110,9 @@ transect_glance <- function(data_set){
   data_set[8, 2] <- data_set[8, 1]
   data_set[8, 1] <- "Omernik Level 3 Ecoregion"
 
-  data_set <- na_if(data_set, "n/a")
-  data_set <- na_if(data_set, "")
+  names(data_set)[1:2] <- c("V1", "V2")
 
-  renamed <- data_set |>
-    rename("V1" = 1,
-           "V2" = 2)
-
-  dropped <- renamed |> drop_na(1) |>
+  dropped <- data_set |> drop_na(1) |>
     filter(.data$V1 != "Conservatism-Based Metrics:",
            .data$V1 != "Species Richness:",
            .data$V1 != "Duration Metrics:",
@@ -144,7 +139,7 @@ transect_glance <- function(data_set){
                                      values_from = .data$V2)
 
   data <- pivoted |> mutate(across(c(26:28, 32:54), as.numeric),
-                            Date = as.POSIXct(.data$Date))
+                            Date = as.Date(.data$Date))
 
   names(data) <- gsub(":", "", names(data))
 

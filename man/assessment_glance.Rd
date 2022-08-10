@@ -2,12 +2,12 @@
 % Please edit documentation in R/assessment_glance.R
 \name{assessment_glance}
 \alias{assessment_glance}
-\title{Obtain Overview Information From a Universal FQA Inventory as a Data Frame}
+\title{Obtain Tidy Summary Information For a Floristic Quality Invernoty Assessment}
 \usage{
 assessment_glance(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from Universal FQA using download_assessment() or directly from universalfqa.org}
+\item{data_set}{a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().}
 }
 \value{
 A data frame with 52 columns:
@@ -34,7 +34,7 @@ A data frame with 52 columns:
    \item Private/Public (character)
    \item Total Mean C (numeric)
    \item Native Mean C (numeric)
-   \item Total FQI (numeric)
+   \item Total FQI: (numeric)
    \item Native FQI (numeric)
    \item Adjusted FQI (numeric)
    \item % C value 0 (numeric)
@@ -46,7 +46,7 @@ A data frame with 52 columns:
    \item Native Herbaceous Mean C (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
-   \item Non-native Species (numeric)
+   \item Non-native Species
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Tree (numeric)
@@ -62,19 +62,19 @@ A data frame with 52 columns:
    \item Perennial (numeric)
    \item Biennial (numeric)
    \item Native Annual (numeric)
-   \item Native Perennial: (numeric)
-   \item Native Biennial: (numeric)
+   \item Native Perennial (numeric)
+   \item Native Biennial (numeric)
 }
 }
 \description{
-Obtain Overview Information From a Universal FQA Inventory as a Data Frame
+Obtain Tidy Summary Information For a Floristic Quality Invernoty Assessment
 }
 \examples{
 \dontrun{
-## assessment_glance can be used with a .csv file downloaded directly from the universal FQA website or with a download function:
+## while assessment_glance can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_assessment}}:
 
-df <- download_assessment(25002)
-assessment_glance(df)
+edison <- download_assessment(25002)
+assessment_glance(edison)
 }
 
 }

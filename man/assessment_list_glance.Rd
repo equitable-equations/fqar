@@ -2,7 +2,7 @@
 % Please edit documentation in R/assessment_list_glance.R
 \name{assessment_list_glance}
 \alias{assessment_list_glance}
-\title{Glance multiple FQA Assessments in one Data Frame}
+\title{Summarize multiple FQA assessments in one data frame}
 \usage{
 assessment_list_glance(list)
 }
@@ -22,6 +22,8 @@ A data frame with 52 columns:
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item Practitioner (character)
    \item Latitude (character)
    \item Longitude (character)
@@ -42,11 +44,9 @@ A data frame with 52 columns:
    \item Native Tree Mean C (numeric)
    \item Native Shrub Mean C (numeric)
    \item Native Herbaceous Mean C (numeric)
-   \item Species Richness (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
-   \item Non-native Species (numeric)
-   \item Species Wetness (numeric)
+   \item Non-native Species
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Tree (numeric)
@@ -67,18 +67,13 @@ A data frame with 52 columns:
 }
 }
 \description{
-Glance multiple FQA Assessments in one Data Frame
+Summarize multiple FQA assessments in one data frame
 }
 \examples{
 \dontrun{
-## assessment_list_glance can be used with the download_assessment_list() function:
+## assessment_list_glance is most typically used in combination with \code{\link{download_assessment_list}}.
 
-assessment_list_glance(download_assessment_list(149, id \%in\% test_vector))
-# 149 is the database ID, see help file of download_assessment_list() for more information
-
-## assessment_list_glance can also be used with saved data from the download function:
-
-list <- (download_assessment_list(149, id \%in\% test_vector)
-assessment_list_glance(list)
+missouri <- download_assessment_list(database = 63)
+assessment_glance(missouri)
 }
 }

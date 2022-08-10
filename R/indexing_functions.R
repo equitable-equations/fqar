@@ -30,7 +30,7 @@ download_fqa_databases <- function() {
 }
 
 
-#' Available public FQA assessments
+#' Obtain a data frame of all available public FQA assessments
 #'
 #' Downloads a data frame of publicly-available inventory assessments for a given FQA database from \href{universalfqa.org}{https://universalfqa.org/}.
 #' Databases should be specified by their \code{database_id} number, which can be obtained with the \code{\link{download_fqa_databases}} function.
@@ -41,7 +41,7 @@ download_fqa_databases <- function() {
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
-#'   \item date (POSIXct)
+#'   \item date (date)
 #'   \item site (character)
 #'   \item practitioner (character)
 #'   }
@@ -65,12 +65,12 @@ download_fqa_assessments <- function(database_id) {
     c("id", "assessment", "date", "site", "practitioner")
   inventories_summary$id <- as.double(inventories_summary$id)
   inventories_summary$date[inventories_summary$date == "0000-00-00"] <- NA
-  inventories_summary$date <- as.POSIXct(inventories_summary$date)
+  inventories_summary$date <- as.Date(inventories_summary$date)
   class(inventories_summary) <- c("tbl_df", "tbl", "data.frame")
   inventories_summary
 }
 
-#' Available public FQA transect data
+#' Obtain a data frame of all available public FQA transect assessments
 #'
 #' Downloads a data frame of publicly-available transect assessments for a given FQA database from \href{https://universalfqa.org/}{universalfqa.org}.
 #' Databases should be specified by their \code{database_id} number, which can be obtained with the \code{\link{download_fqa_databases}} function.
@@ -81,7 +81,7 @@ download_fqa_assessments <- function(database_id) {
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
-#'   \item date (POSIXct)
+#'   \item date (date)
 #'   \item site (character)
 #'   \item practitioner (character)
 #'   }
@@ -105,7 +105,7 @@ download_fqa_transects <- function(database_id) {
     c("id", "assessment", "date", "site", "practitioner")
   transect_summary$id <- as.double(transect_summary$id)
   transect_summary$date[transect_summary$date == "0000-00-00"] <- NA
-  transect_summary$date <- as.POSIXct(transect_summary$date)
+  transect_summary$date <- as.Date(transect_summary$date)
   class(transect_summary) <- c("tbl_df", "tbl", "data.frame")
   transect_summary
 }

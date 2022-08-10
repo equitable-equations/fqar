@@ -2,15 +2,15 @@
 % Please edit documentation in R/transect_glance.R
 \name{transect_glance}
 \alias{transect_glance}
-\title{Obtain Overview Information From a Universal FQA Transect as a Data Frame}
+\title{Obtain Tidy Summary Information For a Floristic Quality Transect Assessment}
 \usage{
 transect_glance(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from Universal FQA using download_transect() or other similar function}
+\item{data_set}{a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().#' @return A data frame with 54 columns:}
 }
 \value{
-A data frame with 54 columns:
+A data frame with 52 columns:
 \itemize{
    \item Title (character)
    \item Date (POSIXct)
@@ -69,18 +69,14 @@ A data frame with 54 columns:
 }
 }
 \description{
-Obtain Overview Information From a Universal FQA Transect as a Data Frame
+Obtain Tidy Summary Information For a Floristic Quality Transect Assessment
 }
 \examples{
 \dontrun{
-## transect_glance can be used with a download function:
+## while transect_glance can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_transect}}:
 
-transect_glance(download_transect(6325))
-
-## transect_glance can also be used with saved data from a download function:
-
-df <- download_transect(6325)
-transect_glance(df)
+tyler <- download_transect(6352)
+transect_glance(tyler)
 }
 
 }

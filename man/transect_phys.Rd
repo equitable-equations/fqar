@@ -25,13 +25,9 @@ Obtain Physiognomy Information From a Universal FQA Transect as a Data Frame
 }
 \examples{
 \dontrun{
-## transect_phys can be used with a download function:
+## while transect_phys can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_transect}}:
 
-transect_phys(download_transect(6325))
-
-## transect_phys can also be used with saved data from a download function:
-
-df <- download_transect(6325)
-transect_phys(df)
+tyler <- download_transect(6352)
+transect_phys(tyler)
 }
 }

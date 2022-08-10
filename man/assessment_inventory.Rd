@@ -2,7 +2,7 @@
 % Please edit documentation in R/assessment_inventory.R
 \name{assessment_inventory}
 \alias{assessment_inventory}
-\title{Obtain Study Information From Universal FQA Inventory as a Data Frame}
+\title{Obtain species details for a specified floristic quality assessment}
 \usage{
 assessment_inventory(data_set)
 }
@@ -24,21 +24,14 @@ A data frame with 9 columns:
 }
 }
 \description{
-Obtain Study Information From Universal FQA Inventory as a Data Frame
+Obtain species details for a specified floristic quality assessment
 }
 \examples{
 \dontrun{
-## assessment_inventory can be used with a .csv file downloaded from the universal FQA website:
+## while assessment_glance can be used with a .csv file downloaded manually from the universal FQA website, it is most typically used in combination with \code{\link{download_assessment}}:
 
-assessment_inventory(open_dunes)
-
-## or with a download function:
-
-assessment_inventory(download_assessment(25002))
-
-## assessment_inventory can also be used with saved data from a download function:
-
-df <- download_fqa(25002)
-assessment_inventory(df)
+edison <- download_assessment(25002)
+assessment_inventory(edison)
 }
+
 }

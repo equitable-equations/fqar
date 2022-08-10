@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexing_functions.R
 \name{download_fqa_transects}
 \alias{download_fqa_transects}
-\title{Available public FQA transect data}
+\title{Obtain a data frame of all available public FQA transect assessments}
 \usage{
 download_fqa_transects(database_id)
 }
@@ -14,7 +14,7 @@ A data frame with five columns:
 \itemize{
   \item id (numeric)
   \item assessment (character)
-  \item date (POSIXct)
+  \item date (date)
   \item site (character)
   \item practitioner (character)
   }

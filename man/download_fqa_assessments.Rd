@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexing_functions.R
 \name{download_fqa_assessments}
 \alias{download_fqa_assessments}
-\title{Available public FQA assessments}
+\title{Obtain a data frame of all available public FQA assessments}
 \usage{
 download_fqa_assessments(database_id)
 }
@@ -14,7 +14,7 @@ A data frame with five columns:
 \itemize{
   \item id (numeric)
   \item assessment (character)
-  \item date (POSIXct)
+  \item date (date)
   \item site (character)
   \item practitioner (character)
   }
