@@ -13,7 +13,7 @@ assessment_glance(data_set)
 A data frame with 52 columns:
 \itemize{
    \item Title (character)
-   \item Date (POSIXct)
+   \item Date (date)
    \item Site Name (character)
    \item City (character)
    \item County (character)

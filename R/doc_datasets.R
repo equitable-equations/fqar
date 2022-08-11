@@ -1,12 +1,11 @@
-#' Overview Data of over 700 FQA Inventories (Chicago 2017 Database)
+#' Chicagoland floristic quality assessment data
 #'
-#' A dataset containing the glance_fqa() data of 725 FQA inventories.
-#' The variables are as follows:
+#' A dataset containing \code{\link{assessment_list_glance}} data for 725 floristic quality assessments from the 2017 Chicago Region USACE database.
 #'
 #' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
-#'    \item Date (POSIXct)
+#'    \item Date (date)
 #'    \item Site Name (character)
 #'    \item City (character)
 #'    \item County (character)
@@ -15,6 +14,8 @@
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item Practitioner (character)
 #'    \item Latitude (character)
 #'    \item Longitude (character)
@@ -25,7 +26,7 @@
 #'    \item Private/Public (character)
 #'    \item Total Mean C (numeric)
 #'    \item Native Mean C (numeric)
-#'    \item Total FQI (numeric)
+#'    \item Total FQI: (numeric)
 #'    \item Native FQI (numeric)
 #'    \item Adjusted FQI (numeric)
 #'    \item % C value 0 (numeric)
@@ -35,11 +36,9 @@
 #'    \item Native Tree Mean C (numeric)
 #'    \item Native Shrub Mean C (numeric)
 #'    \item Native Herbaceous Mean C (numeric)
-#'    \item Species Richness (numeric)
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
-#'    \item Non-native Species (numeric)
-#'    \item Species Wetness (numeric)
+#'    \item Non-native Species
 #'    \item Mean Wetness (numeric)
 #'    \item Native Mean Wetness (numeric)
 #'    \item Tree (numeric)
@@ -55,28 +54,22 @@
 #'    \item Perennial (numeric)
 #'    \item Biennial (numeric)
 #'    \item Native Annual (numeric)
-#'    \item Native Perennial: (numeric)
-#'    \item Native Biennial: (numeric)
+#'    \item Native Perennial (numeric)
+#'    \item Native Biennial (numeric)
 #' }
-#'
-#' @docType data
-#' @keywords datasets
-#' @name chicago
-#' @usage data(chicago)
 #' @format A data frame with 725 rows and 52 variables
 "chicago"
 
 
 
-#' Overview Data of 201 FQA Inventories (Missouri 2017 Database)
+#' Missouri floristic quality assessment data
 #'
-#' A dataset containing the glance_fqa() data of 201 FQA inventories.
-#' The variables are as follows:
+#' A dataset containing \code{\link{assessment_list_glance}} data for 201 floristic quality assessments from the 2015 Missouri database.
 #'
 #' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
-#'    \item Date (POSIXct)
+#'    \item Date (date)
 #'    \item Site Name (character)
 #'    \item City (character)
 #'    \item County (character)
@@ -85,6 +78,8 @@
 #'    \item FQA DB Region (character)
 #'    \item FQA DB Publication Year (character)
 #'    \item FQA DB Description (character)
+#'    \item Custom FQA DB Name (character)
+#'    \item Custom FQA DB Description (character)
 #'    \item Practitioner (character)
 #'    \item Latitude (character)
 #'    \item Longitude (character)
@@ -95,7 +90,7 @@
 #'    \item Private/Public (character)
 #'    \item Total Mean C (numeric)
 #'    \item Native Mean C (numeric)
-#'    \item Total FQI (numeric)
+#'    \item Total FQI: (numeric)
 #'    \item Native FQI (numeric)
 #'    \item Adjusted FQI (numeric)
 #'    \item % C value 0 (numeric)
@@ -105,11 +100,9 @@
 #'    \item Native Tree Mean C (numeric)
 #'    \item Native Shrub Mean C (numeric)
 #'    \item Native Herbaceous Mean C (numeric)
-#'    \item Species Richness (numeric)
 #'    \item Total Species (numeric)
 #'    \item Native Species (numeric)
-#'    \item Non-native Species (numeric)
-#'    \item Species Wetness (numeric)
+#'    \item Non-native Species
 #'    \item Mean Wetness (numeric)
 #'    \item Native Mean Wetness (numeric)
 #'    \item Tree (numeric)
@@ -125,8 +118,8 @@
 #'    \item Perennial (numeric)
 #'    \item Biennial (numeric)
 #'    \item Native Annual (numeric)
-#'    \item Native Perennial: (numeric)
-#'    \item Native Biennial: (numeric)
+#'    \item Native Perennial (numeric)
+#'    \item Native Biennial (numeric)
 #' }
 #'
 #' @docType data

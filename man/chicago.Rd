@@ -3,18 +3,18 @@
 \docType{data}
 \name{chicago}
 \alias{chicago}
-\title{Overview Data of over 700 FQA Inventories (Chicago 2017 Database)}
+\title{Chicagoland floristic quality assessment data}
 \format{
 A data frame with 725 rows and 52 variables
 }
 \usage{
-data(chicago)
+chicago
 }
 \value{
 A data frame with 52 columns:
 \itemize{
    \item Title (character)
-   \item Date (POSIXct)
+   \item Date (date)
    \item Site Name (character)
    \item City (character)
    \item County (character)
@@ -23,6 +23,8 @@ A data frame with 52 columns:
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item Practitioner (character)
    \item Latitude (character)
    \item Longitude (character)
@@ -33,7 +35,7 @@ A data frame with 52 columns:
    \item Private/Public (character)
    \item Total Mean C (numeric)
    \item Native Mean C (numeric)
-   \item Total FQI (numeric)
+   \item Total FQI: (numeric)
    \item Native FQI (numeric)
    \item Adjusted FQI (numeric)
    \item % C value 0 (numeric)
@@ -43,11 +45,9 @@ A data frame with 52 columns:
    \item Native Tree Mean C (numeric)
    \item Native Shrub Mean C (numeric)
    \item Native Herbaceous Mean C (numeric)
-   \item Species Richness (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
-   \item Non-native Species (numeric)
-   \item Species Wetness (numeric)
+   \item Non-native Species
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Tree (numeric)
@@ -63,12 +63,11 @@ A data frame with 52 columns:
    \item Perennial (numeric)
    \item Biennial (numeric)
    \item Native Annual (numeric)
-   \item Native Perennial: (numeric)
-   \item Native Biennial: (numeric)
+   \item Native Perennial (numeric)
+   \item Native Biennial (numeric)
 }
 }
 \description{
-A dataset containing the glance_fqa() data of 725 FQA inventories.
-The variables are as follows:
+A dataset containing \code{\link{assessment_list_glance}} data for 725 floristic quality assessments from the 2017 Chicago Region USACE database.
 }
 \keyword{datasets}

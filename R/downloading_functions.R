@@ -11,8 +11,10 @@
 #' @examples \dontrun{
 #' databases <- download_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
+#'
 #' chicago_assessments <- download_fqa_assessments(1) # Edison dune and swale has id number 25002.
 #' edison <- download_assessment(25002)
+#'
 #' edison_tidy <- glance_fqa(edison)
 #' edison_species <- assess_fqa(edison)
 #' }
