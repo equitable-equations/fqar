@@ -10,7 +10,7 @@ transect_list_glance(list)
 \item{list}{a list of downloaded transects that were downloaded with download_transect_list().}
 }
 \value{
-A data frame with 55 columns:
+A data frame with 54 columns:
 \itemize{
    \item Title (character)
    \item Date (POSIXct)
@@ -20,12 +20,12 @@ A data frame with 55 columns:
    \item State (character)
    \item Country (character)
    \item Omernik Level 3 Ecoregion (character)
-   \item Custom FQA DB Name (character)
-   \item Custom FQA DB Description (character)
    \item FQA DB Region (character)
    \item FQA DB Publication Year (character)
    \item FQA DB Description (character)
    \item FQA DB Selection Name (character)
+   \item Custom FQA DB Name (character)
+   \item Custom FQA DB Description (character)
    \item Practitioner (character)
    \item Latitude (character)
    \item Longitude (character)
@@ -58,7 +58,6 @@ A data frame with 55 columns:
    \item Total Species (numeric)
    \item Native Species (numeric)
    \item Non-native Species (numeric)
-   \item Species Wetness (numeric)
    \item Mean Wetness (numeric)
    \item Native Mean Wetness (numeric)
    \item Annual (numeric)
@@ -74,14 +73,10 @@ Summarize multiple floristic quality transect assessments in one data frame
 }
 \examples{
 \dontrun{
-## transect_list_glance can be used with the download_transect_list() function:
+# While transect_list_glance can be used with a list of .csv file downloaded manually from the universal FQA website,
+# it is most typically used in combination with \code{\link{download_transect_list}}:
 
-transect_list_glance(download_transect_list(149, id \%in\% test_vector))
-# 149 is the database ID, see help file of download_assessment_list() for more information
-
-## transect_glance_list can also be used with saved data from the download function:
-
-list <- (download_transect_list(149, id \%in\% test_vector)
-transect_list_glance(list)
+transect_list <- download_transect_list(149, id \%in\% c(3400, 3427))
+transect_list_glance(transect_list)
 }
 }
