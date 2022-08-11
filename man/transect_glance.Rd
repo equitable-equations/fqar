@@ -7,10 +7,10 @@
 transect_glance(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().#' @return A data frame with 54 columns:}
+\item{data_set}{a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().}
 }
 \value{
-A data frame with 52 columns:
+A data frame with 1 row and 54 columns:
 \itemize{
    \item Title (character)
    \item Date (POSIXct)
