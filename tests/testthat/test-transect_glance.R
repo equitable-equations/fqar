@@ -25,4 +25,11 @@ test_that("transect_glance works", {
   expect_equal(names(test_omernik)[9], "FQA DB Region")
   expect_equal(names(test_omernik)[13], "Custom FQA DB Name")
   expect_equal(typeof(test_omernik$`Total Mean C`), "double")
+
+  test_manual <- transect_glance(test_transect)
+  expect_equal(ncol(test_manual), 54)
+  expect_equal(names(test_manual)[9], "FQA DB Region")
+  expect_equal(names(test_manual)[13], "Custom FQA DB Name")
+  expect_equal(typeof(test_manual$`Total Mean C`), "double")
+  expect_equal(test_manual[[25]], "Transect")
 })
