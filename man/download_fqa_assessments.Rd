@@ -10,7 +10,7 @@ download_fqa_assessments(database_id)
 \item{database_id}{A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
 }
 \value{
-A data frame with five columns:
+A data frame with 5 columns:
 \itemize{
   \item id (numeric)
   \item assessment (character)

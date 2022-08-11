@@ -7,7 +7,7 @@
 download_fqa_databases()
 }
 \value{
-A data frame with four columns:
+A data frame with 4 columns:
 \itemize{
   \item database_id (numeric)
   \item region (character)

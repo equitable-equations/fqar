@@ -2,7 +2,7 @@
 #'
 #' Downloads a data frame of public floristic quality assessment databases from \href{https://universalfqa.org/}{universalfqa.org}.
 #'
-#' @return A data frame with four columns:
+#' @return A data frame with 4 columns:
 #' \itemize{
 #'   \item database_id (numeric)
 #'   \item region (character)
@@ -37,7 +37,7 @@ download_fqa_databases <- function() {
 #'
 #' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
-#' @return A data frame with five columns:
+#' @return A data frame with 5 columns:
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
@@ -78,7 +78,7 @@ download_fqa_assessments <- function(database_id) {
 #'
 #' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
-#' @return A data frame with five columns:
+#' @return A data frame with 5 columns:
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
