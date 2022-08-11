@@ -1,7 +1,7 @@
 #' Obtain physiognomy information a given floristic quality transect assessment
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
-#' @return A data frame with 6 columns:
+#' @return  A data frame with 6 columns:
 #' \itemize{
 #'    \item Physiognomy (character)
 #'    \item Frequency (numeric)
@@ -25,36 +25,37 @@
 
 transect_phys <- function(data_set) {
 
-  if (!is.data.frame(data_set)) {stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)}
+  if (!is.data.frame(data_set)) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
+  if (!("Species Richness:" %in% data_set[[1]])) {
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
-  renamed <- data_set %>%
-    rename("one" = 1,
-           "two" = 2,
-           "three" = 3,
-           "four" = 4,
-           "five" = 5,
-           "six" = 6,
-           "seven" = 7,
-           "eight" = 8,
-           "nine" = 9,
-           "ten" = 10,
-           "eleven" = 11,
-           "twelve" = 12,
-           "thirteen" = 13,
-           "fourteen" = 14)
+  if (ncol(data_set) == 1) {
 
-  selected <- renamed %>% select(1:6)
+    new <- rbind(names(data_set), data_set)
 
-  data <- selected %>%
-      filter(row_number() > which(.data$`one` == "Physiognomic Relative Importance Values:")) %>%
-      filter(row_number() < which(.data$`one` == "Species Relative Importance Values:"))
+    data_set <- separate(new,
+                         col = 1,
+                         sep = ",",
+                         into = paste0("V", 1:14),
+                         fill = "right")
+  }
 
-  dropped <- data %>% drop_na(c(1, 6))
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
 
-  names(dropped) <- lapply(dropped[1, ], as.character)
-  new <- dropped[-1,]
+  start_row <- 2 + which(data_set$V1 == "Physiognomic Relative Importance Values:")
+  end_row <- -2 + which(data_set$V1 == "Species Relative Importance Values:")
+  if (end_row < start_row) {
+    stop("No physiognometric data found")
+  }
+  phys <- data_set[start_row:end_row, 1:6]
 
-  new %>% mutate_at(c(2:6), as.double)
+  names(phys) <- data_set[start_row - 1, 1:6]
+
+  phys |>  mutate(across(2:6, as.double))
 
 }
 
