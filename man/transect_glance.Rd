@@ -2,7 +2,7 @@
 % Please edit documentation in R/transect_glance.R
 \name{transect_glance}
 \alias{transect_glance}
-\title{Obtain Tidy Summary Information For a Floristic Quality Transect Assessment}
+\title{Obtain tidy summary information for a floristic quality transect assessment}
 \usage{
 transect_glance(data_set)
 }
@@ -69,7 +69,7 @@ A data frame with 52 columns:
 }
 }
 \description{
-Obtain Tidy Summary Information For a Floristic Quality Transect Assessment
+Obtain tidy summary information for a floristic quality transect assessment
 }
 \examples{
 \dontrun{

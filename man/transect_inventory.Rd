@@ -2,7 +2,7 @@
 % Please edit documentation in R/transect_inventory.R
 \name{transect_inventory}
 \alias{transect_inventory}
-\title{Obtain species details for a specified floristic quality transect assessment}
+\title{Obtain species details for a given floristic quality transect assessment}
 \usage{
 transect_inventory(data_set)
 }
@@ -28,7 +28,7 @@ A data frame with 6 columns:
 }
 }
 \description{
-Obtain species details for a specified floristic quality transect assessment
+Obtain species details for a given floristic quality transect assessment
 }
 \examples{
 \dontrun{

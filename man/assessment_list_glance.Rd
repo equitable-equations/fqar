@@ -2,7 +2,7 @@
 % Please edit documentation in R/assessment_list_glance.R
 \name{assessment_list_glance}
 \alias{assessment_list_glance}
-\title{Summarize multiple FQA assessments in one data frame}
+\title{Summarize multiple floristic quality assessments in one data frame}
 \usage{
 assessment_list_glance(list)
 }
@@ -67,7 +67,7 @@ A data frame with 52 columns:
 }
 }
 \description{
-Summarize multiple FQA assessments in one data frame
+Summarize multiple floristic quality assessments in one data frame
 }
 \examples{
 \dontrun{

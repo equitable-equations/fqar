@@ -2,7 +2,7 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_assessment}
 \alias{download_assessment}
-\title{Download FQA by id number}
+\title{Download floristic quality assessment by id number}
 \usage{
 download_assessment(assessment_id)
 }

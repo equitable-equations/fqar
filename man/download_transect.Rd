@@ -2,7 +2,7 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_transect}
 \alias{download_transect}
-\title{Download transect-level FQA data by id number}
+\title{Download floristic quality transect assessment by id number}
 \usage{
 download_transect(transect_id)
 }
@@ -13,7 +13,7 @@ download_transect(transect_id)
 An untidy data frame in the original format of the Universal FQA website. Use \code{\link{transect_glance}} for a tidy summary, \code{\link{transect_phys}} for a physiognometric overview, and \code{\link{transect_inventory}} for raw species-level data.
 }
 \description{
-Downloads a specified transect-level floristic quality assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in different databases can be found using \code{\link{download_fqa_assessments}}.
+Downloads a specified floristic quality transect assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in different databases can be found using \code{\link{download_fqa_assessments}}.
 }
 \examples{
 \dontrun{

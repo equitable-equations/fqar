@@ -2,7 +2,7 @@
 % Please edit documentation in R/assessment_glance.R
 \name{assessment_glance}
 \alias{assessment_glance}
-\title{Obtain Tidy Summary Information For a Floristic Quality Invernoty Assessment}
+\title{Obtain tidy summary information for a given floristic quality assessment}
 \usage{
 assessment_glance(data_set)
 }
@@ -67,7 +67,7 @@ A data frame with 52 columns:
 }
 }
 \description{
-Obtain Tidy Summary Information For a Floristic Quality Invernoty Assessment
+Obtain tidy summary information for a given floristic quality assessment
 }
 \examples{
 \dontrun{

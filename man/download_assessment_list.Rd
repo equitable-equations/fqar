@@ -2,7 +2,7 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_assessment_list}
 \alias{download_assessment_list}
-\title{Download multiple assessments}
+\title{Download multiple floristic quality assessments}
 \usage{
 download_assessment_list(database, ...)
 }

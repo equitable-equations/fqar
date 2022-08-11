@@ -1,4 +1,4 @@
-#' Summarize multiple FQA transects in one data frame
+#' Summarize multiple floristic quality transect assessments in one data frame
 #'
 #' @param list a list of downloaded transects that were downloaded with download_transect_list().
 #' @return A data frame with 55 columns:

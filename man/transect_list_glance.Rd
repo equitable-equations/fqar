@@ -2,7 +2,7 @@
 % Please edit documentation in R/transect_list_glance.R
 \name{transect_list_glance}
 \alias{transect_list_glance}
-\title{Summarize multiple FQA transects in one data frame}
+\title{Summarize multiple floristic quality transect assessments in one data frame}
 \usage{
 transect_list_glance(list)
 }
@@ -70,7 +70,7 @@ A data frame with 55 columns:
 }
 }
 \description{
-Summarize multiple FQA transects in one data frame
+Summarize multiple floristic quality transect assessments in one data frame
 }
 \examples{
 \dontrun{

@@ -1,4 +1,4 @@
-#' Obtain Physiognomy Information From a Universal FQA Transect as a Data Frame
+#' Obtain physiognomy information a given floristic quality transect assessment
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
 #' @return A data frame with 6 columns:

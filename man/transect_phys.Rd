@@ -2,7 +2,7 @@
 % Please edit documentation in R/transect_phys.R
 \name{transect_phys}
 \alias{transect_phys}
-\title{Obtain Physiognomy Information From a Universal FQA Transect as a Data Frame}
+\title{Obtain physiognomy information a given floristic quality transect assessment}
 \usage{
 transect_phys(data_set)
 }
@@ -21,7 +21,7 @@ A data frame with 6 columns:
 }
 }
 \description{
-Obtain Physiognomy Information From a Universal FQA Transect as a Data Frame
+Obtain physiognomy information a given floristic quality transect assessment
 }
 \examples{
 \dontrun{

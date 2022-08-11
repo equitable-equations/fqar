@@ -1,4 +1,4 @@
-#' Obtain species details for a specified floristic quality assessment
+#' Obtain species details for a given floristic quality assessment
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_assessment() or directly from universalfqa.org
 #' @return A data frame with 9 columns:

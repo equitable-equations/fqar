@@ -2,7 +2,7 @@
 % Please edit documentation in R/assessment_inventory.R
 \name{assessment_inventory}
 \alias{assessment_inventory}
-\title{Obtain species details for a specified floristic quality assessment}
+\title{Obtain species details for a given floristic quality assessment}
 \usage{
 assessment_inventory(data_set)
 }
@@ -24,7 +24,7 @@ A data frame with 9 columns:
 }
 }
 \description{
-Obtain species details for a specified floristic quality assessment
+Obtain species details for a given floristic quality assessment
 }
 \examples{
 \dontrun{

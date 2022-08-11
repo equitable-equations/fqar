@@ -1,4 +1,4 @@
-#' Obtain Tidy Summary Information For a Floristic Quality Transect Assessment
+#' Obtain tidy summary information for a floristic quality transect assessment
 #'
 #' @param data_set a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().#' @return A data frame with 54 columns:
 #' @return A data frame with 52 columns:

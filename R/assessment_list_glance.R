@@ -1,4 +1,4 @@
-#' Summarize multiple FQA assessments in one data frame
+#' Summarize multiple floristic quality assessments in one data frame
 #'
 #' @param list a list of downloaded assessments that were downloaded with download_assessment_list().
 #' @return A data frame with 52 columns:

@@ -1,4 +1,4 @@
-#' Download FQA by id number
+#' Download floristic quality assessment by id number
 #'
 #' Downloads a specified floristic quality assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in various databases can be found using the \code{\link{download_fqa_assessments}} function.
 #'
@@ -36,7 +36,7 @@ download_assessment <- function(assessment_id){
 
 
 
-#' Download multiple assessments
+#' Download multiple floristic quality assessments
 #'
 #' Searches a specified FQA database for assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
 #'
@@ -90,9 +90,9 @@ download_assessment_list <- function(database, ...){
 
 
 
-#' Download transect-level FQA data by id number
+#' Download floristic quality transect assessment by id number
 #'
-#' Downloads a specified transect-level floristic quality assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in different databases can be found using \code{\link{download_fqa_assessments}}.
+#' Downloads a specified floristic quality transect assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in different databases can be found using \code{\link{download_fqa_assessments}}.
 #'
 #' @param transect_id A numeric identifier of the desired transect-level floristic quality assessment, as specified by \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for specified databases can be viewed with the \code{\link{download_fqa_transects}} function.
 #'
@@ -126,9 +126,9 @@ download_transect <- function(transect_id){
 
 
 
-#' Download multiple transect-level FQAs
+#' Download multiple floristic quality transect assessments
 #'
-#' This function searches a specified FQA database for transect-level assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
+#' Searches a specified FQA database for transect assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
 #'
 #' @param database A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'

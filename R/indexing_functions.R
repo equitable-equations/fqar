@@ -70,6 +70,7 @@ download_fqa_assessments <- function(database_id) {
   inventories_summary
 }
 
+
 #' Obtain a data frame of all available public FQA transect assessments
 #'
 #' Downloads a data frame of publicly-available transect assessments for a given FQA database from \href{https://universalfqa.org/}{universalfqa.org}.

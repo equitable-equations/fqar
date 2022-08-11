@@ -1,4 +1,4 @@
-#' Obtain species details for a specified floristic quality transect assessment
+#' Obtain species details for a given floristic quality transect assessment
 #'
 #' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
 #' @return A data frame with 6 columns:

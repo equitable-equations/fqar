@@ -2,7 +2,7 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_transect_list}
 \alias{download_transect_list}
-\title{Download multiple transect-level FQAs}
+\title{Download multiple floristic quality transect assessments}
 \usage{
 download_transect_list(database, ...)
 }
@@ -22,7 +22,7 @@ download_transect_list(database, ...)
 A list of data frames matching the given search criteria. Each is an untidy data frame in the original format of the Universal FQA website. Use \code{\link{transect_list_glance}} for a tidy summary.
 }
 \description{
-This function searches a specified FQA database for transect-level assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
+Searches a specified FQA database for transect assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
 }
 \examples{
 \dontrun{
