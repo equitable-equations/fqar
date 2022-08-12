@@ -128,18 +128,18 @@ assessment_glance <- function(data_set) {
   small <- selected |>
     filter(row_number() < which(.data$V1 == "Species:"))
 
-    pivoted <- pivoted <- small |> pivot_wider(names_from = .data$V1,
-                                               values_from = .data$V2)
+  pivoted <- pivoted <- small |> pivot_wider(names_from = .data$V1,
+                                             values_from = .data$V2)
 
-    final <- pivoted |> mutate(across(22:57, as.double),
-                               Date = as.Date(.data$Date)) |>
-      select(-c(.data$`Duration Metrics:`,
-             .data$`Physiognomy Metrics:`,
-             .data$`Conservatism-Based Metrics:`,
-             .data$`Species Richness:`,
-             .data$`Species Wetness:`))
+  final <- pivoted |> mutate(across(22:57, as.double),
+                             Date = as.Date(.data$Date)) |>
+    select(-c(.data$`Duration Metrics:`,
+              .data$`Physiognomy Metrics:`,
+              .data$`Conservatism-Based Metrics:`,
+              .data$`Species Richness:`,
+              .data$`Species Wetness:`))
 
-    names(final) <- gsub(":", "", names(final))
+  names(final) <- gsub(":", "", names(final))
 
-    final
+  final
 }
