@@ -140,8 +140,9 @@ transect_glance <- function(data_set){
   pivoted <- selected |> pivot_wider(names_from = .data$V1,
                                      values_from = .data$V2)
 
-  data <- pivoted |> mutate(across(c(26:28, 32:54), as.numeric),
-                            Date = as.Date(.data$Date))
+  suppressWarnings(data <- pivoted |>
+                     mutate(across(c(26:28, 32:54), as.numeric),
+                            Date = as.Date(.data$Date)))
 
   names(data) <- gsub(":", "", names(data))
 

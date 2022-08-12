@@ -49,6 +49,9 @@ assessment_inventory <- function(data_set) {
                          fill = "right")
   }
 
+  data_set <- na_if(data_set, "n/a")
+  data_set <- na_if(data_set, "")
+
   renamed <- data_set |>
     rename("Scientific Name" = 1,
            "Family" = 2,
