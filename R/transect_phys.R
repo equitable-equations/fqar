@@ -16,14 +16,15 @@
 
 #' @examples
 #' \dontrun{
-#' # While transect_phys can be used with a .csv file downloaded manually from the universal FQA website,
-#' it is most typically used in combination with \code{\link{download_transect}}:
+#' # While transect_phys can be used with a .csv file downloaded
+#' # manually from the universal FQA website, it is most typically used
+#' # in combination with \code{\link{download_transect}}:
 #'
 #' tyler <- download_transect(6352)
 #' transect_phys(tyler)
 #' }
+#'
 #' @export
-
 transect_phys <- function(data_set) {
 
   if (!is.data.frame(data_set)) {

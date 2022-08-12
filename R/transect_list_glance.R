@@ -4,7 +4,7 @@
 #' @return A data frame with 54 columns:
 #' \itemize{
 #'    \item Title (character)
-#'    \item Date (POSIXct)
+#'    \item Date (date)
 #'    \item Site Name (character)
 #'    \item City (character)
 #'    \item County (character)
@@ -61,14 +61,15 @@
 #'
 #' @import dplyr tidyr
 #' @examples \dontrun{
-#' # While transect_list_glance can be used with a list of .csv file downloaded manually from the universal FQA website,
-#' # it is most typically used in combination with \code{\link{download_transect_list}}:
+#' # While transect_list_glance can be used with a list of .csv file downloaded
+#' # manually from the universal FQA website, it is most typically used
+#' # in combination with \code{\link{download_transect_list}}:
 #'
 #' transect_list <- download_transect_list(149, id %in% c(3400, 3427))
 #' transect_list_glance(transect_list)
 #' }
+#'
 #' @export
-
 transect_list_glance <- function(list){
 
   applied <- lapply(list, transect_glance)

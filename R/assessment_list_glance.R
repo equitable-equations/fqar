@@ -4,7 +4,7 @@
 #' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
-#'    \item Date (POSIXct)
+#'    \item Date (date)
 #'    \item Site Name (character)
 #'    \item City (character)
 #'    \item County (character)
@@ -59,11 +59,14 @@
 #'
 #' @import dplyr tidyr
 #' @examples \dontrun{
-#' ## assessment_list_glance is most typically used in combination with \code{\link{download_assessment_list}}.
+#' # While assessment_list_glance can be used with a .csv file downloaded
+#' # manually from the universal FQA website, it is most typically used
+#' # in combination with \code{\link{download_assessment_list}}:
 #'
 #' missouri <- download_assessment_list(database = 63)
-#' assessment_glance(missouri)
+#' assessment_list_glance(missouri)
 #' }
+#'
 #' @export
 assessment_list_glance <- function(list){
 

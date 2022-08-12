@@ -25,10 +25,12 @@ Obtain physiognomy information a given floristic quality transect assessment
 }
 \examples{
 \dontrun{
-# While transect_phys can be used with a .csv file downloaded manually from the universal FQA website,
-it is most typically used in combination with \code{\link{download_transect}}:
+# While transect_phys can be used with a .csv file downloaded
+# manually from the universal FQA website, it is most typically used
+# in combination with \code{\link{download_transect}}:
 
 tyler <- download_transect(6352)
 transect_phys(tyler)
 }
+
 }

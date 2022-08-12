@@ -22,8 +22,9 @@
 #' @importFrom rlang .data
 #'
 #' @examples \dontrun{
-#' # while transect_glance can be used with a .csv file downloaded manually from the universal FQA website,
-#' # it is most typically used in combination with \code{\link{download_transect}}:
+#' # while transect_glance can be used with a .csv file downloaded
+#' # manually from the universal FQA website, it is most typically used
+#' # in combination with \code{\link{download_transect}}:
 #'
 #' tyler <- download_transect(6352)
 #' transect_glance(tyler)

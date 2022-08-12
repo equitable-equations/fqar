@@ -42,7 +42,7 @@ download_assessment <- function(assessment_id){
 #'
 #' Searches a specified FQA database for assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
 #'
-#' @param database A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
+#' @param database_id A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired assessments. The following variables may be used:
 #' \itemize{
@@ -66,8 +66,8 @@ download_assessment <- function(assessment_id){
 #' }
 #'
 #' @export
-download_assessment_list <- function(database, ...){
-  tryCatch(inventories_summary <- download_fqa_assessments(database),
+download_assessment_list <- function(database_id, ...){
+  tryCatch(inventories_summary <- download_fqa_assessments(database_id),
            error = function(e){stop("invalid database", call. = FALSE)})
   inventories_requested <- inventories_summary |> dplyr::filter(...)
   if (length(inventories_requested$id) >= 5){
@@ -132,7 +132,7 @@ download_transect <- function(transect_id){
 #'
 #' Searches a specified FQA database for transect assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
 #'
-#' @param database A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
+#' @param database_id A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
 #' @param ... `dplyr`-style filtering criteria for the desired transect-level assessments. The following variables may be used:
 #' \itemize{
@@ -153,8 +153,8 @@ download_transect <- function(transect_id){
 #' }
 #'
 #' @export
-download_transect_list <- function(database, ...){
-  tryCatch(transects_summary <- download_fqa_transects(database),
+download_transect_list <- function(database_id, ...){
+  tryCatch(transects_summary <- download_fqa_transects(database_id),
            error = function(e){stop("invalid database", call. = FALSE)})
   transects_requested <- transects_summary |> dplyr::filter(...)
   if (length(transects_requested$id) >= 5){
