@@ -57,6 +57,7 @@
 #'    \item Native Perennial (numeric)
 #'    \item Native Biennial (numeric)
 #' }
+#'
 #' @format A data frame with 725 rows and 52 variables
 "chicago"
 
