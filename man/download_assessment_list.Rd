@@ -4,10 +4,10 @@
 \alias{download_assessment_list}
 \title{Download multiple floristic quality assessments}
 \usage{
-download_assessment_list(database, ...)
+download_assessment_list(database_id, ...)
 }
 \arguments{
-\item{database}{A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
+\item{database_id}{A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
 
 \item{...}{\code{dplyr}-style filtering criteria for the desired assessments. The following variables may be used:
 \itemize{

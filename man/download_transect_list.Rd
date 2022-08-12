@@ -4,10 +4,10 @@
 \alias{download_transect_list}
 \title{Download multiple floristic quality transect assessments}
 \usage{
-download_transect_list(database, ...)
+download_transect_list(database_id, ...)
 }
 \arguments{
-\item{database}{A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
+\item{database_id}{A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
 
 \item{...}{`dplyr`-style filtering criteria for the desired transect-level assessments. The following variables may be used:
 \itemize{
