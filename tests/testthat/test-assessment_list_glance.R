@@ -17,6 +17,7 @@ test_that("assessment_list_glance works", {
   test_df <- assessment_list_glance(test_list)
 
   expect_equal(ncol(test_df), 52)
+  expect_equal(nrow(test_df), length(test_list))
   expect_equal(typeof(test_df$`Total Mean C`), "double")
   expect_gt(nrow(test_df), 1)
 })
