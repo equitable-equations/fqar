@@ -1,6 +1,13 @@
-#' Obtain species details for a given floristic quality transect assessment
+#' Obtain species details for a floristic quality transect assessment
 #'
-#' @param data_set a data frame downloaded from Universal FQA using download_transect() or other similar function
+#' \code{transect_inventory()} returns a data frame of all plant species
+#' included in a floristic quality transect assessment obtained from
+#' \href{https://universalfqa.org/}{universalfqa.org}.
+#'
+#' @param data_set A data set downloaded from
+#'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
+#'   download_transect().
+#'
 #' @return A data frame with 6 columns:
 #' \itemize{
 #'   \item Species (character)
@@ -24,7 +31,7 @@
 #' @examples \dontrun{
 #' # while transect_glance can be used with a .csv file downloaded
 #' # manually from the universal FQA website, it is most typically used
-#' # in combination with \code{\link{download_transect}}:
+#' # in combination with download_transect().
 #'
 #' tyler <- download_transect(6352)
 #' transect_glance(tyler)
@@ -68,7 +75,8 @@ transect_inventory <- function(data_set) {
   names(dropped) <- lapply(dropped[1, ], as.character)
   dropped <- dropped[-1, ]
 
-  new <- dropped |> mutate(across(c(5:6, 9:13), as.double))
+  suppressWarnings(new <- dropped |>
+                     mutate(across(c(5:6, 9:13), as.double)))
 
   class(new) <- c("tbl_df", "tbl", "data.frame")
 

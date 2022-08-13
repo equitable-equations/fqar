@@ -7,9 +7,13 @@
 download_transect_list(database_id, ...)
 }
 \arguments{
-\item{database_id}{A numeric identifier of the desired floristic quality assessment database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can be viewed with the \code{\link{download_fqa_databases}} function.}
+\item{database_id}{A numeric identifier of the desired floristic quality
+assessment database, as specified by
+\href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
+be viewed with the \code{\link{download_fqa_databases}} function.}
 
-\item{...}{`dplyr`-style filtering criteria for the desired transect-level assessments. The following variables may be used:
+\item{...}{\code{dplyr}-style filtering criteria for the desired assessments.
+  The following variables may be used:
 \itemize{
   \item id (numeric)
   \item assessment (character)
@@ -19,10 +23,15 @@ download_transect_list(database_id, ...)
 }}
 }
 \value{
-A list of data frames matching the given search criteria. Each is an untidy data frame in the original format of the Universal FQA website. Use \code{\link{transect_list_glance}} for a tidy summary.
+A list of data frames matching the search criteria. Each is an untidy
+  data frame in the original format of the Universal FQA website. Use
+  \code{\link{transect_list_glance}} for a tidy summary.
 }
 \description{
-Searches a specified FQA database for transect assessments matching given criteria, then downloads all the matches from \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that website may be slow, causing delays in the evaluation of this function.
+\code{download_transect_list()} searches the specified floristic quality
+assessment database and downloads all matches from
+\href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
+website may be slow, causing delays in the evaluation of this function.
 }
 \examples{
 \dontrun{

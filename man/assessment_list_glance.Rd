@@ -2,12 +2,14 @@
 % Please edit documentation in R/assessment_list_glance.R
 \name{assessment_list_glance}
 \alias{assessment_list_glance}
-\title{Summarize multiple floristic quality assessments in one data frame}
+\title{Obtain tidy summary information for multiple floristic quality assessments}
 \usage{
-assessment_list_glance(list)
+assessment_list_glance(assessment_list)
 }
 \arguments{
-\item{list}{a list of downloaded assessments that were downloaded with download_assessment_list().}
+\item{assessment_list}{A list of data sets downloaded from
+\href{https://universalfqa.org/}{universalfqa.org}, typically using
+\code{\link{download_assessment_list}}.}
 }
 \value{
 A data frame with 52 columns:
@@ -37,10 +39,10 @@ A data frame with 52 columns:
    \item Total FQI: (numeric)
    \item Native FQI (numeric)
    \item Adjusted FQI (numeric)
-   \item % C value 0 (numeric)
-   \item % C value 1-3 (numeric)
-   \item % C value 4-6 (numeric)
-   \item % C value 7-10 (numeric)
+   \item \% C value 0 (numeric)
+   \item \% C value 1-3 (numeric)
+   \item \% C value 4-6 (numeric)
+   \item \% C value 7-10 (numeric)
    \item Native Tree Mean C (numeric)
    \item Native Shrub Mean C (numeric)
    \item Native Herbaceous Mean C (numeric)
@@ -67,13 +69,15 @@ A data frame with 52 columns:
 }
 }
 \description{
-Summarize multiple floristic quality assessments in one data frame
+\code{assessment_list_glance()} tidies a list of floristic quality assessment
+data sets obtained from \href{https://universalfqa.org/}{universalfqa.org},
+returning summary information as a single data frame.
 }
 \examples{
 \dontrun{
-# While assessment_list_glance can be used with a .csv file downloaded
+# While assessment_list_glance can be used with .csv files downloaded
 # manually from the universal FQA website, it is most typically used
-# in combination with \code{\link{download_assessment_list}}:
+# in combination with download_assessment_list().
 
 missouri <- download_assessment_list(database = 63)
 assessment_list_glance(missouri)

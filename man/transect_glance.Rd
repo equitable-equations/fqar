@@ -7,7 +7,9 @@
 transect_glance(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().}
+\item{data_set}{A data set downloaded from
+\href{https://universalfqa.org/}{universalfqa.org} either manually or using
+download_transect().}
 }
 \value{
 A data frame with 1 row and 54 columns:
@@ -51,10 +53,10 @@ A data frame with 1 row and 54 columns:
    \item Cover-weighted FQI (numeric)
    \item Cover-weighted Native FQI (numeric)
    \item Adjusted FQI (numeric)
-   \item % C value 0 (numeric)
-   \item % C value 1-3 (numeric)
-   \item % C value 4-6 (numeric)
-   \item % C value 7-10 (numeric)
+   \item \% C value 0 (numeric)
+   \item \% C value 1-3 (numeric)
+   \item \% C value 4-6 (numeric)
+   \item \% C value 7-10 (numeric)
    \item Total Species (numeric)
    \item Native Species (numeric)
    \item Non-native Species (numeric)
@@ -69,13 +71,14 @@ A data frame with 1 row and 54 columns:
 }
 }
 \description{
-Obtain tidy summary information for a floristic quality transect assessment
+\code{transect_glance()} tidies a floristic quality transect assessment data
+set obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{
 # While transect_glance can be used with a .csv file downloaded
 # manually from the universal FQA website, it is most typically used
-# in combination with \code{\link{download_transect}}:
+# in combination with download_transect().
 
 tyler <- download_transect(6352)
 transect_glance(tyler)

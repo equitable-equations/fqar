@@ -2,18 +2,27 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_assessment}
 \alias{download_assessment}
-\title{Download floristic quality assessment by id number}
+\title{Download a single floristic quality assessment}
 \usage{
 download_assessment(assessment_id)
 }
 \arguments{
-\item{assessment_id}{A numeric identifier of the desired floristic quality assessment, as specified by \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for specified databases can be viewed with the \code{\link{download_fqa_assessments}} function.}
+\item{assessment_id}{A numeric identifier of the desired floristic quality
+assessment, as specified by
+\href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
+specified databases can be viewed with the
+\code{\link{download_fqa_assessments}} function.}
 }
 \value{
-An untidy data frame in the original format of the Universal FQA website. Use \code{\link{assessment_glance}} for a tidy summary and \code{\link{assessment_inventory}} for raw species-level data.
+An untidy data frame in the original format of the Universal FQA
+  website. Use \code{\link{assessment_glance}} for a tidy summary and
+  \code{\link{assessment_inventory}} for species-level data.
 }
 \description{
-Downloads a specified floristic quality assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in various databases can be found using the \code{\link{download_fqa_assessments}} function.
+\code{download_assessment} downloads a specified floristic quality assessment
+from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
+assessments in various databases can be found using the
+\code{\link{download_fqa_assessments}} function.
 }
 \examples{
 \dontrun{

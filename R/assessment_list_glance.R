@@ -1,6 +1,13 @@
-#' Summarize multiple floristic quality assessments in one data frame
+#' Obtain tidy summary information for multiple floristic quality assessments
 #'
-#' @param list a list of downloaded assessments that were downloaded with download_assessment_list().
+#' \code{assessment_list_glance()} tidies a list of floristic quality assessment
+#' data sets obtained from \href{https://universalfqa.org/}{universalfqa.org},
+#' returning summary information as a single data frame.
+#'
+#' @param assessment_list A list of data sets downloaded from
+#'   \href{https://universalfqa.org/}{universalfqa.org}, typically using
+#'   \code{\link{download_assessment_list}}.
+#'
 #' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
@@ -28,10 +35,10 @@
 #'    \item Total FQI: (numeric)
 #'    \item Native FQI (numeric)
 #'    \item Adjusted FQI (numeric)
-#'    \item % C value 0 (numeric)
-#'    \item % C value 1-3 (numeric)
-#'    \item % C value 4-6 (numeric)
-#'    \item % C value 7-10 (numeric)
+#'    \item \% C value 0 (numeric)
+#'    \item \% C value 1-3 (numeric)
+#'    \item \% C value 4-6 (numeric)
+#'    \item \% C value 7-10 (numeric)
 #'    \item Native Tree Mean C (numeric)
 #'    \item Native Shrub Mean C (numeric)
 #'    \item Native Herbaceous Mean C (numeric)
@@ -59,18 +66,18 @@
 #'
 #' @import dplyr tidyr
 #' @examples \dontrun{
-#' # While assessment_list_glance can be used with a .csv file downloaded
+#' # While assessment_list_glance can be used with .csv files downloaded
 #' # manually from the universal FQA website, it is most typically used
-#' # in combination with \code{\link{download_assessment_list}}:
+#' # in combination with download_assessment_list().
 #'
 #' missouri <- download_assessment_list(database = 63)
 #' assessment_list_glance(missouri)
 #' }
 #'
 #' @export
-assessment_list_glance <- function(list){
+assessment_list_glance <- function(assessment_list){
 
-  applied <- lapply(list, assessment_glance)
+  applied <- lapply(assessment_list, assessment_glance)
 
   do.call(rbind, applied)
 

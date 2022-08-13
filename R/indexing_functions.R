@@ -1,6 +1,8 @@
-#' Obtain a data frame of all existing FQA databases
+#' List all available floristic quality assessment databases
 #'
-#' Downloads a data frame of public floristic quality assessment databases from \href{https://universalfqa.org/}{universalfqa.org}.
+#' \code{download_fqa_databases} creates a data frame showing all public
+#' floristic quality assessment databases available at
+#' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
 #' @return A data frame with 4 columns:
 #' \itemize{
@@ -18,6 +20,7 @@
 #' @import jsonlite
 #'
 #' @export
+
 download_fqa_databases <- function() {
   databases_address <- "http://universalfqa.org/get/database/"
   databases_raw <- jsonlite::fromJSON(databases_address)
@@ -30,10 +33,12 @@ download_fqa_databases <- function() {
 }
 
 
-#' Obtain a data frame of all available public FQA assessments
+
+#' List all available public floristic quality assessments
 #'
-#' Downloads a data frame of publicly-available inventory assessments for a given FQA database from \href{universalfqa.org}{https://universalfqa.org/}.
-#' Databases should be specified by their \code{database_id} number, which can be obtained with the \code{\link{download_fqa_databases}} function.
+#' For any given database, \code{download_fqa_assessments} creates a data frame
+#' of all public floristic quality assessments available at
+#' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
 #' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
@@ -54,6 +59,7 @@ download_fqa_databases <- function() {
 #' }
 #'
 #' @export
+
 download_fqa_assessments <- function(database_id) {
   if (!is.numeric(database_id)) {stop("database_id must be an integer corresponding to an existing FQA database. Use download_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
   if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use download_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
@@ -71,10 +77,12 @@ download_fqa_assessments <- function(database_id) {
 }
 
 
-#' Obtain a data frame of all available public FQA transect assessments
+
+#' List all available public floristic quality transect assessments
 #'
-#' Downloads a data frame of publicly-available transect assessments for a given FQA database from \href{https://universalfqa.org/}{universalfqa.org}.
-#' Databases should be specified by their \code{database_id} number, which can be obtained with the \code{\link{download_fqa_databases}} function.
+#' For any given database, \code{download_fqa_transects} creates a data frame of
+#' all public floristic quality transect assessments available at
+#' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
 #' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{download_fqa_databases}} function.
 #'
@@ -95,6 +103,7 @@ download_fqa_assessments <- function(database_id) {
 #' }
 #'
 #' @export
+
 download_fqa_transects <- function(database_id) {
   if (!is.numeric(database_id)) {stop("database_id must be an integer corresponding to an existing FQA database. Use download_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
   if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use download_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}

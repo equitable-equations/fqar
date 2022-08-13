@@ -2,12 +2,14 @@
 % Please edit documentation in R/transect_inventory.R
 \name{transect_inventory}
 \alias{transect_inventory}
-\title{Obtain species details for a given floristic quality transect assessment}
+\title{Obtain species details for a floristic quality transect assessment}
 \usage{
 transect_inventory(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from Universal FQA using download_transect() or other similar function}
+\item{data_set}{A data set downloaded from
+\href{https://universalfqa.org/}{universalfqa.org} either manually or using
+download_transect().}
 }
 \value{
 A data frame with 6 columns:
@@ -28,13 +30,15 @@ A data frame with 6 columns:
 }
 }
 \description{
-Obtain species details for a given floristic quality transect assessment
+\code{transect_inventory()} returns a data frame of all plant species
+included in a floristic quality transect assessment obtained from
+\href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{
 # while transect_glance can be used with a .csv file downloaded
 # manually from the universal FQA website, it is most typically used
-# in combination with \code{\link{download_transect}}:
+# in combination with download_transect().
 
 tyler <- download_transect(6352)
 transect_glance(tyler)

@@ -2,12 +2,14 @@
 % Please edit documentation in R/transect_phys.R
 \name{transect_phys}
 \alias{transect_phys}
-\title{Obtain physiognomy information a given floristic quality transect assessment}
+\title{Obtain physiognometric information a floristic quality transect assessment}
 \usage{
 transect_phys(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from Universal FQA using download_transect() or other similar function}
+\item{data_set}{A data set downloaded from
+\href{https://universalfqa.org/}{universalfqa.org} either manually or using
+download_transect().}
 }
 \value{
 A data frame with 6 columns:
@@ -21,13 +23,15 @@ A data frame with 6 columns:
 }
 }
 \description{
-Obtain physiognomy information a given floristic quality transect assessment
+\code{transect_phys()} returns a data frame with physiognometric information
+for a floristic quality transect assessment obtained from
+\href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{
 # While transect_phys can be used with a .csv file downloaded
 # manually from the universal FQA website, it is most typically used
-# in combination with \code{\link{download_transect}}:
+# in combination with download_transect().
 
 tyler <- download_transect(6352)
 transect_phys(tyler)

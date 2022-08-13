@@ -38,10 +38,10 @@ A data frame with 52 columns:
    \item Total FQI: (numeric)
    \item Native FQI (numeric)
    \item Adjusted FQI (numeric)
-   \item % C value 0 (numeric)
-   \item % C value 1-3 (numeric)
-   \item % C value 4-6 (numeric)
-   \item % C value 7-10 (numeric)
+   \item \% C value 0 (numeric)
+   \item \% C value 1-3 (numeric)
+   \item \% C value 4-6 (numeric)
+   \item \% C value 7-10 (numeric)
    \item Native Tree Mean C (numeric)
    \item Native Shrub Mean C (numeric)
    \item Native Herbaceous Mean C (numeric)
@@ -68,6 +68,7 @@ A data frame with 52 columns:
 }
 }
 \description{
-A dataset containing \code{\link{assessment_list_glance}} data for 201 floristic quality assessments from the 2015 Missouri database.
+A data set summarizing 201 floristic quality assessments using the 2015
+Missouri database.
 }
 \keyword{datasets}

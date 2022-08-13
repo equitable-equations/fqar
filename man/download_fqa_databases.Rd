@@ -2,7 +2,7 @@
 % Please edit documentation in R/indexing_functions.R
 \name{download_fqa_databases}
 \alias{download_fqa_databases}
-\title{Obtain a data frame of all existing FQA databases}
+\title{List all available floristic quality assessment databases}
 \usage{
 download_fqa_databases()
 }
@@ -16,7 +16,9 @@ A data frame with 4 columns:
 }
 }
 \description{
-Downloads a data frame of public floristic quality assessment databases from \href{https://universalfqa.org/}{universalfqa.org}.
+\code{download_fqa_databases} creates a data frame showing all public
+floristic quality assessment databases available at
+\href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{

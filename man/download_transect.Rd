@@ -2,18 +2,28 @@
 % Please edit documentation in R/downloading_functions.R
 \name{download_transect}
 \alias{download_transect}
-\title{Download floristic quality transect assessment by id number}
+\title{Download a single floristic quality transect assessment}
 \usage{
 download_transect(transect_id)
 }
 \arguments{
-\item{transect_id}{A numeric identifier of the desired transect-level floristic quality assessment, as specified by \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for specified databases can be viewed with the \code{\link{download_fqa_transects}} function.}
+\item{transect_id}{A numeric identifier of the desired transect-level
+floristic quality assessment, as specified by
+\href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
+specified databases can be viewed with the
+\code{\link{download_fqa_transects}} function.}
 }
 \value{
-An untidy data frame in the original format of the Universal FQA website. Use \code{\link{transect_glance}} for a tidy summary, \code{\link{transect_phys}} for a physiognometric overview, and \code{\link{transect_inventory}} for raw species-level data.
+An untidy data frame in the original format of the Universal FQA
+  website. Use \code{\link{transect_glance}} for a tidy summary,
+  \code{\link{transect_phys}} for a physiognometric overview, and
+  \code{\link{transect_inventory}} for species-level data.
 }
 \description{
-Downloads a specified floristic quality transect assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for assessments in different databases can be found using \code{\link{download_fqa_assessments}}.
+\code{download_transect} downloads a specified floristic quality transect
+assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
+numbers for transect assessments in various databases can be found using the
+\code{\link{download_fqa_transects}} function.
 }
 \examples{
 \dontrun{

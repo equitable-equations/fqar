@@ -1,6 +1,13 @@
-#' Obtain species details for a given floristic quality assessment
+#' Obtain species details for a floristic quality assessment
 #'
-#' @param data_set a data frame downloaded from Universal FQA using download_assessment() or directly from universalfqa.org
+#' \code{assessment_inventory()} returns a data frame of all plant species
+#' included in a floristic quality assessment obtained from
+#' \href{https://universalfqa.org/}{universalfqa.org}.
+#'
+#' @param data_set A data set downloaded from
+#'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
+#'   \code{\link{download_assessment}}.
+
 #' @return A data frame with 9 columns:
 #' \itemize{
 #'    \item Scientific Name (character)
@@ -21,7 +28,7 @@
 #' \dontrun{
 #' # While assessment_glance can be used with a .csv file downloaded
 #' # manually from the universal FQA website, it is most typically used
-#' # in combination with \code{\link{download_assessment}}:
+#' # in combination with download_assessment().
 #'
 #' edison <- download_assessment(25002)
 #' assessment_inventory(edison)
@@ -64,8 +71,8 @@ assessment_inventory <- function(data_set) {
            "Common Name" = 9)
 
   new <- renamed |>
-    filter(row_number() > which(.data$`Scientific Name` == "Scientific Name")) |>
-    mutate(across(5:6, as.numeric))
+    filter(row_number() > which(.data$`Scientific Name` == "Scientific Name"))
+  new <- suppressWarnings(mutate(new, across(5:6, as.numeric)))
 
   class(new) <- c("tbl_df", "tbl", "data.frame")
 

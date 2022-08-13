@@ -2,12 +2,14 @@
 % Please edit documentation in R/assessment_inventory.R
 \name{assessment_inventory}
 \alias{assessment_inventory}
-\title{Obtain species details for a given floristic quality assessment}
+\title{Obtain species details for a floristic quality assessment}
 \usage{
 assessment_inventory(data_set)
 }
 \arguments{
-\item{data_set}{a data frame downloaded from Universal FQA using download_assessment() or directly from universalfqa.org}
+\item{data_set}{A data set downloaded from
+\href{https://universalfqa.org/}{universalfqa.org} either manually or using
+\code{\link{download_assessment}}.}
 }
 \value{
 A data frame with 9 columns:
@@ -24,13 +26,15 @@ A data frame with 9 columns:
 }
 }
 \description{
-Obtain species details for a given floristic quality assessment
+\code{assessment_inventory()} returns a data frame of all plant species
+included in a floristic quality assessment obtained from
+\href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{
 # While assessment_glance can be used with a .csv file downloaded
 # manually from the universal FQA website, it is most typically used
-# in combination with \code{\link{download_assessment}}:
+# in combination with download_assessment().
 
 edison <- download_assessment(25002)
 assessment_inventory(edison)

@@ -1,6 +1,12 @@
-#' Obtain tidy summary information for a given floristic quality assessment
+#' Obtain tidy summary information for a floristic quality assessment
 #'
-#' @param data_set a data frame downloaded from \href{https://universalfqa.org/}{universalfqa.org} either manually or using download_assessment().
+#' \code{assessment_glance()} tidies a floristic quality assessment data set
+#' obtained from \href{https://universalfqa.org/}{universalfqa.org}.
+#'
+#' @param data_set A data set downloaded from
+#'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
+#'   \code{\link{download_assessment}}.
+#'
 #' @return A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
@@ -28,10 +34,10 @@
 #'    \item Total FQI: (numeric)
 #'    \item Native FQI (numeric)
 #'    \item Adjusted FQI (numeric)
-#'    \item % C value 0 (numeric)
-#'    \item % C value 1-3 (numeric)
-#'    \item % C value 4-6 (numeric)
-#'    \item % C value 7-10 (numeric)
+#'    \item \% C value 0 (numeric)
+#'    \item \% C value 1-3 (numeric)
+#'    \item \% C value 4-6 (numeric)
+#'    \item \% C value 7-10 (numeric)
 #'    \item Native Tree Mean C (numeric)
 #'    \item Native Shrub Mean C (numeric)
 #'    \item Native Herbaceous Mean C (numeric)
@@ -63,7 +69,7 @@
 #' @examples \dontrun{
 #' # While assessment_glance can be used with a .csv file downloaded
 #' # manually from the universal FQA website, it is most typically used
-#' # in combination with \code{\link{download_assessment}}:
+#' # in combination with download_assessment().
 #'
 #' edison <- download_assessment(25002)
 #' assessment_glance(edison)
