@@ -1,6 +1,6 @@
 # fqar <img src="man/figures/logo.png" align="right" height="138" />
 
-Floristic quality assessments (FQA's) are a method of assessing the quality of ecological communities and other natural areas. The ${\tt fqar}$ package provides tools to download and analyze FQA’s from www.universalfqa.org.
+Floristic quality assessment (FQA) is a standardized method for rating the ecological value of a plant community based on the native species found there. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from www.universalfqa.org.
 
 ## Installation
 
@@ -18,65 +18,68 @@ The ${\tt fqar}$ package consists of three categories of functions: indexing, do
 ### Indexing functions: 
 
 ```{r indexing}
-# to download a list of all fqa databases 
+# to download a list of all fqa databases:
 databases <- download_fqa_databases()
 
-# to download a list of all assessments in a specific database
+# download a list of all assessments in a specific database:
 chicago_fqas <- download_fqa_assessments(database_id = 149) 
 
-# to download a list of all transects in a specific database
+# download a list of all transect assessments in a specific database:
 chicago_transects <- download_fqa_transects(database_id = 149)
 ```
 
 ### Downloading functions:
 
+Floristic quality assessments can be downloaded individually by ID number or collectively using ${\tt dplyr}$ syntax.
+
 ```{r downloading}
-# to download a single assessment
+# download a single assessment:
 woodland <- download_assessment(assessment_id = 25640)
 
-# to download multiple assessments
-mcdonald_fqas <- download_assessment_list(database = 149,
-                                          site == "McDonald Woods")
+# download multiple assessments:
+mcdonald_fqas <- download_assessment_list(database_id = 149, site == "McDonald Woods")
 ```
 
-The same can be done for transect-level data 
+${\rr fqar}$ also provides functions for downloading transect assessments from www.universalfqa.org.
 
 ```{r downloading2}
-survey <- download_transect(transect_id = 6875)
+# download a single transect assessment:
+rock_garden <- download_transect(transect_id = 6875)
+
+# download multiple transect assessments:
 lord_fqas <- download_transect_list(database = 63,
                                     practitioner == "Sam Lord")
 ```
 
 ### Tidying functions:
 
+Data sets obtained from www.universalfqa.org are quite messy. ${\fqar}$ provides tools for converting such sets into more convenient formats.
+
 ```{r tidying}
-# to obtain a data frame of species data from an assessment 
+# obtain a data frame of species data from a downloaded assessment :
 
 woodland_species <- assessment_inventory(woodland)
 
-# to obtain a data frame of summary information from an assessment 
+# obtain a data frame with summary information for a downloaded assessment:
 
 woodland_summary <- assessment_glance(woodland)
 
-# to obtain a data frame of summary information from multiple assessments 
+# obtain a data frame with summary information for multiple downloaded assessments:
 
 mcdonald_summary <- assessment_list_glance(mcdonald_fqas)
 ```
 
-The same can be done for transect-level data
+Similar functions are provided for handling transect assessments. For those sets, physiognometric information can also be extracted.
 
 ```{r tidying2}
-survey <- download_transect(transect_id = 6875)
-survey_species <- transect_inventory(survey)
-survey_summary  <- transect_glance(survey)
+# obtain a data frame of species data from a downloaded transect assessment :
+survey_species <- transect_inventory(rock_garden)
+
+# obtain a data frame with summary information for a downloaded transect assessment:
+rock_garden_summary  <- transect_glance(rock_garden)
+
+# obtain a data frame with summary information for multiple downloaded transect assessments:
 lord_summary <- transect_list_glance(lord_fqas)
-```
-
-In addition, transect-level data includes physiognometric data that can be isolated 
-
-```{r tidying3}
-# to obtain physiognometric data from a transect in a data frame
-survey_phys <- transect_phys(survey)
 ```
 
 More examples can be found in the [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd).
