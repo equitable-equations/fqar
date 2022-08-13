@@ -7,7 +7,7 @@ Floristic quality assessment (FQA) is a standardized method for rating the ecolo
 The development version can be installed from [GitHub](https://github.com/equitable-equations/fqar).
 
 ```{r install}
-# Install development version from GitHub 
+# Install development version from GitHub: 
 devtools::install_github("equitable-equations/fqar")
 ```
 
@@ -15,7 +15,7 @@ devtools::install_github("equitable-equations/fqar")
 
 The ${\tt fqar}$ package consists of three categories of functions: indexing, downloading, and tidying functions. ${\tt fqar}$ also includes two sample data sets.
 
-### Indexing functions: 
+### Indexing functions
 
 ```{r indexing}
 # download a list of all fqa databases:
@@ -28,7 +28,7 @@ chicago_fqas <- download_fqa_assessments(database_id = 149)
 chicago_transects <- download_fqa_transects(database_id = 149)
 ```
 
-### Downloading functions:
+### Downloading functions
 
 Floristic quality assessments can be downloaded individually by ID number or collectively using ${\tt dplyr}$ syntax.
 
@@ -38,7 +38,7 @@ woodland <- download_assessment(assessment_id = 25640)
 
 # download multiple assessments:
 mcdonald_fqas <- download_assessment_list(database_id = 149, 
-site == "McDonald Woods")
+                                          site == "McDonald Woods")
 ```
 
 ${\tt fqar}$ also provides functions for downloading transect assessments.
@@ -54,7 +54,7 @@ lord_fqas <- download_transect_list(database = 63,
 
 Unfortunately, the www.universalfqa.org server is often slow, and downloads(especially for transect assessments) may take some time. 
 
-### Tidying functions:
+### Tidying functions
 
 Data sets obtained from www.universalfqa.org are quite messy. ${\tt fqar}$ provides tools for converting such sets into a more convenient tidy format.
 
