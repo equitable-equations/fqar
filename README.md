@@ -52,14 +52,14 @@ lord_fqas <- download_transect_list(database = 63,
                                     practitioner == "Sam Lord")
 ```
 
-Unfortunately, the www.universalfqa.org server is often slow, and downloads(especially for transect assessments) may take some time. 
+Unfortunately, the www.universalfqa.org server is often slow, and downloads (especially for transect assessments) may take some time. 
 
 ### Tidying functions
 
 Data sets obtained from www.universalfqa.org are quite messy. ${\tt fqar}$ provides tools for converting such sets into a more convenient tidy format.
 
 ```{r tidying}
-# obtain a data frame with species data for a downloaded assessment :
+# obtain a data frame with species data for a downloaded assessment:
 woodland_species <- assessment_inventory(woodland)
 
 # obtain a data frame with summary information for a downloaded assessment:
@@ -72,8 +72,11 @@ mcdonald_summary <- assessment_list_glance(mcdonald_fqas)
 Similar functions are provided for handling transect assessments. For those sets, physiognometric information can also be extracted.
 
 ```{r tidying2}
-# obtain a data frame with species data for a downloaded transect assessment :
+# obtain a data frame with species data for a downloaded transect assessment:
 survey_species <- transect_inventory(rock_garden)
+
+# obtain a data frame with physiognometric data for a downloaded transect assessment:
+survey_phys <- transect_phys(rock_garden)
 
 # obtain a data frame with summary information for a downloaded transect assessment:
 rock_garden_summary  <- transect_glance(rock_garden)
