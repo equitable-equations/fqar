@@ -30,7 +30,7 @@ chicago_transects <- index_fqa_transects(database_id = 149)
 
 ### Downloading functions
 
-Floristic quality assessments can be downloaded individually by ID number or collectively using ${\tt dplyr}$ syntax.
+Floristic quality assessments can be downloaded individually by ID number or collectively using ${\tt dplyr::filter}$ syntax.
 
 ```{r downloading}
 # download a single assessment:
