@@ -5,12 +5,6 @@
 \alias{missouri}
 \title{Missouri floristic quality assessment data}
 \format{
-A data frame with 201 rows and 52 variables
-}
-\usage{
-data(missouri)
-}
-\value{
 A data frame with 52 columns:
 \itemize{
    \item Title (character)
@@ -67,8 +61,14 @@ A data frame with 52 columns:
    \item Native Biennial (numeric)
 }
 }
+\source{
+{\href{https://universalfqa.org/}{universalfqa.org}}
+}
+\usage{
+missouri
+}
 \description{
-A data set summarizing 201 floristic quality assessments using the 2015
+A data set summarizing 215 floristic quality assessments using the 2015
 Missouri database.
 }
 \keyword{datasets}

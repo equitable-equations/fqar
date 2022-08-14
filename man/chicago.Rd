@@ -5,12 +5,6 @@
 \alias{chicago}
 \title{Chicagoland floristic quality assessment data}
 \format{
-A data frame with 725 rows and 52 variables
-}
-\usage{
-chicago
-}
-\value{
 A data frame with 52 columns:
 \itemize{
    \item Title (character)
@@ -67,8 +61,14 @@ A data frame with 52 columns:
    \item Native Biennial (numeric)
 }
 }
+\source{
+{\href{https://universalfqa.org/}{universalfqa.org}}
+}
+\usage{
+chicago
+}
 \description{
-A data set summarizing 725 floristic quality assessments using the 2017
+A data set summarizing 786 floristic quality assessments using the 2017
 Chicago Region USACE database.
 }
 \keyword{datasets}

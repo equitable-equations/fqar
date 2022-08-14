@@ -1,9 +1,9 @@
 #' Chicagoland floristic quality assessment data
 #'
-#' A data set summarizing 725 floristic quality assessments using the 2017
+#' A data set summarizing 786 floristic quality assessments using the 2017
 #' Chicago Region USACE database.
 #'
-#' @return A data frame with 52 columns:
+#' @format A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (date)
@@ -59,17 +59,17 @@
 #'    \item Native Biennial (numeric)
 #' }
 #'
-#' @format A data frame with 725 rows and 52 variables
+#' @source{\href{https://universalfqa.org/}{www.universalfqa.org}}
 "chicago"
 
 
 
 #' Missouri floristic quality assessment data
 #'
-#' A data set summarizing 201 floristic quality assessments using the 2015
+#' A data set summarizing 215 floristic quality assessments using the 2015
 #' Missouri database.
 #'
-#' @return A data frame with 52 columns:
+#' @format A data frame with 52 columns:
 #' \itemize{
 #'    \item Title (character)
 #'    \item Date (date)
@@ -125,9 +125,7 @@
 #'    \item Native Biennial (numeric)
 #' }
 #'
+#' @source{\href{https://universalfqa.org/}{www.universalfqa.org}}
 #' @docType data
 #' @keywords datasets
-#' @name missouri
-#' @usage data(missouri)
-#' @format A data frame with 201 rows and 52 variables
 "missouri"
