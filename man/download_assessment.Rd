@@ -11,7 +11,7 @@ download_assessment(assessment_id)
 assessment, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 specified databases can be viewed with the
-\code{\link{download_fqa_assessments}} function.}
+\code{\link{index_fqa_assessments}} function.}
 }
 \value{
 An untidy data frame in the original format of the Universal FQA
@@ -19,17 +19,17 @@ An untidy data frame in the original format of the Universal FQA
   \code{\link{assessment_inventory}} for species-level data.
 }
 \description{
-\code{download_assessment} downloads a specified floristic quality assessment
+\code{download_assessment} retrieves a specified floristic quality assessment
 from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 assessments in various databases can be found using the
-\code{\link{download_fqa_assessments}} function.
+\code{\link{index_fqa_assessments}} function.
 }
 \examples{
 \dontrun{
-databases <- download_fqa_databases()
+databases <- index_fqa_databases()
 # Note database 1 is the original 1994 Chicago edition.
 
-chicago_assessments <- download_fqa_assessments(1) # Edison dune and swale has id number 25002.
+chicago_assessments <- index_fqa_assessments(1) # Edison dune and swale has id number 25002.
 edison <- download_assessment(25002)
 
 edison_tidy <- glance_fqa(edison)

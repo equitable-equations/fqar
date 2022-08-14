@@ -9,7 +9,7 @@ transect_phys(data_set)
 \arguments{
 \item{data_set}{A data set downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-download_transect().}
+\code{\link{download_transect}}.}
 }
 \value{
 A data frame with 6 columns:

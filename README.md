@@ -19,13 +19,13 @@ The ${\tt fqar}$ package consists of three categories of functions: indexing, do
 
 ```{r indexing}
 # download a list of all fqa databases:
-databases <- download_fqa_databases()
+databases <- index_fqa_databases()
 
 # download a list of all assessments in a specific database:
-chicago_fqas <- download_fqa_assessments(database_id = 149) 
+chicago_fqas <- index_fqa_assessments(database_id = 149) 
 
 # download a list of all transect assessments in a specific database:
-chicago_transects <- download_fqa_transects(database_id = 149)
+chicago_transects <- index_fqa_transects(database_id = 149)
 ```
 
 ### Downloading functions

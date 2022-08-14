@@ -35,21 +35,21 @@ Functions in this package fall into three general categories: _indexing function
 Each floristic quality assessment is tied to a specific databases of native plants that has been compiled by experts in local flora. A listing of all databases accepted by [www.universalFQA.org](www.universalFQA.org) can be viewed with the ${\tt download\_fqa\_databases}$ function.
 
 ```{r}
-databases <- download_fqa_databases()
+databases <- index_fqa_databases()
 head(databases)
 ```
 
 To see a listing of all public floristic quality assessments using a given database, use the ${\tt download\_fqa\_assessments}$ function.
 
 ```{r}
-missouri_fqas <- download_fqa_assessments(database_id = 63)
+missouri_fqas <- index_fqa_assessments(database_id = 63)
 head(missouri_fqas)
 ```
 
 Similarly, the ${\tt download\_fqa\_transects}$ function returns a listing of all public transect-level assessments.  
 
 ```{r}
-missouri_transects <- download_fqa_transects(database_id = 63)
+missouri_transects <- index_fqa_transects(database_id = 63)
 head(missouri_transects)
 ```
 

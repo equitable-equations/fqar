@@ -1,15 +1,15 @@
 #' Download a single floristic quality assessment
 #'
-#' \code{download_assessment} downloads a specified floristic quality assessment
+#' \code{download_assessment} retrieves a specified floristic quality assessment
 #' from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #' assessments in various databases can be found using the
-#' \code{\link{download_fqa_assessments}} function.
+#' \code{\link{index_fqa_assessments}} function.
 #'
 #' @param assessment_id A numeric identifier of the desired floristic quality
 #'   assessment, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #'   specified databases can be viewed with the
-#'   \code{\link{download_fqa_assessments}} function.
+#'   \code{\link{index_fqa_assessments}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website. Use \code{\link{assessment_glance}} for a tidy summary and
@@ -18,10 +18,10 @@
 #' @import jsonlite
 #'
 #' @examples \dontrun{
-#' databases <- download_fqa_databases()
+#' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
 #'
-#' chicago_assessments <- download_fqa_assessments(1) # Edison dune and swale has id number 25002.
+#' chicago_assessments <- index_fqa_assessments(1) # Edison dune and swale has id number 25002.
 #' edison <- download_assessment(25002)
 #'
 #' edison_tidy <- glance_fqa(edison)
@@ -51,14 +51,14 @@ download_assessment <- function(assessment_id){
 #' Download multiple floristic quality assessments
 #'
 #' \code{download_assessment_list()} searches the specified floristic quality
-#' assessment database and downloads all matches from
+#' assessment database and retrieves all matches from
 #' \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 #' website may be slow, causing delays in the evaluation of this function.
 #'
 #' @param database_id A numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link{download_fqa_databases}} function.
+#'   be viewed with the \code{\link{index_fqa_databases}} function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired assessments.
 #'   The following variables may be used:
@@ -78,8 +78,8 @@ download_assessment <- function(assessment_id){
 #'
 #' @examples
 #' \dontrun{
-#' databases <- download_fqa_databases # Note database 1 is the original 1994 Chicago edition.
-#' chicago_assessments <- download_fqa_assessments(1) # lists all assessments in that database.
+#' databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
+#' chicago_assessments <- index_fqa_assessments(1) # lists all assessments in that database.
 #' somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 #' somme_summary <- assessment_list_glance(somme_assessments)
 #' }
@@ -87,7 +87,7 @@ download_assessment <- function(assessment_id){
 #' @export
 
 download_assessment_list <- function(database_id, ...){
-  tryCatch(inventories_summary <- download_fqa_assessments(database_id),
+  tryCatch(inventories_summary <- index_fqa_assessments(database_id),
            error = function(e){stop("invalid database", call. = FALSE)})
   inventories_requested <- inventories_summary |> dplyr::filter(...)
   if (length(inventories_requested$id) >= 5){
@@ -114,16 +114,16 @@ download_assessment_list <- function(database_id, ...){
 
 #' Download a single floristic quality transect assessment
 #'
-#' \code{download_transect} downloads a specified floristic quality transect
+#' \code{download_transect} retrieves a specified floristic quality transect
 #' assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
 #' numbers for transect assessments in various databases can be found using the
-#' \code{\link{download_fqa_transects}} function.
+#' \code{\link{index_fqa_transects}} function.
 #'
 #' @param transect_id A numeric identifier of the desired transect-level
 #'   floristic quality assessment, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #'   specified databases can be viewed with the
-#'   \code{\link{download_fqa_transects}} function.
+#'   \code{\link{index_fqa_transects}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website. Use \code{\link{transect_glance}} for a tidy summary,
@@ -131,8 +131,8 @@ download_assessment_list <- function(database_id, ...){
 #'   \code{\link{transect_inventory}} for species-level data.
 #'
 #' @examples \dontrun{
-#' databases <- download_fqa_databases # Note database 1 is the original 1994 Chicago edition.
-#' chicago_transects <- download_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
+#' databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
+#' chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
 #' cbg <- download_transect(5932)
 #' cbg_tidy <- transect_glance(edison)
 #' cbg_species <- transect_inventory(edison)
@@ -162,14 +162,14 @@ download_transect <- function(transect_id){
 #' Download multiple floristic quality transect assessments
 #'
 #' \code{download_transect_list()} searches the specified floristic quality
-#' assessment database and downloads all matches from
+#' assessment database and retrieves all matches from
 #' \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 #' website may be slow, causing delays in the evaluation of this function.
 #'
 #' @param database_id A numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link{download_fqa_databases}} function.
+#'   be viewed with the \code{\link{index_fqa_databases}} function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired assessments.
 #'   The following variables may be used:
@@ -186,16 +186,16 @@ download_transect <- function(transect_id){
 #'   \code{\link{transect_list_glance}} for a tidy summary.
 #'
 #' @examples \dontrun{
-#' databases <- download_fqa_databases()
+#' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
-#' chicago_transects <- download_fqa_transects(1)
+#' chicago_transects <- index_fqa_transects(1)
 #' fcna <- download_transect_list(site == "FCNA")
 #' }
 #'
 #' @export
 
 download_transect_list <- function(database_id, ...){
-  tryCatch(transects_summary <- download_fqa_transects(database_id),
+  tryCatch(transects_summary <- index_fqa_transects(database_id),
            error = function(e){stop("invalid database", call. = FALSE)})
   transects_requested <- transects_summary |> dplyr::filter(...)
   if (length(transects_requested$id) >= 5){

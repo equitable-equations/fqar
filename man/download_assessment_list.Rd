@@ -10,7 +10,7 @@ download_assessment_list(database_id, ...)
 \item{database_id}{A numeric identifier of the desired floristic quality
 assessment database, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-be viewed with the \code{\link{download_fqa_databases}} function.}
+be viewed with the \code{\link{index_fqa_databases}} function.}
 
 \item{...}{\code{dplyr}-style filtering criteria for the desired assessments.
   The following variables may be used:
@@ -29,14 +29,14 @@ A list of data frames matching the search criteria. Each is an
 }
 \description{
 \code{download_assessment_list()} searches the specified floristic quality
-assessment database and downloads all matches from
+assessment database and retrieves all matches from
 \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 website may be slow, causing delays in the evaluation of this function.
 }
 \examples{
 \dontrun{
-databases <- download_fqa_databases # Note database 1 is the original 1994 Chicago edition.
-chicago_assessments <- download_fqa_assessments(1) # lists all assessments in that database.
+databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
+chicago_assessments <- index_fqa_assessments(1) # lists all assessments in that database.
 somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 somme_summary <- assessment_list_glance(somme_assessments)
 }

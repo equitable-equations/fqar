@@ -1,10 +1,10 @@
-test_that("download_fqa_databases works", {
+test_that("index_fqa_databases works", {
 
-  expect_error(download_fqa_databases("hi"))
+  expect_error(index_fqa_databases("hi"))
 
   skip_on_cran()
 
-  databases <- download_fqa_databases()
+  databases <- index_fqa_databases()
   expect_equal(ncol(databases), 4)
   expect_equal(names(databases),
                c("database_id", "region", "year", "description"))
@@ -14,14 +14,14 @@ test_that("download_fqa_databases works", {
 
 
 
-test_that("download_fqa_assessments works", {
+test_that("index_fqa_assessments works", {
 
-  expect_error(download_fqa_assessments(1.5))
-  expect_error(download_fqa_assessments("hi"))
+  expect_error(index_fqa_assessments(1.5))
+  expect_error(index_fqa_assessments("hi"))
 
   skip_on_cran()
 
-  assessments <- download_fqa_assessments(1)
+  assessments <- index_fqa_assessments(1)
 
   expect_equal(ncol(assessments), 5)
   expect_equal(names(assessments),
@@ -33,14 +33,14 @@ test_that("download_fqa_assessments works", {
 
 
 
-test_that("download_fqa_transects works", {
+test_that("index_fqa_transects works", {
 
-  expect_error(download_fqa_transects(1.5))
-  expect_error(download_fqa_transects("hi"))
+  expect_error(index_fqa_transects(1.5))
+  expect_error(index_fqa_transects("hi"))
 
   skip_on_cran()
 
-  transects <- download_fqa_transects(1)
+  transects <- index_fqa_transects(1)
 
   expect_equal(ncol(transects), 5)
   expect_equal(names(transects),

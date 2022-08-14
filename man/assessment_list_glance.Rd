@@ -79,8 +79,8 @@ returning summary information as a single data frame.
 # manually from the universal FQA website, it is most typically used
 # in combination with download_assessment_list().
 
-missouri <- download_assessment_list(database = 63)
-assessment_list_glance(missouri)
+maine <- download_assessment_list(database = 56)
+assessment_list_glance(maine)
 }
 
 }
