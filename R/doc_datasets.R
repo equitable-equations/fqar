@@ -60,6 +60,8 @@
 #' }
 #'
 #' @source{\href{https://universalfqa.org/}{www.universalfqa.org}}
+#' @docType data
+#' @keywords datasets
 "chicago"
 
 
