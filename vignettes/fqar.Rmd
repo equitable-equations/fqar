@@ -17,16 +17,16 @@ library(fqar)
 library(ggplot2)
 library(dplyr)
 
-thomas_fqas <- download_assessment_list(database = 63,
-                                        practitioner == "Justin Thomas")
-rock_garden <- download_transect(transect_id = 6875)
-kaintuck <- download_transect_list(database = 63,
-                                   site == "kaintuck")
+# thomas_fqas <- download_assessment_list(database = 63,
+#                                         practitioner == "Justin Thomas")
+# rock_garden <- download_transect(transect_id = 6875)
+# kaintuck <- download_transect_list(database = 63,
+#                                    site == "kaintuck")
 ```
 
 ## Introduction
 
-The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment data from [www.universalFQA.org](www.universalFQA.org). Two tidied sample data sets, ${\tt missouri}$ and ${\tt chicago}$, are also provided.
+The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment (FQA) data from [www.universalFQA.org](www.universalFQA.org). Two sample data sets, ${\tt missouri}$ and ${\tt chicago}$, are also provided.
 
 Functions in this package fall into three general categories: _indexing functions_, which produce data frames of current public databases and FQAs from various regions, _downloading functions_, which download the FQAs themselves, and _tidying functions_, which convert downloaded assessments into a standard format.
 
@@ -63,11 +63,11 @@ The first of these accepts an assessment ID number as its sole input and returns
 grasshopper <- download_assessment(assessment_id = 25961)
 ```
 
-Multiple assessments from a specified database can be downloaded simultaneously using ${\tt download\_assessment\_list()}$, which makes use of ${\tt dplyr::filter}$ syntax on the following variables: ${\tt id, assessment, date, site}$ and ${\tt practitioner}$. For instance, the following code downloads all assessments by practitioner Justin Thomas.
+Multiple assessments from a specified database can be downloaded simultaneously using ${\tt download\_assessment\_list()}$, which makes use of ${\tt dplyr::filter}$ syntax on the variables ${\tt id, assessment, date, site}$ and ${\tt practitioner}$. For instance, the following code downloads all assessments performed using the 2015 Missouri database at the Ambrose Farm site.
 
-```{r eval=FALSE}
-thomas_fqas <- download_assessment_list(database_id = 63,
-                                        practitioner == "Justin Thomas")
+```{r}
+ambrose <- download_assessment_list(database_id = 63,
+                                    site == "Ambrose Farm")
 ```
 
 For even mid-sized requests, this command may run slowly due to the limited speed of the [www.universalFQA.org](www.universalFQA.org) website. For this reason, a progress bar has been added to the ${\tt download\_assessment\_list()}$ function when $n\ge 5$. 
@@ -75,23 +75,23 @@ For even mid-sized requests, this command may run slowly due to the limited spee
 As the name suggests, the output of ${\tt download\_assessment\_list()}$ is a list of data frames. 
 
 ```{r}
-class(thomas_fqas)
-length(thomas_fqas)
+class(ambrose)
+length(ambrose)
 ```
 
-Transect-level data data stored on [www.universalFQA.org](www.universalFQA.org) is accessible to analysts using the ${\tt fqar}$ package via the functions ${\tt download\_transect()}$ and ${\tt download\_transect\_list()}$, which work exactly like their counterparts, ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$.
+Transect assessment data data stored on [www.universalFQA.org](www.universalFQA.org) is accessible to analysts using the ${\tt fqar}$ package via the functions ${\tt download\_transect()}$ and ${\tt download\_transect\_list()}$, which work exactly like their counterparts, ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$.
 
-```{r, eval = FALSE}
+```{r}
 rock_garden <- download_transect(transect_id = 6875)
-kaintuck <- download_transect_list(database_id = 63,
-                                   site == "kaintuck")
+golden <- download_transect_list(database_id = 63,
+                                 site == "Golden Prairie")
 ```
 
 ## Tidying functions
 
 The data frames obtained from these downloading functions are all highly untidy, respecting the default structure of the website from which they are obtained. The ${\tt fqar}$ package provides tools for efficiently re-formatting these sets.
 
-Each floristic quality assessments on [www.universalFQA.org](www.universalFQA.org) includes two sorts of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions ${\tt assessment\_inventory()}$ and ${\tt assessment\_glance()}$, respectively, extract and tidy this information.
+Each floristic quality assessments on [www.universalFQA.org](www.universalFQA.org) includes two types of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions ${\tt assessment\_inventory()}$ and ${\tt assessment\_glance()}$ extract and tidy these two types of information.
 
 For instance, the following code creates a data frame of species found in the 2021 Grasshopper Hollow survey downloaded earlier.
 
@@ -107,10 +107,10 @@ grasshopper_summary <- assessment_glance(grasshopper)
 names(grasshopper_summary)
 ```
 
-The tidy format provided by ${\tt assessment\_glance()}$ is most useful when applied to multiple data sets at once, for instance in the situation where the analyst wants to consider statistics from many different assessments simultaneously. The ${\tt assessment\_list\_glance()}$ function provides a shortcut when those data frames are housed in a list like that returned by ${\tt download\_assessment\_list()}$. For instance, the following code returns a data frame with 52 columns and more than 60 rows, one per assessment.
+The tidy format provided by ${\tt assessment\_glance()}$ is most useful when applied to multiple data sets at once, for instance in the situation where the analyst wants to consider statistics from many different assessments simultaneously. The ${\tt assessment\_list\_glance()}$ function provides a shortcut when those data frames are housed in a list like that returned by ${\tt download\_assessment\_list()}$. For instance, the following code returns a data frame with 52 columns and 3 rows, one per assessment.
 
-```{r message=FALSE, warning=FALSE}
-thomas_summary <- assessment_list_glance(thomas_fqas)
+```{r}
+ambrose_summary <- assessment_list_glance(ambrose)
 ```
 
 The ${\tt fqar}$ package also provides functions for handling transect assessment data. ${\tt transect\_inventory()}$, ${\tt transect\_glance()}$, and ${\tt transect\_list\_glance()}$ work just like their counterparts, ${\tt assessment\_inventory()}$, ${\tt assessment\_glance()}$, and ${\tt assessment\_list\_glance()}$.
@@ -118,10 +118,10 @@ The ${\tt fqar}$ package also provides functions for handling transect assessmen
 ```{r, eval = FALSE}
 rock_garden_species <- transect_inventory(rock_garden)
 rock_garden_summary <- transect_glance(rock_garden)
-kaintuck_summary <- transect_list_glance(kaintuck)
+golden_summary <- transect_list_glance(golden)
 ```
 
-Additionally, transect-level assessments usually include physiognometric metrics like relative frequency and relative coverage. These can be extracted with the ${\tt trasect\_phys()}$ function.
+Additionally, transect assessments usually include physiognometric metrics like relative frequency and relative coverage. These can be extracted with the ${\tt trasect\_phys()}$ function.
 
 ```{r}
 rock_garden_phys <- transect_phys(rock_garden)
