@@ -13,9 +13,9 @@ test_that("download_assessment works", {
 
 test_that("download_assessment_list works", {
 
-  expect_error(download_assessment_list(-2), "invalid database")
-
   skip_on_cran()
+
+  expect_error(download_assessment_list(-2))
 
   expect_warning(download_assessment_list(1, id == "hi"), "No matches found. Empty list returned.")
   two_assessments <- download_assessment_list(1, id == 8 | id == 12)
@@ -23,7 +23,6 @@ test_that("download_assessment_list works", {
   expect_equal(length(two_assessments), 2)
   expect_equal(class(two_assessments[[1]]), "data.frame")
   expect_equal(ncol(two_assessments[[1]]), 9)
-  expect_error(download_assessment_list(-2), "invalid database")
   expect_warning(download_assessment_list(1, id == "hi"), "No matches found. Empty list returned.")
 })
 
@@ -43,9 +42,9 @@ test_that("download_transect works", {
 
 test_that("download_transect_list works", {
 
-  expect_error(download_transect_list(-2), "invalid database")
-
   skip_on_cran()
+
+  expect_error(download_transect_list(-2))
 
   expect_warning(download_transect_list(1, id == "hi"), "No matches found. Empty list returned.")
   two_transects <- download_transect_list(1, id == 6570 | id == 6322)
