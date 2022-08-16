@@ -24,7 +24,9 @@
 index_fqa_databases <- function() {
 
   databases_address <- "http://universalfqa.org/get/database/"
-  databases_get <- httr::GET(databases_address)
+  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
+
+  databases_get <- httr::GET(databases_address, ua)
 
   if (httr::http_error(databases_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
@@ -85,8 +87,9 @@ index_fqa_assessments <- function(database_id) {
   if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
 
   assessments_address <- paste0("http://universalfqa.org/get/database/", database_id, "/inventory")
+  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  assessments_get <- httr::GET(assessments_address)
+  assessments_get <- httr::GET(assessments_address, ua)
   if (httr::http_error(assessments_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
                httr::status_code(assessments_get)),
@@ -151,8 +154,9 @@ index_fqa_transects <- function(database_id) {
   if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
 
   trans_address <- paste0("http://universalfqa.org/get/database/", database_id, "/transect")
+  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  trans_get <- httr::GET(trans_address)
+  trans_get <- httr::GET(trans_address, ua)
   if (httr::http_error(trans_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
                httr::status_code(trans_get)),

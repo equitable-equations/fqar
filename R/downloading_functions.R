@@ -36,8 +36,9 @@ download_assessment <- function(assessment_id){
   if (assessment_id %% 1 != 0) {stop("assessment_id must be an integer.", call. = FALSE)}
 
   assessment_address <- paste0("http://universalfqa.org/get/inventory/", assessment_id)
+  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  assessment_get <- httr::GET(assessment_address)
+  assessment_get <- httr::GET(assessment_address, ua)
   if (httr::http_error(assessment_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
                httr::status_code(assessment_get)),
@@ -168,7 +169,9 @@ download_transect <- function(transect_id){
   if (transect_id %% 1 != 0) {stop("transect_id must be an integer.", call. = FALSE)}
 
   trans_address <- paste0("http://universalfqa.org/get/transect/", transect_id)
-  trans_get <- httr::GET(trans_address)
+  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
+
+  trans_get <- httr::GET(trans_address, ua)
   if (httr::http_error(trans_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
                httr::status_code(trans_get)),
