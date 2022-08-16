@@ -30,7 +30,7 @@ index_fqa_databases <- function() {
 
   if (httr::http_error(databases_get)) {
     stop(paste("API request to universalFQA.org failed. Error",
-               httr::status_code(assessment_get)),
+               httr::status_code(databases_get)),
          call. = FALSE
     )
   }
