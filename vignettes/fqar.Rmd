@@ -16,12 +16,6 @@ knitr::opts_chunk$set(
 library(fqar)
 library(ggplot2)
 library(dplyr)
-
-# thomas_fqas <- download_assessment_list(database = 63,
-#                                         practitioner == "Justin Thomas")
-# rock_garden <- download_transect(transect_id = 6875)
-# kaintuck <- download_transect_list(database = 63,
-#                                    site == "kaintuck")
 ```
 
 ## Introduction
