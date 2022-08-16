@@ -15,7 +15,7 @@
 #'   website. Use \code{\link{assessment_glance}} for a tidy summary and
 #'   \code{\link{assessment_inventory}} for species-level data.
 #'
-#' @import jsonlite
+#' @import jsonlite httr
 #'
 #' @examples \dontrun{
 #' databases <- index_fqa_databases()
@@ -31,18 +31,35 @@
 #' @export
 
 download_assessment <- function(assessment_id){
+
   if (!is.numeric(assessment_id)) {stop("assessment_id must be an integer.", call. = FALSE)}
   if (assessment_id %% 1 != 0) {stop("assessment_id must be an integer.", call. = FALSE)}
-  path <- paste0("http://universalfqa.org/get/inventory/", assessment_id)
-  list_data <- jsonlite::fromJSON(path)[[2]]
+
+  assessment_address <- paste0("http://universalfqa.org/get/inventory/", assessment_id)
+
+  assessment_get <- httr::GET(assessment_address)
+  if (httr::http_error(assessment_get)) {
+    stop(paste("API request to universalFQA.org failed. Error",
+               httr::status_code(assessment_get)),
+         call. = FALSE
+    )
+  }
+  assessment_text <- httr::content(assessment_get,
+                                   "text",
+                                   encoding = "ISO-8859-1")
+  assessment_json <- jsonlite::fromJSON(assessment_text)
+  list_data <- assessment_json[[2]]
+
   if ((list_data[[1]] == "The requested assessment is not public") & (!is.na(list_data[[1]]))) {
     stop("The requested assessment is not public", call. = FALSE)
   }
+
   max_length <- max(unlist(lapply(list_data, length))) # determines how wide the df must be
   list_data <- lapply(list_data, function(x) {
     length(x) <- max_length
     unlist(x)
   })
+
   as.data.frame(do.call(rbind, list_data))
 }
 
@@ -87,9 +104,11 @@ download_assessment <- function(assessment_id){
 #' @export
 
 download_assessment_list <- function(database_id, ...){
-  tryCatch(inventories_summary <- index_fqa_assessments(database_id),
-           error = function(e){stop("invalid database", call. = FALSE)})
+
+  inventories_summary <- index_fqa_assessments(database_id)
+
   inventories_requested <- inventories_summary |> dplyr::filter(...)
+
   if (length(inventories_requested$id) >= 5){
     message("Downloading...")
     results <- list(0)
@@ -106,7 +125,9 @@ download_assessment_list <- function(database_id, ...){
   } else {
     results <- lapply(inventories_requested$id, download_assessment)
   }
+
   if (length(results) == 0) warning("No matches found. Empty list returned.", call. = FALSE)
+
   results
 }
 
@@ -142,18 +163,34 @@ download_assessment_list <- function(database_id, ...){
 #' @export
 
 download_transect <- function(transect_id){
+
   if (!is.numeric(transect_id)) {stop("transect_id must be an integer.", call. = FALSE)}
   if (transect_id %% 1 != 0) {stop("transect_id must be an integer.", call. = FALSE)}
-  path <- paste0("http://universalfqa.org/get/transect/", transect_id)
-  list_data <- jsonlite::fromJSON(path)[[2]]
+
+  trans_address <- paste0("http://universalfqa.org/get/transect/", transect_id)
+  trans_get <- httr::GET(trans_address)
+  if (httr::http_error(trans_get)) {
+    stop(paste("API request to universalFQA.org failed. Error",
+               httr::status_code(trans_get)),
+         call. = FALSE
+    )
+  }
+  trans_text <- httr::content(trans_get,
+                              "text",
+                              encoding = "ISO-8859-1")
+  trans_json <- jsonlite::fromJSON(trans_text)
+  list_data <- trans_json[[2]]
+
   if ((list_data[[1]] == "The requested assessment is not public") & (!is.na(list_data[[1]]))) {
     stop("The requested assessment is not public", call. = FALSE)
   }
+
   max_length <- max(unlist(lapply(list_data, length))) # determines how wide the df must be
   list_data <- lapply(list_data, function(x) {
     length(x) <- max_length
     unlist(x)
   })
+
   as.data.frame(do.call(rbind, list_data))
 }
 
@@ -195,9 +232,11 @@ download_transect <- function(transect_id){
 #' @export
 
 download_transect_list <- function(database_id, ...){
-  tryCatch(transects_summary <- index_fqa_transects(database_id),
-           error = function(e){stop("invalid database", call. = FALSE)})
+
+  transects_summary <- index_fqa_transects(database_id)
+
   transects_requested <- transects_summary |> dplyr::filter(...)
+
   if (length(transects_requested$id) >= 5){
     message("Downloading...")
     results <- list(0)
@@ -214,7 +253,9 @@ download_transect_list <- function(database_id, ...){
   } else {
     results <- lapply(transects_requested$id, download_transect)
   }
+
   if (length(results) == 0) warning("No matches found. Empty list returned.", call. = FALSE)
+
   results
 }
 
