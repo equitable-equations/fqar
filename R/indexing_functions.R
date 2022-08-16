@@ -1,6 +1,6 @@
 #' List all available floristic quality assessment databases
 #'
-#' \code{index_fqa_databases} produces a data frame showing all floristic
+#' \code{index_fqa_databases()} produces a data frame showing all floristic
 #' quality assessment databases publicly available at
 #' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
@@ -57,11 +57,14 @@ index_fqa_databases <- function() {
 
 #' List all available public floristic quality assessments
 #'
-#' For any given database, \code{index_fqa_assessments} produces a data frame
+#' For any given database, \code{index_fqa_assessments()} produces a data frame
 #' of all floristic quality assessments publicly available at
 #' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
-#' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{index_fqa_databases}} function.
+#' @param database_id A numeric identifier of the desired database, as specified
+#'   by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
+#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+#'   function.
 #'
 #' @return A data frame with 5 columns:
 #' \itemize{
@@ -83,10 +86,16 @@ index_fqa_databases <- function() {
 
 index_fqa_assessments <- function(database_id) {
 
-  if (!is.numeric(database_id)) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
-  if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
+  if (!is.numeric(database_id)) {
+    stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)
+    }
+  if (database_id %% 1 != 0) {
+    stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)
+    }
 
-  assessments_address <- paste0("http://universalfqa.org/get/database/", database_id, "/inventory")
+  assessments_address <- paste0("http://universalfqa.org/get/database/",
+                                database_id,
+                                "/inventory")
   ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
   assessments_get <- httr::GET(assessments_address, ua)
@@ -104,7 +113,9 @@ index_fqa_assessments <- function(database_id) {
 
   inventories_summary <- as.data.frame(list_data)
 
-  if (nrow(inventories_summary) == 0) {stop("no data associated with specified database_id.", call. = FALSE)}
+  if (nrow(inventories_summary) == 0) {
+    stop("no data associated with specified database_id.", call. = FALSE)
+    }
 
   colnames(inventories_summary) <- c("id", "assessment",
                                      "date",
@@ -124,11 +135,14 @@ index_fqa_assessments <- function(database_id) {
 
 #' List all available public floristic quality transect assessments
 #'
-#' For any given database, \code{index_fqa_transects} produces a data frame
+#' For any given database, \code{index_fqa_transects()} produces a data frame
 #' of all floristic quality transect assessments publicly available at
 #' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
-#' @param database_id A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{index_fqa_databases}} function.
+#' @param database_id A numeric identifier of the desired database, as specified
+#'   by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
+#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+#'   function.
 #'
 #' @return A data frame with 5 columns:
 #' \itemize{
@@ -150,10 +164,16 @@ index_fqa_assessments <- function(database_id) {
 
 index_fqa_transects <- function(database_id) {
 
-  if (!is.numeric(database_id)) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
-  if (database_id %% 1 != 0) {stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)}
+  if (!is.numeric(database_id)) {
+    stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)
+    }
+  if (database_id %% 1 != 0) {
+    stop("database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.", call. = FALSE)
+    }
 
-  trans_address <- paste0("http://universalfqa.org/get/database/", database_id, "/transect")
+  trans_address <- paste0("http://universalfqa.org/get/database/",
+                          database_id,
+                          "/transect")
   ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
   trans_get <- httr::GET(trans_address, ua)

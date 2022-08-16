@@ -7,7 +7,10 @@
 index_fqa_assessments(database_id)
 }
 \arguments{
-\item{database_id}{A numeric identifier of the desired database, as specified by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can be viewed with the \code{\link{index_fqa_databases}} function.}
+\item{database_id}{A numeric identifier of the desired database, as specified
+by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
+be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+function.}
 }
 \value{
 A data frame with 5 columns:
@@ -20,7 +23,7 @@ A data frame with 5 columns:
   }
 }
 \description{
-For any given database, \code{index_fqa_assessments} produces a data frame
+For any given database, \code{index_fqa_assessments()} produces a data frame
 of all floristic quality assessments publicly available at
 \href{https://universalfqa.org/}{universalfqa.org}.
 }

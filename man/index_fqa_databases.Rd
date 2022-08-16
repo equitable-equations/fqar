@@ -16,7 +16,7 @@ A data frame with 4 columns:
 }
 }
 \description{
-\code{index_fqa_databases} produces a data frame showing all floristic
+\code{index_fqa_databases()} produces a data frame showing all floristic
 quality assessment databases publicly available at
 \href{https://universalfqa.org/}{universalfqa.org}.
 }
