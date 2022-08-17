@@ -14,7 +14,7 @@ Imports:
     dplyr,
     httr,
     jsonlite,
-    rlang,
+    rlang (>= 1.0.2),
     tidyr
 RoxygenNote: 7.2.0
 Suggests: 
