@@ -68,7 +68,7 @@ A data frame with 52 columns:
 missouri
 }
 \description{
-A data set summarizing 215 floristic quality assessments using the 2015
+A data set summarizing 216 floristic quality assessments using the 2015
 Missouri database.
 }
 \keyword{datasets}
