@@ -10,19 +10,20 @@ download_assessment(assessment_id)
 \item{assessment_id}{A numeric identifier of the desired floristic quality
 assessment, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
-specified databases can be viewed with the
-\code{\link{index_fqa_assessments}} function.}
+assessments in specified databases can be viewed with the
+\code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.}
 }
 \value{
 An untidy data frame in the original format of the Universal FQA
-  website. Use \code{\link{assessment_glance}} for a tidy summary and
-  \code{\link{assessment_inventory}} for species-level data.
+  website. Use \code{\link[assessment_glance]{assessment_glance()}} for a
+  tidy summary and \code{\link[assessment_inventory]{assessment_inventory()}}
+  for species-level data.
 }
 \description{
-\code{download_assessment} retrieves a specified floristic quality assessment
-from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
-assessments in various databases can be found using the
-\code{\link{index_fqa_assessments}} function.
+\code{download_assessment()} retrieves a specified floristic quality
+assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
+numbers for assessments in various databases can be found using the
+\code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.
 }
 \examples{
 \dontrun{
@@ -32,8 +33,8 @@ databases <- index_fqa_databases()
 chicago_assessments <- index_fqa_assessments(1) # Edison dune and swale has id number 25002.
 edison <- download_assessment(25002)
 
-edison_tidy <- glance_fqa(edison)
-edison_species <- assess_fqa(edison)
+edison_tidy <- assessment_glance(edison)
+edison_species <- assessment_inventory(edison)
 }
 
 }

@@ -1,19 +1,20 @@
 #' Download a single floristic quality assessment
 #'
-#' \code{download_assessment} retrieves a specified floristic quality assessment
-#' from \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
-#' assessments in various databases can be found using the
-#' \code{\link{index_fqa_assessments}} function.
+#' \code{download_assessment()} retrieves a specified floristic quality
+#' assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
+#' numbers for assessments in various databases can be found using the
+#' \code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.
 #'
 #' @param assessment_id A numeric identifier of the desired floristic quality
 #'   assessment, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
-#'   specified databases can be viewed with the
-#'   \code{\link{index_fqa_assessments}} function.
+#'   assessments in specified databases can be viewed with the
+#'   \code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
-#'   website. Use \code{\link{assessment_glance}} for a tidy summary and
-#'   \code{\link{assessment_inventory}} for species-level data.
+#'   website. Use \code{\link[assessment_glance]{assessment_glance()}} for a
+#'   tidy summary and \code{\link[assessment_inventory]{assessment_inventory()}}
+#'   for species-level data.
 #'
 #' @import jsonlite httr
 #'
@@ -24,18 +25,23 @@
 #' chicago_assessments <- index_fqa_assessments(1) # Edison dune and swale has id number 25002.
 #' edison <- download_assessment(25002)
 #'
-#' edison_tidy <- glance_fqa(edison)
-#' edison_species <- assess_fqa(edison)
+#' edison_tidy <- assessment_glance(edison)
+#' edison_species <- assessment_inventory(edison)
 #' }
 #'
 #' @export
 
 download_assessment <- function(assessment_id){
 
-  if (!is.numeric(assessment_id)) {stop("assessment_id must be an integer.", call. = FALSE)}
-  if (assessment_id %% 1 != 0) {stop("assessment_id must be an integer.", call. = FALSE)}
+  if (!is.numeric(assessment_id)) {
+    stop("assessment_id must be an integer.", call. = FALSE)
+    }
+  if (assessment_id %% 1 != 0) {
+    stop("assessment_id must be an integer.", call. = FALSE)
+    }
 
-  assessment_address <- paste0("http://universalfqa.org/get/inventory/", assessment_id)
+  assessment_address <- paste0("http://universalfqa.org/get/inventory/",
+                               assessment_id)
   ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
   assessment_get <- httr::GET(assessment_address, ua)
@@ -68,36 +74,37 @@ download_assessment <- function(assessment_id){
 
 #' Download multiple floristic quality assessments
 #'
-#' \code{download_assessment_list()} searches the specified floristic quality
+#' \code{download_assessment_list()} searches a specified floristic quality
 #' assessment database and retrieves all matches from
 #' \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 #' website may be slow, causing delays in the evaluation of this function.
 #'
-#' @param database_id A numeric identifier of the desired floristic quality
+#' @param database_id Numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link{index_fqa_databases}} function.
+#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+#'   function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired assessments.
 #'   The following variables may be used:
 #' \itemize{
 #'   \item id (numeric)
-#'   \item inventory (character)
-#'   \item date (POSIXct)
+#'   \item assessment (character)
+#'   \item date (Date)
 #'   \item location (character)
 #'   \item practitioner (character)
 #' }
 #'
-#' @return A list of data frames matching the search criteria. Each is an
-#'   untidy data frame in the original format of the Universal FQA website. Use
-#'   \code{\link{assessment_list_glance}} for a tidy summary.
+#' @return A list of data frames matching the search criteria. Each is an untidy
+#'   data frame in the original format of the Universal FQA website. Use
+#'   \code{\link[assessment_list_glance]{assessment_list_glance()}} for a tidy
+#'   summary.
 #'
 #' @import dplyr utils
 #'
 #' @examples
 #' \dontrun{
 #' databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
-#' chicago_assessments <- index_fqa_assessments(1) # lists all assessments in that database.
 #' somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 #' somme_summary <- assessment_list_glance(somme_assessments)
 #' }
@@ -136,37 +143,42 @@ download_assessment_list <- function(database_id, ...){
 
 #' Download a single floristic quality transect assessment
 #'
-#' \code{download_transect} retrieves a specified floristic quality transect
+#' \code{download_transect()} retrieves a specified floristic quality transect
 #' assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
 #' numbers for transect assessments in various databases can be found using the
-#' \code{\link{index_fqa_transects}} function.
+#' \code{\link[index_fqa_transects]{index_fqa_transects()}} function.
 #'
-#' @param transect_id A numeric identifier of the desired transect-level
-#'   floristic quality assessment, as specified by
-#'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
-#'   specified databases can be viewed with the
-#'   \code{\link{index_fqa_transects}} function.
+#' @param transect_id A numeric identifier of the desired floristic quality
+#'   transect assessment, as specified by
+#'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for transect
+#'   assessments in specified databases can be viewed with the
+#'   \code{\link[index_fqa_transects]{index_fqa_transects()}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
-#'   website. Use \code{\link{transect_glance}} for a tidy summary,
-#'   \code{\link{transect_phys}} for a physiognometric overview, and
-#'   \code{\link{transect_inventory}} for species-level data.
+#'   website. Use \code{\link[transect_glance]{transect_glance()}} for a tidy
+#'   summary, \code{\link[transect_phys]{transect_phys()}} for a physiognometric
+#'   overview, and \code{\link[transect_inventory]{transect_inventory()}} for
+#'   species-level data.
 #'
 #' @examples \dontrun{
-#' databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
+#' databases <- index_fqa_databases() # Note database 1 is the original 1994 Chicago edition.
 #' chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
 #' cbg <- download_transect(5932)
-#' cbg_tidy <- transect_glance(edison)
-#' cbg_species <- transect_inventory(edison)
-#' cbg_phys <- transect_phys(edison)
+#' cbg_tidy <- transect_glance(cbg)
+#' cbg_species <- transect_inventory(cbg)
+#' cbg_phys <- transect_phys(cbg)
 #' }
 #'
 #' @export
 
 download_transect <- function(transect_id){
 
-  if (!is.numeric(transect_id)) {stop("transect_id must be an integer.", call. = FALSE)}
-  if (transect_id %% 1 != 0) {stop("transect_id must be an integer.", call. = FALSE)}
+  if (!is.numeric(transect_id)) {
+    stop("transect_id must be an integer.", call. = FALSE)
+    }
+  if (transect_id %% 1 != 0) {
+    stop("transect_id must be an integer.", call. = FALSE)
+    }
 
   trans_address <- paste0("http://universalfqa.org/get/transect/", transect_id)
   ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
@@ -201,35 +213,36 @@ download_transect <- function(transect_id){
 
 #' Download multiple floristic quality transect assessments
 #'
-#' \code{download_transect_list()} searches the specified floristic quality
+#' \code{download_transect_list()} searches a specified floristic quality
 #' assessment database and retrieves all matches from
 #' \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 #' website may be slow, causing delays in the evaluation of this function.
 #'
-#' @param database_id A numeric identifier of the desired floristic quality
+#' @param database_id Numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link{index_fqa_databases}} function.
+#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+#'   function.
 #'
-#' @param ... \code{dplyr}-style filtering criteria for the desired assessments.
-#'   The following variables may be used:
+#' @param ... \code{dplyr}-style filtering criteria for the desired transect
+#'   assessments. The following variables may be used:
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
-#'   \item date (POSIXct)
+#'   \item date (Date)
 #'   \item site (character)
 #'   \item practitioner (character)
 #' }
 #'
 #' @return A list of data frames matching the search criteria. Each is an untidy
 #'   data frame in the original format of the Universal FQA website. Use
-#'   \code{\link{transect_list_glance}} for a tidy summary.
+#'   \code{\link[transect_list_glance]{transect_list_glance()}} for a tidy
+#'   summary.
 #'
 #' @examples \dontrun{
 #' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
-#' chicago_transects <- index_fqa_transects(1)
-#' fcna <- download_transect_list(site == "FCNA")
+#' dupont <- download_transect_list(1, site == "DuPont Natural Area")
 #' }
 #'
 #' @export

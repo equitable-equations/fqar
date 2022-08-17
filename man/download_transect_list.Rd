@@ -7,17 +7,18 @@
 download_transect_list(database_id, ...)
 }
 \arguments{
-\item{database_id}{A numeric identifier of the desired floristic quality
+\item{database_id}{Numeric identifier of the desired floristic quality
 assessment database, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-be viewed with the \code{\link{index_fqa_databases}} function.}
+be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+function.}
 
-\item{...}{\code{dplyr}-style filtering criteria for the desired assessments.
-  The following variables may be used:
+\item{...}{\code{dplyr}-style filtering criteria for the desired transect
+  assessments. The following variables may be used:
 \itemize{
   \item id (numeric)
   \item assessment (character)
-  \item date (POSIXct)
+  \item date (Date)
   \item site (character)
   \item practitioner (character)
 }}
@@ -25,10 +26,11 @@ be viewed with the \code{\link{index_fqa_databases}} function.}
 \value{
 A list of data frames matching the search criteria. Each is an untidy
   data frame in the original format of the Universal FQA website. Use
-  \code{\link{transect_list_glance}} for a tidy summary.
+  \code{\link[transect_list_glance]{transect_list_glance()}} for a tidy
+  summary.
 }
 \description{
-\code{download_transect_list()} searches the specified floristic quality
+\code{download_transect_list()} searches a specified floristic quality
 assessment database and retrieves all matches from
 \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 website may be slow, causing delays in the evaluation of this function.
@@ -37,8 +39,7 @@ website may be slow, causing delays in the evaluation of this function.
 \dontrun{
 databases <- index_fqa_databases()
 # Note database 1 is the original 1994 Chicago edition.
-chicago_transects <- index_fqa_transects(1)
-fcna <- download_transect_list(site == "FCNA")
+dupont <- download_transect_list(1, site == "DuPont Natural Area")
 }
 
 }

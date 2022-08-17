@@ -7,28 +7,30 @@
 download_assessment_list(database_id, ...)
 }
 \arguments{
-\item{database_id}{A numeric identifier of the desired floristic quality
+\item{database_id}{Numeric identifier of the desired floristic quality
 assessment database, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-be viewed with the \code{\link{index_fqa_databases}} function.}
+be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+function.}
 
 \item{...}{\code{dplyr}-style filtering criteria for the desired assessments.
   The following variables may be used:
 \itemize{
   \item id (numeric)
-  \item inventory (character)
-  \item date (POSIXct)
+  \item assessment (character)
+  \item date (Date)
   \item location (character)
   \item practitioner (character)
 }}
 }
 \value{
-A list of data frames matching the search criteria. Each is an
-  untidy data frame in the original format of the Universal FQA website. Use
-  \code{\link{assessment_list_glance}} for a tidy summary.
+A list of data frames matching the search criteria. Each is an untidy
+  data frame in the original format of the Universal FQA website. Use
+  \code{\link[assessment_list_glance]{assessment_list_glance()}} for a tidy
+  summary.
 }
 \description{
-\code{download_assessment_list()} searches the specified floristic quality
+\code{download_assessment_list()} searches a specified floristic quality
 assessment database and retrieves all matches from
 \href{https://universalfqa.org/}{universalfqa.org}. Download speeds from that
 website may be slow, causing delays in the evaluation of this function.
@@ -36,7 +38,6 @@ website may be slow, causing delays in the evaluation of this function.
 \examples{
 \dontrun{
 databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
-chicago_assessments <- index_fqa_assessments(1) # lists all assessments in that database.
 somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 somme_summary <- assessment_list_glance(somme_assessments)
 }
