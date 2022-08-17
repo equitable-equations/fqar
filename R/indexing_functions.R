@@ -157,7 +157,7 @@ index_fqa_assessments <- function(database_id) {
 #' \dontrun{
 #' databases <- index_fqa_databases()
 #' # Note that the most current Chicago database has id_number 149.
-#' chicago_2017_transects <- index_fqa_assessments(149)
+#' chicago_2017_transects <- index_fqa_transects(149)
 #' }
 #'
 #' @export
