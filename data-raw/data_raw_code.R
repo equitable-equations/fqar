@@ -3,7 +3,7 @@
 chicago_list <- download_assessment_list(database_id = 149)
 chicago <- assessment_list_glance(chicago_list)
 
-usethis::use_data(chicago, overwrite = TRUE)
+usethis::use_data(chicago, overwrite = TRUE, ascii = TRUE)
 
 
 # Code to build the missouri data set
@@ -11,4 +11,4 @@ usethis::use_data(chicago, overwrite = TRUE)
 missouri_list <- download_assessment_list(database_id = 63)
 missouri <- assessment_list_glance(missouri_list)
 
-usethis::use_data(missouri, overwrite = TRUE)
+usethis::use_data(missouri, overwrite = TRUE, ascii = TRUE)
