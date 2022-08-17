@@ -6,7 +6,7 @@
 #'
 #' @param data_set A data set downloaded from
 #'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-#'   \code{\link[download_assessment]{download_assessment()}}.
+#'   \code{\link[=download_assessment]{download_assessment()}}.
 
 #' @return A data frame with 9 columns:
 #' \itemize{

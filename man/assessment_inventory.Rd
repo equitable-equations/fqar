@@ -9,7 +9,7 @@ assessment_inventory(data_set)
 \arguments{
 \item{data_set}{A data set downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-\code{\link[download_assessment]{download_assessment()}}.}
+\code{\link[=download_assessment]{download_assessment()}}.}
 }
 \value{
 A data frame with 9 columns:

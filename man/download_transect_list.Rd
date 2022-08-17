@@ -10,7 +10,7 @@ download_transect_list(database_id, ...)
 \item{database_id}{Numeric identifier of the desired floristic quality
 assessment database, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+be viewed with the \code{\link[=index_fqa_databases]{index_fqa_databases()}}
 function.}
 
 \item{...}{\code{dplyr}-style filtering criteria for the desired transect
@@ -26,7 +26,7 @@ function.}
 \value{
 A list of data frames matching the search criteria. Each is an untidy
   data frame in the original format of the Universal FQA website. Use
-  \code{\link[transect_list_glance]{transect_list_glance()}} for a tidy
+  \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
   summary.
 }
 \description{

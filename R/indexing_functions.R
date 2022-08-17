@@ -63,8 +63,8 @@ index_fqa_databases <- function() {
 #'
 #' @param database_id A numeric identifier of the desired database, as specified
 #'   by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
-#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
-#'   function.
+#'   be viewed with the
+#'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
 #'
 #' @return A data frame with 5 columns:
 #' \itemize{
@@ -141,8 +141,8 @@ index_fqa_assessments <- function(database_id) {
 #'
 #' @param database_id A numeric identifier of the desired database, as specified
 #'   by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
-#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
-#'   function.
+#'   be viewed with the
+#'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
 #'
 #' @return A data frame with 5 columns:
 #' \itemize{

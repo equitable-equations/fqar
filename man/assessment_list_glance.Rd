@@ -9,7 +9,7 @@ assessment_list_glance(assessment_list)
 \arguments{
 \item{assessment_list}{A list of data sets downloaded from
 \href{https://universalfqa.org/}{universalfqa.org}, typically using
-\code{\link[download_assessment_list]{download_assessment_list()}}.}
+\code{\link[=download_assessment_list]{download_assessment_list()}}.}
 }
 \value{
 A data frame with 52 columns:

@@ -6,7 +6,7 @@
 #'
 #' @param assessment_list A list of data sets downloaded from
 #'   \href{https://universalfqa.org/}{universalfqa.org}, typically using
-#'   \code{\link[download_assessment_list]{download_assessment_list()}}.
+#'   \code{\link[=download_assessment_list]{download_assessment_list()}}.
 #'
 #' @return A data frame with 52 columns:
 #' \itemize{

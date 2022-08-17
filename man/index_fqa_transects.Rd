@@ -9,8 +9,8 @@ index_fqa_transects(database_id)
 \arguments{
 \item{database_id}{A numeric identifier of the desired database, as specified
 by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
-be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
-function.}
+be viewed with the
+\code{\link[=index_fqa_databases]{index_fqa_databases()}} function.}
 }
 \value{
 A data frame with 5 columns:

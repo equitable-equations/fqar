@@ -3,18 +3,19 @@
 #' \code{download_assessment()} retrieves a specified floristic quality
 #' assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
 #' numbers for assessments in various databases can be found using the
-#' \code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.
+#' \code{\link[=index_fqa_assessments]{index_fqa_assessments()}} function.
 #'
 #' @param assessment_id A numeric identifier of the desired floristic quality
 #'   assessment, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #'   assessments in specified databases can be viewed with the
-#'   \code{\link[index_fqa_assessments]{index_fqa_assessments()}} function.
+#'   \code{\link[=index_fqa_assessments]{index_fqa_assessments()}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
-#'   website. Use \code{\link[assessment_glance]{assessment_glance()}} for a
-#'   tidy summary and \code{\link[assessment_inventory]{assessment_inventory()}}
-#'   for species-level data.
+#'   website. Use \code{\link[=assessment_glance]{assessment_glance()}} for a
+#'   tidy summary and
+#'   \code{\link[=assessment_inventory]{assessment_inventory()}} for
+#'   species-level data.
 #'
 #' @import jsonlite httr
 #'
@@ -82,8 +83,8 @@ download_assessment <- function(assessment_id){
 #' @param database_id Numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
-#'   function.
+#'   be viewed with the
+#'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired assessments.
 #'   The following variables may be used:
@@ -97,7 +98,7 @@ download_assessment <- function(assessment_id){
 #'
 #' @return A list of data frames matching the search criteria. Each is an untidy
 #'   data frame in the original format of the Universal FQA website. Use
-#'   \code{\link[assessment_list_glance]{assessment_list_glance()}} for a tidy
+#'   \code{\link[=assessment_list_glance]{assessment_list_glance()}} for a tidy
 #'   summary.
 #'
 #' @import dplyr utils
@@ -146,18 +147,18 @@ download_assessment_list <- function(database_id, ...){
 #' \code{download_transect()} retrieves a specified floristic quality transect
 #' assessment from \href{https://universalfqa.org/}{universalfqa.org}. ID
 #' numbers for transect assessments in various databases can be found using the
-#' \code{\link[index_fqa_transects]{index_fqa_transects()}} function.
+#' \code{\link[=index_fqa_transects]{index_fqa_transects()}} function.
 #'
 #' @param transect_id A numeric identifier of the desired floristic quality
 #'   transect assessment, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for transect
 #'   assessments in specified databases can be viewed with the
-#'   \code{\link[index_fqa_transects]{index_fqa_transects()}} function.
+#'   \code{\link[=index_fqa_transects]{index_fqa_transects()}} function.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
-#'   website. Use \code{\link[transect_glance]{transect_glance()}} for a tidy
-#'   summary, \code{\link[transect_phys]{transect_phys()}} for a physiognometric
-#'   overview, and \code{\link[transect_inventory]{transect_inventory()}} for
+#'   website. Use \code{\link[=transect_glance]{transect_glance()}} for a tidy
+#'   summary, \code{\link[=transect_phys]{transect_phys()}} for a physiognometric
+#'   overview, and \code{\link[=transect_inventory]{transect_inventory()}} for
 #'   species-level data.
 #'
 #' @examples \dontrun{
@@ -221,7 +222,7 @@ download_transect <- function(transect_id){
 #' @param database_id Numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link[index_fqa_databases]{index_fqa_databases()}}
+#'   be viewed with the \code{\link[=index_fqa_databases]{index_fqa_databases()}}
 #'   function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired transect
@@ -236,7 +237,7 @@ download_transect <- function(transect_id){
 #'
 #' @return A list of data frames matching the search criteria. Each is an untidy
 #'   data frame in the original format of the Universal FQA website. Use
-#'   \code{\link[transect_list_glance]{transect_list_glance()}} for a tidy
+#'   \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
 #'   summary.
 #'
 #' @examples \dontrun{

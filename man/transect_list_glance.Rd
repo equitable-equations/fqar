@@ -10,7 +10,7 @@ transect_list_glance(transect_list)
 \arguments{
 \item{transect_list}{A list of data sets downloaded from
 \href{https://universalfqa.org/}{universalfqa.org}, typically using
-\code{\link[download_transect_list]{download_transect_list()}}.}
+\code{\link[=download_transect_list]{download_transect_list()}}.}
 }
 \value{
 A data frame with 54 columns:
