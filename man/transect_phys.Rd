@@ -2,14 +2,14 @@
 % Please edit documentation in R/transect_phys.R
 \name{transect_phys}
 \alias{transect_phys}
-\title{Obtain physiognometric information a floristic quality transect assessment}
+\title{Obtain physiognometric information for a floristic quality transect assessment}
 \usage{
 transect_phys(data_set)
 }
 \arguments{
 \item{data_set}{A data set downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-\code{\link{download_transect}}.}
+\code{\link[download_transect]{download_transect()}}.}
 }
 \value{
 A data frame with 6 columns:
@@ -17,8 +17,8 @@ A data frame with 6 columns:
    \item Physiognomy (character)
    \item Frequency (numeric)
    \item Coverage (numeric)
-   \item Relative Frequency % (numeric)
-   \item Relative Coverage % (numeric)
+   \item Relative Frequency (\%) (numeric)
+   \item Relative Coverage (\%) (numeric)
    \item Relative Importance Value (numeric)
 }
 }

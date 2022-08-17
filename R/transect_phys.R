@@ -1,4 +1,4 @@
-#' Obtain physiognometric information a floristic quality transect assessment
+#' Obtain physiognometric information for a floristic quality transect assessment
 #'
 #' \code{transect_phys()} returns a data frame with physiognometric information
 #' for a floristic quality transect assessment obtained from
@@ -6,15 +6,15 @@
 #'
 #' @param data_set A data set downloaded from
 #'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-#'   \code{\link{download_transect}}.
+#'   \code{\link[download_transect]{download_transect()}}.
 #'
 #' @return  A data frame with 6 columns:
 #' \itemize{
 #'    \item Physiognomy (character)
 #'    \item Frequency (numeric)
 #'    \item Coverage (numeric)
-#'    \item Relative Frequency % (numeric)
-#'    \item Relative Coverage % (numeric)
+#'    \item Relative Frequency (\%) (numeric)
+#'    \item Relative Coverage (\%) (numeric)
 #'    \item Relative Importance Value (numeric)
 #' }
 #'

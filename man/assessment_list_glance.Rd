@@ -9,7 +9,7 @@ assessment_list_glance(assessment_list)
 \arguments{
 \item{assessment_list}{A list of data sets downloaded from
 \href{https://universalfqa.org/}{universalfqa.org}, typically using
-\code{\link{download_assessment_list}}.}
+\code{\link[download_assessment_list]{download_assessment_list()}}.}
 }
 \value{
 A data frame with 52 columns:
@@ -75,9 +75,9 @@ returning summary information as a single data frame.
 }
 \examples{
 \dontrun{
-# While assessment_list_glance can be used with .csv files downloaded
-# manually from the universal FQA website, it is most typically used
-# in combination with download_assessment_list().
+# While assessment_list_glance can be used with .csv files downloaded #
+manually from the universal FQA website, it is most typically used # in
+combination with download_assessment_list().
 
 maine <- download_assessment_list(database = 56)
 assessment_list_glance(maine)

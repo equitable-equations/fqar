@@ -9,7 +9,7 @@ transect_glance(data_set)
 \arguments{
 \item{data_set}{A data set downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-\code{link{download_transect}}.}
+\code{\link[download_transect]{download_transect()}}.}
 }
 \value{
 A data frame with 1 row and 54 columns:
@@ -76,9 +76,9 @@ set obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 \dontrun{
-# While transect_glance can be used with a .csv file downloaded
-# manually from the universal FQA website, it is most typically used
-# in combination with download_transect().
+# While transect_glance can be used with a .csv file downloaded # manually
+from the universal FQA website, it is most typically used # in combination
+with \code{\link[download_transect]{download_transect()}}.
 
 tyler <- download_transect(6352)
 transect_glance(tyler)

@@ -9,10 +9,10 @@ transect_inventory(data_set)
 \arguments{
 \item{data_set}{A data set downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} either manually or using
-\code{\link{download_transect}}.}
+\code{\link[download_transect]{download_transect()}}.}
 }
 \value{
-A data frame with 6 columns:
+A data frame with 13 columns:
 \itemize{
   \item Species (character)
   \item Family (character)
@@ -41,7 +41,7 @@ included in a floristic quality transect assessment obtained from
 # in combination with download_transect().
 
 tyler <- download_transect(6352)
-transect_glance(tyler)
+transect_inventory(tyler)
 }
 
 }
