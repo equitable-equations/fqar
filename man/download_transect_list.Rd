@@ -18,7 +18,7 @@ function.}
 \itemize{
   \item id (numeric)
   \item assessment (character)
-  \item date (Date)
+  \item date (date)
   \item site (character)
   \item practitioner (character)
 }}

@@ -90,7 +90,7 @@ download_assessment <- function(assessment_id){
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
-#'   \item date (Date)
+#'   \item date (date)
 #'   \item location (character)
 #'   \item practitioner (character)
 #' }
@@ -229,7 +229,7 @@ download_transect <- function(transect_id){
 #' \itemize{
 #'   \item id (numeric)
 #'   \item assessment (character)
-#'   \item date (Date)
+#'   \item date (date)
 #'   \item site (character)
 #'   \item practitioner (character)
 #' }
