@@ -2,9 +2,9 @@
 
 0 errors | 0 warnings | 0 notes
 
-* check_rhub() shows a spelling note for the technical term "floristic" in the DESCRIPTION file. The spelling is correct, however. 
+* No notes locally, but check_rhub() flags the spelling of the term "floristic" in the DESCRIPTION file. The spelling is correct, however. 
 
-* This is a new release.
+* This is a re-submission of a new release.
 
 ## Downstream dependencies
  
