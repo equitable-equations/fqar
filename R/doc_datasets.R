@@ -59,7 +59,7 @@
 #'    \item Native Biennial (numeric)
 #' }
 #'
-#' @source{\href{https://universalfqa.org/}{www.universalfqa.org}}
+#' @source{\href{https://universalfqa.org/}{universalfqa.org}}
 #' @docType data
 #' @keywords datasets
 "chicago"
@@ -127,7 +127,7 @@
 #'    \item Native Biennial (numeric)
 #' }
 #'
-#' @source{\href{https://universalfqa.org/}{www.universalfqa.org}}
+#' @source{\href{https://universalfqa.org/}{universalfqa.org}}
 #' @docType data
 #' @keywords datasets
 "missouri"

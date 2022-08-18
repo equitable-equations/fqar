@@ -62,7 +62,7 @@ A data frame with 52 columns:
 }
 }
 \source{
-{\href{https://universalfqa.org/}{www.universalfqa.org}}
+{\href{https://universalfqa.org/}{universalfqa.org}}
 }
 \usage{
 missouri

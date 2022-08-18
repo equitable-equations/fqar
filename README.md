@@ -6,7 +6,7 @@
   [![R-CMD-check](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml)
   <!-- badges: end -->
   
-Floristic quality assessment (FQA) is a standardized method for rating the ecological value of plant communities based on the native species found there. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from www.universalfqa.org.
+Floristic quality assessment (FQA) is a standardized method for rating the ecological value of plant communities based on the native species found there. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from universalfqa.org.
 
 ## Installation
 
@@ -58,11 +58,11 @@ lord_fqas <- download_transect_list(database = 63,
                                     practitioner == "Sam Lord")
 ```
 
-Unfortunately, the www.universalfqa.org server is often slow, and downloads (especially for transect assessments) may take some time. 
+Unfortunately, the universalfqa.org server is often slow, and downloads (especially for transect assessments) may take some time. 
 
 ### Tidying functions
 
-Data sets obtained from www.universalfqa.org are quite messy. ${\tt fqar}$ provides tools for converting such sets into a more convenient tidy format.
+Data sets obtained from universalfqa.org are quite messy. ${\tt fqar}$ provides tools for converting such sets into a more convenient tidy format.
 
 ```{r tidying}
 # obtain a data frame with species data for a downloaded assessment:

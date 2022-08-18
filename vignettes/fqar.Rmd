@@ -20,13 +20,13 @@ library(dplyr)
 
 ## Introduction
 
-The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment (FQA) data from [www.universalFQA.org](www.universalFQA.org). Two sample data sets, ${\tt missouri}$ and ${\tt chicago}$, are also provided.
+The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment (FQA) data from [universalFQA.org](https://universalfqa.org/). Two sample data sets, ${\tt missouri}$ and ${\tt chicago}$, are also provided.
 
 Functions in this package fall into three general categories: _indexing functions_, which produce data frames of current public databases and FQAs from various regions, _downloading functions_, which download the FQAs themselves, and _tidying functions_, which convert downloaded assessments into a standard format.
 
 ## Indexing functions
 
-Each floristic quality assessment is tied to a specific databases of native plants that has been compiled by experts in local flora. A listing of all databases accepted by [www.universalFQA.org](www.universalFQA.org) can be viewed with the ${\tt index\_fqa\_databases()}$ function.
+Each floristic quality assessment is tied to a specific databases of native plants that has been compiled by experts in local flora. A listing of all databases accepted by [universalFQA.org](https://universalfqa.org/) can be viewed with the ${\tt index\_fqa\_databases()}$ function.
 
 ```{r}
 databases <- index_fqa_databases()
@@ -64,7 +64,7 @@ ambrose <- download_assessment_list(database_id = 63,
                                     site == "Ambrose Farm")
 ```
 
-For even mid-sized requests, this command may run slowly due to the limited speed of the [www.universalFQA.org](www.universalFQA.org) website. For this reason, a progress bar has been added to the ${\tt download\_assessment\_list()}$ function when $n\ge 5$. 
+For even mid-sized requests, this command may run slowly due to the limited speed of the [universalFQA.org](https://universalfqa.org/) website. For this reason, a progress bar has been added to the ${\tt download\_assessment\_list()}$ function when $n\ge 5$. 
 
 As the name suggests, the output of ${\tt download\_assessment\_list()}$ is a list of data frames. 
 
@@ -73,7 +73,7 @@ class(ambrose)
 length(ambrose)
 ```
 
-Transect assessment data data stored on [www.universalFQA.org](www.universalFQA.org) is accessible to analysts using the ${\tt fqar}$ package via the functions ${\tt download\_transect()}$ and ${\tt download\_transect\_list()}$, which work exactly like their counterparts, ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$.
+Transect assessment data data stored on [universalFQA.org](https://universalfqa.org/) is accessible to analysts using the ${\tt fqar}$ package via the functions ${\tt download\_transect()}$ and ${\tt download\_transect\_list()}$, which work exactly like their counterparts, ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$.
 
 ```{r}
 rock_garden <- download_transect(transect_id = 6875)
@@ -85,7 +85,7 @@ golden <- download_transect_list(database_id = 63,
 
 The data frames obtained from these downloading functions are all highly untidy, respecting the default structure of the website from which they are obtained. The ${\tt fqar}$ package provides tools for efficiently re-formatting these sets.
 
-Each floristic quality assessments on [www.universalFQA.org](www.universalFQA.org) includes two types of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions ${\tt assessment\_inventory()}$ and ${\tt assessment\_glance()}$ extract and tidy these two types of information.
+Each floristic quality assessments on [universalFQA.org](https://universalfqa.org/) includes two types of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions ${\tt assessment\_inventory()}$ and ${\tt assessment\_glance()}$ extract and tidy these two types of information.
 
 For instance, the following code creates a data frame of species found in the 2021 Grasshopper Hollow survey downloaded earlier.
 
