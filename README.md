@@ -1,5 +1,11 @@
-# fqar <img src="man/figures/logo.png" align="right" height="138" />
+# fqar 
 
+<img src="man/figures/logo.png" align="right" height="138" />
+
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+  
 Floristic quality assessment (FQA) is a standardized method for rating the ecological value of plant communities based on the native species found there. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from www.universalfqa.org.
 
 ## Installation
