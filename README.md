@@ -92,5 +92,5 @@ lord_summary <- transect_list_glance(lord_fqas)
 ```
 
 ## Learn More 
-* Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQA’s with fqar.
+* Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQAs with fqar.
 * View the help files of any function in the ${\tt fqar}$ package for more examples. 
