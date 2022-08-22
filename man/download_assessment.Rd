@@ -27,6 +27,7 @@ numbers for assessments in various databases can be found using the
 \code{\link[=index_fqa_assessments]{index_fqa_assessments()}} function.
 }
 \examples{
+\donttest{
 databases <- index_fqa_databases()
 # Note database 1 is the original 1994 Chicago edition.
 
@@ -35,5 +36,6 @@ edison <- download_assessment(25002)
 
 edison_tidy <- assessment_glance(edison)
 edison_species <- assessment_inventory(edison)
+}
 
 }

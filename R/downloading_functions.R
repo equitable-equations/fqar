@@ -20,6 +20,7 @@
 #' @import jsonlite httr
 #'
 #' @examples
+#' \donttest{
 #' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
 #'
@@ -28,6 +29,7 @@
 #'
 #' edison_tidy <- assessment_glance(edison)
 #' edison_species <- assessment_inventory(edison)
+#' }
 #'
 #' @export
 

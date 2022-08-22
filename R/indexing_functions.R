@@ -74,9 +74,11 @@ index_fqa_databases <- function() {
 #'   }
 #'
 #' @examples
+#' \donttest{
 #' databases <- index_fqa_databases()
 #' # Note that the 2017 Chicago database has id_number 149
 #' chicago_2017_assessments <- index_fqa_assessments(149)
+#' }
 #'
 #' @export
 
