@@ -28,14 +28,13 @@
 #' @import dplyr tidyr
 #' @importFrom rlang .data
 #'
-#' @examples \dontrun{
+#' @examples
 #' # while transect_glance can be used with a .csv file downloaded
 #' # manually from the universal FQA website, it is most typically used
 #' # in combination with download_transect().
 #'
 #' tyler <- download_transect(6352)
 #' transect_inventory(tyler)
-#' }
 #'
 #' @export
 

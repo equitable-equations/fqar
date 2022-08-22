@@ -78,13 +78,11 @@ assessment data sets obtained from
 information as a single data frame.
 }
 \examples{
-\dontrun{
 # While transect_list_glance can be used with a list of .csv file downloaded
 # manually from the universal FQA website, it is most typically used
 # in combination with download_transect_list().
 
 transect_list <- download_transect_list(149, id \%in\% c(3400, 3427))
 transect_list_glance(transect_list)
-}
 
 }

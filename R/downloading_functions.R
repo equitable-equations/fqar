@@ -19,7 +19,7 @@
 #'
 #' @import jsonlite httr
 #'
-#' @examples \dontrun{
+#' @examples
 #' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
 #'
@@ -28,7 +28,6 @@
 #'
 #' edison_tidy <- assessment_glance(edison)
 #' edison_species <- assessment_inventory(edison)
-#' }
 #'
 #' @export
 
@@ -104,11 +103,9 @@ download_assessment <- function(assessment_id){
 #' @import dplyr utils
 #'
 #' @examples
-#' \dontrun{
 #' databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
 #' somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 #' somme_summary <- assessment_list_glance(somme_assessments)
-#' }
 #'
 #' @export
 
@@ -161,14 +158,13 @@ download_assessment_list <- function(database_id, ...){
 #'   overview, and \code{\link[=transect_inventory]{transect_inventory()}} for
 #'   species-level data.
 #'
-#' @examples \dontrun{
+#' @examples
 #' databases <- index_fqa_databases() # Note database 1 is the original 1994 Chicago edition.
 #' chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
 #' cbg <- download_transect(5932)
 #' cbg_tidy <- transect_glance(cbg)
 #' cbg_species <- transect_inventory(cbg)
 #' cbg_phys <- transect_phys(cbg)
-#' }
 #'
 #' @export
 
@@ -240,11 +236,10 @@ download_transect <- function(transect_id){
 #'   \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
 #'   summary.
 #'
-#' @examples \dontrun{
+#' @examples
 #' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
 #' dupont <- download_transect_list(1, site == "DuPont Natural Area")
-#' }
 #'
 #' @export
 

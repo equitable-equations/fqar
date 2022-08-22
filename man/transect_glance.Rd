@@ -75,13 +75,11 @@ A data frame with 1 row and 54 columns:
 set obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
-\dontrun{
 # While transect_glance can be used with a .csv file downloaded # manually
 from the universal FQA website, it is most typically used # in combination
 with download_transect().
 
 tyler <- download_transect(6352)
 transect_glance(tyler)
-}
 
 }

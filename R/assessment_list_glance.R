@@ -65,16 +65,16 @@
 #' }
 #'
 #' @import dplyr tidyr
-#' @examples \dontrun{
+#' @examples
 #' # While assessment_list_glance can be used with .csv files downloaded #
 #' manually from the universal FQA website, it is most typically used # in
 #' combination with download_assessment_list().
 #'
 #' maine <- download_assessment_list(database = 56)
 #' assessment_list_glance(maine)
-#' }
 #'
 #' @export
+
 assessment_list_glance <- function(assessment_list){
 
   applied <- lapply(assessment_list, assessment_glance)

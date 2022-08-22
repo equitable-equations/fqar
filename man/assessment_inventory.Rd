@@ -31,13 +31,11 @@ included in a floristic quality assessment obtained from
 \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
-\dontrun{
 # While assessment_glance can be used with a .csv file downloaded
 # manually from the universal FQA website, it is most typically used
 # in combination with download_assessment().
 
 edison <- download_assessment(25002)
 assessment_inventory(edison)
-}
 
 }

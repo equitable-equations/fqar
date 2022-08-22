@@ -36,10 +36,8 @@ assessment database and retrieves all matches from
 website may be slow, causing delays in the evaluation of this function.
 }
 \examples{
-\dontrun{
 databases <- index_fqa_databases # Note database 1 is the original 1994 Chicago edition.
 somme_assessments <- download_assessment_list(1, site == "Somme Woods")
 somme_summary <- assessment_list_glance(somme_assessments)
-}
 
 }

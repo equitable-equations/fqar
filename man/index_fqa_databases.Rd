@@ -21,8 +21,6 @@ quality assessment databases publicly available at
 \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
-\dontrun{
 databases <- index_fqa_databases()
-}
 
 }
