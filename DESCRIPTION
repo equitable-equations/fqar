@@ -11,6 +11,7 @@ Description: Tools for downloading and analyzing floristic quality assessment da
   about floristic quality assessment and the associated database.  
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en_US
 LazyData: true
 Imports: 
     dplyr,
