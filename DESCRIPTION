@@ -25,3 +25,5 @@ Suggests:
 Depends: 
     R (>= 4.1.0)
 VignetteBuilder: knitr
+URL: https://github.com/equitable-equations/fqar/
+BugReports: https://github.com/equitable-equations/fqar/issues
