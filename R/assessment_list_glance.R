@@ -66,9 +66,9 @@
 #'
 #' @import dplyr tidyr
 #' @examples
-#' # While assessment_list_glance can be used with .csv files downloaded #
-#' manually from the universal FQA website, it is most typically used # in
-#' combination with download_assessment_list().
+#' # While assessment_list_glance can be used with a list of .csv file downloaded
+#' # manually from the universal FQA website, it is most typically used
+#' # in combination with download_assessment_list().
 #'
 #' maine <- download_assessment_list(database = 56)
 #' assessment_list_glance(maine)

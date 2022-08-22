@@ -67,9 +67,9 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' # While assessment_glance can be used with a .csv file downloaded
-#' # manually from the universal FQA website, it is most typically used
-#' # in combination with download_assessment().
+#' # While assessment_glance can be used with a .csv file downloaded manually
+#' # from the universal FQA website, it is most typically used in combination
+#' # with download_assessment().
 #'
 #' edison <- download_assessment(25002)
 #' assessment_glance(edison)

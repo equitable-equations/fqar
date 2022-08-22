@@ -71,11 +71,13 @@
 #' @import dplyr tidyr
 #' @examples
 #' # While transect_list_glance can be used with a list of .csv file downloaded
-#' # manually from the universal FQA website, it is most typically used
-#' # in combination with download_transect_list().
+#' # manually from the universal FQA website, it is most typically used in
+#' # combination with download_transect_list().
 #'
+#' \donttest{
 #' transect_list <- download_transect_list(149, id %in% c(3400, 3427))
 #' transect_list_glance(transect_list)
+#' }
 #'
 #' @export
 

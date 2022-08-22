@@ -73,9 +73,9 @@ A data frame with 52 columns:
 obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
-# While assessment_glance can be used with a .csv file downloaded
-# manually from the universal FQA website, it is most typically used
-# in combination with download_assessment().
+# While assessment_glance can be used with a .csv file downloaded manually
+# from the universal FQA website, it is most typically used in combination
+# with download_assessment().
 
 edison <- download_assessment(25002)
 assessment_glance(edison)

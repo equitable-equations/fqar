@@ -27,11 +27,13 @@ numbers for transect assessments in various databases can be found using the
 \code{\link[=index_fqa_transects]{index_fqa_transects()}} function.
 }
 \examples{
+\donttest{
 databases <- index_fqa_databases() # Note database 1 is the original 1994 Chicago edition.
 chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
 cbg <- download_transect(5932)
 cbg_tidy <- transect_glance(cbg)
 cbg_species <- transect_inventory(cbg)
 cbg_phys <- transect_phys(cbg)
+}
 
 }
