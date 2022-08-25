@@ -25,7 +25,7 @@ bibliography: fqar_refs.bib
 
 Floristic Quality Assessment (FQA) is a standardized method for assessing the ecological value of a natural area based on the plant species found there [@spyreas2015users]. Each species considered native to the region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora (see for instance refs), with larger values corresponding to species that tend to be found in undegraded sites. A site inventory is conducted, and the average of the C-values found there is computed. This *mean-C value*, sometimes weighted by the total number of plant species identified, is frequently used by land managers and other agents to quantify an area's state of conservancy (ref). 
 
-Although floristic quality assessment dates back to the late 1970s [wilhelm1977], its use has expanded significantly in recent years, in large part due to the central data repository [universalfqa.org](https://universalfqa.org/) [freyman2016universal], where practitioners can easily upload site inventories, select an appropriate species database, and receive numeric assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada.
+Although floristic quality assessment dates back to the late 1970s [@wilhelm1977], its use has expanded significantly in recent years, in large part due to the central data repository [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], where practitioners can easily upload site inventories, select an appropriate species database, and receive numeric assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada.
 
 The `fqar` packages provides tools for downloading and extracting species inventories and assessment-level statistics from downloaded reports, both individually and in batches.
 
@@ -38,7 +38,7 @@ The [universalfqa.org](https://universalfqa.org/) website is calibrated for prac
 - Individual cells are formatted inconsistently
 
 
-The outputs of these functions are all tibbles in tidy format (ref), making them far more convenient for data analysis.
+The outputs of these functions are all tibbles in tidy format [@JSSv059i10], making them far more convenient for data analysis.
 
 # Availability
 
