@@ -23,9 +23,9 @@ bibliography: fqar_refs.bib
 
 # Summary
 
-Floristic Quality Assessment (FQA) is a standardized method for assessing the ecological value of a natural area based on the plant species found there (ref). Each species considered native to the region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora, with larger values corresponding to species that tend to be found in undegraded sites. A site inventory is conducted, and the average of the C-values found there is computed. This *mean-C value* is frequently used by land managers and other agents to quantify an area's state of conservancy (ref). 
+Floristic Quality Assessment (FQA) is a standardized method for assessing the ecological value of a natural area based on the plant species found there [@spyreas2015users]. Each species considered native to the region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora (see for instance refs), with larger values corresponding to species that tend to be found in undegraded sites. A site inventory is conducted, and the average of the C-values found there is computed. This *mean-C value*, sometimes weighted by the total number of plant species identified, is frequently used by land managers and other agents to quantify an area's state of conservancy (ref). 
 
-Although floristic quality assessment dates back to the 1994 publication of (ref), its use has expanded significantly in recent years, in large part due to the central data repository [universalfqa.org](https://universalfqa.org/) (ref), where practitioners can easily upload site inventories, select an appropriate species database, and receive numeric assessments in .csv format. As of September, 2022, there were over xxx public assessments from more than 70 databases accessible via the site, covering much of the continental United States and parts of Canada.
+Although floristic quality assessment dates back to the late 1970s [wilhelm1977], its use has expanded significantly in recent years, in large part due to the central data repository [universalfqa.org](https://universalfqa.org/) [freyman2016universal], where practitioners can easily upload site inventories, select an appropriate species database, and receive numeric assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada.
 
 The `fqar` packages provides tools for downloading and extracting species inventories and assessment-level statistics from downloaded reports, both individually and in batches.
 
@@ -51,22 +51,6 @@ Alternatively, the latest developmental version can be installed directly from G
 `devtools::install_github("equitable-equations/fqar")`
 
 Thorough documentation is provided. A long-form vignette gives a birds-eye overview of the package's functionality while help files for individual functions provide guidance on particular data analysis tasks. 
-
-# Citations
-
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
-
-If you want to cite a software repository URL (e.g. something on GitHub without a preferred
-citation) then you can do it with the example BibTeX entry below for @fidgit.
-
-For a quick reference, the following citation commands can be used:
-- `@author:2001`  ->  "Author et al. (2001)"
-- `[@author:2001]` -> "(Author et al., 2001)"
-- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
-
-[@spyreas2015users]
 
 # Figures
 
