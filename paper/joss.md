@@ -27,7 +27,7 @@ Floristic Quality Assessment (FQA) is a standardized method for assessing the ec
 
 Although floristic quality assessment dates back to the  1970s [@wilhelm1977], its use has expanded significantly in recent years, in large part due to the creation of a central data repository, [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], where practitioners can easily upload site inventories, select an appropriate species database, and receive numeric assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada. For instance, see [@ladd2015ecological] for Missouri, USA flora, and [@rericha] for flora of the Chicago, USA region.
 
-The `fqar` packages provides tools for downloading and extracting species inventories and assessment-level statistics from FQA reports, both individually and in batches.
+The `fqar` packages provides tools for downloading and analyzing floristic quality assessment data using R [@rcore]
 
 # Statement of need
 
@@ -45,21 +45,19 @@ Available databases of plant species (and their associated C-values) for various
 
 `library(fqar)
 
-databases_available <- index_fqa_databases() 
-
+databases_available <- index_fqa_databases()  
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)`
 
-An analyst could then download all available assessments in that database or filter (using `dplyr` [ref] syntax) for by practitioner or other criteria. 
+An analyst could then download all available assessments in that database or filter (using `dplyr` [@Wickham:2022vf] syntax) for by practitioner or other criteria. 
 
-missouri_assessments <- download_assessment_list(database_id = 63)
-
+missouri_assessments <- download_assessment_list(database_id = 63)  
 thomas_fqas <- download_assessment_list(database_id = 63, practioner = "Justin Thomas")`
 
 The output of each of these commands is a list of data frames in the raw format of [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`. 
 
 `thomas_tidy <- assessment_list_glance(thomas_fqas)`
 
-Species inventories for individual assessments can be extracted (again in tidy format) with `fqar::assessment_inventory`.
+Species inventories for individual assessments can be extracted (again in tidy format) with `fqar::assessment_inventory()`.
 
 # Availability
 
@@ -71,11 +69,11 @@ Alternatively, the latest developmental version can be installed directly from G
 
 `devtools::install_github("equitable-equations/fqar")`
 
-Thorough documentation is provided. A long-form vignette gives a birds-eye overview of the package's functionality while help files for individual functions provide guidance on particular data analysis tasks. 
+Thorough documentation is provided. A long-form vignette gives a birds-eye overview of the package's functionality, while help files for individual functions provide guidance on particular data analysis tasks. 
 
 # Acknowledgements
 
-The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc (NatureCITE) for their insight into floristic quality assessment. 
+The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc [NatureCITE](https://www.naturecite.org/) for their insight into floristic quality assessment. 
 
 # References
 
