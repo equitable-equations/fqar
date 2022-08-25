@@ -41,19 +41,19 @@ The `fqar` package addresses these and other technical difficulties.
 
 # Typical workflow
 
-Available databases of plant species (and their associated C-values) for various regions can be viewed and downloaded using a family of indexing functions. 
+Available databases of plant species (and their associated C-values) for various regions can be viewed and downloaded using a family of indexing functions. The following code focuses on the 2015 Missouri database [@ladd2015ecological]:
 
-`library(fqar)
+`library(fqar)`
 
-databases_available <- index_fqa_databases()  
+`databases_available <- index_fqa_databases()  
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)`
 
-An analyst could then download all available assessments in that database or filter (using `dplyr` [@Wickham:2022vf] syntax) for by practitioner or other criteria. 
+An analyst could then download all available assessments in that database or filter using `dplyr` [@Wickham:2022vf] syntax by practitioner, site, or other criteria. The following code focuses on assessments done by Justin Thomas ([NatureCITE](https://www.naturecite.org/)):
 
-missouri_assessments <- download_assessment_list(database_id = 63)  
-thomas_fqas <- download_assessment_list(database_id = 63, practioner = "Justin Thomas")`
+`missouri_assessments <- download_assessment_list(database_id = 63)  
+thomas_fqas <- download_assessment_list(database_id = 63, practitioner == "Justin Thomas")`
 
-The output of each of these commands is a list of data frames in the raw format of [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`. 
+The output of each of these commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`. 
 
 `thomas_tidy <- assessment_list_glance(thomas_fqas)`
 
@@ -73,7 +73,7 @@ Thorough documentation is provided. A long-form vignette gives a birds-eye overv
 
 # Acknowledgements
 
-The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc [NatureCITE](https://www.naturecite.org/) for their insight into floristic quality assessment. 
+The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc (NatureCITE) for their insight into floristic quality assessment. 
 
 # References
 
