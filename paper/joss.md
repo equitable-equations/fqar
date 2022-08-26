@@ -46,13 +46,14 @@ Available databases of plant species (and their associated C-values) for various
 ```r 
 library(fqar)
 
-databases_available <- index_fqa_databases()  
+databases_available <- index_fqa_databases()
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)
+```
 
 An analyst could then download all available assessments in that database or filter using `dplyr` [@Wickham:2022vf] syntax by practitioner, site, or other criteria. The following code focuses on assessments done by Justin Thomas:
 
 ```r
-missouri_assessments <- download_assessment_list(database_id = 63)  
+missouri_assessments <- download_assessment_list(database_id = 63)
 thomas_fqas <- download_assessment_list(database_id = 63, practitioner == "Justin Thomas")
 ```
 
