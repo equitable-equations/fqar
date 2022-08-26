@@ -50,11 +50,12 @@ databases_available <- index_fqa_databases()
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)
 ```
 
-An analyst might then download all available assessments in that database or filter using `dplyr` [@Wickham:2022vf] syntax by practitioner, site, or other criteria. For instance, the following code focuses on assessments done by Justin Thomas:
+An analyst might then download all available assessments in that database or specify a narrower subset by practitioner, site, or other criteria using `dplyr` [@Wickham:2022vf] syntax. For instance, the following code focuses on assessments done by Justin Thomas:
 
 ```r
 missouri_assessments <- download_assessment_list(database_id = 63)
-thomas_fqas <- download_assessment_list(database_id = 63, practitioner == "Justin Thomas")
+thomas_fqas <- download_assessment_list(database_id = 63,
+                                        practitioner == "Justin Thomas")
 ```
 
 The output of each of these commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`:
