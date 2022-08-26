@@ -31,7 +31,7 @@ The `fqar` packages provides tools for downloading and analyzing floristic quali
 
 # Statement of need
 
-The [universalfqa.org](https://universalfqa.org/) website is calibrated for practitioners in the field rather than data analysts at their desks. It facilitates the recording, storing, and publicizing of individual floristic quality assessments and performs calculations of the statistical measures most often cited by land managers and conservation organizations in their reporting, including native mean-C. Still, reports it generates are poorly-suited for data analysis for any number of technical reasons, including the following:
+The [universalfqa.org](https://universalfqa.org/) website is calibrated for practitioners in the field rather than data analysts at their desks. It facilitates the recording, storing, and publicizing of individual floristic quality assessments and performs calculations of the statistical measures most often cited by land managers and conservation organizations in their reporting, including native mean-C. Still, the reports it generates are poorly-suited for data analysis for any number of technical reasons, including the following:
 
 - The .csv files it exports include multiple sorts of observations, including assessment-level data like location and weather, raw species inventories, and summary statistics like mean C, all in a single spreadsheet.
 - Descriptors for the various sorts of observations sometimes appear as cell entries, sometimes as header rows, and sometimes not at all
@@ -43,19 +43,24 @@ The `fqar` package addresses these and other technical difficulties.
 
 Available databases of plant species (and their associated C-values) for various regions can be viewed and downloaded using a family of indexing functions. The following code focuses on the 2015 Missouri database [@ladd2015ecological]:
 
-`library(fqar)`
+```r 
+library(fqar)
 
-`databases_available <- index_fqa_databases()  
-missouri_assessments_available <- index_fqa_assessments(database_id = 63)`
+databases_available <- index_fqa_databases()  
+missouri_assessments_available <- index_fqa_assessments(database_id = 63)
 
-An analyst could then download all available assessments in that database or filter using `dplyr` [@Wickham:2022vf] syntax by practitioner, site, or other criteria. The following code focuses on assessments done by Justin Thomas ([NatureCITE](https://www.naturecite.org/)):
+An analyst could then download all available assessments in that database or filter using `dplyr` [@Wickham:2022vf] syntax by practitioner, site, or other criteria. The following code focuses on assessments done by Justin Thomas:
 
-`missouri_assessments <- download_assessment_list(database_id = 63)  
-thomas_fqas <- download_assessment_list(database_id = 63, practitioner == "Justin Thomas")`
+```r
+missouri_assessments <- download_assessment_list(database_id = 63)  
+thomas_fqas <- download_assessment_list(database_id = 63, practitioner == "Justin Thomas")
+```
 
 The output of each of these commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`. 
 
-`thomas_tidy <- assessment_list_glance(thomas_fqas)`
+```r
+thomas_tidy <- assessment_list_glance(thomas_fqas)
+```
 
 Species inventories for individual assessments can be extracted (again in tidy format) with `fqar::assessment_inventory()`.
 
@@ -73,7 +78,7 @@ Thorough documentation is provided. A long-form vignette gives a birds-eye overv
 
 # Acknowledgements
 
-The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc (NatureCITE) for their insight into floristic quality assessment. 
+The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc ([NatureCITE](https://www.naturecite.org/)) for their insight into floristic quality assessment. 
 
 # References
 
