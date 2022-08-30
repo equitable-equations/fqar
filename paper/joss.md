@@ -23,9 +23,9 @@ bibliography: fqar_refs.bib
 
 # Summary
 
-Floristic Quality Assessment (FQA) is a standardized method for assessing the ecological value of natural areas based on the plant species found within them [@spyreas2015users]. Each species considered native to a particular region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora. Larger values of C correspond with species that tend to be found in undegraded sites, while lower values indicate species that are tolerant to human impacts. A site inventory is conducted, and the average of the C-values found there is computed. This *native mean-C value*, sometimes weighted by the total number of plant species identified to give the so-called *floristic quality index* [@bowles2006testing], is frequently used by land managers and other agents to quantify an area's state of conservancy [@zinnen]. 
+Floristic Quality Assessment (FQA) is a standardized method for assessing the ecological value of natural areas based on the plant species found within them [@spyreas2015users]. Each species considered native to a particular region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora. Larger values of C correspond with species that tend to be found in undegraded sites, while lower values indicate species that are more tolerant to human impacts. A site inventory is conducted, and the average of the C-values found there is computed. This *native mean-C value*, sometimes weighted by the total number of plant species identified to give the so-called *floristic quality index* [@bowles2006testing], is frequently used by land managers and other agents to quantify an area's state of conservancy [@zinnen]. 
 
-Although floristic quality assessment dates back to the  1970s [@wilhelm1977], its use has expanded significantly in recent years, in large part due to the creation of a central data repository, [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], where practitioners can easily upload site inventories, select an appropriate species database, and receive quantitative assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada. For instance, see [@oldham1995floristic] for Ontario, Canada flora and [@rericha] for flora of the Chicago, USA region.
+Although floristic quality assessment dates back to the  1970s [@wilhelm1977], its use has expanded significantly in recent years, in large part due to the creation of a central data repository, [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], where practitioners can easily upload site inventories, select appropriate species databases, and receive quantitative assessments in .csv format. As of September, 2022, the site provided access to over xxx public assessments from more than 70 databases, covering much of the continental United States and parts of Canada. For instance, see [@oldham1995floristic] for Ontario, Canada flora and [@rericha] for flora of the Chicago, USA region.
 
 The `fqar` packages provides tools for downloading and analyzing floristic quality assessment data using R [@rcore].
 
@@ -41,24 +41,23 @@ The `fqar` package addresses these and other technical difficulties.
 
 # Typical workflow
 
-Available databases of plant species and their associated C-values for various regions can be viewed and downloaded using a family of indexing functions. For instance, the following code produces a data frame listing all public assessments using the 2015 Missouri database [@ladd2015ecological]:
+Available databases of plant species and their associated C-values for various regions can be viewed and downloaded using a family of indexing functions. For instance, the following code produces a data frame listing all public assessments that draw the 2015 Missouri database [@ladd2015ecological]:
 
 ```r 
 library(fqar)
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)
 ```
 
-A summary of the `database_id`s assigned by  [universalfqa.org](https://universalfqa.org/) can be obtained with `index_fqa_databases()`.
+A summary of the `database_id`s assigned by  [universalfqa.org](https://universalfqa.org/) can be obtained with the `index_fqa_databases()` function.
 
-An analyst might then download all available assessments in the given database or specify a narrower subset by practitioner, site, date, or other criteria using `dplyr` [@Wickham:2022vf] syntax. For instance, the following code downloads all assessments done by Justin Thomas with the Missouri database.
+An analyst can download all available assessments in a given database or specify a narrower subset by practitioner, site, date, or other criteria using `dplyr` [@Wickham:2022vf] syntax. For instance, the following code downloads all assessments done by Justin Thomas with the Missouri database.
 
 ```r
-missouri_assessments <- download_assessment_list(database_id = 63)
 thomas_fqas <- download_assessment_list(database_id = 63,
                                         practitioner == "Justin Thomas")
 ```
 
-The output of each of these commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`:
+The output of this commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`:
 
 ```r
 thomas_tidy <- assessment_list_glance(thomas_fqas)
