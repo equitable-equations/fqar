@@ -7,7 +7,7 @@
    [![CRAN status](https://www.r-pkg.org/badges/version/fqar)](https://CRAN.R-project.org/package=fqar)
   <!-- badges: end -->
   
-Floristic quality assessment (FQA) is a standardized method for rating the ecological value of plant communities based on the native species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from universalfqa.org.
+Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from universalfqa.org.
 
 ## Installation
 
