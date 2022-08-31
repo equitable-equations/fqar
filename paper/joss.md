@@ -37,27 +37,27 @@ The [universalfqa.org](https://universalfqa.org/) website is calibrated for prac
 - Descriptors for the various sorts of observations sometimes appear as cell entries, sometimes as header rows, and sometimes not at all.
 - Individual cells are formatted inconsistently.
 
-The `fqar` package addresses these and other technical difficulties. 
+The `fqar` package addresses these and other difficulties. 
 
 # Typical workflow
 
-Available databases of plant species and their associated C-values for various regions can be viewed and downloaded using a family of indexing functions. For instance, the following code produces a data frame listing all public assessments that draw the 2015 Missouri database [@ladd2015ecological]:
+Available databases of plant species and their associated C-values can be viewed and downloaded using a family of indexing functions. For instance, the following code produces a data frame listing all public assessments that draw on the 2015 Missouri database [@ladd2015ecological]:
 
 ```r 
 library(fqar)
 missouri_assessments_available <- index_fqa_assessments(database_id = 63)
 ```
 
-A summary of the `database_id`s assigned by  [universalfqa.org](https://universalfqa.org/) can be obtained with the `index_fqa_databases()` function.
+A summary of the `database_id` numbers assigned by  [universalfqa.org](https://universalfqa.org/) can be obtained with the `index_fqa_databases()` function.
 
-An analyst can download all available assessments in a given database or specify a narrower subset by practitioner, site, date, or other criteria using `dplyr` [@Wickham:2022vf] syntax. For instance, the following code downloads all assessments done by Justin Thomas with the Missouri database.
+An analyst can download all available assessments in a given database or specify a narrower subset by practitioner, site, date, or other criteria using `dplyr` [@Wickham:2022vf] syntax. For instance, the following code downloads all assessments done by Justin Thomas using the Missouri database.
 
 ```r
 thomas_fqas <- download_assessment_list(database_id = 63,
                                         practitioner == "Justin Thomas")
 ```
 
-The output of this commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `fqar::assessment_list_glance()`:
+The output of this commands is a list of data frames in the raw format provided by [universalfqa.org](https://universalfqa.org/). Summary data can be obtained in tidy format [@JSSv059i10] with `assessment_list_glance()`:
 
 ```r
 thomas_tidy <- assessment_list_glance(thomas_fqas)
