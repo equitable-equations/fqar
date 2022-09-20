@@ -20,7 +20,6 @@ install.packages("fqar")
 Alternatively, the development version can be installed from [GitHub](https://github.com/equitable-equations/fqar).
 
 ```{r github}
-# Install development version from GitHub: 
 devtools::install_github("equitable-equations/fqar")
 ```
 
