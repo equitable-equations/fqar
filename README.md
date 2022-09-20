@@ -11,9 +11,15 @@ Floristic Quality Assessment (FQA) is a standardized method for rating the ecolo
 
 ## Installation
 
-The development version can be installed from [GitHub](https://github.com/equitable-equations/fqar).
+The ${\tt fqar}$ package is available on cran.
 
 ```{r install}
+install.packages("fqar")
+```
+
+Alternatively, the development version can be installed from [GitHub](https://github.com/equitable-equations/fqar).
+
+```{r github}
 # Install development version from GitHub: 
 devtools::install_github("equitable-equations/fqar")
 ```
