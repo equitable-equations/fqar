@@ -10,7 +10,7 @@
 Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from universalfqa.org.
 
 ## Installation
-
+ 
 The ${\tt fqar}$ package is available on cran.
 
 ```{r install}
