@@ -95,7 +95,8 @@ transect_glance <- function(data_set){
                          col = 1,
                          sep = ",",
                          into = paste0("V", 1:14),
-                         fill = "right")
+                         fill = "right",
+                         extra = "merge")
   }
 
   data_set <- na_if(data_set, "n/a")
