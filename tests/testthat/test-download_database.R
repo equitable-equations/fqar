@@ -8,4 +8,6 @@ test_that("download_database works", {
   test_db <- download_database(1)
   expect_equal(test_db[1, 1], "Chicago Region")
   expect_equal(ncol(test_db), 9)
+
+  expect_warning(download_database(3))
 })

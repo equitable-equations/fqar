@@ -66,6 +66,11 @@ download_database <- function(database_id){
     unlist(x)
   })
 
-  as.data.frame(do.call(rbind, list_data))
+  db_out <- as.data.frame(do.call(rbind, list_data))
+
+  if (db_out[5, 2] == 0) warning("Specified database is empty.",
+                                 call. = FALSE)
+
+  db_out
 }
 
