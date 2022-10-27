@@ -1,0 +1,58 @@
+Test assessment
+8/9/22
+test name 1
+test site city
+test site county
+test site state
+test site country
+"FQA DB Region:,Chicago Region USACE"
+"FQA DB Publication Year:,2017"
+"FQA DB Description:,https://www.lrc.usace.army.mil/Missions/Regulatory/FQA.aspx"
+"Practitioner:,""Andrew Gard"""
+"Latitude:,""test lat"""
+"Longitude:,""test long"""
+"Weather Notes:,test weather"
+"Duration Notes:,test durations"
+"Community Type Notes:,test community"
+"Other Notes:,test other"
+"Private/Public:,Private"
+Conservatism-Based Metrics:
+"Total Mean C:,0"
+"Native Mean C:,0"
+"Total FQI:,0"
+"Native FQI:,0"
+"Adjusted FQI:,0"
+"% C value 0:,100"
+"% C value 1-3:,0"
+"% C value 4-6:,0"
+"% C value 7-10:,0"
+"Native Tree Mean C:,n/a"
+"Native Shrub Mean C:,n/a"
+"Native Herbaceous Mean C:,n/a"
+Species Richness:
+"Total Species:,1"
+"Native Species:,0,0%"
+"Non-native Species:,1,100%"
+Species Wetness:
+"Mean Wetness:,-2"
+"Native Mean Wetness:,0"
+Physiognomy Metrics:
+"Tree:,0,0%"
+"Shrub:,0,0%"
+"Vine:,0,0%"
+"Forb:,1,100%"
+"Grass:,0,0%"
+"Sedge:,0,0%"
+"Rush:,0,0%"
+"Fern:,0,0%"
+"Bryophyte:,0,0%"
+Duration Metrics:
+"Annual:,0,0%"
+"Perennial:,1,100%"
+"Biennial:,0,0%"
+"Native Annual:,0,0%"
+"Native Perennial:,0,0%"
+"Native Biennial:,0,0%"
+Species:
+"Scientific Name,Family,Acronym,Native?,C,W,Physiognomy,Duration,Common Name"
+"Acorus calamus,Acoraceae,ACOCAL,non-native,0,-2,forb,perennial,single-vein sweetflag"

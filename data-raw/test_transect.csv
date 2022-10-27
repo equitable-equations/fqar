@@ -1,0 +1,76 @@
+test assessment
+8/8/22
+test name 1
+test site city
+test site county
+test site state
+test site country
+54 - Central Corn Belt Plains (8.2.3);
+"FQA DB Region:,Chicago Region USACE"
+"FQA DB Publication Year:,2017"
+"FQA DB Description:,https://www.lrc.usace.army.mil/Missions/Regulatory/FQA.aspx"
+"FQA DB Selection Name:,Chicago Region USACE  , 2017"
+"Practitioner:,prac"
+"Latitude:,"
+"Longitude:,long"
+"Community Code:,comm"
+"Community Name:,cn"
+"Community Type Notes:,ctn"
+"Weather Notes:,wn"
+"Duration Notes:,dn"
+"Environment Description:,ed"
+"Other Notes:,pn"
+"Transect/Plot Type:,Transect"
+"Plot Size: (m2),"
+"Quadrat/Subplot Size: (m2),"
+"Transect Length (m):,"
+"Sampling Design Description:,"
+"Cover Method:,% Cover (0 - 100)"
+"Private/Public:,Public"
+Conservatism-Based Metrics:
+"Total Mean C:,1.5"
+"Cover-weighted Mean C:,0.4"
+"Native Mean C:,3"
+"Total FQI:,2.1"
+"Native FQI:,3"
+"Cover-weighted FQI:,0.6"
+"Cover-weighted Native FQI:,3"
+"Adjusted FQI:,21.2"
+"% C value 0:,50"
+"% C value 1-3:,50"
+"% C value 4-6:,0"
+"% C value 7-10:,0"
+Species Richness:
+"Total Species:,2"
+"Native Species:,1,50%"
+"Non-native Species:,1,50%"
+Species Wetness:
+"Mean Wetness:,-2"
+"Native Mean Wetness:,-2"
+Duration Metrics:
+"Annual:,0,0%"
+"Perennial:,2,100%"
+"Biennial:,0,0%"
+"Native Annual:,0,0%"
+"Native Perennial:,1,50%"
+"Native Biennial:,0,0%"
+Physiognomic Relative Importance Values:
+"Physiognomy,Frequency,Coverage,""Relative Frequency (%)"",""Relative Coverage (%)"",""Relative Importance Value"""
+"Non-native forb,1,100,50,87,68.5"
+"Native forb,1,15,50,13,31.5"
+Species Relative Importance Values:
+"Species,Family,Acronym,Nativity,C,W,Physiognomy,Duration,Frequency,Coverage,""Relative Frequency (%)"",""Relative Coverage (%)"",""Relative Importance Value"""
+"Acorus calamus,Acoraceae,ACOCAL,non-native,0,-2,forb,perennial,1,100,50,87,68.5"
+"Alisma subcordatum,Alismataceae,ALISUB,native,3,-2,forb,perennial,1,15,50,13,31.5"
+Quadrat/Subplot Level Metrics:
+"Quadrat/Subplot,""Total Species Richness"",""Native Species Richness"",""Total Mean C"",""Native Mean C"",""Total FQI"",""Native FQI"",""Cover-weighted FQI"",""Cover-weighted Native FQI"",""Adjusted FQI"",""Total Mean Wetness"",""Native Mean Wetness"",Latitude,Longitude"
+"FullTransectPlot,1,1,3,3,3,3,3,3,30,-2,-2,n/a,n/a"
+"sdfg,1,0,0,0,0,0,0,0,0,-2,0,n/a,n/a"
+"Average,1,0.5,1.5,1.5,1.5,1.5,1.5,1.5,15,-2,-1,n/a,n/a"
+"Standard Deviation,0,0.5,1.5,1.5,1.5,1.5,1.5,1.5,15,0,1,n/a,n/a"
+Quadrat/Subplot FullTransectPlot Species:
+"Scientific Name,Family,Acronym,% Cover,% Range (Midpt),Native?,C,W,Physiognomy,Duration,Common Name"
+"Alisma subcordatum,Alismataceae,ALISUB,15,% Cover (0 - 100),native,3,-2,forb,perennial,american water-plantain"
+Quadrat/Subplot sdfg Species:
+"Scientific Name,Family,Acronym,% Cover,% Range (Midpt),Native?,C,W,Physiognomy,Duration,Common Name"
+"Acorus calamus,Acoraceae,ACOCAL,100,% Cover (0 - 100),non-native,0,-2,forb,perennial,single-vein sweetflag"
