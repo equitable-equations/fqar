@@ -94,7 +94,7 @@ grasshopper_species <- assessment_inventory(grasshopper)
 glimpse(grasshopper_species)
 ```
 
-A tidy summary of the assessment can be obtained with ${\tt assessment\_glance()}$. The output is a data frame with a single row and 53 columns, including ${\tt Native\ Mean\ C}$,  ${\tt Native\ Species}$, and ${\tt Native\ FQI}$.
+A tidy summary of the assessment can be obtained with ${\tt assessment\_glance()}$. The output is a data frame with a single row and 53 columns, including ${\tt native\_mean\_C}$,  ${\tt native\_species}$, and ${\tt native\_fqi}$.
 
 ```{r}
 grasshopper_summary <- assessment_glance(grasshopper)
@@ -127,8 +127,8 @@ glimpse(rock_garden_phys)
 Two tidy data sets of floristic quality data, ${\tt missouri}$ and ${\tt chicago}$, are included with the ${\tt fqar}$ package. Produced with ${\tt assessment\_list\_glance()}$, these show summary information for every floristic quality assessment that used databases 63 and 149, respectively, prior to August 14, 2022. These sets may be useful for visualization or machine-learning purposes. For instance, one might consider the relationship between richness and native mean C in sites assessed using the 2015 Missouri database:
 
 ```{r missouri plot, warning = FALSE}
-ggplot(missouri, aes(x = `Native Species`, 
-                     y = `Native Mean C`)) +
+ggplot(missouri, aes(x = native_species, 
+                     y = native_mean_c)) +
   geom_point() +
   geom_smooth() +
   scale_x_continuous(trans = "log10") +
