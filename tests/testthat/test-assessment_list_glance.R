@@ -7,7 +7,7 @@ test_that("assessment_list_glance works", {
   test_df <- assessment_list_glance(test_list)
 
   expect_equal(ncol(test_df), 52)
-  expect_equal(typeof(test_df$`Total Mean C`), "double")
+  expect_equal(typeof(test_df$total_mean_c), "double")
   expect_gt(nrow(test_df), 1)
 
   skip_on_cran()
@@ -18,6 +18,6 @@ test_that("assessment_list_glance works", {
 
   expect_equal(ncol(test_df), 52)
   expect_equal(nrow(test_df), length(test_list))
-  expect_equal(typeof(test_df$`Total Mean C`), "double")
+  expect_equal(typeof(test_df$total_mean_c), "double")
   expect_gt(nrow(test_df), 1)
 })

@@ -12,11 +12,11 @@
 #'    \item region (character)
 #'    \item year (numeric)
 #'    \item description (character)
-#'    \item total species (numeric)
-#'    \item native species (numeric)
-#'    \item non-native species (numeric)
-#'    \item total mean C (numeric)
-#'    \item native mean C (numeric)
+#'    \item total_species (numeric)
+#'    \item native_species (numeric)
+#'    \item non_native_species (numeric)
+#'    \item total_mean_c (numeric)
+#'    \item native_mean_c (numeric)
 #' }
 #'
 #' @import tidyr dplyr
@@ -66,11 +66,11 @@ database_glance <- function(database){
   names(wide) <- c("region",
                    "year",
                    "description",
-                   "total species",
-                   "native species",
-                   "non-native species",
-                   "total mean C",
-                   "native mean C")
+                   "total_species",
+                   "native_species",
+                   "non_native_species",
+                   "total_mean_c",
+                   "native_mean_c")
   wide
 }
 

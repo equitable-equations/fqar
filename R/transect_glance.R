@@ -9,60 +9,60 @@
 #'
 #' @return A data frame with 1 row and 54 columns:
 #' \itemize{
-#'    \item Title (character)
-#'    \item Date (date)
-#'    \item Site Name (character)
-#'    \item City (character)
-#'    \item County (character)
-#'    \item State (character)
-#'    \item Country (character)
-#'    \item Omernik Level 3 Ecoregion (character)
-#'    \item FQA DB Region (character)
-#'    \item FQA DB Publication Year (character)
-#'    \item FQA DB Description (character)
-#'    \item FQA DB Selection Name (character)
-#'    \item Custom FQA DB Name (character)
-#'    \item Custom FQA DB Description (character)
-#'    \item Practitioner (character)
-#'    \item Latitude (character)
-#'    \item Longitude (character)
-#'    \item Community Code (character)
-#'    \item Community Name (character)
-#'    \item Community Type Notes (character)
-#'    \item Weather Notes (character)
-#'    \item Duration Notes (character)
-#'    \item Environment Description (character)
-#'    \item Other Notes (character)
-#'    \item Transect/Plot Type (character)
-#'    \item Plot Size (m2) (numeric)
-#'    \item Quadrat/Subplot Size (m2) (numeric)
-#'    \item Transect Length (m) (numeric)
-#'    \item Sampling Design Description (character)
-#'    \item Cover Method (character)
-#'    \item Private/Public (character)
-#'    \item Total Mean C (numeric)
-#'    \item Cover-weighted Mean C (numeric)
-#'    \item Native Mean C (numeric)
-#'    \item Total FQI (numeric)
-#'    \item Native FQI (numeric)
-#'    \item Cover-weighted FQI (numeric)
-#'    \item Cover-weighted Native FQI (numeric)
-#'    \item Adjusted FQI (numeric)
-#'    \item \% C value 0 (numeric)
-#'    \item \% C value 1-3 (numeric)
-#'    \item \% C value 4-6 (numeric)
-#'    \item \% C value 7-10 (numeric)
-#'    \item Total Species (numeric)
-#'    \item Native Species (numeric)
-#'    \item Non-native Species (numeric)
-#'    \item Mean Wetness (numeric)
-#'    \item Native Mean Wetness (numeric)
-#'    \item Annual (numeric)
-#'    \item Perennial (numeric)
-#'    \item Biennial (numeric)
-#'    \item Native Annual (numeric)
-#'    \item Native Perennial (numeric)
-#'    \item Native Biennial (numeric)
+#'    \item title (character)
+#'    \item date (date)
+#'    \item site_name (character)
+#'    \item city (character)
+#'    \item county (character)
+#'    \item state (character)
+#'    \item country (character)
+#'    \item omernik_level_three_ecoregion (character)
+#'    \item fqa_db_region (character)
+#'    \item fqa_db_publication_year (character)
+#'    \item fqa_db_description (character)
+#'    \item fqa_db_selection_name (character)
+#'    \item custom_fqa_db_name (character)
+#'    \item custom_fqa_db_description (character)
+#'    \item practitioner (character)
+#'    \item latitude (character)
+#'    \item longitude (character)
+#'    \item community_code (character)
+#'    \item community_name (character)
+#'    \item community_type_notes (character)
+#'    \item weather_notes (character)
+#'    \item duration_notes (character)
+#'    \item environment_description (character)
+#'    \item other_notes (character)
+#'    \item transect_plot_type (character)
+#'    \item plot_size (numeric) Plot size in square meters
+#'    \item quadrat_subplot_size (numeric) Quadrat or subplot size in square meters
+#'    \item transect_length (numeric) Transect length in meters
+#'    \item sampling_design_description (character)
+#'    \item cover_method (character)
+#'    \item private_public (character)
+#'    \item total_mean_c (numeric)
+#'    \item cover_weighted_mean_c (numeric)
+#'    \item native_mean_c (numeric)
+#'    \item total_fqi (numeric)
+#'    \item native_fqi (numeric)
+#'    \item cover-weighted_fqi (numeric)
+#'    \item cover-weighted_native_fqi (numeric)
+#'    \item adjusted_fqi (numeric)
+#'    \item c_value_zero (numeric) Percent of c-values 0
+#'    \item c_value_low (numeric) Percent of c-values 1-3
+#'    \item c_value_mid (numeric) Percent of c-values 4-6
+#'    \item c_value_high (numeric) Percent of c-values 7-10
+#'    \item total_species (numeric)
+#'    \item native_species (numeric)
+#'    \item non_native_species (numeric)
+#'    \item mean_wetness (numeric)
+#'    \item native_mean_wetness (numeric)
+#'    \item annual (numeric)
+#'    \item perennial (numeric)
+#'    \item biennial (numeric)
+#'    \item native_annual (numeric)
+#'    \item native_perennial (numeric)
+#'    \item native_biennial (numeric)
 #' }
 #'
 #' @import dplyr tidyr
@@ -154,6 +154,61 @@ transect_glance <- function(data_set){
 
   names(data) <- gsub(":", "", names(data))
 
+  names(data) <- c("title",
+                   "date",
+                   "site_name",
+                   "city",
+                   "county",
+                   "state",
+                   "country",
+                   "omernik_level_three_ecoregion",
+                   "fqa_db_region",
+                   "fqa_db_publication Year",
+                   "fqa_db_description",
+                   "fqa_db_selection_name",
+                   "custom_fqa_db_name",
+                   "custom_fqa_db_description",
+                   "practitioner",
+                   "latitude",
+                   "longitude",
+                   "community_code",
+                   "community_name",
+                   "community_type_notes",
+                   "weather_notes",
+                   "duration_notes",
+                   "environment_description",
+                   "other_notes",
+                   "transect_plot_type",
+                   "plot_size",
+                   "quadrat_subplot_size",
+                   "transect_length",
+                   "sampling_design_description",
+                   "cover_method",
+                   "private_public",
+                   "total_mean_c",
+                   "cover_weighted_mean_c",
+                   "native_mean_c",
+                   "total_fqi",
+                   "native_fqi",
+                   "cover-weighted_fqi",
+                   "cover-weighted_native_fqi",
+                   "adjusted_fqi",
+                   "c_value_zero",
+                   "c_value_low",
+                   "c_value_mid",
+                   "c_value_high",
+                   "total_species",
+                   "native_species",
+                   "non_native_species",
+                   "mean_wetness",
+                   "native_mean_wetness",
+                   "annual",
+                   "perennial",
+                   "biennial",
+                   "native_annual",
+                   "native_perennial",
+                   "native_biennial"
+                   )
   data
 }
 

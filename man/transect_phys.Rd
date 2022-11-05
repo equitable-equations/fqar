@@ -14,12 +14,12 @@ transect_phys(data_set)
 \value{
 A data frame with 6 columns:
 \itemize{
-   \item Physiognomy (character)
-   \item Frequency (numeric)
-   \item Coverage (numeric)
-   \item Relative Frequency (\%) (numeric)
-   \item Relative Coverage (\%) (numeric)
-   \item Relative Importance Value (numeric)
+   \item physiognomy (character)
+   \item frequency (numeric)
+   \item coverage (numeric)
+   \item relative_frequency_percent (numeric)
+   \item relative_coverage_percent (numeric)
+   \item relative_importance_value_percent (numeric)
 }
 }
 \description{

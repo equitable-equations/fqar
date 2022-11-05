@@ -14,15 +14,15 @@ database_inventory(database)
 \value{
 A data frame with 9 columns:
 \itemize{
-   \item Scientific Name (character)
-   \item Family (character)
-   \item Acronym (character)
-   \item Native? (character)
-   \item C (numeric)
-   \item W (numeric)
-   \item Physiognomy (character)
-   \item Duration (character)
-   \item Common Name (character)
+   \item scientific_name (character)
+   \item family (character)
+   \item acronym (character)
+   \item nativity (character)
+   \item c (numeric)
+   \item w (numeric)
+   \item physiognomy (character)
+   \item duration (character)
+   \item common_name (character)
 }
 }
 \description{

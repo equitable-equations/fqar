@@ -10,12 +10,12 @@
 #'
 #' @return  A data frame with 6 columns:
 #' \itemize{
-#'    \item Physiognomy (character)
-#'    \item Frequency (numeric)
-#'    \item Coverage (numeric)
-#'    \item Relative Frequency (\%) (numeric)
-#'    \item Relative Coverage (\%) (numeric)
-#'    \item Relative Importance Value (numeric)
+#'    \item physiognomy (character)
+#'    \item frequency (numeric)
+#'    \item coverage (numeric)
+#'    \item relative_frequency_percent (numeric)
+#'    \item relative_coverage_percent (numeric)
+#'    \item relative_importance_value_percent (numeric)
 #' }
 #'
 #' @import dplyr tidyr
@@ -63,7 +63,13 @@ transect_phys <- function(data_set) {
   }
   phys <- data_set[start_row:end_row, 1:6]
 
-  names(phys) <- data_set[start_row - 1, 1:6]
+  names(phys) <- c("physiognomy",
+                   "frequency",
+                   "coverage",
+                   "relative_frequency_percent",
+                   "relative_coverage_percent",
+                   "relative_importance_value_percent"
+  )
 
   suppressWarnings(phys <- phys
                    |>  mutate(across(2:6, as.double)))
