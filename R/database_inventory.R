@@ -10,15 +10,15 @@
 
 #' @return A data frame with 9 columns:
 #' \itemize{
-#'    \item Scientific Name (character)
-#'    \item Family (character)
-#'    \item Acronym (character)
-#'    \item Native? (character)
-#'    \item C (numeric)
-#'    \item W (numeric)
-#'    \item Physiognomy (character)
-#'    \item Duration (character)
-#'    \item Common Name (character)
+#'    \item scientific_name (character)
+#'    \item family (character)
+#'    \item acronym (character)
+#'    \item nativity (character)
+#'    \item c (numeric)
+#'    \item w (numeric)
+#'    \item physiognomy (character)
+#'    \item duration (character)
+#'    \item common_name (character)
 #' }
 #'
 #' @import dplyr tidyr
@@ -60,15 +60,15 @@ database_inventory <- function(database) {
     filter(row_number() > which(.data$V1 == "Scientific Name")) |>
     mutate(across(5:6, as.numeric))
 
-  names(inv) <- c("Scientific Name",
-                  "Family",
-                  "Acronym",
-                  "Native?",
-                  "C",
-                  "W",
-                  "Physiognomy",
-                  "Duration",
-                  "Common Name")
+  names(inv) <- c("scientific_name",
+                  "family",
+                  "acronym",
+                  "nativity",
+                  "c",
+                  "w",
+                  "physiognomy",
+                  "duration",
+                  "common_name")
 
   inv
 }

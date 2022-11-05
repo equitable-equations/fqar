@@ -10,19 +10,19 @@
 #'
 #' @return A data frame with 13 columns:
 #' \itemize{
-#'   \item Species (character)
-#'   \item Family (character)
-#'   \item Acronym (character)
-#'   \item Nativity (character)
-#'   \item C (numeric)
-#'   \item W (numeric)
-#'   \item Physiognomy (character)
-#'   \item Duration (character)
-#'   \item Frequency (numeric)
-#'   \item Coverage (numeric)
-#'   \item Relative Frequency % (numeric)
-#'   \item Relative Coverage % (numeric)
-#'   \item Relative Importance Value (numeric)
+#'   \item species (character)
+#'   \item family (character)
+#'   \item acronym (character)
+#'   \item nativity (character)
+#'   \item c (numeric)
+#'   \item w (numeric)
+#'   \item physiognomy (character)
+#'   \item duration (character)
+#'   \item frequency (numeric)
+#'   \item coverage (numeric)
+#'   \item relative_frequency_percent (numeric)
+#'   \item relative_coverage_percent (numeric)
+#'   \item relative_importance_value (numeric)
 #' }
 #'
 #' @import dplyr tidyr
@@ -80,6 +80,21 @@ transect_inventory <- function(data_set) {
                      mutate(across(c(5:6, 9:13), as.double)))
 
   class(new) <- c("tbl_df", "tbl", "data.frame")
+
+  names <- c("species",
+             "family",
+             "acronym",
+             "nativity",
+             "c",
+             "w",
+             "physiognomy",
+             "duration",
+             "frequency",
+             "coverage",
+             "relative_frequency_percent",
+             "relative_coverage_percent",
+             "relative_importance_value")
+  colnames(new) <- names
 
   new
 }
