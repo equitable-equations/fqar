@@ -2,7 +2,7 @@ test_that("assessment_inventory works", {
 
   expect_error(assessment_inventory("hi"))
 
-  test_man <- assessment_inventory(test_assessment)
+  test_man <- assessment_inventory(test_assessment_manual)
   expect_equal(ncol(test_man), 9)
   expect_equal(names(test_man)[5], "c")
   expect_equal(typeof(test_man$c), "double")

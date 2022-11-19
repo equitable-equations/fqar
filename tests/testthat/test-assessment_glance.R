@@ -3,7 +3,7 @@ test_that("assessment_glance works", {
   expect_error(assessment_glance("hi"))
   expect_error(assessment_glance(faithful))
 
-  test_man <- assessment_glance(test_assessment)
+  test_man <- assessment_glance(test_assessment_manual)
   expect_equal(ncol(test_man), 52)
   expect_equal(nrow(test_man), 1)
   expect_equal(names(test_man)[8], "fqa_db_region")
