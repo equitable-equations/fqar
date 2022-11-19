@@ -79,14 +79,18 @@ assessment_glance <- function(data_set) {
 
   if (!is.data.frame(data_set)) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
-    }
+  }
+  if (ncol(data_set) == 0){
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
   if (!("Species Richness:" %in% data_set[[1]])) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
 
   if (ncol(data_set) == 1) {
 
-    new <- rbind(names(data_set), data_set)
+    new <- rbind(names(data_set),
+                 data_set)
 
     data_set <- separate(new,
                          col = 1,
@@ -125,7 +129,8 @@ assessment_glance <- function(data_set) {
     new_rows <- data.frame(V1 = c("Custom FQA DB Name",
                                    "Custom FQA DB Description"),
                            V2 = c(NA, NA))
-    selected <- rbind(selected[1:10, ], new_rows, selected[-(1:10), ])
+    selected <- rbind(selected[1:10, ],
+                      new_rows, selected[-(1:10), ])
   } else {
     selected[1:12, ] <- selected[c(1:7, 10:12, 8:9), ]
     selected$V1 <- gsub("Original ", "", selected$V1)
@@ -134,18 +139,18 @@ assessment_glance <- function(data_set) {
   small <- selected |>
     filter(row_number() < which(.data$V1 == "Species:"))
 
-  pivoted <- small |> pivot_wider(names_from = .data$V1,
-                                  values_from = .data$V2)
+  pivoted <- small |> pivot_wider(names_from = "V1",
+                                  values_from = "V2")
 
   suppressWarnings(final <- pivoted |>
                      mutate(across(22:57, as.double),
                             Date = as.Date(.data$Date)))
   final <- final |>
-    select(-c(.data$`Duration Metrics:`,
-              .data$`Physiognomy Metrics:`,
-              .data$`Conservatism-Based Metrics:`,
-              .data$`Species Richness:`,
-              .data$`Species Wetness:`))
+    select(-c("Duration Metrics:",
+              "Physiognomy Metrics:",
+              "Conservatism-Based Metrics:",
+              "Species Richness:",
+              "Species Wetness:"))
 
   names(final) <- c("title",
                     "date",

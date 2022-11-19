@@ -39,6 +39,9 @@ assessment_inventory <- function(data_set) {
   if (!is.data.frame(data_set)) {
     stop("data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help.", call. = FALSE)
   }
+  if (ncol(data_set) == 0){
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
   if (!("Species Richness:" %in% data_set[[1]])) {
     stop("data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help.", call. = FALSE)
   }
