@@ -64,7 +64,6 @@
 #'    \item native_biennial (numeric)
 #' }
 #'
-#' @import dplyr tidyr
 #' @examples
 #' \donttest{
 #' # While assessment_list_glance can be used with a list of .csv file downloaded
@@ -79,7 +78,12 @@
 
 assessment_list_glance <- function(assessment_list){
 
-  applied <- lapply(assessment_list, assessment_glance)
+  if (!is_assessment_list(assessment_list)){
+    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
+  }
+
+  applied <- lapply(assessment_list,
+                    assessment_glance)
 
   do.call(rbind, applied)
 
