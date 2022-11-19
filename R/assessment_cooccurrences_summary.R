@@ -1,0 +1,82 @@
+#' Generate a summary of co-occurrences in various assessment inventories
+#'
+#' \code{assessment_coccurrences_summary()} accepts a list of species
+#' inventories downloaded from
+#' \href{https://universalfqa.org/}{universalfqa.org} and returns a summary of
+#' the co-occurrences of each target species. Repeated co-occurrences across
+#' multiple assessments are included in summary
+#' calculations, but self co-occurrences are not.
+#'
+#' @param inventory_list A list of site inventories having the format of
+#' \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}
+#'
+#' @return A data frame with 15 columns:
+#' \itemize{
+#' \item target_species (character)
+#' \item target_species_c (numeric)
+#' \item target_species_nativity (numeric)
+#' \item cospecies_n (numeric)
+#' \item cospecies_native_n (numeric)
+#' \item cospecies_mean_c (numeric)
+#' \item cospecies_native_mean_c  (numeric)
+#' \item cospecies_std_dev_c  (numeric)
+#' \item cospecies_native_std_dev_c  (numeric)
+#' \item percent_native  (numeric)
+#' \item percent_nonnative (numeric)
+#' \item percent_native_low_c (numeric)
+#' \item percent_native_med_c  (numeric)
+#' \item percent_native_high_c  (numeric)
+#' \item discrepancy_c (numeric)
+#' }
+#'
+#' @import dplyr
+#' @importFrom rlang .data
+#' @importFrom stats sd
+#'
+#'
+#' @examples
+#' # assessment_cooccurrences_summary is best used in combination with
+#' # download_assessment_list() and assessment_list_inventory().
+#'
+#' \donttest{
+#' ontario <- download_assessment_list(database = 2)
+#' ontario_invs <- assessment_list_inventory(ontario)
+#' ontario_cooccurrences <- assessment_cooccurrences_summary(ontario_invs)
+#' }
+#'
+#' @export
+
+
+assessment_cooccurrences_summary <- function(inventory_list){
+
+  if (!is_inventory_list(inventory_list)){
+    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
+  }
+
+  cooccur <- assessment_cooccurrences(inventory_list)
+  cooccur |> dplyr::group_by(.data$target_species) |>
+    dplyr::summarize(target_species_c = unique(.data$target_species_c),
+                     target_species_nativity = unique(.data$target_species_nativity),
+                     cospecies_n = n(),
+                     cospecies_native_n =  sum(.data$cospecies_nativity == "native") ,
+                     cospecies_mean_c = mean(.data$cospecies_c,
+                                             na.rm = TRUE),
+                     cospecies_native_mean_c = mean(.data$cospecies_c[.data$cospecies_nativity == "native"],
+                                                    na.rm = TRUE),
+                     cospecies_std_dev_c = stats::sd(.data$cospecies_c,
+                                              na.rm = TRUE),
+                     cospecies_native_std_dev_c = stats::sd(.data$cospecies_c[.data$cospecies_nativity == "native"],
+                                                     na.rm = TRUE),
+                     percent_native = .data$cospecies_native_n / .data$cospecies_n,
+                     percent_nonnative = 1 - .data$percent_native,
+                     percent_native_low_c = mean(.data$cospecies_c <= 3,
+                                                 na.rm = TRUE), # not quite right
+                     percent_native_med_c = mean(.data$cospecies_c <= 7,
+                                                 na.rm = TRUE) - mean(.data$cospecies_c <= 3,
+                                                                      na.rm = TRUE),
+                     percent_native_high_c = 1 - mean(.data$cospecies_c <= 7,
+                                                      na.rm = TRUE),
+                     discrepancy_c = .data$target_species_c - .data$cospecies_native_mean_c
+              ) |>
+    dplyr::arrange(.data$target_species)
+}
