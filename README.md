@@ -11,7 +11,7 @@ Floristic Quality Assessment (FQA) is a standardized method for rating the ecolo
 
 ## Installation
  
-The ${\tt fqar}$ package is available on cran.
+The ${\tt fqar}$ package is available on CRAN.
 
 ```{r install}
 install.packages("fqar")
@@ -25,7 +25,7 @@ devtools::install_github("equitable-equations/fqar")
 
 ## Usage 
 
-The ${\tt fqar}$ package consists of three categories of functions: indexing, downloading, and tidying functions. ${\tt fqar}$ also includes two sample data sets.
+The ${\tt fqar}$ package consists of four categories of functions: indexing, downloading, tidying, and analytic functions. ${\tt fqar}$ also includes two sample data sets.
 
 ### Indexing functions
 
@@ -96,6 +96,31 @@ rock_garden_summary  <- transect_glance(rock_garden)
 # obtain a data frame with summary information for multiple downloaded transect assessments:
 lord_summary <- transect_list_glance(lord_fqas)
 ```
+
+### Analytic functions
+
+The ${\tt fqar}$ package provides tools for analyzing species co-occurrence across multiple floristic quality assessments. A typical workflow consists of downloading a list of assessments, extracting inventories from each, then enumerating and summarizing co-occurrences of the species of interest.
+
+```{r analysis}
+# Obtain a tidy data frame of all co-occurrences in the 1995 Southern Ontario database:
+ontario <- download_assessment_list(database = 2)
+
+# Extract inventories as a list:
+ontario_invs <- assessment_list_inventory(ontario)
+
+# Enumerate all co-occurrences in this database:
+ontario_cooccurrences <- assessment_cooccurrences(ontario_invs)
+
+# Sumamrize co-occurrences in this database, one row per target species:
+ontario_cooccurrences <- assessment_cooccurrences_summary(ontario_invs)
+```
+
+Of particular note is the ${\tt species_profile()\}$ function, which returns the frequency distribution of C-values of co-occurring species for a given target species.
+
+```{r profile}
+aster_profile <- species_profile("Aster lateriflorus", ontario_invs)
+```
+
 
 ## Learn More 
 * Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQAs with fqar.
