@@ -61,10 +61,12 @@ download_database <- function(database_id){
   }
 
   max_length <- max(unlist(lapply(list_data, length))) # determines how wide the df must be
-  list_data <- lapply(list_data, function(x) {
-    length(x) <- max_length
-    unlist(x)
-  })
+  list_data <- lapply(list_data,
+                      function(x) {
+                        length(x) <- max_length
+                        unlist(x)
+                        }
+                      )
 
   db_out <- as.data.frame(do.call(rbind, list_data))
 
@@ -72,5 +74,6 @@ download_database <- function(database_id){
                                  call. = FALSE)
 
   db_out
-}
+
+  }
 
