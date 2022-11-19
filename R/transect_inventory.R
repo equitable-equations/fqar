@@ -44,6 +44,9 @@ transect_inventory <- function(data_set) {
   if (!is.data.frame(data_set)) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
+  if (ncol(data_set) == 0){
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
   if (!("Species Richness:" %in% data_set[[1]])) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
@@ -73,7 +76,7 @@ transect_inventory <- function(data_set) {
 
   dropped <- data_set[start_row:end_row, ]
 
-  names(dropped) <- lapply(dropped[1, ], as.character)
+  colnames(dropped) <- lapply(dropped[1, ], as.character)
   dropped <- dropped[-1, ]
 
   suppressWarnings(new <- dropped |>

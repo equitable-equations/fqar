@@ -83,7 +83,10 @@ transect_glance <- function(data_set){
 
   if (!is.data.frame(data_set)) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)
-    }
+  }
+  if (ncol(data_set) == 0){
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
   if (!("Species Richness:" %in% data_set[[1]])) {
     stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
@@ -145,8 +148,8 @@ transect_glance <- function(data_set){
   selected$V1 <- gsub("Original ", "", selected$V1)
   selected$V2[28] <- sub("m", "", selected$V2[28])
 
-  pivoted <- selected |> pivot_wider(names_from = .data$V1,
-                                     values_from = .data$V2)
+  pivoted <- selected |> pivot_wider(names_from = "V1",
+                                     values_from = "V2")
 
   suppressWarnings(data <- pivoted |>
                      mutate(across(c(26:28, 32:54), as.numeric),
