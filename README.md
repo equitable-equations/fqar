@@ -25,7 +25,7 @@ devtools::install_github("equitable-equations/fqar")
 
 ## Usage 
 
-The ${\tt fqar}$ package consists of four categories of functions: indexing, downloading, tidying, and analytic functions. ${\tt fqar}$ also includes two sample data sets.
+The ${\tt fqar}$ package consists of four categories of functions: indexing, downloading, tidying, and analytic functions. ${\tt fqar}$ also includes two sample data sets. NOTE: analytic functions are currently available only in the developmental version.
 
 ### Indexing functions
 
@@ -99,7 +99,7 @@ lord_summary <- transect_list_glance(lord_fqas)
 
 ### Analytic functions
 
-The ${\tt fqar}$ package provides tools for analyzing species co-occurrence across multiple floristic quality assessments. A typical workflow consists of downloading a list of assessments, extracting inventories from each, then enumerating and summarizing co-occurrences of the species of interest.
+The developmental version of ${\tt fqar}$ provides tools for analyzing species co-occurrence across multiple floristic quality assessments. A typical workflow consists of downloading a list of assessments, extracting inventories from each, then enumerating and summarizing co-occurrences of the species of interest.
 
 ```{r analysis}
 # Obtain a tidy data frame of all co-occurrences in the 1995 Southern Ontario database:
