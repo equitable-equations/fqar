@@ -37,10 +37,14 @@ database_glance <- function(database){
   if (!is.data.frame(database)) {
     stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
+  if (ncol(database) == 0){
+    stop("database must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
   if (ncol(database) == 1) {
 
-    new <- rbind(names(database), database)
+    new <- rbind(names(database),
+                 database)
 
     database <- separate(new,
                          col = 1,
@@ -61,7 +65,8 @@ database_glance <- function(database){
   wide <- sm |>
     pivot_wider(names_from = "V1",
                 values_from = "V2") |>
-    mutate(across(c(2, 4:8), as.numeric))
+    mutate(across(c(2, 4:8),
+                  as.numeric))
 
   names(wide) <- c("region",
                    "year",
@@ -72,6 +77,7 @@ database_glance <- function(database){
                    "total_mean_c",
                    "native_mean_c")
   wide
+
 }
 
 
