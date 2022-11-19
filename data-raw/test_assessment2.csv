@@ -1,0 +1,90 @@
+V1,V2,V3,V4,V5,V6,V7,V8,V9
+"""Woodland Plants of the Somme Preserve""",NA,NA,NA,NA,NA,NA,NA,NA
+2019-03-28,NA,NA,NA,NA,NA,NA,NA,NA
+Somme Woods,NA,NA,NA,NA,NA,NA,NA,NA
+Northbrook,NA,NA,NA,NA,NA,NA,NA,NA
+Cook,NA,NA,NA,NA,NA,NA,NA,NA
+IL,NA,NA,NA,NA,NA,NA,NA,NA
+USA,NA,NA,NA,NA,NA,NA,NA,NA
+FQA DB Region:,Chicago Region,NA,NA,NA,NA,NA,NA,NA
+FQA DB Publication Year:,1994,NA,NA,NA,NA,NA,NA,NA
+FQA DB Description:,"Swink, F. and G. Wilhelm. 1994. Plants of the Chicago Region, 4th ed., Indiana Academy of Science, Indianapolis, 921 p.",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Practitioner:,Eriko Kojima,NA,NA,NA,NA,NA,NA,NA
+Latitude:,,NA,NA,NA,NA,NA,NA,NA
+Longitude:,,NA,NA,NA,NA,NA,NA,NA
+Weather Notes:,,NA,NA,NA,NA,NA,NA,NA
+Duration Notes:,,NA,NA,NA,NA,NA,NA,NA
+Community Type Notes:,,NA,NA,NA,NA,NA,NA,NA
+Other Notes:,,NA,NA,NA,NA,NA,NA,NA
+Private/Public:,Public,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Conservatism-Based Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Total Mean C:,7.2,NA,NA,NA,NA,NA,NA,NA
+Native Mean C:,7.2,NA,NA,NA,NA,NA,NA,NA
+Total FQI:,36,NA,NA,NA,NA,NA,NA,NA
+Native FQI:,36,NA,NA,NA,NA,NA,NA,NA
+Adjusted FQI:,72,NA,NA,NA,NA,NA,NA,NA
+% C value 0:,0,NA,NA,NA,NA,NA,NA,NA
+% C value 1-3:,4,NA,NA,NA,NA,NA,NA,NA
+% C value 4-6:,32,NA,NA,NA,NA,NA,NA,NA
+% C value 7-10:,64,NA,NA,NA,NA,NA,NA,NA
+Native Tree Mean C:,n/a,NA,NA,NA,NA,NA,NA,NA
+Native Shrub Mean C:,n/a,NA,NA,NA,NA,NA,NA,NA
+Native Herbaceous Mean C:,7.2,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species Richness:,NA,NA,NA,NA,NA,NA,NA,NA
+Total Species:,25,NA,NA,NA,NA,NA,NA,NA
+Native Species:,25,100%,NA,NA,NA,NA,NA,NA
+Non-native Species:,0,0%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species Wetness:,NA,NA,NA,NA,NA,NA,NA,NA
+Mean Wetness:,2.4,NA,NA,NA,NA,NA,NA,NA
+Native Mean Wetness:,2.4,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Physiognomy Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Tree:,0,0%,NA,NA,NA,NA,NA,NA
+Shrub:,0,0%,NA,NA,NA,NA,NA,NA
+Vine:,0,0%,NA,NA,NA,NA,NA,NA
+Forb:,21,84%,NA,NA,NA,NA,NA,NA
+Grass:,2,8%,NA,NA,NA,NA,NA,NA
+Sedge:,2,8%,NA,NA,NA,NA,NA,NA
+Rush:,0,0%,NA,NA,NA,NA,NA,NA
+Fern:,0,0%,NA,NA,NA,NA,NA,NA
+Bryophyte:,0,0%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Duration Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Annual:,0,0%,NA,NA,NA,NA,NA,NA
+Perennial:,25,100%,NA,NA,NA,NA,NA,NA
+Biennial:,0,0%,NA,NA,NA,NA,NA,NA
+Native Annual:,0,0%,NA,NA,NA,NA,NA,NA
+Native Perennial:,25,100%,NA,NA,NA,NA,NA,NA
+Native Biennial:,0,0%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species:,NA,NA,NA,NA,NA,NA,NA,NA
+Scientific Name,Family,Acronym,Native?,C,W,Physiognomy,Duration,Common Name
+Actaea pachypoda,n/a,ACTPAC,native,7,5,forb,perennial,white baneberry
+Anemone quinquefolia,n/a,ANEQUI,native,7,5,forb,perennial,wood anemone
+Anemonella thalictroides,n/a,ANETHA,native,7,5,forb,perennial,rue anemone
+Aquilegia canadensis,n/a,AQUCAN,native,6,1,forb,perennial,wild columbine
+Brachyelytrum erectum,n/a,BRAERE,native,10,5,grass,perennial,long-awned wood grass
+Caltha palustris,n/a,CALTPA,native,5,-5,forb,perennial,marsh marigold
+Camassia scilloides,n/a,CAMSCI,native,6,-1,forb,perennial,wild hyacinth
+Carex grayi,n/a,CXGRAY,native,7,-4,sedge,perennial,common bur sedge
+Carex sprengelii,n/a,CXSPRE,native,9,3,sedge,perennial,long-beaked sedge
+Chelone glabra,n/a,CHEGLB,native,8,-5,forb,perennial,turtlehead
+Dodecatheon meadia,n/a,DODMEA,native,6,3,forb,perennial,shooting star
+Hepatica acutiloba,n/a,HEPACU,native,6,5,forb,perennial,sharp-lobed hepatica
+Heracleum maximum,n/a,HERMAX,native,5,5,forb,perennial,cow parsnip
+Hypericum pyramidatum,n/a,HYPPYR,native,10,-1,forb,perennial,great st. johns wort
+Hystrix patula,n/a,HYSPAT,native,5,5,grass,perennial,bottlebrush grass
+Lathyrus ochroleucus,n/a,LATOCH,native,10,5,forb,perennial,pale vetchling
+Lithospermum latifolium,n/a,LITLAT,native,9,5,forb,perennial,broad-leaved puccoon
+Monotropa uniflora,n/a,MONUNI,native,10,3,forb,perennial,indian pipe
+Pedicularis canadensis,n/a,PEDCAN,native,9,2,forb,perennial,wood betony
+Polygonatum canaliculatum,n/a,POLCAL,native,3,3,forb,perennial,smooth solomons seal
+Sanguinaria canadensis,n/a,SANCAD,native,6,4,forb,perennial,bloodroot
+Solidago caesia,n/a,SOLCAE,native,7,3,forb,perennial,blue-stemmed goldenrod
+Solidago flexicaulis,n/a,SOLFLE,native,7,3,forb,perennial,broad-leaved goldenrod
+Trillium grandiflorum,n/a,TRIGRA,native,8,5,forb,perennial,large-flowered trillium
+Veronicastrum virginicum,n/a,VERVIR,native,7,0,forb,perennial,culvers root

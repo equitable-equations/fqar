@@ -1,0 +1,108 @@
+"Christoph east2021"
+2022-07-31
+Christoph
+
+
+
+
+"FQA DB Region:","Flora of the Chicago Region"
+"FQA DB Publication Year:",2017
+"FQA DB Description:","Flora of the Chicago Region UFQA Database. 2018. Kenneth Johnson. [As per Flora of the Chicago Region: A Floristic and Ecological Synthesis. 2017. Gerould Wilhelm and Laura Rericha. Indiana Academy of Science. Indianapolis, IN.]"
+
+Practitioner:,Wilhelm
+Latitude:,
+Longitude:,
+"Weather Notes:",
+"Duration Notes:",
+"Community Type Notes:",
+"Other Notes:",
+Private/Public:,Public
+
+"Conservatism-Based Metrics:"
+"Total Mean C:",2.1
+"Native Mean C:",4.2
+"Total FQI:",13.9
+"Native FQI:",19.7
+"Adjusted FQI:",29.7
+"% C value 0:",61.4
+"% C value 1-3:",6.8
+"% C value 4-6:",18.2
+"% C value 7-10:",13.6
+"Native Tree Mean C:",n/a
+"Native Shrub Mean C:",n/a
+"Native Herbaceous Mean C:",4.2
+
+"Species Richness:"
+"Total Species:",44
+"Native Species:",22,50%
+"Non-native Species:",22,50%
+
+"Species Wetness:"
+"Mean Wetness:",1
+"Native Mean Wetness:",0.8
+
+"Physiognomy Metrics:"
+Tree:,0,0%
+Shrub:,0,0%
+Vine:,0,0%
+Forb:,35,79.5%
+Grass:,7,15.9%
+Sedge:,2,4.5%
+Rush:,0,0%
+Fern:,0,0%
+Bryophyte:,0,0%
+
+"Duration Metrics:"
+Annual:,6,13.6%
+Perennial:,32,72.7%
+Biennial:,6,13.6%
+"Native Annual:",4,9.1%
+"Native Perennial:",18,40.9%
+"Native Biennial:",0,0%
+
+Species:
+"Scientific Name",Family,Acronym,Native?,C,W,Physiognomy,Duration,"Common Name"
+"Agrostis gigantea",Poaceae,AGRGIG,non-native,0,-1,grass,perennial,redtop
+"Asclepias tuberosa",Asclepiadaceae,ASCTUB,native,8,2,forb,perennial,"butterfly weed"
+"Barbarea vulgaris",Brassicaceae,BARVUL,non-native,0,0,forb,biennial,"common yellow rocket"
+"Carex bicknellii",Cyperaceae,CXBICK,native,8,2,sedge,perennial,"copper-shouldered oval sedge"
+"Carex molesta",Cyperaceae,CXMOLE,native,2,0,sedge,perennial,"field oval sedge"
+"Cerastium fontanum",Caryophyllaceae,CERFON,non-native,0,2,forb,perennial,"mouse-ear chickweed"
+"Cirsium arvense",Asteraceae,CIRARV,non-native,0,1,forb,perennial,"field thistle"
+"Cirsium vulgare",Asteraceae,CIRVUL,non-native,0,1,forb,biennial,"bull thistle"
+"Daucus carota",Apiaceae,DAUCAR,non-native,0,2,forb,biennial,"queen annes lace"
+"Dipsacus laciniatus",Dipsacaceae,DIPLAC,non-native,0,1,forb,biennial,"cut-leaved teasel"
+"Elytrigia repens",Poaceae,ELYREP,non-native,0,1,grass,perennial,"quack grass"
+"Erigeron annuus",Asteraceae,ERIANS,native,0,1,forb,annual,"annual fleabane"
+"Heliopsis helianthoides",Asteraceae,HELHEL,native,7,1,forb,perennial,"false sunflower"
+"Hordeum jubatum",Poaceae,HORJUB,native,0,0,grass,annual,"squirrel-tail barley"
+"Lactuca serriola",Asteraceae,LACSER,non-native,0,1,forb,biennial,"prickly lettuce"
+"Leonurus cardiaca",Lamiaceae,LEOCAR,non-native,0,2,forb,perennial,motherwort
+"Lolium multiflorum",Poaceae,LOLMUL,non-native,0,2,grass,annual,"italian rye grass"
+"Lotus corniculatus",Fabaceae,LOTCOR,non-native,0,1,forb,perennial,"birds foot trefoil"
+"Melilotus officinalis",Fabaceae,MELLOF,non-native,0,1,forb,biennial,"yellow sweet clover"
+"Monarda fistulosa",Lamiaceae,MONFIS,native,4,1,forb,perennial,"wild bergamot"
+"Oligoneuron rigidum",Asteraceae,OLIRIG,native,3,1,forb,perennial,"stiff goldenrod"
+"Parthenium integrifolium",Asteraceae,PARINT,native,8,2,forb,perennial,"wild quinine"
+"Penstemon digitalis",Scrophulariaceae,PENDIG,native,4,0,forb,perennial,"foxglove beard tongue"
+"Phleum pratense",Poaceae,PHLPRA,non-native,0,1,grass,perennial,timothy
+"Plantago rugelii",Plantaginaceae,PLARUG,native,0,0,forb,annual,"red-stalked plantain"
+"Poa pratensis",Poaceae,POAPRA,non-native,0,1,grass,perennial,"kentucky bluegrass"
+"Potentilla norvegica",Rosaceae,POTNOR,native,0,0,forb,annual,"rough cinquefoil"
+"Potentilla recta",Rosaceae,POTREA,non-native,0,2,forb,perennial,"sulfur cinquefoil"
+"Ratibida pinnata",Asteraceae,RATPIN,native,4,2,forb,perennial,"yellow coneflower"
+"Rudbeckia hirta var. pulcherrima",Asteraceae,RUDHIP,native,5,1,forb,perennial,"narrow-leaved black-eyed susan"
+"Rudbeckia subtomentosa",Asteraceae,RUDSUB,native,8,1,forb,perennial,"sweet black-eyed susan"
+"Rumex crispus",Polygonaceae,RUMCRI,non-native,0,0,forb,perennial,"curly dock"
+"Schedonorus arundinaceus",Poaceae,SCHARU,non-native,0,1,grass,perennial,"tall fescue"
+"Silphium laciniatum",Asteraceae,SILLAC,native,5,2,forb,perennial,"compass plant"
+"Silphium perfoliatum",Asteraceae,SILPER,native,5,-1,forb,perennial,"cup plant"
+"Silphium terebinthinaceum",Asteraceae,SILTER,native,5,0,forb,perennial,"prairie dock"
+"Symphyotrichum laeve",Asteraceae,SYMLAE,native,9,2,forb,perennial,"smooth blue aster"
+"Symphyotrichum novae-angliae",Asteraceae,SYMNOV,native,3,0,forb,perennial,"new england aster"
+"Symphyotrichum pilosum",Asteraceae,SYMPIM,native,0,0,forb,perennial,"hairy aster"
+"Thlaspi arvense",Brassicaceae,THLARV,non-native,0,2,forb,annual,"large-fruited penny cress"
+"Trifolium hybridum",Fabaceae,TRIHYB,non-native,0,2,forb,perennial,"alsike clover"
+"Trifolium pratense",Fabaceae,TRIPRA,non-native,0,2,forb,perennial,"red clover"
+"Trifolium repens",Fabaceae,TRIRER,non-native,0,2,forb,perennial,"white clover"
+"Zizia aurea",Apiaceae,ZIZAUR,native,5,0,forb,perennial,"golden alexanders"

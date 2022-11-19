@@ -1,58 +1,119 @@
-Test assessment
-8/9/22
-test name 1
-test site city
-test site county
-test site state
-test site country
-"FQA DB Region:,Chicago Region USACE"
-"FQA DB Publication Year:,2017"
-"FQA DB Description:,https://www.lrc.usace.army.mil/Missions/Regulatory/FQA.aspx"
-"Practitioner:,""Andrew Gard"""
-"Latitude:,""test lat"""
-"Longitude:,""test long"""
-"Weather Notes:,test weather"
-"Duration Notes:,test durations"
-"Community Type Notes:,test community"
-"Other Notes:,test other"
-"Private/Public:,Private"
-Conservatism-Based Metrics:
-"Total Mean C:,0"
-"Native Mean C:,0"
-"Total FQI:,0"
-"Native FQI:,0"
-"Adjusted FQI:,0"
-"% C value 0:,100"
-"% C value 1-3:,0"
-"% C value 4-6:,0"
-"% C value 7-10:,0"
-"Native Tree Mean C:,n/a"
-"Native Shrub Mean C:,n/a"
-"Native Herbaceous Mean C:,n/a"
-Species Richness:
-"Total Species:,1"
-"Native Species:,0,0%"
-"Non-native Species:,1,100%"
-Species Wetness:
-"Mean Wetness:,-2"
-"Native Mean Wetness:,0"
-Physiognomy Metrics:
-"Tree:,0,0%"
-"Shrub:,0,0%"
-"Vine:,0,0%"
-"Forb:,1,100%"
-"Grass:,0,0%"
-"Sedge:,0,0%"
-"Rush:,0,0%"
-"Fern:,0,0%"
-"Bryophyte:,0,0%"
-Duration Metrics:
-"Annual:,0,0%"
-"Perennial:,1,100%"
-"Biennial:,0,0%"
-"Native Annual:,0,0%"
-"Native Perennial:,0,0%"
-"Native Biennial:,0,0%"
-Species:
-"Scientific Name,Family,Acronym,Native?,C,W,Physiognomy,Duration,Common Name"
-"Acorus calamus,Acoraceae,ACOCAL,non-native,0,-2,forb,perennial,single-vein sweetflag"
+V1,V2,V3,V4,V5,V6,V7,V8,V9
+Enhancement Wetland 1,NA,NA,NA,NA,NA,NA,NA,NA
+2018-07-24,NA,NA,NA,NA,NA,NA,NA,NA
+CBG Skokie River,NA,NA,NA,NA,NA,NA,NA,NA
+Glencoe,NA,NA,NA,NA,NA,NA,NA,NA
+Cook,NA,NA,NA,NA,NA,NA,NA,NA
+IL,NA,NA,NA,NA,NA,NA,NA,NA
+USA,NA,NA,NA,NA,NA,NA,NA,NA
+FQA DB Region:,Chicago Region,NA,NA,NA,NA,NA,NA,NA
+FQA DB Publication Year:,1994,NA,NA,NA,NA,NA,NA,NA
+FQA DB Description:,"Swink, F. and G. Wilhelm. 1994. Plants of the Chicago Region, 4th ed., Indiana Academy of Science, Indianapolis, 921 p.",NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Practitioner:,J.O'Shaughnessy/J.Jabcon,NA,NA,NA,NA,NA,NA,NA
+Latitude:,,NA,NA,NA,NA,NA,NA,NA
+Longitude:,,NA,NA,NA,NA,NA,NA,NA
+Weather Notes:,,NA,NA,NA,NA,NA,NA,NA
+Duration Notes:,,NA,NA,NA,NA,NA,NA,NA
+Community Type Notes:,Floodplain wet prairie,NA,NA,NA,NA,NA,NA,NA
+Other Notes:,Carex hyalinolepis identified as Carex lacustris,NA,NA,NA,NA,NA,NA,NA
+Private/Public:,Public,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Conservatism-Based Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Total Mean C:,3.7,NA,NA,NA,NA,NA,NA,NA
+Native Mean C:,4.4,NA,NA,NA,NA,NA,NA,NA
+Total FQI:,27.2,NA,NA,NA,NA,NA,NA,NA
+Native FQI:,29.8,NA,NA,NA,NA,NA,NA,NA
+Adjusted FQI:,40.6,NA,NA,NA,NA,NA,NA,NA
+% C value 0:,14.8,NA,NA,NA,NA,NA,NA,NA
+% C value 1-3:,25.9,NA,NA,NA,NA,NA,NA,NA
+% C value 4-6:,44.4,NA,NA,NA,NA,NA,NA,NA
+% C value 7-10:,14.8,NA,NA,NA,NA,NA,NA,NA
+Native Tree Mean C:,n/a,NA,NA,NA,NA,NA,NA,NA
+Native Shrub Mean C:,1,NA,NA,NA,NA,NA,NA,NA
+Native Herbaceous Mean C:,4.4,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species Richness:,NA,NA,NA,NA,NA,NA,NA,NA
+Total Species:,54,NA,NA,NA,NA,NA,NA,NA
+Native Species:,46,85.2%,NA,NA,NA,NA,NA,NA
+Non-native Species:,8,14.8%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species Wetness:,NA,NA,NA,NA,NA,NA,NA,NA
+Mean Wetness:,-2.5,NA,NA,NA,NA,NA,NA,NA
+Native Mean Wetness:,-3,NA,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Physiognomy Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Tree:,0,0%,NA,NA,NA,NA,NA,NA
+Shrub:,1,1.9%,NA,NA,NA,NA,NA,NA
+Vine:,0,0%,NA,NA,NA,NA,NA,NA
+Forb:,40,74.1%,NA,NA,NA,NA,NA,NA
+Grass:,4,7.4%,NA,NA,NA,NA,NA,NA
+Sedge:,7,13%,NA,NA,NA,NA,NA,NA
+Rush:,2,3.7%,NA,NA,NA,NA,NA,NA
+Fern:,0,0%,NA,NA,NA,NA,NA,NA
+Bryophyte:,0,0%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Duration Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
+Annual:,2,3.7%,NA,NA,NA,NA,NA,NA
+Perennial:,52,96.3%,NA,NA,NA,NA,NA,NA
+Biennial:,0,0%,NA,NA,NA,NA,NA,NA
+Native Annual:,1,1.9%,NA,NA,NA,NA,NA,NA
+Native Perennial:,45,83.3%,NA,NA,NA,NA,NA,NA
+Native Biennial:,0,0%,NA,NA,NA,NA,NA,NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA
+Species:,NA,NA,NA,NA,NA,NA,NA,NA
+Scientific Name,Family,Acronym,Native?,C,W,Physiognomy,Duration,Common Name
+Anemone canadensis,n/a,ANECAN,native,4,-3,forb,perennial,meadow anemone
+Angelica atropurpurea,n/a,ANGATR,native,7,-5,forb,perennial,great angelica
+Apocynum sibiricum,n/a,APOSIB,native,2,-1,forb,perennial,prairie indian hemp
+Asclepias incarnata,n/a,ASCINC,native,4,-5,forb,perennial,swamp milkweed
+Aster novae-angliae,n/a,ASTNOV,native,4,-3,forb,perennial,new england aster
+Aster praealtus,n/a,ASTPRA,native,9,-5,forb,perennial,willow aster
+Aster puniceus firmus,n/a,ASTPUF,native,7,-5,forb,perennial,shining aster
+Calamagrostis canadensis,n/a,CALCAN,native,3,-5,grass,perennial,blue joint grass
+Carex cristatella,n/a,CXCRIS,native,4,-4,sedge,perennial,crested oval sedge
+Carex lacustris,n/a,CXLACU,native,6,-5,sedge,perennial,common lake sedge
+Carex pellita,n/a,CXPELL,native,4,-5,sedge,perennial,broad-leaved woolly sedge
+Carex stipata,n/a,CXSTIP,native,3,-5,sedge,perennial,common fox sedge
+Carex vulpinoidea,n/a,CXVULP,native,2,-5,sedge,perennial,brown fox sedge
+Chrysanthemum leucanthemum pinnatifidum,n/a,CHRLEP,non-native,0,5,forb,perennial,ox-eye daisy
+Cirsium arvense,n/a,CIRARV,non-native,0,5,forb,perennial,field thistle
+Convolvulus sepium,n/a,CONSEP,native,1,0,forb,perennial,hedge bindweed
+Coreopsis tripteris,n/a,CORTRP,native,5,0,forb,perennial,tall coreopsis
+Eleocharis erythropoda,n/a,ELEERY,native,2,-5,sedge,perennial,red-rooted spike rush
+Eryngium yuccifolium,n/a,ERYYUC,native,9,-1,forb,perennial,rattlesnake master
+Geum laciniatum trichocarpum,n/a,GEULAT,native,2,-3,forb,perennial,rough avens
+Helenium autumnale,n/a,HELAUT,native,5,-4,forb,perennial,sneezeweed
+Impatiens capensis,n/a,IMPCAP,native,3,-3,forb,annual,orange jewelweed
+Iris pseudacorus,n/a,IRIPSE,non-native,0,-5,forb,perennial,tall yellow iris
+Juncus dudleyi,n/a,JUNDUD,native,4,0,rush,perennial,dudleys rush
+Juncus torreyi,n/a,JUNTOR,native,4,-3,rush,perennial,torreys rush
+Liatris spicata,n/a,LIASPI,native,6,0,forb,perennial,marsh blazing star
+Lycopus americanus,n/a,LYCAME,native,5,-5,forb,perennial,common water horehound
+Lycopus asper,n/a,LYCASP,native,1,-3,forb,perennial,rough water horehound
+Lysimachia ciliata,n/a,LYSCIL,native,4,-3,forb,perennial,fringed loosestrife
+Lysimachia quadriflora,n/a,LYSQUR,native,9,-5,forb,perennial,narrow-leaved loosestrife
+Lythrum alatum,n/a,LYTALA,native,7,-5,forb,perennial,winged loosestrife
+Lythrum salicaria,n/a,LYTSAL,non-native,0,-5,forb,perennial,purple loosestrife
+Mentha arvensis villosa,n/a,MENARV,native,5,-5,forb,perennial,wild mint
+Phalaris arundinacea,n/a,PHAARU,non-native,0,-4,grass,perennial,reed canary grass
+Physostegia virginiana,n/a,PHYVIV,native,6,-5,forb,perennial,obedient plant
+Poa pratensis,n/a,POAPRA,non-native,0,1,grass,perennial,kentucky blue grass
+Polygonum amphibium stipulaceum,n/a,POLAMS,native,4,-5,forb,perennial,water knotweed
+Polygonum persicaria,n/a,POLPER,non-native,0,1,forb,annual,ladys thumb
+Pycnanthemum virginianum,n/a,PYCVIR,native,5,-4,forb,perennial,common mountain mint
+Rumex altissimus,n/a,RUMALT,native,2,-2,forb,perennial,pale dock
+Salix interior,n/a,SALINT,native,1,-5,shrub,perennial,sandbar willow
+Scirpus atrovirens,n/a,SCIATR,native,4,-5,sedge,perennial,dark green rush
+Silphium laciniatum,n/a,SILLAC,native,5,5,forb,perennial,compass plant
+Silphium perfoliatum,n/a,SILPER,native,5,-2,forb,perennial,cup plant
+Solidago altissima,n/a,SOLALT,native,1,3,forb,perennial,tall goldenrod
+Solidago gigantea,n/a,SOLGIG,native,4,-3,forb,perennial,late goldenrod
+Solidago graminifolia nuttallii,n/a,SOLGRN,native,3,0,forb,perennial,hairy grass-leaved goldenrod
+Solidago sempervirens,n/a,SOLSEM,non-native,0,3,forb,perennial,seaside goldenrod
+Spartina pectinata,n/a,SPAPEC,native,4,-4,grass,perennial,prairie cord grass
+Stachys tenuifolia,n/a,STATET,native,8,-3,forb,perennial,smooth hedge nettle
+Tradescantia ohiensis,n/a,TRAOHI,native,2,2,forb,perennial,common spiderwort
+Verbena hastata,n/a,VERHAS,native,4,-4,forb,perennial,blue vervain
+Vernonia fasciculata,n/a,VERFAS,native,5,-3,forb,perennial,common ironweed
+Veronicastrum virginicum,n/a,VERVIR,native,7,0,forb,perennial,culvers root

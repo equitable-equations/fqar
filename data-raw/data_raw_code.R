@@ -12,4 +12,6 @@ usethis::use_data(chicago, overwrite = TRUE, ascii = TRUE)
 missouri_list <- download_assessment_list(database_id = 63)
 missouri <- assessment_list_glance(missouri_list)
 
-usethis::use_data(missouri, overwrite = TRUE, ascii = TRUE)
+usethis::use_data(missouri,
+                  overwrite = TRUE,
+                  ascii = TRUE)
