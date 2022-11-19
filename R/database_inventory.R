@@ -39,10 +39,14 @@ database_inventory <- function(database) {
   if (!is.data.frame(database)) {
     stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
+  if (ncol(database) == 0){
+    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  }
 
   if (ncol(database) == 1) {
 
-    new <- rbind(names(database), database)
+    new <- rbind(names(database),
+                 database)
 
     database <- separate(new,
                          col = 1,
@@ -71,6 +75,7 @@ database_inventory <- function(database) {
                   "common_name")
 
   inv
+
 }
 
 
