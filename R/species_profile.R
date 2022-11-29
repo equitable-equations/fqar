@@ -59,6 +59,11 @@ species_profile <- function(species, inventory_list, native = FALSE){
       (species %in% inventory_list[[inventory]]$scientific_name)
   } # gives a logical vector indicating which inventories include the given species
 
+  if (sum(included) == 0){
+    stop("Species does not appear in any assessment. No profile generated.", call. = FALSE)
+  }
+
+
   short_list <- inventory_list[included] # all of these should include the species now
 
   cooccur_df <- do.call(rbind, short_list)

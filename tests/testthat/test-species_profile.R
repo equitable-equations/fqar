@@ -13,6 +13,9 @@ test_that("species_profile works", {
                            test_assessment_manual)
   good_list <- assessment_list_inventory(test_assessments)
 
+  expect_error(species_profile("fake_species", good_list),
+               "Species does not appear in any assessment. No profile generated.")
+
   anemone <- species_profile("Anemone canadensis", good_list)
   expect_equal(ncol(anemone), 4)
   expect_equal(nrow(anemone), 11)
