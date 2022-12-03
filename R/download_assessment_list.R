@@ -27,6 +27,7 @@
 #'   summary.
 #'
 #' @import dplyr utils
+#' @importFrom memoise has_cache
 #'
 #' @examples
 #' \donttest{
@@ -44,7 +45,12 @@ download_assessment_list <- function(database_id, ...){
   inventories_requested <- inventories_summary |>
     dplyr::filter(...)
 
-  if (length(inventories_requested$id) >= 5){
+  number_needed <- length(inventories_requested$id) -
+    sum(vapply(inventories_requested$id,
+               memoise::has_cache(download_assessment),
+               FUN.VALUE = FALSE))
+
+  if (number_needed >= 5){
     message("Downloading...")
     results <- list(0)
     pb <- utils::txtProgressBar(min = 0,

@@ -26,6 +26,9 @@
 #'   \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
 #'   summary.
 #'
+#' @import dplyr utils
+#' @importFrom memoise has_cache
+#'
 #' @examples
 #' \donttest{
 #' databases <- index_fqa_databases()
@@ -39,9 +42,15 @@ download_transect_list <- function(database_id, ...){
 
   transects_summary <- index_fqa_transects(database_id)
 
-  transects_requested <- transects_summary |> dplyr::filter(...)
+  transects_requested <- transects_summary |>
+    dplyr::filter(...)
 
-  if (length(transects_requested$id) >= 5){
+  number_needed <- length(transects_requested$id) -
+    sum(vapply(transects_requested$id,
+               memoise::has_cache(download_transect),
+               FUN.VALUE = FALSE))
+
+  if (number_needed >= 5){
     message("Downloading...")
     results <- list(0)
     pb <- utils::txtProgressBar(min = 0,
