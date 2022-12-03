@@ -64,9 +64,9 @@ assessment_cooccurrences_summary <- function(inventory_list){
                      cospecies_native_mean_c = mean(.data$cospecies_c[.data$cospecies_nativity == "native"],
                                                     na.rm = TRUE),
                      cospecies_std_dev_c = stats::sd(.data$cospecies_c,
-                                              na.rm = TRUE),
-                     cospecies_native_std_dev_c = stats::sd(.data$cospecies_c[.data$cospecies_nativity == "native"],
                                                      na.rm = TRUE),
+                     cospecies_native_std_dev_c = stats::sd(.data$cospecies_c[.data$cospecies_nativity == "native"],
+                                                            na.rm = TRUE),
                      percent_native = .data$cospecies_native_n / .data$cospecies_n,
                      percent_nonnative = 1 - .data$percent_native,
                      percent_native_low_c = mean(.data$cospecies_c <= 3,
@@ -77,6 +77,6 @@ assessment_cooccurrences_summary <- function(inventory_list){
                      percent_native_high_c = 1 - mean(.data$cospecies_c <= 7,
                                                       na.rm = TRUE),
                      discrepancy_c = .data$target_species_c - .data$cospecies_native_mean_c
-              ) |>
+    ) |>
     dplyr::arrange(.data$target_species)
 }
