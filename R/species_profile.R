@@ -36,7 +36,7 @@
 #' @importFrom stats sd
 #'
 #' @examples
-#' # assessment_cooccurrences is best used in combination with
+#' # species_profile() is best used in combination with
 #' # download_assessment_list() and assessment_list_inventory().
 #'
 #' \donttest{
@@ -63,31 +63,14 @@ species_profile <- function(species, inventory_list, native = FALSE){
     stop("Species does not appear in any assessment. No profile generated.", call. = FALSE)
   }
 
-
   short_list <- inventory_list[included] # all of these should include the species now
-
   cooccur_df <- do.call(rbind, short_list)
 
-  if (!is.null(cooccur_df)){
-    species_only <- dplyr::filter(cooccur_df,
-                                  species == species)
-    target_c <- species_only$c[1] # record target species c-value.
-
-    cooccur_df <- dplyr::filter(cooccur_df,
-                                "scientific_name" != species)
-  } else {
-    cooccur_df <- data.frame(scientific_name = character(),
-                             family = character(),
-                             acronym = character(),
-                             nativity = character(),
-                             c = numeric(),
-                             w = numeric(),
-                             physiognomy = character(),
-                             duration = character(),
-                             common_name = character()
-                             )
-    # insert warning message here when species doesn't appear at all
-  }
+  species_only <- dplyr::filter(cooccur_df,
+                                .data$scientific_name == species)
+  target_c <- species_only$c[1] # record target species c-value.
+  cooccur_df <- dplyr::filter(cooccur_df,
+                              .data$scientific_name != species)
 
   if (native == TRUE){
     cooccur_df <- dplyr::filter(cooccur_df,
@@ -113,25 +96,3 @@ species_profile <- function(species, inventory_list, native = FALSE){
     dplyr::select(species, target_c, cospecies_c = c, cospecies_n = n)
 
 }
-
-
-# # Testing this.
-# assessments <- download_assessment_list(database_id = 1)
-# inventories <- lapply(assessments, assessment_inventory)
-# species <- "Aster linariifolius"
-#
-# profile <- species_profile(species,
-#                            inventories,
-#                            native = TRUE)
-#
-# ggplot(profile, aes(x = cospecies_c, y = cospecies_n)) +
-#   geom_col() +
-#   scale_x_continuous(breaks = seq(from = 0, to = 11, by = 2)) +
-#   labs(x = "Co-occurring species C values",
-#        y = "Frequency",
-#        title = paste(species, "native co-occurrence profile")) +
-#   geom_vline(xintercept = profile$target_c,
-#              linetype = "dashed") +
-#   theme_minimal()
-#
-# looks good.

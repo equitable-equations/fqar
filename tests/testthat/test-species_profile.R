@@ -16,7 +16,7 @@ test_that("species_profile works", {
   expect_error(species_profile("fake_species", good_list),
                "Species does not appear in any assessment. No profile generated.")
 
-  anemone <- species_profile("Anemone canadensis", good_list)
+  anemone <- species_profile(species, good_list)
   expect_equal(ncol(anemone), 4)
   expect_equal(nrow(anemone), 11)
   expect_equal(names(anemone)[4], "cospecies_n")

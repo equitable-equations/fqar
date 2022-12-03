@@ -43,7 +43,7 @@ across multiple assessments are included in summary calculations but self
 co-occurrences are not.
 }
 \examples{
-# assessment_cooccurrences is best used in combination with
+# species_profile() is best used in combination with
 # download_assessment_list() and assessment_list_inventory().
 
 \donttest{
