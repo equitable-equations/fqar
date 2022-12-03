@@ -12,41 +12,45 @@
 #'   \item description (character)
 #' }
 #'
+#' @import jsonlite httr
+#' @importFrom memoise memoise
+#'
 #' @examples
 #' databases <- index_fqa_databases()
 #'
-#' @import jsonlite httr
-#'
 #' @export
 
-index_fqa_databases <- function() {
+index_fqa_databases <- memoise::memoise(
 
-  databases_address <- "http://universalfqa.org/get/database/"
-  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
+  function() {
 
-  databases_get <- httr::GET(databases_address, ua)
+    databases_address <- "http://universalfqa.org/get/database/"
+    ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  if (httr::http_error(databases_get)) {
-    stop(paste("API request to universalFQA.org failed. Error",
-               httr::status_code(databases_get)),
-         call. = FALSE
-    )
+    databases_get <- httr::GET(databases_address, ua)
+
+    if (httr::http_error(databases_get)) {
+      stop(paste("API request to universalFQA.org failed. Error",
+                 httr::status_code(databases_get)),
+           call. = FALSE
+      )
+    }
+
+    databases_text <- httr::content(databases_get,
+                                    "text",
+                                    encoding = "ISO-8859-1")
+    databases_json <- jsonlite::fromJSON(databases_text)
+    list_data <- databases_json[[2]]
+    databases <- as.data.frame(list_data)
+
+    databases[, c(1, 3)] <- lapply(databases[, c(1, 3)], as.double)
+    colnames(databases) <- c("database_id",
+                             "region", "year",
+                             "description")
+    class(databases) <- c("tbl_df",
+                          "tbl",
+                          "data.frame")
+
+    databases
   }
-
-  databases_text <- httr::content(databases_get,
-                                  "text",
-                                  encoding = "ISO-8859-1")
-  databases_json <- jsonlite::fromJSON(databases_text)
-  list_data <- databases_json[[2]]
-  databases <- as.data.frame(list_data)
-
-  databases[, c(1, 3)] <- lapply(databases[, c(1, 3)], as.double)
-  colnames(databases) <- c("database_id",
-                           "region", "year",
-                           "description")
-  class(databases) <- c("tbl_df",
-                        "tbl",
-                        "data.frame")
-
-  databases
-}
+)

@@ -17,6 +17,9 @@
 #'   overview, and \code{\link[=transect_inventory]{transect_inventory()}} for
 #'   species-level data.
 #'
+#' @import jsonlite httr
+#' @importFrom memoise memoise
+#'
 #' @examples
 #' \donttest{
 #' databases <- index_fqa_databases() # Note database 1 is the original 1994 Chicago edition.
@@ -29,44 +32,48 @@
 #'
 #' @export
 
-download_transect <- function(transect_id){
+download_transect <- memoise::memoise(
 
-  if (!is.numeric(transect_id)) {
-    stop("transect_id must be an integer.", call. = FALSE)
+  function(transect_id){
+
+    if (!is.numeric(transect_id)) {
+      stop("transect_id must be an integer.", call. = FALSE)
     }
-  if (transect_id %% 1 != 0) {
-    stop("transect_id must be an integer.", call. = FALSE)
+    if (transect_id %% 1 != 0) {
+      stop("transect_id must be an integer.", call. = FALSE)
     }
 
-  trans_address <- paste0("http://universalfqa.org/get/transect/", transect_id)
-  ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
+    trans_address <- paste0("http://universalfqa.org/get/transect/", transect_id)
+    ua <- httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  trans_get <- httr::GET(trans_address, ua)
-  if (httr::http_error(trans_get)) {
-    stop(paste("API request to universalFQA.org failed. Error",
-               httr::status_code(trans_get)),
-         call. = FALSE
-    )
-  }
+    trans_get <- httr::GET(trans_address, ua)
+    if (httr::http_error(trans_get)) {
+      stop(paste("API request to universalFQA.org failed. Error",
+                 httr::status_code(trans_get)),
+           call. = FALSE
+      )
+    }
 
-  trans_text <- httr::content(trans_get,
-                              "text",
-                              encoding = "ISO-8859-1")
-  trans_json <- jsonlite::fromJSON(trans_text)
-  list_data <- trans_json[[2]]
+    trans_text <- httr::content(trans_get,
+                                "text",
+                                encoding = "ISO-8859-1")
+    trans_json <- jsonlite::fromJSON(trans_text)
+    list_data <- trans_json[[2]]
 
-  if ((list_data[[1]] == "The requested assessment is not public") & (!is.na(list_data[[1]]))) {
-    stop("The requested assessment is not public", call. = FALSE)
-  }
+    if ((list_data[[1]] == "The requested assessment is not public") & (!is.na(list_data[[1]]))) {
+      stop("The requested assessment is not public", call. = FALSE)
+    }
 
-  max_length <- max(unlist(lapply(list_data, length))) # determines how wide the df must be
-  list_data <- lapply(list_data,
-                      function(x) {
-                        length(x) <- max_length
-                        unlist(x)
+    max_length <- max(unlist(lapply(list_data, length))) # determines how wide the df must be
+    list_data <- lapply(list_data,
+                        function(x) {
+                          length(x) <- max_length
+                          unlist(x)
                         }
-                      )
+    )
 
-  as.data.frame(do.call(rbind, list_data))
+    as.data.frame(do.call(rbind, list_data))
+
   }
+)
 
