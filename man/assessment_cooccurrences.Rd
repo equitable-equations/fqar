@@ -11,11 +11,12 @@ assessment_cooccurrences(inventory_list)
 \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}}
 }
 \value{
-A data frame with 12 columns:
+A data frame with 13 columns:
 \itemize{
 \item target_species (character)
 \item target_species_c (numeric)
 \item target_species_nativity (character)
+\item target_species_n (numeric)
 \item cospecies_scientific_name (character)
 \item cospecies_family (character)
 \item cospecies_acronym (character)

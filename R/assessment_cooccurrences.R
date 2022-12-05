@@ -9,11 +9,12 @@
 #' @param inventory_list A list of site inventories having the format of
 #' \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}
 #'
-#' @return A data frame with 12 columns:
+#' @return A data frame with 13 columns:
 #' \itemize{
 #' \item target_species (character)
 #' \item target_species_c (numeric)
 #' \item target_species_nativity (character)
+#' \item target_species_n (numeric)
 #' \item cospecies_scientific_name (character)
 #' \item cospecies_family (character)
 #' \item cospecies_acronym (character)
@@ -68,6 +69,7 @@ assessment_cooccurrences <- function(inventory_list){
   cooccur_df <- data.frame(target_species = character(),
                            target_species_c = numeric(),
                            target_species_nativity = character(),
+                           target_species_n = numeric(),
                            cospecies_scientific_name = character(),
                            cospecies_family = character(),
                            cospecies_acronym = character(),
@@ -88,6 +90,8 @@ assessment_cooccurrences <- function(inventory_list){
         (species_df$species[sp] %in% inventory_list[[inventory]]$scientific_name)
     } # gives a logical vector indicating which inventories include the given species
 
+    target_species_n <- sum(included) # number of assessments that include the target species
+
     short_list <- inventory_list[included]
     short_list_combined <- bind_rows(short_list)
 
@@ -100,6 +104,8 @@ assessment_cooccurrences <- function(inventory_list){
                                      nrow(short_list_combined)),
                                  rep(species_df$species_nativity[sp],
                                      nrow(short_list_combined)),
+                                 rep(target_species_n,
+                                     nrow(short_list_combined)),
                                  short_list_combined) # adds species name, c and nativity
 
     cooccur_list[[sp]] <- short_list_combined
@@ -109,6 +115,7 @@ assessment_cooccurrences <- function(inventory_list){
   names(cooccur_df) <- c("target_species",
                          "target_species_c",
                          "target_species_nativity",
+                         "target_species_n",
                          "cospecies_scientific_name",
                          "cospecies_family",
                          "cospecies_acronym",
