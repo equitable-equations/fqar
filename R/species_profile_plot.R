@@ -52,7 +52,7 @@ species_profile_plot <- function(species, inventory_list, native = FALSE){
 
   if (!is.null(cooccur_df)){
     species_only <- dplyr::filter(cooccur_df,
-                                  species == species)
+                                  "scientific_name" == species)
     target_c <- species_only$c[1] # record target species c-value.
 
     cooccur_df <- dplyr::filter(cooccur_df,
@@ -108,25 +108,3 @@ species_profile_plot <- function(species, inventory_list, native = FALSE){
     theme_minimal()
 
 }
-
-
-# # Testing this.
-# assessments <- download_assessment_list(database_id = 1)
-# inventories <- lapply(assessments, assessment_inventory)
-# species <- "Aster linariifolius"
-#
-# profile <- species_profile(species,
-#                            inventories,
-#                            native = TRUE)
-#
-# ggplot(profile, aes(x = cospecies_c, y = cospecies_n)) +
-#   geom_col() +
-#   scale_x_continuous(breaks = seq(from = 0, to = 11, by = 2)) +
-#   labs(x = "Co-occurring species C values",
-#        y = "Frequency",
-#        title = paste(species, "native co-occurrence profile")) +
-#   geom_vline(xintercept = profile$target_c,
-#              linetype = "dashed") +
-#   theme_minimal()
-#
-# looks good.
