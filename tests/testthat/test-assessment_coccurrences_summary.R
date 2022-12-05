@@ -14,7 +14,7 @@ test_that("assessment_coccurrences_summary works", {
 
   test_cooccur <- assessment_cooccurrences_summary(good_list)
 
-  expect_equal(ncol(test_cooccur), 15)
+  expect_equal(ncol(test_cooccur), 16)
   expect_equal(names(test_cooccur)[2], "target_species_c")
   expect_equal(typeof(test_cooccur$target_species), "character")
   expect_equal(typeof(test_cooccur$discrepancy_c), "double")

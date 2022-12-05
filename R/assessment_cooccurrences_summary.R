@@ -10,11 +10,12 @@
 #' @param inventory_list A list of site inventories having the format of
 #' \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}
 #'
-#' @return A data frame with 15 columns:
+#' @return A data frame with 16 columns:
 #' \itemize{
 #' \item target_species (character)
 #' \item target_species_c (numeric)
-#' \item target_species_nativity (numeric)
+#' \item target_species_nativity (character)
+#' \item target_species_n (numeric)
 #' \item cospecies_n (numeric)
 #' \item cospecies_native_n (numeric)
 #' \item cospecies_mean_c (numeric)
@@ -57,6 +58,7 @@ assessment_cooccurrences_summary <- function(inventory_list){
   cooccur |> dplyr::group_by(.data$target_species) |>
     dplyr::summarize(target_species_c = unique(.data$target_species_c),
                      target_species_nativity = unique(.data$target_species_nativity),
+                     target_species_n = unique(.data$target_species_n),
                      cospecies_n = n(),
                      cospecies_native_n =  sum(.data$cospecies_nativity == "native") ,
                      cospecies_mean_c = mean(.data$cospecies_c,
