@@ -20,7 +20,8 @@ Imports:
     jsonlite,
     memoise,
     rlang,
-    tidyr
+    tidyr,
+    tidyselect
 RoxygenNote: 7.2.1
 Suggests: 
     knitr,
