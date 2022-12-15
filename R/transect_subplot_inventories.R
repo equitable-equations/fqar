@@ -66,8 +66,8 @@ transect_subplot_inventories <- function(transect){
                            "duration",
                            "common_name")
 
-    sub_inv <- dplyr::na_if(sub_inv, "n/a")
-    sub_inv <- dplyr::na_if(sub_inv, "")
+    sub_inv <- mutate(sub_inv, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
+    sub_inv <- mutate(sub_inv, across(tidyselect::where(is.character), ~na_if(.x, "")))
 
     sub_inv <- sub_inv |>
       dplyr::mutate(c = as.numeric(.data$c),

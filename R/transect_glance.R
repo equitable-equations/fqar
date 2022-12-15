@@ -102,9 +102,9 @@ transect_glance <- function(data_set){
                          extra = "merge")
   }
 
-  data_set <- na_if(data_set, "n/a")
-  data_set <- na_if(data_set, "")
-  data_set <- na_if(data_set, "0000-00-00")
+  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
+  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "")))
+  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "0000-00-00")))
 
   data_set[1, 2] <- data_set[1, 1]
   data_set[1, 1] <- "Title"

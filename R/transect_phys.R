@@ -57,8 +57,8 @@ transect_phys <- function(data_set) {
                          extra = "merge")
   }
 
-  data_set <- na_if(data_set, "n/a")
-  data_set <- na_if(data_set, "")
+  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
+  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "")))
 
   start_row <- 2 + which(data_set$V1 == "Physiognomic Relative Importance Values:")
   end_row <- -2 + which(data_set$V1 == "Species Relative Importance Values:")
