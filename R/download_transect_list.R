@@ -38,26 +38,30 @@
 #'
 #' @export
 
-download_transect_list <- function(database_id, ...){
 
+download_transect_list <- function(database_id, ...) {
   transects_summary <- index_fqa_transects(database_id)
 
   transects_requested <- transects_summary |>
     dplyr::filter(...)
 
   number_needed <- length(transects_requested$id) -
-    sum(vapply(transects_requested$id,
-               memoise::has_cache(download_transect),
-               FUN.VALUE = FALSE))
+    sum(vapply(
+      transects_requested$id,
+      memoise::has_cache(download_transect),
+      FUN.VALUE = FALSE
+    ))
 
-  if (number_needed >= 5){
+  if (number_needed >= 5) {
     message("Downloading...")
     results <- list(0)
-    pb <- utils::txtProgressBar(min = 0,
-                         max = length(transects_requested$id),
-                         style = 3,
-                         width = length(transects_requested$id),
-                         char = "=")
+    pb <- utils::txtProgressBar(
+      min = 0,
+      max = length(transects_requested$id),
+      style = 3,
+      width = length(transects_requested$id),
+      char = "="
+    )
     for (i in seq_along(transects_requested$id)) {
       results[[i]] <-  download_transect(transects_requested$id[i])
       utils::setTxtProgressBar(pb, i)
@@ -68,7 +72,8 @@ download_transect_list <- function(database_id, ...){
                       download_transect)
   }
 
-  if (length(results) == 0) warning("No matches found. Empty list returned.", call. = FALSE)
+  if (length(results) == 0)
+    warning("No matches found. Empty list returned.", call. = FALSE)
 
   results
 }
