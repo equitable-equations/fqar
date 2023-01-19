@@ -14,7 +14,9 @@
 #'   considered.
 #'
 #'
-#' @import dplyr ggplot2
+#' @import dplyr
+#' @importFrom ggplot2 aes ggplot geom_col scale_x_continuous labs geom_vline
+#'   theme_minimal
 #' @importFrom rlang .data
 #' @importFrom stats sd
 #'
@@ -30,81 +32,78 @@
 #'
 #' @export
 
-species_profile_plot <- function(species, inventory_list, native = FALSE){
 
-  if (!is_inventory_list(inventory_list)){
-    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
-  }
 
-  included <- vector("logical")
-  for (inventory in seq_along(inventory_list)){
-    included[inventory] <-
-      (species %in% inventory_list[[inventory]]$scientific_name)
-  } # gives a logical vector indicating which inventories include the given species
+species_profile_plot <-
+  function(species, inventory_list, native = FALSE) {
+    if (!is_inventory_list(inventory_list)) {
+      stop(
+        "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
+        call. = FALSE
+      )
+    }
 
-  if (sum(included) == 0){
-    stop("Species does not appear in any assessment. No profile generated.", call. = FALSE)
-  }
+    included <- vector("logical")
+    for (inventory in seq_along(inventory_list)) {
+      included[inventory] <-
+        (species %in% inventory_list[[inventory]]$scientific_name)
+    } # gives a logical vector indicating which inventories include the given species
 
-  short_list <- inventory_list[included] # all of these should include the species now
+    if (sum(included) == 0) {
+      stop("Species does not appear in any assessment. No profile plot generated.",
+           call. = FALSE)
+    }
 
-  cooccur_df <- do.call(rbind, short_list)
+    short_list <-
+      inventory_list[included] # all of these should include the species now
 
-  if (!is.null(cooccur_df)){
+    cooccur_df <- do.call(rbind, short_list)
+
     species_only <- dplyr::filter(cooccur_df,
-                                  "scientific_name" == species)
+                                  .data$scientific_name == species)
     target_c <- species_only$c[1] # record target species c-value.
 
     cooccur_df <- dplyr::filter(cooccur_df,
-                                "scientific_name" != species)
-  } else {
-    cooccur_df <- data.frame(scientific_name = character(),
-                             family = character(),
-                             acronym = character(),
-                             nativity = character(),
-                             c = numeric(),
-                             w = numeric(),
-                             physiognomy = character(),
-                             duration = character(),
-                             common_name = character()
-                             )
-    # insert warning message here when species doesn't appear at all
+                                .data$scientific_name != species) # to ignore self-cooccurrence
+
+    if (native == TRUE) {
+      cooccur_df <- dplyr::filter(cooccur_df,
+                                  .data$nativity == "native")
+    }
+
+    cooccur <- dplyr::mutate(cooccur_df,
+                             as.factor(.data$c))
+
+    c_counts <- cooccur |>
+      dplyr::group_by(c) |>
+      dplyr::count()
+
+    missing_fill <- data.frame(c = 0:10, n = 0)
+    missing_fill <- dplyr::anti_join(missing_fill,
+                                     c_counts,
+                                     by = "c")
+    c_counts <- rbind(c_counts, missing_fill)
+    c_counts <- c_counts |>
+      dplyr::arrange(c) |>
+      dplyr::ungroup() |>
+      dplyr::mutate(species, target_c) |>
+      dplyr::select(species,
+                    target_c,
+                    cospecies_c = .data$c,
+                    cospecies_n = .data$n)
+
+    ggplot2::ggplot(c_counts, ggplot2::aes(x = .data$cospecies_c,
+                                           y = .data$cospecies_n)) +
+      ggplot2::geom_col() +
+      ggplot2::scale_x_continuous(breaks = seq(from = 0,
+                                               to = 11,
+                                               by = 2)) +
+      ggplot2::labs(
+        x = "Co-occurring species C values",
+        y = "Frequency",
+        title = paste(species, "native co-occurrence profile")
+      ) +
+      ggplot2::geom_vline(xintercept = target_c,
+                          linetype = "dashed") +
+      ggplot2::theme_minimal()
   }
-
-  if (native == TRUE){
-    cooccur_df <- dplyr::filter(cooccur_df,
-                                .data$nativity == "native")
-  }
-
-  cooccur <- dplyr::mutate(cooccur_df,
-                           as.factor(.data$c))
-
-  c_counts <- cooccur |>
-    dplyr::group_by(c) |>
-    dplyr::count()
-
-  missing_fill <- data.frame(c = 0:10, n = 0)
-  missing_fill <- dplyr::anti_join(missing_fill,
-                                   c_counts,
-                                   by = "c")
-  c_counts <- rbind(c_counts, missing_fill)
-  c_counts |>
-    dplyr::arrange(c) |>
-    dplyr::ungroup() |>
-    dplyr::mutate(species, target_c) |>
-    dplyr::select(species, target_c, cospecies_c = c, cospecies_n = n)
-
-  ggplot(c_counts, aes(x = c,
-                       y = n)) +
-    geom_col() +
-    scale_x_continuous(breaks = seq(from = 0,
-                                    to = 11,
-                                    by = 2)) +
-    labs(x = "Co-occurring species C values",
-         y = "Frequency",
-         title = paste(species, "native co-occurrence profile")) +
-    geom_vline(xintercept = target_c,
-               linetype = "dashed") +
-    theme_minimal()
-
-}
