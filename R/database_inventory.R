@@ -60,25 +60,26 @@ database_inventory <- function(database) {
     stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
   }
 
+
   inv <- database |>
     filter(row_number() > which(.data$V1 == "Scientific Name")) |>
     mutate(across(5:6, as.numeric))
 
-  names(inv) <- c("scientific_name",
-                  "family",
-                  "acronym",
-                  "nativity",
-                  "c",
-                  "w",
-                  "physiognomy",
-                  "duration",
-                  "common_name")
+  names(inv) <- c(
+    "scientific_name",
+    "family",
+    "acronym",
+    "nativity",
+    "c",
+    "w",
+    "physiognomy",
+    "duration",
+    "common_name"
+  )
 
   inv
 
 }
-
-
 
 
 

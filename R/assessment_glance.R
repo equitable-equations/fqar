@@ -75,34 +75,47 @@
 #' assessment_glance(edison)
 #'
 #' @export
-assessment_glance <- function(data_set) {
 
+assessment_glance <- function(data_set) {
   if (!is.data.frame(data_set)) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
-  if (ncol(data_set) == 0){
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  if (ncol(data_set) == 0) {
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
   if (ncol(data_set) == 1) {
-
     new <- rbind(names(data_set),
                  data_set)
 
-    data_set <- separate(new,
-                         col = 1,
-                         sep = ",",
-                         into = paste0("V", 1:9),
-                         fill = "right",
-                         extra = "merge")
+    data_set <- separate(
+      new,
+      col = 1,
+      sep = ",",
+      into = paste0("V", 1:9),
+      fill = "right",
+      extra = "merge"
+    )
   }
 
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "")))
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "0000-00-00")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "0000-00-00")))
 
   data_set[1, 2] <- data_set[1, 1]
   data_set[1, 1] <- "Title"
@@ -126,13 +139,15 @@ assessment_glance <- function(data_set) {
     drop_na(1)
 
   if (selected[8, 1] == "FQA DB Region:") {
-    new_rows <- data.frame(V1 = c("Custom FQA DB Name",
-                                   "Custom FQA DB Description"),
-                           V2 = c(NA, NA))
-    selected <- rbind(selected[1:10, ],
-                      new_rows, selected[-(1:10), ])
+    new_rows <- data.frame(
+      V1 = c("Custom FQA DB Name",
+             "Custom FQA DB Description"),
+      V2 = c(NA, NA)
+    )
+    selected <- rbind(selected[1:10,],
+                      new_rows, selected[-(1:10),])
   } else {
-    selected[1:12, ] <- selected[c(1:7, 10:12, 8:9), ]
+    selected[1:12,] <- selected[c(1:7, 10:12, 8:9),]
     selected$V1 <- gsub("Original ", "", selected$V1)
   }
 
@@ -146,63 +161,69 @@ assessment_glance <- function(data_set) {
                      mutate(across(22:57, as.double),
                             Date = as.Date(.data$Date)))
   final <- final |>
-    select(-c("Duration Metrics:",
-              "Physiognomy Metrics:",
-              "Conservatism-Based Metrics:",
-              "Species Richness:",
-              "Species Wetness:"))
+    select(
+      -c(
+        "Duration Metrics:",
+        "Physiognomy Metrics:",
+        "Conservatism-Based Metrics:",
+        "Species Richness:",
+        "Species Wetness:"
+      )
+    )
 
-  names(final) <- c("title",
-                    "date",
-                    "site_name",
-                    "city",
-                    "county",
-                    "state",
-                    "country",
-                    "fqa_db_region",
-                    "fqa_db_publication_year",
-                    "fqa_db_description",
-                    "custom_fqa_db_name",
-                    "custom_fqa_db_description",
-                    "practitioner",
-                    "latitude",
-                    "longitude",
-                    "weather_notes",
-                    "duration_notes",
-                    "community_type_notes",
-                    "other_notes",
-                    "private_public",
-                    "total_mean_c",
-                    "native_mean_c",
-                    "total_fqi",
-                    "native_fqi",
-                    "adjusted_fqi",
-                    "c_value_zero",
-                    "c_value_low",
-                    "c_value_mid",
-                    "c_value_high",
-                    "native_tree_mean_c",
-                    "native_shrub_mean_c",
-                    "native_herbaceous_mean_c",
-                    "total_species",
-                    "native_species",
-                    "non_native_species",
-                    "mean_wetness",
-                    "native_mean_wetness",
-                    "tree",
-                    "shrub",
-                    "vine",
-                    "forb",
-                    "grass",
-                    "sedge",
-                    "rush",
-                    "fern",
-                    "bryophyte",
-                    "annual",
-                    "perennial",
-                    "biennial",
-                    "native_annual",
-                    "native_perennial",
-                    "native_biennial")
+  names(final) <- c(
+    "title",
+    "date",
+    "site_name",
+    "city",
+    "county",
+    "state",
+    "country",
+    "fqa_db_region",
+    "fqa_db_publication_year",
+    "fqa_db_description",
+    "custom_fqa_db_name",
+    "custom_fqa_db_description",
+    "practitioner",
+    "latitude",
+    "longitude",
+    "weather_notes",
+    "duration_notes",
+    "community_type_notes",
+    "other_notes",
+    "private_public",
+    "total_mean_c",
+    "native_mean_c",
+    "total_fqi",
+    "native_fqi",
+    "adjusted_fqi",
+    "c_value_zero",
+    "c_value_low",
+    "c_value_mid",
+    "c_value_high",
+    "native_tree_mean_c",
+    "native_shrub_mean_c",
+    "native_herbaceous_mean_c",
+    "total_species",
+    "native_species",
+    "non_native_species",
+    "mean_wetness",
+    "native_mean_wetness",
+    "tree",
+    "shrub",
+    "vine",
+    "forb",
+    "grass",
+    "sedge",
+    "rush",
+    "fern",
+    "bryophyte",
+    "annual",
+    "perennial",
+    "biennial",
+    "native_annual",
+    "native_perennial",
+    "native_biennial"
+  )
   final
 }

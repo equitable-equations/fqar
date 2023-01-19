@@ -42,19 +42,19 @@
 #' @export
 
 
-# Also must consider problematic lists with incorrect structure, both here and in testing.
-
-assessment_cooccurrences <- function(inventory_list){
-
-  if (!is_inventory_list(inventory_list)){
-    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
+assessment_cooccurrences <- function(inventory_list) {
+  if (!is_inventory_list(inventory_list)) {
+    stop(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
+      call. = FALSE
+    )
   }
 
   species <- character(0)
   species_c <- character(0)
   species_nativity <- character(0)
 
-  for (i in seq_along(inventory_list)){
+  for (i in seq_along(inventory_list)) {
     species <- c(species,
                  inventory_list[[i]]$scientific_name)
     species_c <- c(species_c,
@@ -66,31 +66,33 @@ assessment_cooccurrences <- function(inventory_list){
   species_df <- data.frame(species, species_c, species_nativity)
   species_df <- unique(species_df)
 
-  cooccur_df <- data.frame(target_species = character(),
-                           target_species_c = numeric(),
-                           target_species_nativity = character(),
-                           target_species_n = numeric(),
-                           cospecies_scientific_name = character(),
-                           cospecies_family = character(),
-                           cospecies_acronym = character(),
-                           cospecies_nativity = character(),
-                           cospecies_c = numeric(),
-                           cospecies_w = numeric(),
-                           cospecies_physiognomy = character(),
-                           cospecies_duration = character(),
-                           cospecies_common_name = character()
+  cooccur_df <- data.frame(
+    target_species = character(),
+    target_species_c = numeric(),
+    target_species_nativity = character(),
+    target_species_n = numeric(),
+    cospecies_scientific_name = character(),
+    cospecies_family = character(),
+    cospecies_acronym = character(),
+    cospecies_nativity = character(),
+    cospecies_c = numeric(),
+    cospecies_w = numeric(),
+    cospecies_physiognomy = character(),
+    cospecies_duration = character(),
+    cospecies_common_name = character()
   ) # initialize data frame
 
   cooccur_list <- list()
 
-  for (sp in seq_along(species_df$species)){
+  for (sp in seq_along(species_df$species)) {
     included <- vector("logical")
-    for (inventory in seq_along(inventory_list)){
+    for (inventory in seq_along(inventory_list)) {
       included[inventory] <-
         (species_df$species[sp] %in% inventory_list[[inventory]]$scientific_name)
     } # gives a logical vector indicating which inventories include the given species
 
-    target_species_n <- sum(included) # number of assessments that include the target species
+    target_species_n <-
+      sum(included) # number of assessments that include the target species
 
     short_list <- inventory_list[included]
     short_list_combined <- bind_rows(short_list)
@@ -98,33 +100,36 @@ assessment_cooccurrences <- function(inventory_list){
     short_list_combined <- dplyr::filter(short_list_combined,
                                          .data$scientific_name != species_df$species[sp]) # ignoring self-cooccurrence
 
-    short_list_combined <- cbind(rep(species_df$species[sp],
-                                     nrow(short_list_combined)),
-                                 rep(species_df$species_c[sp],
-                                     nrow(short_list_combined)),
-                                 rep(species_df$species_nativity[sp],
-                                     nrow(short_list_combined)),
-                                 rep(target_species_n,
-                                     nrow(short_list_combined)),
-                                 short_list_combined) # adds species name, c and nativity
+    short_list_combined <- cbind(
+      rep(species_df$species[sp],
+          nrow(short_list_combined)),
+      rep(species_df$species_c[sp],
+          nrow(short_list_combined)),
+      rep(species_df$species_nativity[sp],
+          nrow(short_list_combined)),
+      rep(target_species_n,
+          nrow(short_list_combined)),
+      short_list_combined
+    ) # adds species name, c and nativity
 
     cooccur_list[[sp]] <- short_list_combined
   }
 
   cooccur_df <- dplyr::bind_rows(cooccur_list)
-  names(cooccur_df) <- c("target_species",
-                         "target_species_c",
-                         "target_species_nativity",
-                         "target_species_n",
-                         "cospecies_scientific_name",
-                         "cospecies_family",
-                         "cospecies_acronym",
-                         "cospecies_nativity",
-                         "cospecies_c",
-                         "cospecies_w",
-                         "cospecies_physiognomy",
-                         "cospecies_duration",
-                         "cospecies_common_name"
+  names(cooccur_df) <- c(
+    "target_species",
+    "target_species_c",
+    "target_species_nativity",
+    "target_species_n",
+    "cospecies_scientific_name",
+    "cospecies_family",
+    "cospecies_acronym",
+    "cospecies_nativity",
+    "cospecies_c",
+    "cospecies_w",
+    "cospecies_physiognomy",
+    "cospecies_duration",
+    "cospecies_common_name"
   )
 
   cooccur_df |>

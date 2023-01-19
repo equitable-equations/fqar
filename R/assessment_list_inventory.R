@@ -33,10 +33,13 @@
 #'
 #' @export
 
-assessment_list_inventory <- function(assessment_list){
 
-  if (!is_assessment_list(assessment_list)){
-    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
+assessment_list_inventory <- function(assessment_list) {
+  if (!is_assessment_list(assessment_list)) {
+    stop(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
+      call. = FALSE
+    )
   }
 
   applied <- lapply(assessment_list,

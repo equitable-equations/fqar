@@ -31,36 +31,44 @@
 #'
 #' @export
 
-
-database_glance <- function(database){
-
+database_glance <- function(database) {
   if (!is.data.frame(database)) {
-    stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
-  if (ncol(database) == 0){
-    stop("database must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  if (ncol(database) == 0) {
+    stop(
+      "database must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
   if (ncol(database) == 1) {
-
     new <- rbind(names(database),
                  database)
 
-    database <- separate(new,
-                         col = 1,
-                         sep = ",",
-                         into = paste0("V", 1:9),
-                         fill = "right",
-                         extra = "merge")
+    database <- separate(
+      new,
+      col = 1,
+      sep = ",",
+      into = paste0("V", 1:9),
+      fill = "right",
+      extra = "merge"
+    )
   }
 
   if (!("Total Species:" %in% database[[1]])) {
-    stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
   sm <- database[1:9, 1:2]
   sm[1:3, 2] <- sm[1:3, 1]
-  sm <- sm[-4, ]
+  sm <- sm[-4,]
 
   wide <- sm |>
     pivot_wider(names_from = "V1",
@@ -68,14 +76,16 @@ database_glance <- function(database){
     mutate(across(c(2, 4:8),
                   as.numeric))
 
-  names(wide) <- c("region",
-                   "year",
-                   "description",
-                   "total_species",
-                   "native_species",
-                   "non_native_species",
-                   "total_mean_c",
-                   "native_mean_c")
+  names(wide) <- c(
+    "region",
+    "year",
+    "description",
+    "total_species",
+    "native_species",
+    "non_native_species",
+    "total_mean_c",
+    "native_mean_c"
+  )
   wide
 
 }

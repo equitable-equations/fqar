@@ -38,26 +38,30 @@
 #'
 #' @export
 
-download_assessment_list <- function(database_id, ...){
 
+download_assessment_list <- function(database_id, ...) {
   inventories_summary <- index_fqa_assessments(database_id)
 
   inventories_requested <- inventories_summary |>
     dplyr::filter(...)
 
   number_needed <- length(inventories_requested$id) -
-    sum(vapply(inventories_requested$id,
-               memoise::has_cache(download_assessment),
-               FUN.VALUE = FALSE))
+    sum(vapply(
+      inventories_requested$id,
+      memoise::has_cache(download_assessment),
+      FUN.VALUE = FALSE
+    ))
 
-  if (number_needed >= 5){
+  if (number_needed >= 5) {
     message("Downloading...")
     results <- list(0)
-    pb <- utils::txtProgressBar(min = 0,
-                         max = length(inventories_requested$id),
-                         style = 3,
-                         width = length(inventories_requested$id),
-                         char = "=")
+    pb <- utils::txtProgressBar(
+      min = 0,
+      max = length(inventories_requested$id),
+      style = 3,
+      width = length(inventories_requested$id),
+      char = "="
+    )
     for (i in seq_along(inventories_requested$id)) {
       results[[i]] <-  download_assessment(inventories_requested$id[i])
       utils::setTxtProgressBar(pb, i)
@@ -68,7 +72,8 @@ download_assessment_list <- function(database_id, ...){
                       download_assessment)
   }
 
-  if (length(results) == 0) warning("No matches found. Empty list returned.", call. = FALSE)
+  if (length(results) == 0)
+    warning("No matches found. Empty list returned.", call. = FALSE)
 
   results
 }
