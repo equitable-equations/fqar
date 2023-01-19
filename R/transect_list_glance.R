@@ -81,8 +81,8 @@
 #'
 #' @export
 
-transect_list_glance <- function(transect_list){
 
+transect_list_glance <- function(transect_list) {
   applied <- lapply(transect_list, transect_glance)
 
   do.call(rbind, applied)

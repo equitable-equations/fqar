@@ -33,46 +33,61 @@
 #'
 #' @export
 
-transect_phys <- function(data_set) {
 
+transect_phys <- function(data_set) {
   if (!is.data.frame(data_set)) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
-  if (ncol(data_set) == 0){
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  if (ncol(data_set) == 0) {
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
   if (ncol(data_set) == 1) {
-
     new <- rbind(names(data_set), data_set)
 
-    data_set <- separate(new,
-                         col = 1,
-                         sep = ",",
-                         into = paste0("V", 1:14),
-                         fill = "right",
-                         extra = "merge")
+    data_set <- separate(
+      new,
+      col = 1,
+      sep = ",",
+      into = paste0("V", 1:14),
+      fill = "right",
+      extra = "merge"
+    )
   }
 
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
 
-  start_row <- 2 + which(data_set$V1 == "Physiognomic Relative Importance Values:")
-  end_row <- -2 + which(data_set$V1 == "Species Relative Importance Values:")
+  start_row <-
+    2 + which(data_set$V1 == "Physiognomic Relative Importance Values:")
+  end_row <-
+    -2 + which(data_set$V1 == "Species Relative Importance Values:")
   if (end_row < start_row) {
     stop("No physiognometric data found")
   }
   phys <- data_set[start_row:end_row, 1:6]
 
-  names(phys) <- c("physiognomy",
-                   "frequency",
-                   "coverage",
-                   "relative_frequency_percent",
-                   "relative_coverage_percent",
-                   "relative_importance_value_percent"
+  names(phys) <- c(
+    "physiognomy",
+    "frequency",
+    "coverage",
+    "relative_frequency_percent",
+    "relative_coverage_percent",
+    "relative_importance_value_percent"
   )
 
   suppressWarnings(phys <- phys

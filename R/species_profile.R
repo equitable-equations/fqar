@@ -47,52 +47,60 @@
 #'
 #' @export
 
-species_profile <- function(species, inventory_list, native = FALSE){
+species_profile <-
+  function(species, inventory_list, native = FALSE) {
+    if (!is_inventory_list(inventory_list)) {
+      stop(
+        "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
+        call. = FALSE
+      )
+    }
 
-  if (!is_inventory_list(inventory_list)){
-    stop("assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.", call. = FALSE)
-  }
+    included <- vector("logical")
+    for (inventory in seq_along(inventory_list)) {
+      included[inventory] <-
+        (species %in% inventory_list[[inventory]]$scientific_name)
+    } # gives a logical vector indicating which inventories include the given species
 
-  included <- vector("logical")
-  for (inventory in seq_along(inventory_list)){
-    included[inventory] <-
-      (species %in% inventory_list[[inventory]]$scientific_name)
-  } # gives a logical vector indicating which inventories include the given species
+    if (sum(included) == 0) {
+      stop("Species does not appear in any assessment. No profile generated.",
+           call. = FALSE)
+    }
 
-  if (sum(included) == 0){
-    stop("Species does not appear in any assessment. No profile generated.", call. = FALSE)
-  }
+    short_list <-
+      inventory_list[included] # all of these should include the species now
+    cooccur_df <- do.call(rbind, short_list)
 
-  short_list <- inventory_list[included] # all of these should include the species now
-  cooccur_df <- do.call(rbind, short_list)
-
-  species_only <- dplyr::filter(cooccur_df,
-                                .data$scientific_name == species)
-  target_c <- species_only$c[1] # record target species c-value.
-  cooccur_df <- dplyr::filter(cooccur_df,
-                              .data$scientific_name != species)
-
-  if (native == TRUE){
+    species_only <- dplyr::filter(cooccur_df,
+                                  .data$scientific_name == species)
+    target_c <- species_only$c[1] # record target species c-value.
     cooccur_df <- dplyr::filter(cooccur_df,
-                                .data$nativity == "native")
+                                .data$scientific_name != species)
+
+    if (native == TRUE) {
+      cooccur_df <- dplyr::filter(cooccur_df,
+                                  .data$nativity == "native")
+    }
+
+    cooccur <- dplyr::mutate(cooccur_df,
+                             as.factor(.data$c))
+
+    c_counts <- cooccur |>
+      dplyr::group_by(c) |>
+      dplyr::count()
+
+    missing_fill <- data.frame(c = 0:10, n = 0)
+    missing_fill <- dplyr::anti_join(missing_fill,
+                                     c_counts,
+                                     by = "c")
+    c_counts <- rbind(c_counts, missing_fill)
+    c_counts |>
+      dplyr::arrange(c) |>
+      dplyr::ungroup() |>
+      dplyr::mutate(species, target_c) |>
+      dplyr::select(species,
+                    target_c,
+                    cospecies_c = c,
+                    cospecies_n = n)
+
   }
-
-  cooccur <- dplyr::mutate(cooccur_df,
-                           as.factor(.data$c))
-
-  c_counts <- cooccur |>
-    dplyr::group_by(c) |>
-    dplyr::count()
-
-  missing_fill <- data.frame(c = 0:10, n = 0)
-  missing_fill <- dplyr::anti_join(missing_fill,
-                                   c_counts,
-                                   by = "c")
-  c_counts <- rbind(c_counts, missing_fill)
-  c_counts |>
-    dplyr::arrange(c) |>
-    dplyr::ungroup() |>
-    dplyr::mutate(species, target_c) |>
-    dplyr::select(species, target_c, cospecies_c = c, cospecies_n = n)
-
-}

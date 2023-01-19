@@ -79,32 +79,46 @@
 #' }
 #'
 #' @export
-transect_glance <- function(data_set){
 
+transect_glance <- function(data_set) {
   if (!is.data.frame(data_set)) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.",
+      call. = FALSE
+    )
   }
-  if (ncol(data_set) == 0){
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  if (ncol(data_set) == 0) {
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
   if (ncol(data_set) == 1) {
     new <- rbind(names(data_set), data_set)
 
-    data_set <- separate(new,
-                         col = 1,
-                         sep = ",",
-                         into = paste0("V", 1:14),
-                         fill = "right",
-                         extra = "merge")
+    data_set <- separate(
+      new,
+      col = 1,
+      sep = ",",
+      into = paste0("V", 1:14),
+      fill = "right",
+      extra = "merge"
+    )
   }
 
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "")))
-  data_set <- mutate(data_set, across(tidyselect::where(is.character), ~na_if(.x, "0000-00-00")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "0000-00-00")))
 
   data_set[1, 2] <- data_set[1, 1]
   data_set[1, 1] <- "Title"
@@ -126,10 +140,12 @@ transect_glance <- function(data_set){
   names(data_set)[1:2] <- c("V1", "V2")
 
   dropped <- data_set |> drop_na(1) |>
-    filter(.data$V1 != "Conservatism-Based Metrics:",
-           .data$V1 != "Species Richness:",
-           .data$V1 != "Duration Metrics:",
-           .data$V1 != "Species Wetness:")
+    filter(
+      .data$V1 != "Conservatism-Based Metrics:",
+      .data$V1 != "Species Richness:",
+      .data$V1 != "Duration Metrics:",
+      .data$V1 != "Species Wetness:"
+    )
 
   cut <- dropped |>
     filter(row_number() < which(.data$V1 == "Physiognomic Relative Importance Values:"))
@@ -137,13 +153,16 @@ transect_glance <- function(data_set){
   selected <- cut |> select(1:2)
 
   if (selected[9, 1] == "FQA DB Region:") {
-    new_rows <- data.frame(V1 = c("Custom FQA DB Name",
-                                   "Custom FQA DB Description"),
-                           V2 = c(NA, NA))
-    selected <- rbind(selected[1:12, ], new_rows, selected[-(1:12), ])
+    new_rows <- data.frame(
+      V1 = c("Custom FQA DB Name",
+             "Custom FQA DB Description"),
+      V2 = c(NA, NA)
+    )
+    selected <-
+      rbind(selected[1:12,], new_rows, selected[-(1:12),])
   } else {
-    selected[1:14, ] <- selected[c(1:8, 11:14, 9:10), ]
-    }
+    selected[1:14,] <- selected[c(1:8, 11:14, 9:10),]
+  }
 
   selected$V1 <- gsub("Original ", "", selected$V1)
   selected$V2[28] <- sub("m", "", selected$V2[28])
@@ -157,61 +176,62 @@ transect_glance <- function(data_set){
 
   names(data) <- gsub(":", "", names(data))
 
-  names(data) <- c("title",
-                   "date",
-                   "site_name",
-                   "city",
-                   "county",
-                   "state",
-                   "country",
-                   "omernik_level_three_ecoregion",
-                   "fqa_db_region",
-                   "fqa_db_publication Year",
-                   "fqa_db_description",
-                   "fqa_db_selection_name",
-                   "custom_fqa_db_name",
-                   "custom_fqa_db_description",
-                   "practitioner",
-                   "latitude",
-                   "longitude",
-                   "community_code",
-                   "community_name",
-                   "community_type_notes",
-                   "weather_notes",
-                   "duration_notes",
-                   "environment_description",
-                   "other_notes",
-                   "transect_plot_type",
-                   "plot_size",
-                   "quadrat_subplot_size",
-                   "transect_length",
-                   "sampling_design_description",
-                   "cover_method",
-                   "private_public",
-                   "total_mean_c",
-                   "cover_weighted_mean_c",
-                   "native_mean_c",
-                   "total_fqi",
-                   "native_fqi",
-                   "cover-weighted_fqi",
-                   "cover-weighted_native_fqi",
-                   "adjusted_fqi",
-                   "c_value_zero",
-                   "c_value_low",
-                   "c_value_mid",
-                   "c_value_high",
-                   "total_species",
-                   "native_species",
-                   "non_native_species",
-                   "mean_wetness",
-                   "native_mean_wetness",
-                   "annual",
-                   "perennial",
-                   "biennial",
-                   "native_annual",
-                   "native_perennial",
-                   "native_biennial"
-                   )
+  names(data) <- c(
+    "title",
+    "date",
+    "site_name",
+    "city",
+    "county",
+    "state",
+    "country",
+    "omernik_level_three_ecoregion",
+    "fqa_db_region",
+    "fqa_db_publication Year",
+    "fqa_db_description",
+    "fqa_db_selection_name",
+    "custom_fqa_db_name",
+    "custom_fqa_db_description",
+    "practitioner",
+    "latitude",
+    "longitude",
+    "community_code",
+    "community_name",
+    "community_type_notes",
+    "weather_notes",
+    "duration_notes",
+    "environment_description",
+    "other_notes",
+    "transect_plot_type",
+    "plot_size",
+    "quadrat_subplot_size",
+    "transect_length",
+    "sampling_design_description",
+    "cover_method",
+    "private_public",
+    "total_mean_c",
+    "cover_weighted_mean_c",
+    "native_mean_c",
+    "total_fqi",
+    "native_fqi",
+    "cover-weighted_fqi",
+    "cover-weighted_native_fqi",
+    "adjusted_fqi",
+    "c_value_zero",
+    "c_value_low",
+    "c_value_mid",
+    "c_value_high",
+    "total_species",
+    "native_species",
+    "non_native_species",
+    "mean_wetness",
+    "native_mean_wetness",
+    "annual",
+    "perennial",
+    "biennial",
+    "native_annual",
+    "native_perennial",
+    "native_biennial"
+  )
   data
 }
 

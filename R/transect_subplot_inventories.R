@@ -33,19 +33,30 @@
 #'
 #' @export
 
-transect_subplot_inventories <- function(transect){
 
+transect_subplot_inventories <- function(transect) {
   if (!is.data.frame(transect)) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.",
+      call. = FALSE
+    )
   }
-  if (ncol(transect) == 0){
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+  if (ncol(transect) == 0) {
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
   if (!("Species Richness:" %in% transect[[1]])) {
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    stop(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
+      call. = FALSE
+    )
   }
 
-  boundary_rows <- which(grepl("Quadrat", transect$V1) & grepl("Species:", transect$V1))
+  boundary_rows <-
+    which(grepl("Quadrat", transect$V1) &
+            grepl("Species:", transect$V1))
   lengths <- diff(boundary_rows) - 3
   lengths <- c(lengths, nrow(transect) - tail(boundary_rows, 1) - 2)
 
@@ -53,21 +64,25 @@ transect_subplot_inventories <- function(transect){
   end_rows <- start_rows + lengths - 1
 
   inventory_list <- list(length(start_rows))
-  for (subplot in seq_along(start_rows)){
+  for (subplot in seq_along(start_rows)) {
     sub_inv <- transect[start_rows[subplot]:end_rows[subplot],
                         c(1:3, 6:11)]
-    colnames(sub_inv) <- c("scientific_name",
-                           "family",
-                           "acronym",
-                           "nativity",
-                           "c",
-                           "w",
-                           "physiognomy",
-                           "duration",
-                           "common_name")
+    colnames(sub_inv) <- c(
+      "scientific_name",
+      "family",
+      "acronym",
+      "nativity",
+      "c",
+      "w",
+      "physiognomy",
+      "duration",
+      "common_name"
+    )
 
-    sub_inv <- mutate(sub_inv, across(tidyselect::where(is.character), ~na_if(.x, "n/a")))
-    sub_inv <- mutate(sub_inv, across(tidyselect::where(is.character), ~na_if(.x, "")))
+    sub_inv <-
+      mutate(sub_inv, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
+    sub_inv <-
+      mutate(sub_inv, across(tidyselect::where(is.character), ~ na_if(.x, "")))
 
     sub_inv <- sub_inv |>
       dplyr::mutate(c = as.numeric(.data$c),
