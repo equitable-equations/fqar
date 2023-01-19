@@ -20,27 +20,27 @@ library(dplyr)
 
 ## Introduction
 
-The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment (FQA) data from [universalFQA.org](https://universalfqa.org/). Two sample data sets, ${\tt missouri}$ and ${\tt chicago}$, are also provided.
+The ${\tt fqar}$ packages provides tools for downloading and analyzing floristic quality assessment (FQA) data from [universalFQA.org](https://universalfqa.org/). Two sample data sets, `chicago` and  `missouri`, are also provided.
 
-Functions in this package fall into three general categories: _indexing functions_, which produce data frames of current public databases and FQAs from various regions, _downloading functions_, which download the FQAs themselves, and _tidying functions_, which convert downloaded assessments into a standard format.
+Functions in this package fall into four general categories: _indexing functions_, which produce data frames of current public databases and FQAs from various regions, _downloading functions_, which download the FQAs themselves, _tidying functions_, which convert downloaded assessments into a standard format, and _analytic functions_, which compare species across assessments.
 
 ## Indexing functions
 
-Each floristic quality assessment is tied to a specific databases of native plants that has been compiled by experts in local flora. A listing of all databases accepted by [universalFQA.org](https://universalfqa.org/) can be viewed with the ${\tt index\_fqa\_databases()}$ function.
+Each floristic quality assessment is tied to a specific databases of native plants that has been compiled by experts in local flora. A listing of all databases accepted by [universalFQA.org](https://universalfqa.org/) can be viewed with the `index_fqa_databases()` function.
 
 ```{r}
 databases <- index_fqa_databases()
 head(databases)
 ```
 
-To see a listing of all public floristic quality assessments using a given database, use the ${\tt index\_fqa\_assessments()}$ function.
+To see a listing of all public floristic quality assessments using a given database, use the `index_fqa_assessments()` function.
 
 ```{r}
 missouri_fqas <- index_fqa_assessments(database_id = 63)
 head(missouri_fqas)
 ```
 
-Similarly, the ${\tt index\_fqa\_transects()}$ function returns a listing of all public transect assessments using the specified database.  
+Similarly, the `index_fqa_transects()` function returns a listing of all public transect assessments using the specified database.  
 
 ```{r}
 missouri_transects <- index_fqa_transects(database_id = 63)
@@ -49,31 +49,31 @@ head(missouri_transects)
 
 ## Downloading functions
 
-Floristic quality assessments can be downloaded individually by id number or in batches according to specified search criteria using the ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$ functions, respectively. 
+Floristic quality assessments can be downloaded individually by id number or in batches according to specified search criteria using the `download_assessment()` and `download_assessment_list()` functions, respectively. 
 
-The first of these accepts an assessment ID number as its sole input and returns a data frame. For instance, the Grasshopper Hollow survey has ${\tt assessment\_id} = 25961$ according to the listing obtained using ${\tt index\_fqa\_assessments()}$. The following code downloads this assessment.
+The first of these accepts an assessment ID number as its sole input and returns a data frame. For instance, the Grasshopper Hollow survey has `assessment_id = 25961` according to the listing obtained using `index_fqa_assessments()`. The following code downloads this assessment.
 
 ```{r}
 grasshopper <- download_assessment(assessment_id = 25961)
 ```
 
-Multiple assessments from a specified database can be downloaded simultaneously using ${\tt download\_assessment\_list()}$, which makes use of ${\tt dplyr::filter}$ syntax on the variables ${\tt id, assessment, date, site}$ and ${\tt practitioner}$. For instance, the following code downloads all assessments performed using the 2015 Missouri database at the Ambrose Farm site.
+Multiple assessments from a specified database can be downloaded simultaneously using `download_assessment_list()`, which makes use of `dplyr::filter` syntax on the variables `id, assessment, date, site` and `practitioner`. For instance, the following code downloads all assessments performed using the 2015 Missouri database at the Ambrose Farm site.
 
 ```{r}
 ambrose <- download_assessment_list(database_id = 63,
                                     site == "Ambrose Farm")
 ```
 
-For even mid-sized requests, this command may run slowly due to the limited speed of the [universalFQA.org](https://universalfqa.org/) website. For this reason, a progress bar has been added to the ${\tt download\_assessment\_list()}$ function when $n\ge 5$. 
+For even mid-sized requests, this command may run slowly due to the limited speed of the [universalFQA.org](https://universalfqa.org/) website. For this reason, a progress bar has been added to the `download_assessment_list()` function when $n\ge 5$. 
 
-As the name suggests, the output of ${\tt download\_assessment\_list()}$ is a list of data frames. 
+As the name suggests, the output of `download_assessment_list()` is a list of data frames. 
 
 ```{r}
 class(ambrose)
 length(ambrose)
 ```
 
-Transect assessment data data stored on [universalFQA.org](https://universalfqa.org/) is accessible to analysts using the ${\tt fqar}$ package via the functions ${\tt download\_transect()}$ and ${\tt download\_transect\_list()}$, which work exactly like their counterparts, ${\tt download\_assessment()}$ and ${\tt download\_assessment\_list()}$.
+Transect assessment data data stored on [universalFQA.org](https://universalfqa.org/) is accessible to analysts using the ${\tt fqar}$ package via the functions `download_transect()` and `download_transect_list()`, which work exactly like their counterparts, `download_assessment()` and `download_assessment_list()`.
 
 ```{r}
 rock_garden <- download_transect(transect_id = 6875)
@@ -85,7 +85,7 @@ golden <- download_transect_list(database_id = 63,
 
 The data frames obtained from these downloading functions are all highly untidy, respecting the default structure of the website from which they are obtained. The ${\tt fqar}$ package provides tools for efficiently re-formatting these sets.
 
-Each floristic quality assessments on [universalFQA.org](https://universalfqa.org/) includes two types of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions ${\tt assessment\_inventory()}$ and ${\tt assessment\_glance()}$ extract and tidy these two types of information.
+Each floristic quality assessments on [universalFQA.org](https://universalfqa.org/) includes two types of information: details about the species observed during data collection and summary information about the assessment as a whole. The ${\tt fqar}$ functions `assessment_inventory()` and `assessment_glance()` extract and tidy these two types of information.
 
 For instance, the following code creates a data frame of species found in the 2021 Grasshopper Hollow survey downloaded earlier.
 
@@ -94,20 +94,20 @@ grasshopper_species <- assessment_inventory(grasshopper)
 glimpse(grasshopper_species)
 ```
 
-A tidy summary of the assessment can be obtained with ${\tt assessment\_glance()}$. The output is a data frame with a single row and 53 columns, including ${\tt native\_mean\_C}$,  ${\tt native\_species}$, and ${\tt native\_fqi}$.
+A tidy summary of the assessment can be obtained with `assessment_glance()`. The output is a data frame with a single row and 53 columns, including `native_mean_c`,  `native_species`, and `native_fqi`.
 
 ```{r}
 grasshopper_summary <- assessment_glance(grasshopper)
 names(grasshopper_summary)
 ```
 
-The tidy format provided by ${\tt assessment\_glance()}$ is most useful when applied to multiple data sets at once, for instance in the situation where the analyst wants to consider statistics from many different assessments simultaneously. The ${\tt assessment\_list\_glance()}$ function provides a shortcut when those data frames are housed in a list like that returned by ${\tt download\_assessment\_list()}$. For instance, the following code returns a data frame with 52 columns and 3 rows, one per assessment.
+The tidy format provided by `assessment_glance()` is most useful when applied to multiple data sets at once, for instance in the situation where the analyst wants to consider statistics from many different assessments simultaneously. The `assessment_list_glance()` function provides a shortcut when those data frames are housed in a list like that returned by `download_assessment_list()`. For instance, the following code returns a data frame with 52 columns and 3 rows, one per assessment.
 
 ```{r}
 ambrose_summary <- assessment_list_glance(ambrose)
 ```
 
-The ${\tt fqar}$ package also provides functions for handling transect assessment data. ${\tt transect\_inventory()}$, ${\tt transect\_glance()}$, and ${\tt transect\_list\_glance()}$ work just like their counterparts, ${\tt assessment\_inventory()}$, ${\tt assessment\_glance()}$, and ${\tt assessment\_list\_glance()}$.
+The ${\tt fqar}$ package also provides functions for handling transect assessment data. `transect_inventory()`, transect_glance()`, and `transect_list_glance()` work just like their counterparts, `assessment_inventory()`, `assessment_glance()`, and `assessment_list_glance()`.
 
 ```{r, eval = FALSE}
 rock_garden_species <- transect_inventory(rock_garden)
@@ -115,7 +115,7 @@ rock_garden_summary <- transect_glance(rock_garden)
 golden_summary <- transect_list_glance(golden)
 ```
 
-Additionally, transect assessments usually include physiognometric metrics like relative frequency and relative coverage. These can be extracted with the ${\tt trasect\_phys()}$ function.
+Additionally, transect assessments usually include physiognometric metrics like relative frequency and relative coverage. These can be extracted with the `trasect_phys()` function.
 
 ```{r}
 rock_garden_phys <- transect_phys(rock_garden)
@@ -124,9 +124,9 @@ glimpse(rock_garden_phys)
 
 ## Analytic functions
 
-The ${\tt fqar}$ package provides tools for analyzing species co-occurrence across multiple floristic quality assessments. A typical workflow consists of downloading a list of assessments, extracting inventories from each, then enumerating and summarizing co-occurrences of the species of interest.
+The ${\tt fqar}$ package provides tools for analyzing species co-occurrence across multiple floristic quality assessments. A typical workflow consists of downloading a list of assessments, extracting inventories from each, then enumerating and summarizing co-occurrences of species of interest.
 
-```{r analysis}
+```{r analysis, results = 'hide'}
 # Obtain a tidy data frame of all co-occurrences in the 1995 Southern Ontario database:
 ontario <- download_assessment_list(database = 2)
 
@@ -136,35 +136,30 @@ ontario_invs <- assessment_list_inventory(ontario)
 # Enumerate all co-occurrences in this database:
 ontario_cooccurrences <- assessment_cooccurrences(ontario_invs)
 
-# Sumamrize co-occurrences in this database, one row per target species:
+# Summarize co-occurrences in this database, one row per target species:
 ontario_cooccurrences <- assessment_cooccurrences_summary(ontario_invs)
 ```
 
-Of particular note is the ${\tt species\_profile()}$ function, which returns the frequency distribution of C-values of co-occurring species for a given target species. Users may specify the optional ${\tt native}$ argument to include only native species in the profile. 
+Of particular note is the `species_profile()` function, which returns the frequency distribution of C-values of co-occurring species for a given target species. Users may specify the optional `native` argument to include only native species in the profile. The `species_profile_plot()` function takes identical arguments but returns an elegant plot instead of a data frame
 
-For instance, Aster lateriflorus (C=0) has the following profile. 
+For instance, _Aster lateriflorus_ (C=3) has the following native profile in the Southern Ontario database. 
 
-```{r profile}
+```{r profile, fig.width=4.5}
 aster_profile <- species_profile("Aster lateriflorus", 
                                  ontario_invs,
                                  native = TRUE)
+aster_profile
 
-ggplot(aster_profile, aes(x = cospecies_c, y = cospecies_n)) +
-  geom_col() +
-  scale_x_continuous(breaks = seq(from = 0, to = 11, by = 2)) +
-  labs(x = "Co-occurring species C values",
-       y = "Frequency",
-       title = paste(aster_profile$species, "native co-occurrence profile")) +
-  geom_vline(xintercept = aster_profile$target_c,
-             linetype = "dashed") +
-  theme_minimal()
+species_profile_plot("Aster lateriflorus", 
+                     ontario_invs,
+                     native = TRUE)
 ```
 
 ## Data sets
 
-Two tidy data sets of floristic quality data, ${\tt missouri}$ and ${\tt chicago}$, are included with the ${\tt fqar}$ package. Produced with ${\tt assessment\_list\_glance()}$, these show summary information for every floristic quality assessment that used databases 63 and 149, respectively, prior to August 14, 2022. These sets may be useful for visualization or machine-learning purposes. For instance, one might consider the relationship between richness and native mean C in sites assessed using the 2015 Missouri database:
+Two tidy data sets of floristic quality data, `chicago` and `missouri`, are included with the ${\tt fqar}$ package. Produced with `assessment_list_glance()`, these show summary information for every floristic quality assessment that used databases 63 and 149, respectively, prior to August 14, 2022. These sets may be useful for visualization or machine-learning purposes. For instance, one might consider the relationship between richness and native mean C in sites assessed using the 2015 Missouri database:
 
-```{r missouri plot, warning = FALSE}
+```{r missouri plot, warning = FALSE, fig.width=4.5}
 ggplot(missouri, aes(x = native_species, 
                      y = native_mean_c)) +
   geom_point() +
