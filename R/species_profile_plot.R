@@ -92,6 +92,11 @@ species_profile_plot <-
                     cospecies_c = .data$c,
                     cospecies_n = .data$n)
 
+    if (native == TRUE){
+      plot_title <- "native co-occurrence profile"} else {
+        plot_title <- "co-occurrence profile"
+        }
+
     ggplot2::ggplot(c_counts, ggplot2::aes(x = .data$cospecies_c,
                                            y = .data$cospecies_n)) +
       ggplot2::geom_col() +
@@ -101,7 +106,7 @@ species_profile_plot <-
       ggplot2::labs(
         x = "Co-occurring species C values",
         y = "Frequency",
-        title = paste(species, "native co-occurrence profile")
+        title = paste(species, plot_title)
       ) +
       ggplot2::geom_vline(xintercept = target_c,
                           linetype = "dashed") +
