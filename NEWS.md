@@ -1,4 +1,4 @@
-# fqar (development version)
+# fqar 0.3.0
 
 ## New features
 
