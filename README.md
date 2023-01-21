@@ -116,7 +116,7 @@ ontario_cooccurrences <- assessment_cooccurrences(ontario_invs)
 ontario_cooccurrences <- assessment_cooccurrences_summary(ontario_invs)
 ```
 
-Of particular note is the `species\_profile()` function, which returns the frequency distribution of C-values of co-occurring species for a given target species.
+Of particular note is the `species_profile()` function, which returns the frequency distribution of C-values of co-occurring species for a given target species.
 
 ```{r profile}
 aster_profile <- species_profile("Aster lateriflorus", ontario_invs)
