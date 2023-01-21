@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_phys.R
 \name{species_phys}
 \alias{species_phys}
-\title{The physiognomy of a species in a specified database}
+\title{Physiognomy of a species in a specified database}
 \usage{
 species_phys(species, database_id = NULL, database_inventory = NULL)
 }

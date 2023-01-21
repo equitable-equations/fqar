@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_common_name.R
 \name{species_common_name}
 \alias{species_common_name}
-\title{The common name of a species in a specified database}
+\title{Common name of a species in a specified database}
 \usage{
 species_common_name(species, database_id = NULL, database_inventory = NULL)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_nativity.R
 \name{species_nativity}
 \alias{species_nativity}
-\title{The nativity of a species in a specified database}
+\title{Nativity of a species in a specified database}
 \usage{
 species_nativity(species, database_id = NULL, database_inventory = NULL)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_acronym.R
 \name{species_acronym}
 \alias{species_acronym}
-\title{The acronym of a species in a specified database}
+\title{Acronym of a species in a specified database}
 \usage{
 species_acronym(species, database_id = NULL, database_inventory = NULL)
 }

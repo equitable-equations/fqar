@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_w.R
 \name{species_w}
 \alias{species_w}
-\title{The wetness value of a species in a specified database}
+\title{Wetness value of a species in a specified database}
 \usage{
 species_w(species, database_id = NULL, database_inventory = NULL)
 }

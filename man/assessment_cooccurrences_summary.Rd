@@ -8,7 +8,7 @@ assessment_cooccurrences_summary(inventory_list)
 }
 \arguments{
 \item{inventory_list}{A list of site inventories having the format of
-\code{\link[=assessment_list_inventory]{assessment_list_inventory()}}}
+\code{\link[=assessment_list_inventory]{assessment_list_inventory()}}.}
 }
 \value{
 A data frame with 16 columns:
@@ -36,8 +36,8 @@ A data frame with 16 columns:
 inventories downloaded from
 \href{https://universalfqa.org/}{universalfqa.org} and returns a summary of
 the co-occurrences of each target species. Repeated co-occurrences across
-multiple assessments are included in summary
-calculations, but self co-occurrences are not.
+multiple assessments are included in summary calculations, but self
+co-occurrences are not.
 }
 \examples{
 # assessment_cooccurrences_summary is best used in combination with
@@ -46,7 +46,7 @@ calculations, but self co-occurrences are not.
 \donttest{
 ontario <- download_assessment_list(database = 2)
 ontario_invs <- assessment_list_inventory(ontario)
-ontario_cooccurrences <- assessment_cooccurrences_summary(ontario_invs)
+ontario_summary <- assessment_cooccurrences_summary(ontario_invs)
 }
 
 }

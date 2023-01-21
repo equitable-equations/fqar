@@ -2,7 +2,7 @@
 % Please edit documentation in R/species_c.R
 \name{species_c}
 \alias{species_c}
-\title{The C-value of a species in a specified database}
+\title{C-value of a species in a specified database}
 \usage{
 species_c(species, database_id = NULL, database_inventory = NULL)
 }
