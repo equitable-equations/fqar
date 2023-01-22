@@ -9,7 +9,7 @@
 ## Other improvements
 
 * memoization for all `download\_*` functions, which generally run slowly due to limitations of the [universalfqa.org](https://universalfqa.org/) website.
-* all data frame produced now have syntactic column names ( for instance, `total_mean_c` instead of `Total Mean C`).
+* all data frame produced now have syntactic column names (for instance, `total_mean_c` instead of `Total Mean C`).
 
 
 # fqar 0.2.1
