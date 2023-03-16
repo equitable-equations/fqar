@@ -3,8 +3,8 @@ Type: Package
 Title: Floristic Quality Assessment Tools for R
 Version: 0.3.0
 Authors@R: c(
-  person("Alexia", "Myers", , email = "myersaj@lakeforest.edu", role = c("aut")),
   person("Andrew", "Gard", , email = "agard@lakeforest.edu", role = c("aut", "cre"))
+  person("Alexia", "Myers", , email = "myersaj@lakeforest.edu", role = c("aut")),
   )
 Description: Tools for downloading and analyzing floristic quality assessment data. 
   See Freyman et al. (2015) <doi:10.1111/2041-210X.12491> for more information 
