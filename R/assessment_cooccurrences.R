@@ -94,12 +94,18 @@ assessment_cooccurrences <- function(inventory_list) {
 
     target_species_n <-
       sum(included) # number of assessments that include the target species
+    if (target_species_n == 0 | is.na(target_species_n)){ # why would this ever be NA??
+      next
+      }
 
     short_list <- inventory_list[included]
     short_list_combined <- bind_rows(short_list)
 
-    short_list_combined <- dplyr::filter(short_list_combined,
-                                         "scientific_name" != species_df$species[sp]) # ignoring self-cooccurrence
+    short_list_combined <- short_list_combined[short_list_combined$scientific_name != species_df$species[sp], ]
+    # Still an issue with empty dfs, it appears.
+    # this happens when the species matches but the c-value doesn't
+    # short_list_combined <- dplyr::filter(short_list_combined,
+    #                                      "scientific_name" != species_df$species[sp]) # ignoring self-cooccurrence
 
     short_list_combined <- cbind(
       rep(species_df$species[sp],
