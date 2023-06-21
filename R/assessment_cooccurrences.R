@@ -87,8 +87,9 @@ assessment_cooccurrences <- function(inventory_list) {
   for (sp in seq_along(species_df$species)) {
     included <- vector("logical")
     for (inventory in seq_along(inventory_list)) {
-      included[inventory] <-
-        (species_df$species[sp] %in% inventory_list[[inventory]]$scientific_name)
+        index1 <- grepl(species_df$species[sp], inventory_list[[inventory]]$scientific_name) # matches name
+        index2 <- grepl(species_df$species_c[sp], inventory_list[[inventory]]$c) # matches c
+        included[inventory] <- any(index1 & index2)
     } # gives a logical vector indicating which inventories include the given species
 
     target_species_n <-
@@ -98,7 +99,7 @@ assessment_cooccurrences <- function(inventory_list) {
     short_list_combined <- bind_rows(short_list)
 
     short_list_combined <- dplyr::filter(short_list_combined,
-                                         .data$scientific_name != species_df$species[sp]) # ignoring self-cooccurrence
+                                         "scientific_name" != species_df$species[sp]) # ignoring self-cooccurrence
 
     short_list_combined <- cbind(
       rep(species_df$species[sp],
@@ -133,7 +134,7 @@ assessment_cooccurrences <- function(inventory_list) {
   )
 
   cooccur_df |>
-    dplyr::arrange(.data$target_species) |>
+    dplyr::arrange("target_species") |>
     dplyr::mutate(target_species_c = as.numeric(.data$target_species_c))
 
 }
