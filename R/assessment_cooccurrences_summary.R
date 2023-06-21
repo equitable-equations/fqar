@@ -56,7 +56,8 @@ assessment_cooccurrences_summary <- function(inventory_list) {
   }
 
   cooccur <- assessment_cooccurrences(inventory_list)
-  cooccur |> dplyr::group_by(.data$target_species) |>
+  cooccur |> dplyr::group_by(.data$target_species,
+                             .data$target_species_c) |>
     dplyr::summarize(
       target_species_c = unique(.data$target_species_c),
       target_species_nativity = unique(.data$target_species_nativity),
