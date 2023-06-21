@@ -60,19 +60,19 @@ species_profile_plot <-
     cooccur_df <- do.call(rbind, short_list)
 
     species_only <- dplyr::filter(cooccur_df,
-                                  .data$scientific_name == species)
+                                  "scientific_name" == species)
     target_c <- species_only$c[1] # record target species c-value.
 
     cooccur_df <- dplyr::filter(cooccur_df,
-                                .data$scientific_name != species) # to ignore self-cooccurrence
+                                "scientific_name" != species) # to ignore self-cooccurrence
 
     if (native == TRUE) {
       cooccur_df <- dplyr::filter(cooccur_df,
-                                  .data$nativity == "native")
+                                  "nativity" == "native")
     }
 
     cooccur <- dplyr::mutate(cooccur_df,
-                             as.factor(.data$c))
+                             as.factor("c"))
 
     c_counts <- cooccur |>
       dplyr::group_by(c) |>
@@ -89,8 +89,8 @@ species_profile_plot <-
       dplyr::mutate(species, target_c) |>
       dplyr::select(species,
                     target_c,
-                    cospecies_c = .data$c,
-                    cospecies_n = .data$n)
+                    cospecies_c = "c",
+                    cospecies_n = "n")
 
     if (native == TRUE){
       plot_title <- "native co-occurrence profile"} else {
