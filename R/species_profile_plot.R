@@ -48,6 +48,7 @@ species_profile_plot <-
       included[inventory] <-
         (species %in% inventory_list[[inventory]]$scientific_name)
     } # gives a logical vector indicating which inventories include the given species
+    # currently ignores the possibility that a species is included twice with different C
 
     if (sum(included) == 0) {
       stop("Species does not appear in any assessment. No profile plot generated.",
@@ -60,19 +61,19 @@ species_profile_plot <-
     cooccur_df <- do.call(rbind, short_list)
 
     species_only <- dplyr::filter(cooccur_df,
-                                  "scientific_name" == species)
+                                  .data$scientific_name == species)
     target_c <- species_only$c[1] # record target species c-value.
 
     cooccur_df <- dplyr::filter(cooccur_df,
-                                "scientific_name" != species) # to ignore self-cooccurrence
+                                .data$scientific_name != species) # to ignore self-cooccurrence
 
     if (native == TRUE) {
       cooccur_df <- dplyr::filter(cooccur_df,
-                                  "nativity" == "native")
+                                  .data$nativity == "native")
     }
 
     cooccur <- dplyr::mutate(cooccur_df,
-                             as.factor("c"))
+                             as.factor(.data$c))
 
     c_counts <- cooccur |>
       dplyr::group_by(c) |>
