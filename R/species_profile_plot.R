@@ -33,7 +33,6 @@
 #' @export
 
 
-
 species_profile_plot <-
   function(species, inventory_list, native = FALSE) {
     if (!is_inventory_list(inventory_list)) {
@@ -96,7 +95,7 @@ species_profile_plot <-
     if (native == TRUE){
       plot_title <- "native co-occurrence profile"} else {
         plot_title <- "co-occurrence profile"
-        }
+      }
 
     ggplot2::ggplot(c_counts, ggplot2::aes(x = .data$cospecies_c,
                                            y = .data$cospecies_n)) +
