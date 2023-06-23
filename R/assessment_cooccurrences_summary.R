@@ -84,5 +84,6 @@ assessment_cooccurrences_summary <- function(inventory_list) {
                                        na.rm = TRUE),
       discrepancy_c = .data$target_species_c - .data$cospecies_native_mean_c
     ) |>
+    ungroup() |>
     dplyr::arrange(.data$target_species)
 }
