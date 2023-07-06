@@ -1,3 +1,9 @@
+# fqar 0.3.1
+
+## New features
+
+* New function `transect_list_inventory` for extracting multiple transect-level species inventories simultaneously.
+
 # fqar 0.3.0
 
 ## New features
