@@ -1,13 +1,13 @@
 test_that("transect_list_inventory works",  {
-
-  test_transect <- list(test_transect,
-                        test_transect2,
-                        test_transect_manual)
-  inv_list <- transect_list_inventory(test_transect)
+  test_raw <- download_transect(4492)
+  test_transect_list <- list(test_raw,
+                             test_raw,
+                             test_raw)
+  inv_list <- transect_list_inventory(test_transect_list)
 
   expect_equal(class(inv_list), "list")
   expect_equal(length(inv_list), 3)
-  expect_equal(ncol(inv_list[[1]]), 14)
+  expect_equal(ncol(inv_list[[1]]), 13)
 
   bad_list <- list(faithful)
 
@@ -16,3 +16,5 @@ test_that("transect_list_inventory works",  {
   expect_error(transect_list_inventory(17))
   expect_error(transect_list_inventory(NULL))
 })
+
+

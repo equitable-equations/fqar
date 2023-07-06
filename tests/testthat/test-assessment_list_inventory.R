@@ -16,3 +16,4 @@ test_that("assessment_list_inventory works", {
   expect_error(assessment_list_inventory(17))
   expect_error(assessment_list_inventory(NULL))
 })
+
