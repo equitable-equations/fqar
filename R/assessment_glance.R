@@ -134,8 +134,7 @@ assessment_glance <- function(data_set) {
 
   names(data_set)[1:2] <- c("V1", "V2")
 
-  selected <- data_set |>
-    select(1:2) |>
+  selected <- data_set[1:2] |>
     drop_na(1)
 
   if (selected[8, 1] == "FQA DB Region:") {

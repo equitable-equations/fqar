@@ -78,7 +78,7 @@ transect_inventory <- function(data_set) {
   data_set <-
     mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
 
-  data_set <- data_set |> select(1:13)
+  data_set <- data_set[1:13]
 
   start_row <-
     1 + which(data_set$V1 == "Species Relative Importance Values:")

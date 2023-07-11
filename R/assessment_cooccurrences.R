@@ -140,7 +140,7 @@ assessment_cooccurrences <- function(inventory_list) {
   )
 
   cooccur_df |>
-    dplyr::arrange("target_species") |>
+    dplyr::arrange(.data$target_species) |>
     dplyr::mutate(target_species_c = as.numeric(.data$target_species_c))
 
 }

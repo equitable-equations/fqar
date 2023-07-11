@@ -150,7 +150,7 @@ transect_glance <- function(data_set) {
   cut <- dropped |>
     filter(row_number() < which(.data$V1 == "Physiognomic Relative Importance Values:"))
 
-  selected <- cut |> select(1:2)
+  selected <- cut[1:2]
 
   if (selected[9, 1] == "FQA DB Region:") {
     new_rows <- data.frame(
