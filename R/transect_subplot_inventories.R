@@ -33,7 +33,6 @@
 #'
 #' @export
 
-
 transect_subplot_inventories <- function(transect) {
   if (!is.data.frame(transect)) {
     stop(
@@ -88,7 +87,10 @@ transect_subplot_inventories <- function(transect) {
       dplyr::mutate(c = as.numeric(.data$c),
                     w = as.numeric(.data$w))
 
-    inventory_list[[subplot]] <- sub_inv
+    drop_problematic_obs <- sub_inv |>
+      dplyr::filter(!(scientific_name == "Bare ground"|scientific_name == "Water"))
+
+    inventory_list[[subplot]] <- drop_problematic_obs
   }
 
   inventory_list

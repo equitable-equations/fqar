@@ -39,7 +39,6 @@
 #'
 #' @export
 
-
 transect_inventory <- function(data_set) {
   if (!is.data.frame(data_set)) {
     stop(
@@ -93,7 +92,10 @@ transect_inventory <- function(data_set) {
   colnames(dropped) <- lapply(dropped[1,], as.character)
   dropped <- dropped[-1,]
 
-  suppressWarnings(new <- dropped |>
+  dropped_problematic <- dropped |>
+    dplyr::filter(!(Species == "Bare ground"|Species == "Water"))
+
+  suppressWarnings(new <- dropped_problematic |>
                      mutate(across(c(5:6, 9:13), as.double)))
 
   class(new) <- c("tbl_df", "tbl", "data.frame")
