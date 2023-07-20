@@ -1,7 +1,7 @@
 test_that("transect_inventory works", {
 
   expect_error(transect_inventory("hi"))
-  expect_error(trasect_inventory(faithful))
+  expect_error(transect_inventory(faithful))
 
   test_manual <- transect_inventory(test_transect) #manual download
   expect_equal(ncol(test_manual), 13)

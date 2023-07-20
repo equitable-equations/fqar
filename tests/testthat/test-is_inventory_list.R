@@ -11,3 +11,4 @@ test_that("is_inventory_list works", {
   expect_equal(is_inventory_list(bad_list), FALSE)
 
 })
+
