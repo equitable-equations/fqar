@@ -93,7 +93,7 @@ transect_inventory <- function(data_set) {
   dropped <- dropped[-1,]
 
   dropped_problematic <- dropped |>
-    dplyr::filter(!(Species == "Bare ground"|Species == "Water"))
+    dplyr::filter(!(.data$Species == "Bare ground"|.data$Species == "Water"))
 
   suppressWarnings(new <- dropped_problematic |>
                      mutate(across(c(5:6, 9:13), as.double)))

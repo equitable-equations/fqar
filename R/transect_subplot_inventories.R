@@ -88,7 +88,7 @@ transect_subplot_inventories <- function(transect) {
                     w = as.numeric(.data$w))
 
     drop_problematic_obs <- sub_inv |>
-      dplyr::filter(!(scientific_name == "Bare ground"|scientific_name == "Water"))
+      dplyr::filter(!(.data$scientific_name == "Bare ground"|.data$scientific_name == "Water"))
 
     inventory_list[[subplot]] <- drop_problematic_obs
   }
