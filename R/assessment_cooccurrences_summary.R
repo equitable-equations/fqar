@@ -57,7 +57,8 @@ assessment_cooccurrences_summary <- function(inventory_list) {
 
   cooccur <- assessment_cooccurrences(inventory_list)
   cooccur |> dplyr::group_by(.data$target_species,
-                             .data$target_species_c) |>
+                             .data$target_species_c,
+                             .data$target_species_nativity) |>
     dplyr::summarize(
       target_species_c = unique(.data$target_species_c),
       target_species_nativity = unique(.data$target_species_nativity),
@@ -76,7 +77,6 @@ assessment_cooccurrences_summary <- function(inventory_list) {
       percent_nonnative = 1 - .data$percent_native,
       percent_native_low_c = mean(.data$cospecies_c <= 3,
                                   na.rm = TRUE),
-      # not quite right
       percent_native_med_c = mean(.data$cospecies_c <= 7,
                                   na.rm = TRUE) - mean(.data$cospecies_c <= 3,
                                                        na.rm = TRUE),
