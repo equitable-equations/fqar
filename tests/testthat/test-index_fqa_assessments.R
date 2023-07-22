@@ -5,7 +5,7 @@ test_that("index_fqa_assessments works", {
 
   skip_on_cran()
 
-  assessments <- index_fqa_assessments(1)
+  assessments <- index_fqa_assessments(2)
 
   expect_equal(ncol(assessments), 5)
   expect_equal(names(assessments),
