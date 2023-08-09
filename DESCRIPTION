@@ -1,10 +1,11 @@
 Package: fqar
 Type: Package
 Title: Floristic Quality Assessment Tools for R
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
   person("Andrew", "Gard", , email = "agard@lakeforest.edu", role = c("aut", "cre")),
-  person("Alexia", "Myers", , email = "myersaj@lakeforest.edu", role = c("aut"))
+  person("Alexia", "Myers", , email = "myersaj@lakeforest.edu", role = c("aut")),
+  person("Irene", "Luwabelwa", , email = "luwabelwaffa55@lakeforest.edu", role = c("aut"))
   )
 Description: Tools for downloading and analyzing floristic quality assessment data. 
   See Freyman et al. (2015) <doi:10.1111/2041-210X.12491> for more information 
