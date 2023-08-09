@@ -2,7 +2,13 @@
 
 ## New features
 
+* New `transect_subplot_inventories` function for extracting species data from quadrat-level data in transect inventories.
+
 * New function `transect_list_inventory` for extracting multiple transect-level species inventories simultaneously.
+
+## Other improvements
+
+* Improvements to `assessment_cooccurrence` and `assessment_cooccurrence_summary` which now treat species with the same name but different C-values as distinct.
 
 # fqar 0.3.0
 
