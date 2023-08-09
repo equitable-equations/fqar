@@ -1,8 +1,6 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* Maintainer name was changed to correct a typo in the original release - sorry!
+0 errors | 0 warnings | 0 notes
 
 * Thank you for your work.
 
