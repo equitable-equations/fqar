@@ -1,5 +1,5 @@
 ---
-title: 'fqar: An R package for analyzing floristic quality assessment data'
+title: 'The fqar package: R tools for analyzing floristic quality assessment data'
 tags:
   - R
   - ecology
@@ -19,7 +19,7 @@ authors:
 affiliations:
  - name: Lake Forest College, Lake Forest IL, USA
    index: 1
-date: 18 August 2022
+date: 18 August 2023
 bibliography: fqar_refs.bib
 
 ---
@@ -28,23 +28,25 @@ bibliography: fqar_refs.bib
 
 Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them [@spyreas2015users]. Each species considered native to a particular region is assigned a *coefficient of conservatism*, C, on a scale of 0-10 by experts in local flora. Larger values of C correspond to species that tend to be found in undegraded sites, while lower values indicate species that are more tolerant to human impacts. An inventory of the site in question is conducted, and the average of the C-values found there is computed. This *native mean-C value*, sometimes weighted by the total number of plant species identified to give the so-called *floristic quality index* [@bowles2006testing], is frequently used by land managers and other agents to quantify an area's state of conservancy [@zinnen]. 
 
-In recent years it has become increasingly standard for practitioners to upload their assessments to a central repository, [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], which already includes tens of thousands of assessments from over one hundred floristic quality databases. This large public database opens an entire new domain for quantitative ecology which so far has remained largely unexplored, as both technical tools for inteacting programatically with the repository and statistical methods for analyzing the floristic quality data at the regional level have been lacking. 
+In recent years it has become increasingly standard for practitioners to upload their floristic quality assessments to a central repository, [universalfqa.org](https://universalfqa.org/) [@freyman2016universal], which already includes tens of thousands of assessments from over one hundred floristic quality databases. This large public database represents a new domain for quantitative ecology which so far has been largely unexplored, due to a lack of both technical tools for inteacting programatically with the repository and statistical methods for analyzing the floristic quality data housed there. 
 
-The fqar R [@rcore] package facilitates analysis of occurrence and co-occurrence of plant taxa at the regional level. Pulling data on-demand from UniversalFQA.org, it provides both organizational tools for handling the disparate sorts of data housed there and statistical ones for drawing novel conclusions from it. 
+The `fqar` R [@rcore] package facilitates analysis of occurrence and co-occurrence of plant taxa at the regional level. Pulling data on-demand from [universalfqa.org](https://universalfqa.org/), it provides both organizational tools for handling the disparate sorts of data housed there and statistical ones for drawing novel conclusions from that data. 
 
 # Statement of need
 
-While [universalfqa.org](https://universalfqa.org/) represents a valuable central repository for floristic quality data, it does not provide users any tools to make constructive use of that data beyond simple viewing and downloading of individual assessments. The `fqar` package remedies this, allowing users to answer such questions as
+While [universalfqa.org](https://universalfqa.org/) represents a valuable central repository for floristic quality assessments, it does not provide users any tools to make constructive use of that data beyond simple viewing and downloading of individual assessments. This is in keeping with the original motivation for floristic quality assessment: to aid land managers in making conservation decisions. 
 
-- what is the co-occurrence profile of a given species?
+The `fqar` package enables analysis with a wider lens, allowing users to consider database-wide records of plant taxa or characteristics. By considering entire collections of assessments simultaneously, ecologists may gain insights into floristic quality assessment as well as the plant species it tracks. Among the wide variety of questions made answerable by `fqar` are the following:
 
-- what species might be misclassified? Might some be more (or less?) conservative than previously thought based on their co-occurrence profile?
+- what is the co-occurrence profile of a given species of interest? What other plants (or types of plants) is it identified alongside most frequently?
 
-- where has a specified species been identified, and by whom?
+- what species in a given database might be misclassified? Based on their co-occurrence profile, might some be more or less conservative than previously thought?
 
-- what species are most common in certain regions? Which have been reported seldom or not at all?
+- what species are most commonly identified in certain regions? Which have been reported seldom or not at all?
 
-There is currently great need in the ecological community to validate and potentially refine the floristic quality assessment methodology (refs). Because C-values, the metric on which FQA is ultimately based, are assigned based on the experience of small numberes of local experts, there are inevitable inconsistencies and irregularities which only a larger-scale reconsideration can alleviate. Thus far the community has only been able to take preliminary or ad hoc steps in that direction (refs). The `fqar` package allows for deep, targeted analysis.
+- which non-native species have become widespread in particular regions? Do those species tend to be symptomatic of degraded areas, or can they coexist alongside conservative native plants?
+
+There is currently great need in the ecological community to validate and potentially refine the floristic quality assessment methodology (refs). Because C-values, the metric on which FQA is ultimately based, are assigned based on the experience of small numberes of local experts, there are inevitable inconsistencies and irregularities which only a larger-scale reconsideration can alleviate. Thus far the community has only been able to take preliminary or ad hoc steps in that direction (refs). The `fqar` package will allow for a deep, targeted analysis.
 
 # Typical workflow
 
