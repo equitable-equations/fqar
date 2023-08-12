@@ -388,10 +388,10 @@ species considered native to a particular region is assigned a
 in local flora. Larger values of C correspond to species that tend to be
 found in undegraded sites, while lower values indicate species that are
 more tolerant to human impacts <span class="citation">(Bauer
-2018)</span>. An inventory of the site in question is conducted, and the
-average of the C-values found there is computed. This <em>native mean
-C-value</em>, sometimes weighted by the total number of plant species
-identified to give the so-called <em>floristic quality index</em> <span class="citation">(Bowles and Jones 2006)</span>, is frequently used by
+2018)</span>. An inventory of the site is conducted and the average of
+the C-values found there is computed. This <em>native mean C-value</em>,
+sometimes weighted by the total number of plant species identified to
+give the so-called <em>floristic quality index</em> <span class="citation">(Bowles and Jones 2006)</span>, is frequently used by
 land managers and other agents to quantify an area’s state of
 conservancy <span class="citation">(Zinnen 2021)</span>.</p>
 <p>In recent years, it has become increasingly standard for
@@ -416,33 +416,33 @@ from that data.</p>
 <div id="statement-of-need" class="section level1">
 <h1>Statement of need</h1>
 <p>The <a href="https://universalfqa.org/">universalfqa.org</a> website
-is designed primarily to aid field botanists, who can rapidly obtain
-floristic quality assessment results simply by uploading their site
-inventories to the repository. While it facilitates storage and sharing,
-<a href="https://universalfqa.org/">universalfqa.org</a> does not
-provide users any tools for make constructive use of its data beyond
+is designed primarily to aid field botanists, allowing them to rapidly
+obtain floristic quality assessment results simply by uploading their
+site inventories to the repository. While it facilitates storage and
+sharing, <a href="https://universalfqa.org/">universalfqa.org</a> does
+not provide users any tools for make constructive use of its data beyond
 simple viewing and downloading of individual assessments. This is in
 keeping with the original motivation for floristic quality assessment:
-to aid land managers in making conservation decisions.</p>
-<p>The <code>fqar</code> package enables analysis with a wider lens,
-allowing users to consider database-wide records of plant taxa or
-characteristics. By considering entire collections of assessments
+to aid land managers in making conservation decisions. The
+<code>fqar</code> package enables analysis with a wider lens, allowing
+users to consider database-wide records of plant taxa or
+characteristics. By examining entire collections of assessments
 simultaneously, ecologists may gain insights into floristic quality
 assessment as well as the various plant species it tracks. Among the
 wide range of questions made answerable by <code>fqar</code> are the
 following:</p>
 <ul>
 <li><p>what is the co-occurrence profile of a given species of interest?
-What other plants (or types of plants) is it identified alongside most
-frequently?</p></li>
+What other plants (or types of plants) is it most frequently identified
+alongside?</p></li>
 <li><p>which species in a given database might be misclassified? Based
-on their co-occurrence profile, might some be more or less conservative
+on their co-occurrence profiles, might some be more or less conservative
 than previously thought?</p></li>
 <li><p>what species are most commonly identified in certain regions?
 Which have been reported seldom or not at all?</p></li>
 <li><p>which non-native species have become widespread in particular
-regions? Do those species tend to be symptomatic of degraded areas, or
-do they tend to coexist alongside more conservative native
+regions? Which tend to be symptomatic of degraded areas, and which seem
+to be able to coexist alongside more conservative native
 plants?</p></li>
 </ul>
 <p>There is currently great need in the ecological community to validate
@@ -459,7 +459,7 @@ analysis.</p>
 <div id="typical-workflow" class="section level1">
 <h1>Typical workflow</h1>
 <p>Analysts using <code>fqar</code> will typically download and reformat
-the assessments of interest before using functions like
+assessments of interest before using functions like
 <code>assessment_cooccurrence_summary</code> to analyze the data. The
 following workflow does just this for the <em>Flora of the Chicago
 Region</em> database, an updated version of the original floristic
@@ -478,7 +478,7 @@ original format provided by <a href="https://universalfqa.org/">universalfqa.org
 data frames includes several different sorts of information:
 species-level observations, summary statistics, and metadata. The second
 command isolates the species inventories and stores them in a tidy
-format.</p>
+format <span class="citation">(Wickham 2014)</span>.</p>
 <p>Next, extract co-occurrence information from this collection of
 species inventories:</p>
 <pre class="r"><code>chicago_cooccurrence &lt;- assessment_cooccurrences(chicago_invs)</code></pre>
@@ -564,6 +564,10 @@ Assessment (FQI and Mean c).”</span> In <em>Wild Things Conference
 <div id="ref-spyreas2019floristic" class="csl-entry">
 ———. 2019. <span>“Floristic Quality Assessment: A Critique, a Defense,
 and a Primer.”</span> <em>Ecosphere</em> 10 (8): e02825.
+</div>
+<div id="ref-JSSv059i10" class="csl-entry">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of
+Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 <div id="ref-wilhelm2017flora" class="csl-entry">
 Wilhelm, Gerould, and Laura Rericha. 2017. <span>“Flora of the Chicago
