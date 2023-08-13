@@ -43,7 +43,7 @@ The `fqar` package enables analysis with a wider lens, allowing users to conside
 
 - what species are most commonly identified in certain regions? Which have been reported seldom or not at all?
 
-- which non-native species have become widespread in particular regions? Which tend to be symptomatic of degraded areas, and which seem to be able to coexist alongside more conservative native plants?
+- which non-native species have become widespread in particular regions? Which tend to be symptomatic of degraded areas, and which seem to be able to coexist alongside conservative native plants?
 
 There is currently great need in the ecological community to validate and potentially refine the floristic quality assessment methodology [@spyreas2019floristic]. Because C-values, the metric on which FQA is ultimately based, are assigned based on the experience of small numbers of local experts, there are inevitable inconsistencies and irregularities which only a larger-scale reconsideration can address. Thus far the community has only been able to take preliminary or ad hoc steps in that direction [@matthews2015null], [@bourdaghs2006properties]. The `fqar` package will allow for a more deep, targeted analysis.
 
