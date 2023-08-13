@@ -74,7 +74,7 @@ species_profile(chicago_invs, species = "Fragaria virginiana", native = TRUE) # 
 species_profile_plot(chicago_invs, species = "Fragaria virginiana", native = TRUE) # a visualization
 ```
 
-<img src="strawberry_plot.png" align="center"/>  
+[<img src="strawberry_plot.png" align="center"/>]
 
 Here we see that *Fragaria virginiana*, the wild strawberry, is listed with C $=0$ in the Chicago database but co-occurs with a wide variety of more conservative species. In particular, it has been found with 10's more frequently than it has with other 0's. 
 
@@ -100,7 +100,7 @@ Thorough documentation is provided. A long-form vignette gives a birds-eye overv
 
 # Acknowledgements
 
-The authors wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc ([NatureCITE](https://www.naturecite.org/)) for their insight into floristic quality assessment. 
+Partial funding for this project was provided by the James Rocco Program. The authors also wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc ([NatureCITE](https://www.naturecite.org/)) for their insight into floristic quality assessment. 
 
 # References
 
