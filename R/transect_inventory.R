@@ -89,14 +89,16 @@ transect_inventory <- function(data_set) {
 
   dropped <- data_set[start_row:end_row,]
 
-  colnames(dropped) <- lapply(dropped[1,], as.character)
+  colnames(dropped) <- lapply(dropped[1,],
+                              as.character)
   dropped <- dropped[-1,]
 
   dropped_problematic <- dropped |>
     dplyr::filter(!(.data$Species == "Bare ground"|.data$Species == "Water"))
 
   suppressWarnings(new <- dropped_problematic |>
-                     mutate(across(c(5:6, 9:13), as.double)))
+                     mutate(across(c(5:6, 9:13),
+                                   as.double)))
 
   class(new) <- c("tbl_df", "tbl", "data.frame")
 
