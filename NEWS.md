@@ -1,4 +1,4 @@
-# fqar 0.3.1
+# fqar 0.4.0
 
 ## New features
 
