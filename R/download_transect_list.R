@@ -52,8 +52,7 @@ download_transect_list <- function(database_id, ...) {
       FUN.VALUE = FALSE
     ))
 
-  if (number_needed >= 5) {
-    message("Downloading...")
+  if (number_needed >= 5 && interactive()) {
     results <- list(0)
     pb <- utils::txtProgressBar(
       min = 0,
