@@ -2,7 +2,7 @@
 
 chicago_list <- download_assessment_list(database_id = 149)
 chicago <- assessment_list_glance(chicago_list)
-chicago$title[499] <- "Dune Acres - Elmore East" # manually making the hyphen standard
+chicago$title[607] <- "Dune Acres - Elmore East" # manually making the hyphen standard
 
 usethis::use_data(chicago, overwrite = TRUE, ascii = TRUE)
 
