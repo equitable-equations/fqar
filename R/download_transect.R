@@ -46,15 +46,20 @@ download_transect <- memoise::memoise(function(transect_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  trans_get <- httr::GET(trans_address, ua)
+  trans_get <- tryCatch(httr::GET(trans_address, ua),
+                        error = function(e){
+                          message("Unable to connect. Please check internet connection.")
+                          return(invisible(NULL))
+                        }
+  )
   if (httr::http_error(trans_get)) {
-    stop(
+    message(
       paste(
         "API request to universalFQA.org failed. Error",
-        httr::status_code(trans_get)
-      ),
-      call. = FALSE
+        httr::status_code(assessments_get)
+      )
     )
+    return(invisible(NULL))
   }
 
   trans_text <- httr::content(trans_get,

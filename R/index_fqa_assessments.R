@@ -30,6 +30,7 @@
 #'
 #' @export
 
+
 index_fqa_assessments <- memoise(function(database_id) {
   if (!is.numeric(database_id)) {
     stop(
@@ -51,16 +52,22 @@ index_fqa_assessments <- memoise(function(database_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  assessments_get <- httr::GET(assessments_address, ua)
+  assessments_get <- tryCatch(httr::GET(assessments_address, ua),
+                              error = function(e){
+                                message("Unable to connect. Please check internet connection.")
+                                return(invisible(NULL))
+                              }
+  )
   if (httr::http_error(assessments_get)) {
-    stop(
+    message(
       paste(
         "API request to universalFQA.org failed. Error",
         httr::status_code(assessments_get)
-      ),
-      call. = FALSE
+      )
     )
+    return(invisible(NULL))
   }
+
   assessments_text <- httr::content(assessments_get,
                                     "text",
                                     encoding = "ISO-8859-1")

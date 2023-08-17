@@ -26,16 +26,20 @@ index_fqa_databases <- memoise::memoise(function() {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  databases_get <- httr::GET(databases_address, ua)
-
+  databases_get <- tryCatch(httr::GET(databases_address, ua),
+                            error = function(e){
+                              message("Unable to connect. Please check internet connection.")
+                              return(invisible(NULL))
+                            }
+  )
   if (httr::http_error(databases_get)) {
-    stop(
+    message(
       paste(
         "API request to universalFQA.org failed. Error",
-        httr::status_code(databases_get)
-      ),
-      call. = FALSE
+        httr::status_code(assessments_get)
+      )
     )
+    return(invisible(NULL))
   }
 
   databases_text <- httr::content(databases_get,

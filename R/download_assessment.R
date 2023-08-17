@@ -48,16 +48,23 @@ download_assessment <- memoise::memoise(function(assessment_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  assessment_get <- httr::GET(assessment_address, ua)
+  assessment_get <-
+    tryCatch(httr::GET(assessment_address, ua),
+             error = function(e){
+               message("Unable to connect. Please check internet connection.")
+               return(invisible(NULL))
+             }
+    )
   if (httr::http_error(assessment_get)) {
-    stop(
+    message(
       paste(
         "API request to universalFQA.org failed. Error",
         httr::status_code(assessment_get)
-      ),
-      call. = FALSE
+      )
     )
+    return(invisible(NULL))
   }
+
   assessment_text <- httr::content(assessment_get,
                                    "text",
                                    encoding = "ISO-8859-1")
