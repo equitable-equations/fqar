@@ -4,6 +4,8 @@
 
 * Fixed bug that caused progress bars to appear in non-interactive calls
 
+* Improved responses to API failure
+
 # fqar 0.4.0
 
 ## New features
