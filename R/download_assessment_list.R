@@ -48,7 +48,7 @@ download_assessment_list <- function(database_id, ...) {
   number_needed <- length(inventories_requested$id) -
     sum(vapply(
       inventories_requested$id,
-      memoise::has_cache(download_assessment),
+      memoise::has_cache(download_assessment_internal),
       FUN.VALUE = FALSE
     ))
 
