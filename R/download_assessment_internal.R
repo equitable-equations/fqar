@@ -6,6 +6,9 @@
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website.
 #'
+#' @import httr jsonlite
+#' @importFrom memoise memoise
+#'
 #' @noRd
 
 download_assessment_internal <- memoise::memoise(function(assessment_id) {
