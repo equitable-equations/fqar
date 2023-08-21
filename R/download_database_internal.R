@@ -15,10 +15,14 @@
 
 download_database_internal <- memoise::memoise(function(database_id) {
   if (!is.numeric(database_id)) {
-    stop("database_id must be an integer.", call. = FALSE)
+    stop("database_id must be an integer.",
+         call. = FALSE
+         )
   }
   if (database_id %% 1 != 0) {
-    stop("database_id must be an integer.", call. = FALSE)
+    stop("database_id must be an integer.",
+         call. = FALSE
+         )
   }
   if (database_id == -40000) {
     return(invisible(NULL))
