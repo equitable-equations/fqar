@@ -4,7 +4,7 @@
 \alias{download_assessment}
 \title{Download a single floristic quality assessment}
 \usage{
-download_assessment(database_id)
+download_assessment(assessment_id)
 }
 \arguments{
 \item{assessment_id}{A numeric identifier of the desired floristic quality
@@ -28,6 +28,7 @@ numbers for assessments in various databases can be found using the
 }
 \examples{
 \donttest{
+
 databases <- index_fqa_databases()
 # Note database 1 is the original 1994 Chicago edition.
 

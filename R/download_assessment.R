@@ -17,11 +17,11 @@
 #'   \code{\link[=assessment_inventory]{assessment_inventory()}} for
 #'   species-level data.
 #'
-#' @import jsonlite httr
-#' @importFrom memoise memoise
+#' @importFrom memoise drop_cache
 #'
 #' @examples
 #' \donttest{
+#'
 #' databases <- index_fqa_databases()
 #' # Note database 1 is the original 1994 Chicago edition.
 #'
@@ -34,10 +34,10 @@
 #'
 #' @export
 
-download_assessment <- function(database_id) {
-  out <- download_assessment_internal(database_id)
+download_assessment <- function(assessment_id) {
+  out <- download_assessment_internal(assessment_id)
   if (is.null(out)){
-    memoise::drop_cache(download_assessment_internal)({{ database_id }})
+    memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
   }
   out
 }
