@@ -35,7 +35,8 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
                              }
   )
 
-  if (class(assessment_get) != "response"){
+  cl <- class(assessment_get)
+  if (cl != "response"){
     return(invisible(NULL))
   }
 
