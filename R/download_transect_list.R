@@ -48,7 +48,7 @@ download_transect_list <- function(database_id, ...) {
   number_needed <- length(transects_requested$id) -
     sum(vapply(
       transects_requested$id,
-      memoise::has_cache(download_transect),
+      memoise::has_cache(download_transect_internal),
       FUN.VALUE = FALSE
     ))
 

@@ -11,7 +11,7 @@
 #'
 #' @noRd
 
-download_transect <- memoise::memoise(function(transect_id) {
+download_transect_internal <- memoise::memoise(function(transect_id) {
   if (!is.numeric(transect_id)) {
     stop("transect_id must be an integer.", call. = FALSE)
   }
