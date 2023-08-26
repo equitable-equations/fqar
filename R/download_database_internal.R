@@ -64,7 +64,8 @@ download_database_internal <- memoise::memoise(function(database_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    stop("The requested assessment is not public", call. = FALSE)
+    message("The requested assessment is not public. Returning NULL.")
+    return(invisible(NULL))
   }
 
   max_length <-
@@ -77,9 +78,9 @@ download_database_internal <- memoise::memoise(function(database_id) {
 
   db_out <- as.data.frame(do.call(rbind, list_data))
 
-  if (db_out[5, 2] == 0)
-    warning("Specified database is empty.",
-            call. = FALSE)
+  if (db_out[5, 2] == 0){
+    warning("Specified database is empty.", call. = FALSE)
+  }
 
   db_out
 })

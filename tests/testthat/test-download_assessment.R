@@ -9,11 +9,11 @@ test_that("download_assessment works", {
 
   skip_on_cran()
 
-  expect_error(download_assessment(25003), "The requested assessment is not public")
-
   test_assessment <- download_assessment(25002)
   expect_equal(ncol(test_assessment), 9)
   expect_equal(memoise::has_cache(download_assessment_internal)(25002), TRUE)
+
+  expect_null(suppressWarnings(download_assessment_internal(25003)))
 
 })
 

@@ -30,11 +30,26 @@
 
 
 download_database <- function(database_id) {
-  out <- download_database_internal(database_id)
+
+  out <- tryCatch(download_database_internal(database_id),
+                  warning = function(w) {
+                    warning(w)
+                    memoise::drop_cache(download_database_internal)({{ database_id }})
+                    return(invisible(NULL))
+                  },
+                  message = function(m) {
+                    message(m)
+                    memoise::drop_cache(download_database_internal)({{ database_id }})
+                    return(invisible(NULL))
+                  }
+  )
+
   if (is.null(out)){
     memoise::drop_cache(download_database_internal)({{ database_id }})
   }
+
   out
+
 }
 
 

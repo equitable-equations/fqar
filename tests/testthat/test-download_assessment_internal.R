@@ -9,6 +9,5 @@ test_that("download_assessment_internal works", {
 
   skip_on_cran()
 
-  expect_error(download_assessment_internal(25003), "The requested assessment is not public")
-
+  expect_null(suppressMessages(download_assessment_internal(25003)))
 })

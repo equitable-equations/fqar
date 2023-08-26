@@ -65,7 +65,8 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
   inventories_summary <- as.data.frame(list_data)
 
   if (nrow(inventories_summary) == 0) {
-    stop("no data associated with specified database_id.", call. = FALSE)
+    message("No data associated with specified database_id. Returning NULL.")
+    return(invisible(NULL))
   }
 
   colnames(inventories_summary) <- c("id", "assessment",

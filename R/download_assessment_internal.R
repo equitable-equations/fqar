@@ -58,7 +58,8 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    stop("The requested assessment is not public", call. = FALSE)
+    message("The requested assessment is not public. Returning NULL.")
+    return(invisible(NULL))
   }
 
   max_length <-

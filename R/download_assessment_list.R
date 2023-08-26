@@ -28,6 +28,7 @@
 #'
 #' @import dplyr utils
 #' @importFrom memoise has_cache
+#' @importFrom rlang is_interactive
 #'
 #' @examples
 #' \donttest{
@@ -40,7 +41,12 @@
 
 
 download_assessment_list <- function(database_id, ...) {
+
   inventories_summary <- index_fqa_assessments(database_id)
+
+  if (is.null(inventories_summary)){
+    return(invisible(NULL))
+  }
 
   inventories_requested <- inventories_summary |>
     dplyr::filter(...)
@@ -71,8 +77,9 @@ download_assessment_list <- function(database_id, ...) {
                       download_assessment)
   }
 
-  if (length(results) == 0)
+  if (length(results) == 0){
     warning("No matches found. Empty list returned.", call. = FALSE)
+  }
 
   results
 }

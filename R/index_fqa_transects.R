@@ -31,11 +31,26 @@
 
 
 index_fqa_transects <- function(database_id) {
-  out <- index_fqa_transects_internal(database_id)
+
+  out <- tryCatch(index_fqa_transects_internal(database_id),
+                  warning = function(w) {
+                    warning(w)
+                    memoise::drop_cache(index_fqa_transects_internal)({{ database_id }})
+                    return(invisible(NULL))
+                  },
+                  message = function(m) {
+                    message(m)
+                    memoise::drop_cache(index_fqa_transects_internal)({{ database_id }})
+                    return(invisible(NULL))
+                  }
+  )
+
   if (is.null(out)){
     memoise::drop_cache(index_fqa_transects_internal)({{ database_id }})
   }
+
   out
+
 }
 
 

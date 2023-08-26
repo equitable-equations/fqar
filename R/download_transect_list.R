@@ -28,6 +28,7 @@
 #'
 #' @import dplyr utils
 #' @importFrom memoise has_cache
+#' @importFrom rlang is_interactive
 #'
 #' @examples
 #' \donttest{
@@ -40,7 +41,12 @@
 
 
 download_transect_list <- function(database_id, ...) {
+
   transects_summary <- index_fqa_transects(database_id)
+
+  if (is.null(transects_summary)){
+    return(invisible(NULL))
+  }
 
   transects_requested <- transects_summary |>
     dplyr::filter(...)
@@ -52,7 +58,7 @@ download_transect_list <- function(database_id, ...) {
       FUN.VALUE = FALSE
     ))
 
-  if (number_needed >= 5 && interactive()) {
+  if (number_needed >= 5 && rlang::is_interactive()) {
     results <- list(0)
     pb <- utils::txtProgressBar(
       min = 0,
@@ -71,8 +77,9 @@ download_transect_list <- function(database_id, ...) {
                       download_transect)
   }
 
-  if (length(results) == 0)
+  if (length(results) == 0){
     warning("No matches found. Empty list returned.", call. = FALSE)
+  }
 
   results
 }

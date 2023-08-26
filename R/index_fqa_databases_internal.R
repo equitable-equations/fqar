@@ -1,6 +1,7 @@
 #' List all available floristic quality assessment databases with possible null results cached
 #'
 #' @return A data frame with 4 columns
+#'
 #' @import jsonlite httr
 #' @importFrom memoise memoise
 #'

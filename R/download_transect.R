@@ -33,11 +33,26 @@
 
 
 download_transect <- function(transect_id) {
-  out <- download_transect_internal(transect_id)
+
+  out <- tryCatch(download_transect_internal(transect_id),
+                  warning = function(w) {
+                    warning(w)
+                    memoise::drop_cache(download_transect_internal)({{ transect_id }})
+                    return(invisible(NULL))
+                  },
+                  message = function(m) {
+                    message(m)
+                    memoise::drop_cache(download_transect_internal)({{ transect_id }})
+                    return(invisible(NULL))
+                  }
+  )
+
   if (is.null(out)){
     memoise::drop_cache(download_transect_internal)({{ transect_id }})
   }
+
   out
+
 }
 
 

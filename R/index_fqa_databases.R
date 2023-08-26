@@ -21,11 +21,26 @@
 
 
 index_fqa_databases <- function() {
-  out <- index_fqa_databases_internal()
+
+  out <- tryCatch(index_fqa_databases_internal(),
+                  warning = function(w) {
+                    warning(w)
+                    memoise::forget(index_fqa_databases_internal)
+                    return(invisible(NULL))
+                  },
+                  message = function(m) {
+                    message(m)
+                    memoise::forget(index_fqa_databases_internal)
+                    return(invisible(NULL))
+                  }
+  )
+
   if (is.null(out)){
     memoise::forget(index_fqa_databases_internal)
   }
+
   out
+
 }
 
 
