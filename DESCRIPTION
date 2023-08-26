@@ -3,7 +3,8 @@ Type: Package
 Title: Floristic Quality Assessment Tools for R
 Version: 0.4.1
 Authors@R: c(
-  person("Andrew", "Gard", , email = "agard@lakeforest.edu", role = c("aut", "cre")),
+  person("Andrew", "Gard", , email = "agard@lakeforest.edu", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0003-4434-0755")),
   person("Alexia", "Myers", , email = "myersaj@lakeforest.edu", role = c("aut")),
   person("Irene", "Luwabelwa", , email = "luwabelwaffa55@lakeforest.edu", role = c("aut"))
   )
