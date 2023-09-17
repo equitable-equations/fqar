@@ -1,3 +1,7 @@
+# fqar 0.4.2
+
+* Additional improvements for API failures
+
 # fqar 0.4.1
 
 * Fixed non-ascii character in the chicago data set
