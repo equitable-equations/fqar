@@ -63,7 +63,8 @@ index_fqa_transects_internal <- memoise::memoise(function(database_id) {
   transect_summary <- as.data.frame(list_data)
 
   if (nrow(transect_summary) == 0) {
-    stop("no data associated with specified database_id.")
+    message("No data associated with specified database_id. Returning NULL.")
+    return(invisible(NULL))
   }
 
   colnames(transect_summary) <- c("id",
