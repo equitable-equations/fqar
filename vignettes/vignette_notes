@@ -1,0 +1,8 @@
+The file fqar.Rmd is generated from the fqar text file using:
+knitr::knit("vignettes/fqar", output = "vignettes/fqar.Rmd")
+following the recommendation from Jeroen Ooms at ROpenSci
+(https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
+
+A few changes have to be made manually to the knitted document
+- {r eval = FALSE} to all chunks
+- fix paths to figure files, which do not appear in a folder
