@@ -1,4 +1,4 @@
-# fqar 0.4.2
+# fqar 0.4.2 & 0.4.3
 
 * Additional improvements for API failures
 
