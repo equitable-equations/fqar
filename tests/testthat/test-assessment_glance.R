@@ -10,6 +10,9 @@ test_that("assessment_glance works", {
   expect_equal(names(test_man)[42], "grass")
   expect_equal(typeof(test_man$total_mean_c), "double")
 
+  expect_null(suppressMessages(assessment_glance(NULL)))
+  expect_message(assessment_glance(NULL), "data_set is NULL. Returning NULL.")
+
   skip_on_cran()
 
   test_auto <- download_assessment(25002)

@@ -77,18 +77,26 @@
 #' @export
 
 assessment_glance <- function(data_set) {
+
+  if (is.null(data_set)) {
+    message("data_set is NULL. Returning NULL.")
+    return(invisible(NULL))
+    }
+
   if (!is.data.frame(data_set)) {
     stop(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
       call. = FALSE
     )
   }
+
   if (ncol(data_set) == 0) {
     stop(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
       call. = FALSE
     )
   }
+
   if (!("Species Richness:" %in% data_set[[1]])) {
     stop(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
