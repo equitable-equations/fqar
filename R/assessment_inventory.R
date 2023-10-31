@@ -36,23 +36,36 @@
 
 
 assessment_inventory <- function(data_set) {
+
+  df_bad <- tibble(scientific_name = character(0),
+                   family = character(0),
+                   acronym = character(0),
+                   nativity = character(0),
+                   c = numeric(0),
+                   w = numeric(0),
+                   physiognomy = character(0),
+                   duration = character(0),
+                   common_name = character(0))
+
   if (!is.data.frame(data_set)) {
-    stop(
-      "data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help."
     )
+    return(invisible(df_bad))
   }
+
   if (ncol(data_set) == 0) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(df_bad))
   }
+
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop(
-      "data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from universalFQA.org. Type ?download_assessment for help."
     )
+    return(invisible(df_bad))
   }
 
   if (ncol(data_set) == 1) {

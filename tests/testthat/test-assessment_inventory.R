@@ -1,6 +1,10 @@
 test_that("assessment_inventory works", {
 
-  expect_error(assessment_inventory("hi"))
+  expect_message(assessment_inventory("hi"))
+  em <- suppressMessages(assessment_inventory("hi"))
+  expect_true(is.data.frame(em))
+  expect_equal(ncol(em), 9)
+  expect_equal(nrow(em), 0)
 
   test_man <- assessment_inventory(test_assessment_manual)
   expect_equal(ncol(test_man), 9)
