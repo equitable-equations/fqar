@@ -10,7 +10,7 @@ test_that("species_acronym works", {
   expect_error(species_acronym(species),
                "Either database_id or database_inventory must be specified.")
   expect_error(species_acronym(species, 149, db_inv),
-               "database_id or database_inventory cannto both be specified.")
+               "database_id and database_inventory cannot both be specified.")
   expect_error(species_acronym(species, database_inventory = faithful),
                "database_inventory must be a species inventory in the format provided by database_inventory().")
   expect_error(species_acronym(species, database_id = "hi"),

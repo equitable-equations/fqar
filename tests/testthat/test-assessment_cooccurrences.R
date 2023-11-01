@@ -3,9 +3,11 @@ test_that("assessment_cooccurrences works", {
   bad_list1 <- list(faithful)
   bad_list2 <- list(test_assessment, faithful)
 
-  expect_error(assessment_cooccurrences(bad_list1))
-  expect_error(assessment_cooccurrences(bad_list2))
-  expect_error(assessment_cooccurrences(1))
+  expect_equal(nrow(suppressMessages(assessment_cooccurrences(bad_list1))), 0)
+  expect_equal(ncol(suppressMessages(assessment_cooccurrences(bad_list1))), 13)
+  expect_message(assessment_cooccurrences(bad_list1))
+  expect_message(assessment_cooccurrences(bad_list2))
+  expect_message(assessment_cooccurrences(1))
 
   test_assessments <- list(test_assessment,
                            test_assessment2,

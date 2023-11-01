@@ -46,7 +46,7 @@ species_acronym <-
     }
 
     if (!is.null(database_id) & !is.null(database_inventory)) {
-      stop("database_id or database_inventory cannto both be specified.",
+      stop("database_id and database_inventory cannot both be specified.",
            call. = FALSE)
     }
 

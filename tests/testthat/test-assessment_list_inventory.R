@@ -11,9 +11,12 @@ test_that("assessment_list_inventory works", {
 
   bad_list <- list(faithful)
 
-  expect_error(assessment_list_inventory(bad_list))
-  expect_error(assessment_list_inventory(faithful))
-  expect_error(assessment_list_inventory(17))
-  expect_error(assessment_list_inventory(NULL))
+  expect_message(assessment_list_inventory(bad_list))
+  expect_message(assessment_list_inventory(faithful))
+  expect_message(assessment_list_inventory(17))
+  expect_message(assessment_list_inventory(NULL))
+
+  expect_equal(ncol(suppressMessages(assessment_list_inventory(bad_list))), 9)
+  expect_equal(nrow(suppressMessages(assessment_list_inventory(bad_list))), 0)
 })
 

@@ -1,7 +1,7 @@
 test_that("transect_list_glance works", {
 
-  expect_error(transect_list_glance("hi"))
-  expect_error(transect_list_glance(faithful))
+  expect_message(transect_list_glance("hi"))
+  expect_message(transect_list_glance(faithful))
 
   test_list <- list(test_transect, test_transect)
   test_df <- transect_list_glance(test_list)

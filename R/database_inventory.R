@@ -36,11 +36,26 @@
 
 database_inventory <- function(database) {
 
+  bad_df <- data.frame(
+    scientific_name = character(0),
+    family = character(0),
+    acronym = character(0),
+    nativity = character(0),
+    c = numeric(0),
+    w = numeric(0),
+    physiognomy = character(0),
+    duration = character(0),
+    common_name = character(0)
+  )
+
   if (!is.data.frame(database)) {
-    stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    return(invisible(bad_df))
   }
+
   if (ncol(database) == 0){
-    stop("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    message("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    return(invisible(bad_df))
   }
 
   if (ncol(database) == 1) {
@@ -57,7 +72,8 @@ database_inventory <- function(database) {
   }
 
   if (!("Scientific Name" %in% database[[1]])) {
-    stop("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.", call. = FALSE)
+    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    return(invisible(bad_df))
   }
 
 

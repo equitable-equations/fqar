@@ -45,8 +45,8 @@
 #'    \item native_mean_c (numeric)
 #'    \item total_fqi (numeric)
 #'    \item native_fqi (numeric)
-#'    \item cover-weighted_fqi (numeric)
-#'    \item cover-weighted_native_fqi (numeric)
+#'    \item cover_weighted_fqi (numeric)
+#'    \item cover_weighted_native_fqi (numeric)
 #'    \item adjusted_fqi (numeric)
 #'    \item c_value_zero (numeric) Percent of c-values 0
 #'    \item c_value_low (numeric) Percent of c-values 1-3
@@ -81,23 +81,85 @@
 #' @export
 
 transect_glance <- function(data_set) {
+
+  bad_df <- data.frame(
+    title = character(0),
+    date = numeric(0),
+    site_name = character(0),
+    city = character(0),
+    county = character(0),
+    state = character(0),
+    country = character(0),
+    omernik_level_three_ecoregion = character(0),
+    fqa_db_region = character(0),
+    fqa_db_publication_year = character(0),
+    fqa_db_description = character(0),
+    fqa_db_selection_name = character(0),
+    custom_fqa_db_name = character(0),
+    custom_fqa_db_description = character(0),
+    practitioner = character(0),
+    latitude = character(0),
+    longitude = character(0),
+    community_code = character(0),
+    community_name = character(0),
+    community_type_notes = character(0),
+    weather_notes = character(0),
+    duration_notes = character(0),
+    environment_description = character(0),
+    other_notes = character(0),
+    transect_plot_type = character(0),
+    plot_size = numeric(0),
+    quadrat_subplot_size = numeric(0),
+    transect_length = numeric(0),
+    sampling_design_description = character(0),
+    cover_method = character(0),
+    private_public = character(0),
+    total_mean_c = numeric(0),
+    cover_weighted_mean_c = numeric(0),
+    native_mean_c = numeric(0),
+    total_fqi = numeric(0),
+    native_fqi = numeric(0),
+    cover_weighted_fqi = numeric(0),
+    cover_weighted_native_fqi = numeric(0),
+    adjusted_fqi = numeric(0),
+    c_value_zero = numeric(0),
+    c_value_low = numeric(0),
+    c_value_mid = numeric(0),
+    c_value_high = numeric(0),
+    total_species = numeric(0),
+    native_species = numeric(0),
+    non_native_species = numeric(0),
+    mean_wetness = numeric(0),
+    native_mean_wetness = numeric(0),
+    annual = numeric(0),
+    perennial = numeric(0),
+    biennial = numeric(0),
+    native_annual = numeric(0),
+    native_perennial = numeric(0),
+    native_biennial = numeric(0)
+  )
+
+  bad_df$date <- as.Date(bad_df$date)
+
   if (!is.data.frame(data_set)) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )
+    return(invisible(bad_df))
   }
+
   if (ncol(data_set) == 0) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(bad_df))
   }
+
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(bad_df))
   }
 
   if (ncol(data_set) == 1) {
@@ -213,8 +275,8 @@ transect_glance <- function(data_set) {
     "native_mean_c",
     "total_fqi",
     "native_fqi",
-    "cover-weighted_fqi",
-    "cover-weighted_native_fqi",
+    "cover_weighted_fqi",
+    "cover_weighted_native_fqi",
     "adjusted_fqi",
     "c_value_zero",
     "c_value_low",
@@ -232,7 +294,9 @@ transect_glance <- function(data_set) {
     "native_perennial",
     "native_biennial"
   )
+
   data
+
 }
 
 

@@ -78,11 +78,68 @@
 
 
 assessment_list_glance <- function(assessment_list) {
+
+  df_bad <- data.frame(title = character(0),
+                       date = numeric(0),
+                       site_name = character(0),
+                       city = character(0),
+                       county = character(0),
+                       state = character(0),
+                       country = character(0),
+                       fqa_db_region = character(0),
+                       fqa_db_publication_year = character(0),
+                       fqa_db_description = character(0),
+                       custom_fqa_db_name = character(0),
+                       custom_fqa_db_description = character(0),
+                       practitioner = character(0),
+                       latitude = character(0),
+                       longitude = character(0),
+                       weather_notes = character(0),
+                       duration_notes = character(0),
+                       community_type_notes = character(0),
+                       other_notes = character(0),
+                       private_public = character(0),
+                       total_mean_c = numeric(0),
+                       native_mean_c = numeric(0),
+                       total_fqi = numeric(0),
+                       native_fqi = numeric(0),
+                       adjusted_fqi = numeric(0),
+                       c_value_zero = numeric(0),
+                       c_value_low = numeric(0),
+                       c_value_mid = numeric(0),
+                       c_value_high = numeric(0),
+                       native_tree_mean_c = numeric(0),
+                       native_shrub_mean_c = numeric(0),
+                       native_herbaceous_mean_c = numeric(0),
+                       total_species = numeric(0),
+                       native_species = numeric(0),
+                       non_native_species = numeric(0),
+                       mean_wetness = numeric(0),
+                       native_mean_wetness = numeric(0),
+                       tree = numeric(0),
+                       shrub = numeric(0),
+                       vine = numeric(0),
+                       forb = numeric(0),
+                       grass = numeric(0),
+                       sedge = numeric(0),
+                       rush = numeric(0),
+                       fern = numeric(0),
+                       bryophyte = numeric(0),
+                       annual = numeric(0),
+                       perennial = numeric(0),
+                       biennial = numeric(0),
+                       native_annual = numeric(0),
+                       native_perennial = numeric(0),
+                       native_biennial = numeric(0)
+  )
+
+  df_bad$date <- as.Date(df_bad$date)
+
   if (!is_assessment_list(assessment_list)) {
-    stop(
-      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
-      call. = FALSE
+    message(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help."
     )
+    return(invisible(df_bad))
   }
 
   applied <- lapply(assessment_list,

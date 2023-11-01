@@ -35,11 +35,23 @@
 
 
 assessment_list_inventory <- function(assessment_list) {
+
+  bad_df <- data.frame(scientific_name = character(0),
+                       family = character(0),
+                       acronym = character(0),
+                       nativity = character(0),
+                       c = numeric(0),
+                       w = numeric(0),
+                       physiognomy = character(0),
+                       duration = character(0),
+                       common_name = character(0)
+  )
+
   if (!is_assessment_list(assessment_list)) {
-    stop(
-      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
-      call. = FALSE
+    message(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help."
     )
+    return(invisible(bad_df))
   }
 
   applied <- lapply(assessment_list,

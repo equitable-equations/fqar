@@ -76,215 +76,217 @@
 #'
 #' @export
 
- assessment_glance <- function(data_set) {
+assessment_glance <- function(data_set) {
 
-   df_bad <- tibble(title = character(0),
-                    date = Date(0),
-                    site_name = character(0),
-                    city = character(0),
-                    county = character(0),
-                    state = character(0),
-                    country = character(0),
-                    fqa_db_region = character(0),
-                    fqa_db_publication_year = character(0),
-                    fqa_db_description = character(0),
-                    custom_fqa_db_name = character(0),
-                    custom_fqa_db_description = character(0),
-                    practitioner = character(0),
-                    latitude = character(0),
-                    longitude = character(0),
-                    weather_notes = character(0),
-                    duration_notes = character(0),
-                    community_type_notes = character(0),
-                    other_notes = character(0),
-                    private_public = character(0),
-                    total_mean_c = numeric(0),
-                    native_mean_c = numeric(0),
-                    total_fqi = numeric(0),
-                    native_fqi = numeric(0),
-                    adjusted_fqi = numeric(0),
-                    c_value_zero = numeric(0),
-                    c_value_low = numeric(0),
-                    c_value_mid = numeric(0),
-                    c_value_high = numeric(0),
-                    native_tree_mean_c = numeric(0),
-                    native_shrub_mean_c = numeric(0),
-                    native_herbaceous_mean_c = numeric(0),
-                    total_species = numeric(0),
-                    native_species = numeric(0),
-                    non_native_species = numeric(0),
-                    mean_wetness = numeric(0),
-                    native_mean_wetness = numeric(0),
-                    tree = numeric(0),
-                    shrub = numeric(0),
-                    vine = numeric(0),
-                    forb = numeric(0),
-                    grass = numeric(0),
-                    sedge = numeric(0),
-                    rush = numeric(0),
-                    fern = numeric(0),
-                    bryophyte = numeric(0),
-                    annual = numeric(0),
-                    perennial = numeric(0),
-                    biennial = numeric(0),
-                    native_annual = numeric(0),
-                    native_perennial = numeric(0),
-                    native_biennial = numeric(0)
-   )
+  df_bad <- data.frame(title = character(0),
+                       date = numeric(0),
+                       site_name = character(0),
+                       city = character(0),
+                       county = character(0),
+                       state = character(0),
+                       country = character(0),
+                       fqa_db_region = character(0),
+                       fqa_db_publication_year = character(0),
+                       fqa_db_description = character(0),
+                       custom_fqa_db_name = character(0),
+                       custom_fqa_db_description = character(0),
+                       practitioner = character(0),
+                       latitude = character(0),
+                       longitude = character(0),
+                       weather_notes = character(0),
+                       duration_notes = character(0),
+                       community_type_notes = character(0),
+                       other_notes = character(0),
+                       private_public = character(0),
+                       total_mean_c = numeric(0),
+                       native_mean_c = numeric(0),
+                       total_fqi = numeric(0),
+                       native_fqi = numeric(0),
+                       adjusted_fqi = numeric(0),
+                       c_value_zero = numeric(0),
+                       c_value_low = numeric(0),
+                       c_value_mid = numeric(0),
+                       c_value_high = numeric(0),
+                       native_tree_mean_c = numeric(0),
+                       native_shrub_mean_c = numeric(0),
+                       native_herbaceous_mean_c = numeric(0),
+                       total_species = numeric(0),
+                       native_species = numeric(0),
+                       non_native_species = numeric(0),
+                       mean_wetness = numeric(0),
+                       native_mean_wetness = numeric(0),
+                       tree = numeric(0),
+                       shrub = numeric(0),
+                       vine = numeric(0),
+                       forb = numeric(0),
+                       grass = numeric(0),
+                       sedge = numeric(0),
+                       rush = numeric(0),
+                       fern = numeric(0),
+                       bryophyte = numeric(0),
+                       annual = numeric(0),
+                       perennial = numeric(0),
+                       biennial = numeric(0),
+                       native_annual = numeric(0),
+                       native_perennial = numeric(0),
+                       native_biennial = numeric(0)
+  )
 
-   if (is.null(data_set)) {
-     message("data_set is NULL. Empty data frame returned.")
-     return(invisible(df_bad))
-   }
+  df_bad$date <- as.Date(df_bad$date)
 
-   if (!is.data.frame(data_set)) {
-     message(
-       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
-     )
-     return(invisible(df_bad))
-   }
+  if (is.null(data_set)) {
+    message("data_set is NULL. Empty data frame returned.")
+    return(invisible(df_bad))
+  }
 
-   if (ncol(data_set) == 0) {
-     message(
-       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
-     )
-     return(invisible(df_bad))
-   }
+  if (!is.data.frame(data_set)) {
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+    )
+    return(invisible(df_bad))
+  }
 
-   if (!("Species Richness:" %in% data_set[[1]])) {
-     message(
-       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
-     )
-     return(invisible(df_bad))
-   }
+  if (ncol(data_set) == 0) {
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+    )
+    return(invisible(df_bad))
+  }
 
-   if (ncol(data_set) == 1) {
-     new <- rbind(names(data_set),
-                  data_set)
+  if (!("Species Richness:" %in% data_set[[1]])) {
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+    )
+    return(invisible(df_bad))
+  }
 
-     data_set <- separate(
-       new,
-       col = 1,
-       sep = ",",
-       into = paste0("V", 1:9),
-       fill = "right",
-       extra = "merge"
-     )
-   }
+  if (ncol(data_set) == 1) {
+    new <- rbind(names(data_set),
+                 data_set)
 
-   data_set <-
-     mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
-   data_set <-
-     mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
-   data_set <-
-     mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "0000-00-00")))
+    data_set <- separate(
+      new,
+      col = 1,
+      sep = ",",
+      into = paste0("V", 1:9),
+      fill = "right",
+      extra = "merge"
+    )
+  }
 
-   data_set[1, 2] <- data_set[1, 1]
-   data_set[1, 1] <- "Title"
-   data_set[2, 2] <- data_set[2, 1]
-   data_set[2, 1] <- "Date"
-   data_set[3, 2] <- data_set[3, 1]
-   data_set[3, 1] <- "Site Name"
-   data_set[4, 2] <- data_set[4, 1]
-   data_set[4, 1] <- "City"
-   data_set[5, 2] <- data_set[5, 1]
-   data_set[5, 1] <- "County"
-   data_set[6, 2] <- data_set[6, 1]
-   data_set[6, 1] <- "State"
-   data_set[7, 2] <- data_set[7, 1]
-   data_set[7, 1] <- "Country"
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "n/a")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "")))
+  data_set <-
+    mutate(data_set, across(tidyselect::where(is.character), ~ na_if(.x, "0000-00-00")))
 
-   names(data_set)[1:2] <- c("V1", "V2")
+  data_set[1, 2] <- data_set[1, 1]
+  data_set[1, 1] <- "Title"
+  data_set[2, 2] <- data_set[2, 1]
+  data_set[2, 1] <- "Date"
+  data_set[3, 2] <- data_set[3, 1]
+  data_set[3, 1] <- "Site Name"
+  data_set[4, 2] <- data_set[4, 1]
+  data_set[4, 1] <- "City"
+  data_set[5, 2] <- data_set[5, 1]
+  data_set[5, 1] <- "County"
+  data_set[6, 2] <- data_set[6, 1]
+  data_set[6, 1] <- "State"
+  data_set[7, 2] <- data_set[7, 1]
+  data_set[7, 1] <- "Country"
 
-   selected <- data_set[1:2] |>
-     drop_na(1)
+  names(data_set)[1:2] <- c("V1", "V2")
 
-   if (selected[8, 1] == "FQA DB Region:") {
-     new_rows <- data.frame(
-       V1 = c("Custom FQA DB Name",
-              "Custom FQA DB Description"),
-       V2 = c(NA, NA)
-     )
-     selected <- rbind(selected[1:10,],
-                       new_rows, selected[-(1:10),])
-   } else {
-     selected[1:12,] <- selected[c(1:7, 10:12, 8:9),]
-     selected$V1 <- gsub("Original ", "", selected$V1)
-   }
+  selected <- data_set[1:2] |>
+    drop_na(1)
 
-   small <- selected |>
-     filter(row_number() < which(.data$V1 == "Species:"))
+  if (selected[8, 1] == "FQA DB Region:") {
+    new_rows <- data.frame(
+      V1 = c("Custom FQA DB Name",
+             "Custom FQA DB Description"),
+      V2 = c(NA, NA)
+    )
+    selected <- rbind(selected[1:10,],
+                      new_rows, selected[-(1:10),])
+  } else {
+    selected[1:12,] <- selected[c(1:7, 10:12, 8:9),]
+    selected$V1 <- gsub("Original ", "", selected$V1)
+  }
 
-   pivoted <- small |> pivot_wider(names_from = "V1",
-                                   values_from = "V2")
+  small <- selected |>
+    filter(row_number() < which(.data$V1 == "Species:"))
 
-   suppressWarnings(final <- pivoted |>
-                      mutate(across(22:57, as.double),
-                             Date = as.Date(.data$Date)))
-   final <- final |>
-     select(
-       -c(
-         "Duration Metrics:",
-         "Physiognomy Metrics:",
-         "Conservatism-Based Metrics:",
-         "Species Richness:",
-         "Species Wetness:"
-       )
-     )
+  pivoted <- small |> pivot_wider(names_from = "V1",
+                                  values_from = "V2")
 
-   names(final) <- c(
-     "title",
-     "date",
-     "site_name",
-     "city",
-     "county",
-     "state",
-     "country",
-     "fqa_db_region",
-     "fqa_db_publication_year",
-     "fqa_db_description",
-     "custom_fqa_db_name",
-     "custom_fqa_db_description",
-     "practitioner",
-     "latitude",
-     "longitude",
-     "weather_notes",
-     "duration_notes",
-     "community_type_notes",
-     "other_notes",
-     "private_public",
-     "total_mean_c",
-     "native_mean_c",
-     "total_fqi",
-     "native_fqi",
-     "adjusted_fqi",
-     "c_value_zero",
-     "c_value_low",
-     "c_value_mid",
-     "c_value_high",
-     "native_tree_mean_c",
-     "native_shrub_mean_c",
-     "native_herbaceous_mean_c",
-     "total_species",
-     "native_species",
-     "non_native_species",
-     "mean_wetness",
-     "native_mean_wetness",
-     "tree",
-     "shrub",
-     "vine",
-     "forb",
-     "grass",
-     "sedge",
-     "rush",
-     "fern",
-     "bryophyte",
-     "annual",
-     "perennial",
-     "biennial",
-     "native_annual",
-     "native_perennial",
-     "native_biennial"
-   )
-   final
- }
+  suppressWarnings(final <- pivoted |>
+                     mutate(across(22:57, as.double),
+                            Date = as.Date(.data$Date)))
+  final <- final |>
+    select(
+      -c(
+        "Duration Metrics:",
+        "Physiognomy Metrics:",
+        "Conservatism-Based Metrics:",
+        "Species Richness:",
+        "Species Wetness:"
+      )
+    )
+
+  names(final) <- c(
+    "title",
+    "date",
+    "site_name",
+    "city",
+    "county",
+    "state",
+    "country",
+    "fqa_db_region",
+    "fqa_db_publication_year",
+    "fqa_db_description",
+    "custom_fqa_db_name",
+    "custom_fqa_db_description",
+    "practitioner",
+    "latitude",
+    "longitude",
+    "weather_notes",
+    "duration_notes",
+    "community_type_notes",
+    "other_notes",
+    "private_public",
+    "total_mean_c",
+    "native_mean_c",
+    "total_fqi",
+    "native_fqi",
+    "adjusted_fqi",
+    "c_value_zero",
+    "c_value_low",
+    "c_value_mid",
+    "c_value_high",
+    "native_tree_mean_c",
+    "native_shrub_mean_c",
+    "native_herbaceous_mean_c",
+    "total_species",
+    "native_species",
+    "non_native_species",
+    "mean_wetness",
+    "native_mean_wetness",
+    "tree",
+    "shrub",
+    "vine",
+    "forb",
+    "grass",
+    "sedge",
+    "rush",
+    "fern",
+    "bryophyte",
+    "annual",
+    "perennial",
+    "biennial",
+    "native_annual",
+    "native_perennial",
+    "native_biennial"
+  )
+  final
+}

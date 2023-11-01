@@ -50,8 +50,8 @@ A data frame with 1 row and 54 columns:
    \item native_mean_c (numeric)
    \item total_fqi (numeric)
    \item native_fqi (numeric)
-   \item cover-weighted_fqi (numeric)
-   \item cover-weighted_native_fqi (numeric)
+   \item cover_weighted_fqi (numeric)
+   \item cover_weighted_native_fqi (numeric)
    \item adjusted_fqi (numeric)
    \item c_value_zero (numeric) Percent of c-values 0
    \item c_value_low (numeric) Percent of c-values 1-3

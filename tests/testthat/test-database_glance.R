@@ -1,7 +1,11 @@
 test_that("database_glance works", {
 
-  expect_error(database_glance("hi"))
-  expect_error(database_glance(faithful))
+  expect_message(database_glance("hi"))
+  expect_message(database_glance(faithful))
+
+  empty <- suppressMessages(database_glance("hi"))
+  expect_equal(nrow(empty), 0)
+  expect_equal(ncol(empty), 8)
 
   test_man <- database_glance(test_database)
   expect_equal(ncol(test_man), 8)

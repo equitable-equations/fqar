@@ -43,11 +43,28 @@
 
 
 assessment_cooccurrences <- function(inventory_list) {
+
+  bad_df <- data.frame(
+    target_species = character(0),
+    target_species_c = numeric(0),
+    target_species_nativity = character(0),
+    target_species_n = character(0),
+    cospecies_scientific_name = character(0),
+    cospecies_family = character(0),
+    cospecies_acronym = character(0),
+    cospecies_nativity = character(0),
+    cospecies_c = numeric(0),
+    cospecies_w = numeric(0),
+    cospecies_physiognomy = character(0),
+    cospecies_duration = character(0),
+    cospecies_common_name = character(0)
+  )
+
   if (!is_inventory_list(inventory_list)) {
-    stop(
-      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
-      call. = FALSE
+    message(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help."
     )
+    return(invisible(bad_df))
   }
 
   species <- character(0)

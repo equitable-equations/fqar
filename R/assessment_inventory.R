@@ -37,15 +37,15 @@
 
 assessment_inventory <- function(data_set) {
 
-  df_bad <- tibble(scientific_name = character(0),
-                   family = character(0),
-                   acronym = character(0),
-                   nativity = character(0),
-                   c = numeric(0),
-                   w = numeric(0),
-                   physiognomy = character(0),
-                   duration = character(0),
-                   common_name = character(0))
+  df_bad <- data.frame(scientific_name = character(0),
+                       family = character(0),
+                       acronym = character(0),
+                       nativity = character(0),
+                       c = numeric(0),
+                       w = numeric(0),
+                       physiognomy = character(0),
+                       duration = character(0),
+                       common_name = character(0))
 
   if (!is.data.frame(data_set)) {
     message(

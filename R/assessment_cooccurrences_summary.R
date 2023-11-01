@@ -48,11 +48,31 @@
 #' @export
 
 assessment_cooccurrences_summary <- function(inventory_list) {
+
+  bad_df <- data.frame(
+    target_species = character (0),
+    target_species_c = numeric(0),
+    target_species_nativity = character(0),
+    target_species_n = numeric(0),
+    cospecies_n = numeric(0),
+    cospecies_native_n = numeric(0),
+    cospecies_mean_c = numeric(0),
+    cospecies_native_mean_c = numeric(0),
+    cospecies_std_dev_c = numeric(0),
+    cospecies_native_std_dev_c = numeric(0),
+    percent_native = numeric(0),
+    percent_nonnative = numeric(0),
+    percent_native_low_c = numeric(0),
+    percent_native_med_c = numeric(0),
+    percent_native_high_c = numeric(0),
+    discrepancy_c = numeric(0)
+  )
+
   if (!is_inventory_list(inventory_list)) {
-    stop(
-      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
-      call. = FALSE
+    message(
+      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help."
     )
+    return(invisible(bad_df))
   }
 
   cooccur <- assessment_cooccurrences(inventory_list)

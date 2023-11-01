@@ -1,7 +1,9 @@
 test_that("assessment_list_glance works", {
 
-  expect_error(assessment_list_glance("hi"))
-  expect_error(assessment_list_glance(faithful))
+  expect_message(assessment_list_glance("hi"))
+  expect_message(assessment_list_glance(faithful))
+  expect_equal(nrow(suppressMessages(assessment_list_glance("hi"))), 0)
+  expect_equal(ncol(suppressMessages(assessment_list_glance("hi"))), 52)
 
   test_list <- list(test_assessment, test_assessment)
   test_df <- assessment_list_glance(test_list)
