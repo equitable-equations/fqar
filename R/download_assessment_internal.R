@@ -18,9 +18,20 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
   if (assessment_id %% 1 != 0) {
     stop("assessment_id must be an integer.", call. = FALSE)
   }
-  if (assessment_id == -40000) {
-    return(invisible(NULL))
-  } # for testing memoisation
+
+  empty <- data.frame(V1 = character(0),
+                      V2 = character(0),
+                      V3 = character(0),
+                      V4 = character(0),
+                      V5 = character(0),
+                      V6 = character(0),
+                      V7 = character(0),
+                      V8 = character(0),
+                      V9 = character(0))
+
+  if (assessment_id == -40000){
+    return(invisible(empty))
+  } # for testing internet errors
 
   assessment_address <-
     paste0("http://universalfqa.org/get/inventory/",
@@ -37,7 +48,7 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
 
   cl <- class(assessment_get)
   if (cl != "response"){
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   if (httr::http_error(assessment_get)) {
@@ -47,7 +58,7 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
         httr::status_code(assessment_get)
       )
     )
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   assessment_text <- httr::content(assessment_get,
@@ -58,8 +69,8 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    message("The requested assessment is not public. Returning NULL.")
-    return(invisible(NULL))
+    message("The requested assessment is not public. Returning empty data frame.")
+    return(invisible(empty))
   }
 
   max_length <-
