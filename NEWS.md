@@ -1,3 +1,9 @@
+# fqar 0.4.4
+
+* Internal improvements to unit testing and error handling. 
+
+* Improvements to examples in documentation files
+
 # fqar 0.4.2 & 0.4.3
 
 * Additional improvements for API failures
