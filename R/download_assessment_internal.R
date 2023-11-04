@@ -11,7 +11,9 @@
 #'
 #' @noRd
 
+
 download_assessment_internal <- memoise::memoise(function(assessment_id) {
+
   if (!is.numeric(assessment_id)) {
     stop("assessment_id must be an integer.", call. = FALSE)
   }
@@ -69,7 +71,7 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    message("The requested assessment is not public. Returning empty data frame.")
+    message("The requested assessment is not public.")
     return(invisible(empty))
   }
 
@@ -81,5 +83,12 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
                         unlist(x)
                       })
 
-  as.data.frame(do.call(rbind, list_data))
+  out <- as.data.frame(do.call(rbind, list_data))
+
+  class(out) <- c("tbl_df",
+                  "tbl",
+                  "data.frame")
+
+  out
+
 })

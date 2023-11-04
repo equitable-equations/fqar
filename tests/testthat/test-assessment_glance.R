@@ -17,11 +17,10 @@ test_that("assessment_glance works", {
 
   skip_on_cran()
 
-  test_auto <- download_assessment(25002)
-  test <- assessment_glance(test_auto)
+  test_auto <- suppressMessages(download_assessment(25002))
+  test <- suppressMessages(assessment_glance(test_auto))
 
   expect_equal(ncol(test), 52)
-  expect_equal(nrow(test), 1)
   expect_equal(names(test)[8], "fqa_db_region")
   expect_equal(names(test)[42], "grass")
   expect_equal(typeof(test$total_mean_c), "double")

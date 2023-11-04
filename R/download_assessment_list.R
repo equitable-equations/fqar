@@ -44,8 +44,8 @@ download_assessment_list <- function(database_id, ...) {
 
   inventories_summary <- index_fqa_assessments(database_id)
 
-  if (is.null(inventories_summary)){
-    return(invisible(NULL))
+  if (nrow(inventories_summary) == 0){
+    return(list())
   }
 
   inventories_requested <- inventories_summary |>

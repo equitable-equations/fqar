@@ -1,4 +1,4 @@
-#' List all available floristic quality assessment databases with possible null results cached
+#' List all available floristic quality assessment databases
 #'
 #' @return A data frame with 4 columns
 #'
@@ -9,6 +9,13 @@
 #' @noRd
 
 index_fqa_databases_internal <- memoise::memoise(function() {
+
+  empty_df <- data.frame(database_id = numeric(0),
+    region = character(0),
+    year = numeric(0),
+    description = character(0)
+  )
+
   databases_address <- "http://universalfqa.org/get/database/"
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
@@ -22,7 +29,7 @@ index_fqa_databases_internal <- memoise::memoise(function() {
 
   cl <- class(databases_get)
   if (cl != "response"){
-    return(invisible(NULL))
+    return(invisible(empty_df))
   }
 
   if (httr::http_error(databases_get)) {
@@ -32,7 +39,7 @@ index_fqa_databases_internal <- memoise::memoise(function() {
         httr::status_code(assessments_get)
       )
     )
-    return(invisible(NULL))
+    return(invisible(empty_df))
   }
 
   databases_text <- httr::content(databases_get,
@@ -44,7 +51,8 @@ index_fqa_databases_internal <- memoise::memoise(function() {
 
   databases[, c(1, 3)] <- lapply(databases[, c(1, 3)], as.double)
   colnames(databases) <- c("database_id",
-                           "region", "year",
+                           "region",
+                           "year",
                            "description")
   class(databases) <- c("tbl_df",
                         "tbl",

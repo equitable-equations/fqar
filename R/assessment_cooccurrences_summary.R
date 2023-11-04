@@ -47,6 +47,7 @@
 #'
 #' @export
 
+
 assessment_cooccurrences_summary <- function(inventory_list) {
 
   bad_df <- data.frame(
@@ -70,7 +71,7 @@ assessment_cooccurrences_summary <- function(inventory_list) {
 
   if (!is_inventory_list(inventory_list)) {
     message(
-      "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help."
+      "assessment_list must be a list of inventories obtained from universalFQA.org. Type ?assessment_inventory_list for help."
     )
     return(invisible(bad_df))
   }

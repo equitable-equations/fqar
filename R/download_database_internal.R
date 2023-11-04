@@ -13,20 +13,34 @@
 #'
 #'
 
+
 download_database_internal <- memoise::memoise(function(database_id) {
+
   if (!is.numeric(database_id)) {
     stop("database_id must be an integer.",
          call. = FALSE
-         )
+    )
   }
+
   if (database_id %% 1 != 0) {
     stop("database_id must be an integer.",
          call. = FALSE
-         )
+    )
   }
-  if (database_id == -40000) {
-    return(invisible(NULL))
-  } # for testing memoisation
+
+  empty <- data.frame(V1 = character(0),
+                      V2 = character(0),
+                      V3 = character(0),
+                      V4 = character(0),
+                      V5 = character(0),
+                      V6 = character(0),
+                      V7 = character(0),
+                      V8 = character(0),
+                      V9 = character(0))
+
+  if (database_id == -40000){
+    return(invisible(empty))
+  } # for testing internet errors
 
   database_address <-
     paste0("http://universalfqa.org/get/database/",
@@ -43,7 +57,7 @@ download_database_internal <- memoise::memoise(function(database_id) {
 
   cl <- class(database_get)
   if (cl != "response"){
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   if (httr::http_error(database_get)) {
@@ -53,7 +67,7 @@ download_database_internal <- memoise::memoise(function(database_id) {
         httr::status_code(assessments_get)
       )
     )
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   database_text <- httr::content(database_get,
@@ -64,8 +78,8 @@ download_database_internal <- memoise::memoise(function(database_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    message("The requested assessment is not public. Returning NULL.")
-    return(invisible(NULL))
+    message("The requested assessment is not public.")
+    return(invisible(empty))
   }
 
   max_length <-
@@ -79,8 +93,12 @@ download_database_internal <- memoise::memoise(function(database_id) {
   db_out <- as.data.frame(do.call(rbind, list_data))
 
   if (db_out[5, 2] == 0){
-    warning("Specified database is empty.", call. = FALSE)
+    message("Specified database is empty.")
   }
+
+  class(db_out) <- c("tbl_df",
+                     "tbl",
+                     "data.frame")
 
   db_out
 })

@@ -1,7 +1,7 @@
 test_that("transect_phys works", {
 
-  expect_error(transect_phys("hi"))
-  expect_error(transect_phy(faithful))
+  expect_message(transect_phys("hi"))
+  expect_message(transect_phys(faithful))
 
   test <- transect_phys(test_transect) # manual download
   expect_equal(ncol(test), 6)

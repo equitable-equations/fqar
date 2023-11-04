@@ -40,23 +40,41 @@
 #' @export
 
 transect_inventory <- function(data_set) {
+
+  empty_df <- data.frame(species = character(0),
+    family = character(0),
+    acronym = character(0),
+    nativity = character(0),
+    c = numeric(0),
+    w = numeric(0),
+    physiognomy = character(0),
+    duration = character(0),
+    frequency = numeric(0),
+    coverage = numeric(0),
+    relative_frequency_percent = numeric(0),
+    relative_coverage_percent = numeric(0),
+    relative_importance_value = numeric(0)
+    )
+
   if (!is.data.frame(data_set)) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(empty_df))
   }
+
   if (ncol(data_set) == 0) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(empty_df))
   }
+
   if (!("Species Richness:" %in% data_set[[1]])) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
     )
+    return(invisible(empty_df))
   }
 
   if (ncol(data_set) == 1) {
@@ -84,7 +102,8 @@ transect_inventory <- function(data_set) {
   end_row <-
     -2 + which(data_set$V1 == "Quadrat/Subplot Level Metrics:")
   if (end_row < start_row) {
-    stop("No species listings found.")
+    message("No species listings found.")
+    return(invisible(empty(df)))
   }
 
   dropped <- data_set[start_row:end_row,]
@@ -117,6 +136,7 @@ transect_inventory <- function(data_set) {
     "relative_coverage_percent",
     "relative_importance_value"
   )
+
   colnames(new) <- names
 
   new

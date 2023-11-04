@@ -54,6 +54,11 @@ assessment_inventory <- function(data_set) {
     return(invisible(df_bad))
   }
 
+  if (nrow(data_set) == 0) {
+    message("Input data_set is empty.")
+    return(invisible(df_bad))
+  }
+
   if (ncol(data_set) == 0) {
     message(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."

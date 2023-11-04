@@ -41,10 +41,10 @@
 transect_list_inventory <- function(transect_list) {
 
   if (!is_transect_list(transect_list)) {
-    stop(
-      "transect_list must be a list of dataframes obtained from universalFQA.org. Type ?download_transect_list for help.",
-      call. = FALSE
+    message(
+      "transect_list must be a list of dataframes obtained from universalFQA.org. Type ?download_transect_list for help."
     )
+    return(invisible(list()))
   }
 
   applied <- lapply(transect_list,

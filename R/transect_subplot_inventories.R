@@ -34,28 +34,34 @@
 #' @export
 
 transect_subplot_inventories <- function(transect) {
-  if (!is.data.frame(transect)) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help.",
-      call. = FALSE
+
+  empty_df <- data.frame(scientific_name = character(0),
+    family = character(0),
+    acronym = character(0),
+    nativity = character(0),
+    c = numeric(0),
+    w = numeric(0),
+    physiognomy = character(0),
+    duration = character(0),
+    common_name = character(0)
     )
-  }
-  if (ncol(transect) == 0) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
+
+  if (!is_transect(transect)) {
+    message(
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )
-  }
-  if (!("Species Richness:" %in% transect[[1]])) {
-    stop(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.",
-      call. = FALSE
-    )
+    return(invisible(empty_df))
   }
 
   boundary_rows <-
     which(grepl("Quadrat", transect$V1) &
             grepl("Species:", transect$V1))
+
+  if (length(boundary_rows) == 0){
+    message("No subplot-level inventory found.")
+    return(invisible(list()))
+  }
+
   lengths <- diff(boundary_rows) - 3
   lengths <- c(lengths, nrow(transect) - tail(boundary_rows, 1) - 2)
 

@@ -44,8 +44,8 @@ download_transect_list <- function(database_id, ...) {
 
   transects_summary <- index_fqa_transects(database_id)
 
-  if (is.null(transects_summary)){
-    return(invisible(NULL))
+  if (nrow(transects_summary) == 0){
+    return(invisible(list()))
   }
 
   transects_requested <- transects_summary |>
@@ -67,6 +67,7 @@ download_transect_list <- function(database_id, ...) {
       width = length(transects_requested$id),
       char = "="
     )
+
     for (i in seq_along(transects_requested$id)) {
       results[[i]] <-  download_transect(transects_requested$id[i])
       utils::setTxtProgressBar(pb, i)
@@ -78,7 +79,8 @@ download_transect_list <- function(database_id, ...) {
   }
 
   if (length(results) == 0){
-    warning("No matches found. Empty list returned.", call. = FALSE)
+    message("No matches found.")
+    return(invisible(results))
   }
 
   results

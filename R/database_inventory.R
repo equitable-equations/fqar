@@ -49,12 +49,12 @@ database_inventory <- function(database) {
   )
 
   if (!is.data.frame(database)) {
-    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_database for help.")
     return(invisible(bad_df))
   }
 
   if (ncol(database) == 0){
-    message("data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_database for help.")
     return(invisible(bad_df))
   }
 
@@ -72,7 +72,7 @@ database_inventory <- function(database) {
   }
 
   if (!("Scientific Name" %in% database[[1]])) {
-    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_assessment for help.")
+    message("database must be a data frame obtained from the universalFQA.org website. Type ?download_database for help.")
     return(invisible(bad_df))
   }
 

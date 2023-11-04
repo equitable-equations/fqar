@@ -3,6 +3,12 @@ test_that("index_fqa_assessments works", {
   expect_error(index_fqa_assessments(1.5))
   expect_error(index_fqa_assessments("hi"))
 
+  empty_output <- index_fqa_assessments(-40000)
+  expect_equal(nrow(empty_output), 0)
+  expect_equal(ncol(empty_output), 5)
+  expect_equal(memoise::has_cache(index_fqa_assessments_internal)(-40000), FALSE)
+
+
   skip_on_cran()
 
   assessments <- index_fqa_assessments(2)

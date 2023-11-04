@@ -36,36 +36,13 @@
 
 download_assessment <- function(assessment_id) {
 
-  # apply interval version
-  # if nrow = 0, remove cache
-  # output the data frame from the internal version
-
   out <- download_assessment_internal(assessment_id)
 
   if (nrow(out) == 0){
     memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
+    return(invisible(out))
   }
 
   out
-#
-#   out <- tryCatch(download_assessment_internal(assessment_id),
-#                   warning = function(w) {
-#                     warning(w)
-#                     memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
-#                     return(invisible(NULL))
-#                   },
-#                   message = function(m) {
-#                     message(m)
-#                     memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
-#                     return(invisible(NULL))
-#                   }
-#   )
-#
-#   if (is.null(out)){
-#     memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
-#     return(invisible(NULL))
-#   }
-#
-#   out
 }
 

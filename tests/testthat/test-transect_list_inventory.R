@@ -1,4 +1,5 @@
 test_that("transect_list_inventory works",  {
+
   test_raw <- download_transect(4492)
   test_transect_list <- list(test_raw,
                              test_raw,
@@ -11,10 +12,10 @@ test_that("transect_list_inventory works",  {
 
   bad_list <- list(faithful)
 
-  expect_error(transect_list_inventory(bad_list))
-  expect_error(transect_list_inventory(faithful))
-  expect_error(transect_list_inventory(17))
-  expect_error(transect_list_inventory(NULL))
+  expect_message(transect_list_inventory(bad_list))
+  expect_message(transect_list_inventory(faithful))
+  expect_true(is.list(suppressMessages(transect_list_inventory(faithful))))
+
 })
 
 

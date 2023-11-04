@@ -10,23 +10,23 @@
 
 is_transect_list <- function(possible_list) {
 
-  return <- TRUE
+  return <- FALSE
 
   tryCatch({
 
-    if (!is.list(possible_list) | (length(possible_list) == 0)) {
-      return <- FALSE
-    } else {
+    if (is.list(eval(possible_list)) & (length(possible_list) != 0)) {
       outcomes <- lapply(possible_list,
                          is_transect) |>
         as.logical()
-      return <- all(outcomes)
+      return <- all(outcomes) & (sum(outcomes) >= 1)
     }
 
   },
+
   error = function(e) {
     return <- FALSE
   },
+
   warning = function(w){
     return <- FALSE
   })

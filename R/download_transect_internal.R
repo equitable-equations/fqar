@@ -11,16 +11,35 @@
 #'
 #' @noRd
 
+
 download_transect_internal <- memoise::memoise(function(transect_id) {
+
   if (!is.numeric(transect_id)) {
     stop("transect_id must be an integer.", call. = FALSE)
   }
+
   if (transect_id %% 1 != 0) {
     stop("transect_id must be an integer.", call. = FALSE)
   }
+
+  empty <- data.frame(V1 = character(0),
+                      V2 = character(0),
+                      V3 = character(0),
+                      V4 = character(0),
+                      V5 = character(0),
+                      V6 = character(0),
+                      V7 = character(0),
+                      V8 = character(0),
+                      V9 = character(0),
+                      V10 = character(0),
+                      V11 = character(0),
+                      V12 = character(0),
+                      V13 = character(0),
+                      V14 = character(0))
+
   if (transect_id == -40000) {
-    return(invisible(NULL))
-  } # for testing memoisation
+    return(invisible(empty))
+  } # for testing internet errors
 
   trans_address <-
     paste0("http://universalfqa.org/get/transect/", transect_id)
@@ -36,7 +55,7 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
 
   cl <- class(trans_get)
   if (cl != "response"){
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   if (httr::http_error(trans_get)) {
@@ -46,7 +65,7 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
         httr::status_code(assessments_get)
       )
     )
-    return(invisible(NULL))
+    return(invisible(empty))
   }
 
   trans_text <- httr::content(trans_get,
@@ -57,8 +76,8 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
 
   if ((list_data[[1]] == "The requested assessment is not public") &
       (!is.na(list_data[[1]]))) {
-    message("The requested assessment is not public. Returning NULL.")
-    return(invisible(NULL))
+    message("The requested assessment is not public.")
+    return(invisible(empty))
   }
 
   max_length <-
@@ -69,6 +88,11 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
                         unlist(x)
                       })
 
-  as.data.frame(do.call(rbind, list_data))
+  out <- as.data.frame(do.call(rbind, list_data))
 
+  class(out) <- c("tbl_df",
+                  "tbl",
+                  "data.frame")
+
+  out
 })

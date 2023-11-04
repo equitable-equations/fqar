@@ -5,7 +5,7 @@ test_that("is_transect_list works",  {
   test_inv_list <- transect_list_inventory(test_transect_list)
   bad_list <- list(faithful, faithful)
 
-  expect_error(random_unassigned_variable_5000)
+  expect_false(is_transect_list(random_unassigned_variable_5000))
   expect_true(is_transect_list(test_transect_list))
   expect_true(is_transect_list(list(test_raw)))
   expect_false(is_transect_list(test_raw))

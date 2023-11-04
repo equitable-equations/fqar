@@ -34,25 +34,14 @@
 
 download_transect <- function(transect_id) {
 
-  out <- tryCatch(download_transect_internal(transect_id),
-                  warning = function(w) {
-                    warning(w)
-                    memoise::drop_cache(download_transect_internal)({{ transect_id }})
-                    return(invisible(NULL))
-                  },
-                  message = function(m) {
-                    message(m)
-                    memoise::drop_cache(download_transect_internal)({{ transect_id }})
-                    return(invisible(NULL))
-                  }
-  )
+  out <- download_transect_internal(transect_id)
 
-  if (is.null(out)){
+  if (nrow(out) == 0){
     memoise::drop_cache(download_transect_internal)({{ transect_id }})
+    return(invisible(out))
   }
 
   out
-
 }
 
 

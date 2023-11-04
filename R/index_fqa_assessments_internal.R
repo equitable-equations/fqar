@@ -1,5 +1,4 @@
-#' List all available public floristic quality assessments with possible null
-#' results cached
+#' List all available public floristic quality assessments
 #'
 #' @param database_id A numeric identifier of the desired database
 #' @return A data frame with 5 columns
@@ -11,21 +10,33 @@
 
 
 index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
+
   if (!is.numeric(database_id)) {
     stop(
       "database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.",
       call. = FALSE
     )
   }
+
   if (database_id %% 1 != 0) {
     stop(
       "database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.",
       call. = FALSE
     )
   }
+
+  empty_df <- data.frame(id = numeric(0),
+    assessment = character(0),
+    date = numeric(0),
+    site = character(0),
+    practitioner = character(0)
+  )
+
+  empty_df$date <- as.Date(empty_df$Date)
+
   if (database_id == -40000) {
-    return(invisible(NULL))
-  } # for testing memoisation
+    return(invisible(empty_df))
+  } # for testing offline behavior
 
   assessments_address <-
     paste0("http://universalfqa.org/get/database/",
@@ -43,7 +54,7 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
 
   cl <- class(assessments_get)
   if (cl != "response"){
-    return(invisible(NULL))
+    return(invisible(empty_df))
   }
 
   if (httr::http_error(assessments_get)) {
@@ -53,7 +64,7 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
         httr::status_code(assessments_get)
       )
     )
-    return(invisible(NULL))
+    return(invisible(empty_df))
   }
 
   assessments_text <- httr::content(assessments_get,
@@ -65,17 +76,17 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
   inventories_summary <- as.data.frame(list_data)
 
   if (nrow(inventories_summary) == 0) {
-    message("No data associated with specified database_id. Returning NULL.")
-    return(invisible(NULL))
+    message("No data associated with specified database_id")
+    return(invisible(empty_df))
   }
 
-  colnames(inventories_summary) <- c("id", "assessment",
+  colnames(inventories_summary) <- c("id",
+                                     "assessment",
                                      "date",
                                      "site",
                                      "practitioner")
   inventories_summary$id <- as.double(inventories_summary$id)
-  inventories_summary$date[inventories_summary$date == "0000-00-00"] <-
-    NA
+  inventories_summary$date[inventories_summary$date == "0000-00-00"] <- NA
   inventories_summary$date <- as.Date(inventories_summary$date)
   class(inventories_summary) <- c("tbl_df",
                                   "tbl",
