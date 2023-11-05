@@ -150,14 +150,14 @@ transect_glance <- function(data_set) {
 
   if (ncol(data_set) == 0) {
     message(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )
     return(invisible(bad_df))
   }
 
   if (!("Species Richness:" %in% data_set[[1]])) {
     message(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )
     return(invisible(bad_df))
   }
