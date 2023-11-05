@@ -45,7 +45,7 @@ transect_phys <- function(data_set) {
 
   if (!is_transect(data_set)) {
     message(
-      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_assessment for help."
+      "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )
     return(invisible(empty_df))
   }
@@ -72,9 +72,29 @@ transect_phys <- function(data_set) {
     2 + which(data_set$V1 == "Physiognomic Relative Importance Values:")
   end_row <-
     -2 + which(data_set$V1 == "Species Relative Importance Values:")
-  if (end_row < start_row) {
-    stop("No physiognometric data found")
+
+  if (length(end_row) == 0) {
+    message("No physiognometric data found")
+    return(invisible(TRUE))
   }
+
+  tryCatch({
+    if (end_row < start_row) {
+      message("No physiognometric data found")
+      return(invisible(empty_df))
+    }
+    },
+
+    error = function(e) {
+      message("No physiognometric data foundd")
+      return(invisible(empty_df))
+    },
+
+    warning = function(w){
+      message("No physiognometric data found")
+      return(invisible(empty_df))
+    })
+
   phys <- data_set[start_row:end_row, 1:6]
 
   names(phys) <- c(

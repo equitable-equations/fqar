@@ -52,6 +52,12 @@ species_acronym <-function(species,
 
   if (!is.null(database_id)) {
     db <- download_database(database_id)
+
+    if (nrow(db) == 0){
+      message("Specified database is empty.")
+      return(invisible(NULL))
+    }
+
     database_inventory <- database_inventory(db)
   }
 
@@ -65,7 +71,8 @@ species_acronym <-function(species,
   }
 
   if (!(species %in% database_inventory$scientific_name)) {
-    stop("Species not found in specified database.", call. = FALSE)
+    message("Species not found in specified database.")
+    return(invisible(NULL))
   }
 
   species_row <- database_inventory |>

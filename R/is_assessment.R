@@ -9,14 +9,20 @@
 
 is_assessment <- function(possible_assessment) {
 
-  return <- TRUE
+  return <- FALSE
 
   tryCatch({
-
-    if (!is.data.frame(possible_assessment)) {
+    if (is.data.frame(possible_assessment)) {
+      return <- TRUE
+    }},
+    error = function(e) {
       return <- FALSE
-    }
+    },
+    warning = function(w){
+      return <- FALSE
+    })
 
+  tryCatch({
     if (ncol(possible_assessment) == 1) {
 
       new <- rbind(names(possible_assessment), possible_assessment)

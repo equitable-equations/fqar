@@ -15,7 +15,7 @@ test_that("species_acronym works", {
                "database_inventory must be a species inventory in the format provided by database_inventory().")
   expect_error(species_acronym(species, database_id = "hi"),
                "database_id must be an integer.")
-  expect_error(species_acronym("fake_species", database_inventory = db_inv),
+  expect_message(species_acronym("fake_species", database_inventory = db_inv),
                "Species not found in specified database.")
 
   expect_equal(species_acronym(species, 149), "ANECAN")
