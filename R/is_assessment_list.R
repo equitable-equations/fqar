@@ -10,17 +10,17 @@
 
 is_assessment_list <- function(possible_list) {
 
-  return <- TRUE
+  return <- FALSE
 
   tryCatch({
 
-    if (!is.list(possible_list) | (length(possible_list) == 0)) {
-      return <- FALSE
-    } else {
+    if (is.list(possible_list) & (length(possible_list) != 0)) {
       outcomes <- lapply(possible_list,
                          is_assessment) |>
         as.logical()
       return <- all(outcomes)
+    } else {
+      return <- FALSE
     }
 
   },
