@@ -8,8 +8,8 @@
 #' @param database_id Numeric identifier of the desired floristic quality
 #'   assessment database, as specified by
 #'   \href{https://universalfqa.org/}{universalfqa.org}. Database id numbers can
-#'   be viewed with the \code{\link[=index_fqa_databases]{index_fqa_databases()}}
-#'   function.
+#'   be viewed with the
+#'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
 #'
 #' @param ... \code{dplyr}-style filtering criteria for the desired transect
 #'   assessments. The following variables may be used:
@@ -32,8 +32,7 @@
 #'
 #' @examples
 #' \donttest{
-#' databases <- index_fqa_databases()
-#' # Note database 1 is the original 1994 Chicago edition.
+#' databases <- index_fqa_databases() # Database 1 is the original 1994 Chicago edition.
 #' dupont <- download_transect_list(1, site == "DuPont Natural Area")
 #' }
 #'
