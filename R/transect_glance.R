@@ -69,16 +69,15 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \donttest{
 #' # While transect_glance can be used with a .csv file downloaded manually
 #' # from the universal FQA website, it is most typically used in combination
 #' # with download_transect().
 #'
 #' tyler <- download_transect(6352)
 #' transect_glance(tyler)
-#' }
 #'
 #' @export
+
 
 transect_glance <- function(data_set) {
 
@@ -297,6 +296,6 @@ transect_glance <- function(data_set) {
 
   data
 
-}
+  }
 
 
