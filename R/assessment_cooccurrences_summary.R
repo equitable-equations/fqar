@@ -39,9 +39,11 @@
 #' # assessment_cooccurrences_summary is best used in combination with
 #' # download_assessment_list() and assessment_list_inventory().
 #'
+#' \donttest{
 #' maine <- download_assessment_list(database = 56)
 #' maine_invs <- assessment_list_inventory(maine)
 #' maine_cooccurrences_summary <- assessment_cooccurrences_summary(maine_invs)
+#' }
 #'
 #' @export
 
