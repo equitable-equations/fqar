@@ -9,14 +9,15 @@
 #'
 #' @noRd
 
+
 index_fqa_transects_internal <- memoise::memoise(function(database_id) {
 
-    if (!is.numeric(database_id)) {
+  if (!is.numeric(database_id)) {
     stop(
       "database_id must be an integer corresponding to an existing FQA database. Use index_fqa_databases() to obtain a data frame of valid options.",
       call. = FALSE
     )
-    }
+  }
 
   if (database_id %% 1 != 0) {
     stop(
@@ -26,11 +27,11 @@ index_fqa_transects_internal <- memoise::memoise(function(database_id) {
   }
 
   empty_df <- data.frame(id = numeric(0),
-    assessment = character(0),
-    date = numeric(0),
-    site = character(0),
-    practitioner = character(0)
-    )
+                         assessment = character(0),
+                         date = numeric(0),
+                         site = character(0),
+                         practitioner = character(0)
+  )
 
   empty_df$date <- as.Date(empty_df$date)
 
