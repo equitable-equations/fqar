@@ -34,6 +34,7 @@
 #'
 #' @export
 
+
 database_inventory <- function(database) {
 
   bad_df <- data.frame(
