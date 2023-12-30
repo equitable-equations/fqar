@@ -26,25 +26,24 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \donttest{
 #'  cbg_fen <- download_transect(5932)
 #'  cbg_inventories <- transect_subplot_inventories(cbg_fen)
-#'  }
 #'
 #' @export
+
 
 transect_subplot_inventories <- function(transect) {
 
   empty_df <- data.frame(scientific_name = character(0),
-    family = character(0),
-    acronym = character(0),
-    nativity = character(0),
-    c = numeric(0),
-    w = numeric(0),
-    physiognomy = character(0),
-    duration = character(0),
-    common_name = character(0)
-    )
+                         family = character(0),
+                         acronym = character(0),
+                         nativity = character(0),
+                         c = numeric(0),
+                         w = numeric(0),
+                         physiognomy = character(0),
+                         duration = character(0),
+                         common_name = character(0)
+  )
 
   if (!is_transect(transect)) {
     message(
