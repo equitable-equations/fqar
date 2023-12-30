@@ -25,8 +25,8 @@ A data frame with 8 columns:
 }
 }
 \description{
-\code{database_glance()} tidies a floristic quality database
-obtained from \href{https://universalfqa.org/}{universalfqa.org}.
+\code{database_glance()} tidies a floristic quality database obtained from
+\href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
 # While database_glance can be used with a .csv file downloaded manually
