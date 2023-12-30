@@ -1,8 +1,8 @@
 #' Obtain species details for a list of transect assessments
 #'
 #' \code{transect_list_inventory()} returns a list of data frames, each of which
-#' consists of all plant species included in a floristic quality assessment of a transect
-#' obtained from \href{https://universalfqa.org/}{universalfqa.org}.
+#' consists of all plant species included in a floristic quality assessment of a
+#' transect obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 #'
 #' @param transect_list  A list of data sets downloaded from
 #'   \href{https://universalfqa.org/}{universalfqa.org}, typically using
