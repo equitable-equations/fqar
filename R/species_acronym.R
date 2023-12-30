@@ -36,49 +36,50 @@
 #' @export
 
 
-species_acronym <-function(species,
-                           database_id = NULL,
-                           database_inventory = NULL) {
+species_acronym <-
+  function(species,
+           database_id = NULL,
+           database_inventory = NULL) {
 
-  if (is.null(database_id) & is.null(database_inventory)) {
-    stop("Either database_id or database_inventory must be specified.",
-         call. = FALSE)
-  }
-
-  if (!is.null(database_id) & !is.null(database_inventory)) {
-    stop("database_id and database_inventory cannot both be specified.",
-         call. = FALSE)
-  }
-
-  if (!is.null(database_id)) {
-    db <- download_database(database_id)
-
-    if (nrow(db) == 0){
-      message("Specified database is empty.")
-      return(invisible(NULL))
+    if (is.null(database_id) & is.null(database_inventory)) {
+      stop("Either database_id or database_inventory must be specified.",
+           call. = FALSE)
     }
 
-    database_inventory <- database_inventory(db)
+    if (!is.null(database_id) & !is.null(database_inventory)) {
+      stop("database_id and database_inventory cannot both be specified.",
+           call. = FALSE)
+    }
+
+    if (!is.null(database_id)) {
+      db <- download_database(database_id)
+
+      if (nrow(db) == 0){
+        message("Specified database is empty.")
+        return(NA)
+      }
+
+      database_inventory <- database_inventory(db)
+    }
+
+    inv_list <-
+      list(database_inventory) # To check if the specified inventory is valid.
+    if (!is_inventory_list(inv_list)) {
+      stop(
+        "database_inventory must be a species inventory in the format provided by database_inventory().",
+        call. = FALSE
+      )
+    }
+
+    if (!(species %in% database_inventory$scientific_name)) {
+      message("Species not found in specified database.")
+      return(NA)
+    }
+
+    species_row <- database_inventory |>
+      dplyr::filter(.data$scientific_name == species)
+
+    acronym <- species_row$acronym[1]
+
+    acronym
   }
-
-  inv_list <-
-    list(database_inventory) # To check if the specified inventory is valid.
-  if (!is_inventory_list(inv_list)) {
-    stop(
-      "database_inventory must be a species inventory in the format provided by database_inventory().",
-      call. = FALSE
-    )
-  }
-
-  if (!(species %in% database_inventory$scientific_name)) {
-    message("Species not found in specified database.")
-    return(invisible(NULL))
-  }
-
-  species_row <- database_inventory |>
-    dplyr::filter(.data$scientific_name == species)
-
-  acronym <- species_row$acronym[1]
-
-  acronym
-}
