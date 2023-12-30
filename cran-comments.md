@@ -2,9 +2,9 @@
 
 0 errors | 0 warnings | 0 notes*
 
-* No notes locally, but winbuilder notes that this is a resubmission for an archived package (see next point)
+* No notes locally, but this is a resubmission for an archived package (see next point)
 
-* My apologies for the quick re-submissions. Following my last patch (0.4.2 in late September), the internet resource that this package interacts with had a series of problems, all now resolved by the owner. This package should now function according to CRAN manual guidelines.
+* This package was removed due to an example that threw an error when run without internet connectivity. I previously communicated with Uwe about this. The relevant functions have been re-structured so that all examples and tests now run without internet. I apologize for any extra work this might have caused you!
 
 * rhub::check_for_cran sometimes produces the following notes, which I understand to be noise:
 
@@ -21,3 +21,4 @@ I have corrected the issues listed on this page and taken step to prevent their 
 ## Downstreatm dependencies
 
 There are currently no downstream dependencies for this package.
+
