@@ -47,13 +47,13 @@
 #'
 #' @export
 
+
 species_profile <-
   function(species, inventory_list, native = FALSE) {
     if (!is_inventory_list(inventory_list)) {
-      stop(
-        "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.",
-        call. = FALSE
-      )
+      message(
+        "assessment_list must be a list of dataframes obtained from universalFQA.org. Type ?download_assessment_list for help.")
+      return(invisible(NULL))
     }
 
     included <- vector("logical")
