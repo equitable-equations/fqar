@@ -22,14 +22,12 @@
 #' @importFrom rlang .data
 
 #' @examples
-#' \donttest{
 #' # While transect_phys can be used with a .csv file downloaded
 #' # manually from the universal FQA website, it is most typically used
 #' # in combination with download_transect().
 #'
 #' tyler <- download_transect(6352)
 #' transect_phys(tyler)
-#' }
 #'
 #' @export
 
@@ -83,17 +81,17 @@ transect_phys <- function(data_set) {
       message("No physiognometric data found")
       return(invisible(empty_df))
     }
-    },
+  },
 
-    error = function(e) {
-      message("No physiognometric data foundd")
-      return(invisible(empty_df))
-    },
+  error = function(e) {
+    message("No physiognometric data foundd")
+    return(invisible(empty_df))
+  },
 
-    warning = function(w){
-      message("No physiognometric data found")
-      return(invisible(empty_df))
-    })
+  warning = function(w){
+    message("No physiognometric data found")
+    return(invisible(empty_df))
+  })
 
   phys <- data_set[start_row:end_row, 1:6]
 
