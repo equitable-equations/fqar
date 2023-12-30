@@ -12,7 +12,7 @@ test_that("assessment_list_glance works", {
   expect_equal(typeof(test_df$total_mean_c), "double")
   expect_gt(nrow(test_df), 1)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_vec <- c(25961, 25640)
   test_list <- suppressMessages(download_assessment_list(63, id %in% test_vec))

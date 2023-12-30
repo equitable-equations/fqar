@@ -2,7 +2,7 @@ test_that("index_fqa_databases works", {
 
   expect_error(index_fqa_databases("hi"))
 
-  skip_on_cran()
+  skip_if_offline()
 
   databases <- index_fqa_databases()
   expect_equal(ncol(databases), 4)

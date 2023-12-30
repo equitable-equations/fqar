@@ -11,7 +11,7 @@ test_that("database_inventory works", {
   expect_equal(names(test_man)[5], "c")
   expect_equal(typeof(test_man$c), "double")
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_raw <- download_assessment(25002)
   test_auto <- assessment_inventory(test_raw)

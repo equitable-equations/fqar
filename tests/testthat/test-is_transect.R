@@ -7,7 +7,7 @@ test_that("is_transect works", {
   expect_false(is_transect("hi"))
   expect_false(is_transect(data.frame()))
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_raw <- download_transect(4492)
   expect_true(is_transect(test_raw))

@@ -7,7 +7,7 @@ test_that("download_assessment works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_assessment_internal)(-40000), FALSE)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_assessment <- download_assessment(25002)
   expect_equal(ncol(test_assessment), 9)

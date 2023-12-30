@@ -7,7 +7,7 @@ test_that("download_database works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_database_internal)(-40000), FALSE)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_db <- download_database(1)
   expect_equal(test_db$V1[1], "Chicago Region")

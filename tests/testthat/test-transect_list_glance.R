@@ -10,7 +10,7 @@ test_that("transect_list_glance works", {
   expect_equal(typeof(test_df$total_mean_c), "double")
   expect_equal(nrow(test_df), 2)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_vec <- c(6875, 6736)
   test_list <- download_transect_list(63, id %in% test_vec)

@@ -8,7 +8,7 @@ test_that("index_fqa_transects works", {
   expect_equal(ncol(empty_output), 5)
   expect_false(memoise::has_cache(index_fqa_transects_internal)(-40000))
 
-  skip_on_cran()
+  skip_if_offline()
 
   transects <- index_fqa_transects(1)
 

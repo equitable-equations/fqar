@@ -15,7 +15,7 @@ test_that("assessment_glance works", {
   expect_equal(nrow(suppressMessages(assessment_glance(NULL))), 0)
   expect_message(assessment_glance(NULL), "data_set is NULL. Empty data frame returned.")
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_auto <- suppressMessages(download_assessment(25002))
   test <- suppressMessages(assessment_glance(test_auto))

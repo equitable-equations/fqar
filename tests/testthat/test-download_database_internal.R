@@ -7,7 +7,7 @@ test_that("download_database_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_database_internal)(-40000), TRUE)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_db <- suppressMessages(download_database_internal(1))
   expect_equal(ncol(test_db), 9)

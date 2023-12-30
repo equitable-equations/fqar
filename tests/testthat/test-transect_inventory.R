@@ -13,7 +13,7 @@ test_that("transect_inventory works", {
   expect_equal(typeof(test_manual[[5]]), "double")
   expect_equal(test_manual[[5]], 0)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_raw <- download_transect(4492) # normal database
   test <- transect_inventory(test_raw)

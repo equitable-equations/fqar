@@ -12,7 +12,7 @@ test_that("assessment_inventory works", {
   expect_equal(typeof(test_man$c), "double")
   expect_equal(test_man$c[1], 0)
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_raw <- suppressMessages(download_assessment(25002))
   test_auto <- suppressMessages(assessment_inventory(test_raw))

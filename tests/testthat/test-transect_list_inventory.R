@@ -1,5 +1,7 @@
 test_that("transect_list_inventory works",  {
 
+  skip_if_offline()
+
   test_raw <- download_transect(4492)
   test_transect_list <- list(test_raw,
                              test_raw,

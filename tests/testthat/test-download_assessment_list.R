@@ -1,6 +1,6 @@
 test_that("download_assessment_list works", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   expect_equal(class(suppressMessages(download_assessment_list(-2))), "list")
 

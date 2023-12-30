@@ -1,10 +1,12 @@
 test_that("transect_subplot_inventories works", {
 
-  test_transect <- download_transect(5932)
-  inv <- transect_subplot_inventories(test_transect)
-
   expect_message(transect_subplot_inventories("hi"))
   expect_message(transect_subplot_inventories(faithful))
+
+  skip_if_offline()
+
+  test_transect <- download_transect(5932)
+  inv <- transect_subplot_inventories(test_transect)
 
   expect_equal(length(inv), 6)
   expect_equal(ncol(inv[[1]]), 9)

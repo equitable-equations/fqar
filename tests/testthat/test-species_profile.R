@@ -4,9 +4,9 @@ test_that("species_profile works", {
   bad_list1 <- list(faithful)
   bad_list2 <- list(test_assessment, faithful)
 
-  expect_error(species_profile(species, bad_list1))
-  expect_error(species_profile(species, bad_list2))
-  expect_error(species_profile(species))
+  expect_message(species_profile(species, bad_list1))
+  expect_message(species_profile(species, bad_list2))
+  expect_message(species_profile(species))
 
   test_assessments <- list(test_assessment,
                            test_assessment2,

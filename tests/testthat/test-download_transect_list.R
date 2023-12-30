@@ -1,6 +1,6 @@
 test_that("download_transect_list works", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   expect_equal(length(suppressMessages(download_transect_list(-2))), 0)
 

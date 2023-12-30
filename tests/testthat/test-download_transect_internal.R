@@ -7,7 +7,7 @@ test_that("download_transect_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_true(memoise::has_cache(download_transect_internal)(-40000))
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_tr <- download_transect_internal(6322)
   expect_equal(ncol(test_tr), 14)

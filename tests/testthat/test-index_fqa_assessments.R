@@ -8,8 +8,7 @@ test_that("index_fqa_assessments works", {
   expect_equal(ncol(empty_output), 5)
   expect_equal(memoise::has_cache(index_fqa_assessments_internal)(-40000), FALSE)
 
-
-  skip_on_cran()
+  skip_if_offline()
 
   assessments <- index_fqa_assessments(2)
 

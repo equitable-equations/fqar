@@ -6,7 +6,7 @@ test_that("is_assessment works", {
   expect_false(is_assessment("hi"))
   expect_false(is_assessment(data.frame()))
 
-  skip_on_cran()
+  skip_if_offline()
 
   test_raw <- download_assessment(25002)
   expect_true(is_assessment(test_raw))
