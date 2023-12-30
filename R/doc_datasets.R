@@ -62,6 +62,7 @@
 #' @source{\href{https://universalfqa.org/}{universalfqa.org}}
 #' @docType data
 #' @keywords datasets
+
 "chicago"
 
 
@@ -130,4 +131,5 @@
 #' @source{\href{https://universalfqa.org/}{universalfqa.org}}
 #' @docType data
 #' @keywords datasets
+
 "missouri"
