@@ -29,8 +29,7 @@ of all floristic quality transect assessments publicly available at
 }
 \examples{
 \donttest{
-databases <- index_fqa_databases()
-# Note that the 2017 Chicago database has id_number 149
+databases <- index_fqa_databases() # The 2017 Chicago database has id_number 149
 chicago_2017_transects <- index_fqa_transects(149)
 }
 

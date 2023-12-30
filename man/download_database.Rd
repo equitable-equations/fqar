@@ -26,11 +26,8 @@ databases can be found using the
 \code{\link[=index_fqa_databases]{index_fqa_databases()} } function.
 }
 \examples{
-\donttest{
-databases <- index_fqa_databases()
-# Note database 1 is the original 1994 Chicago edition.
+databases <- index_fqa_databases() # Database 1 is the original 1994 Chicago edition.
 
 chicago_database <- download_database(1)
-}
 
 }

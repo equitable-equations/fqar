@@ -26,18 +26,16 @@ A list of data frames, each with 9 columns:
 }
 }
 \description{
-\code{assessment_list_inventory()} returns a list of data frames, each of which
-consists of all plant species included in a floristic quality assessment
-obtained from \href{https://universalfqa.org/}{universalfqa.org}.
+\code{assessment_list_inventory()} returns a list of data frames, each of
+which consists of all plant species included in a floristic quality
+assessment obtained from \href{https://universalfqa.org/}{universalfqa.org}.
 }
 \examples{
-\donttest{
 # While assessment_list_inventory can be used with a list of .csv file downloaded
 # manually from the universal FQA website, it is most typically used
 # in combination with download_assessment_list().
 
-ontario <- download_assessment_list(database = 2)
-ontario_invs <- assessment_list_inventory(ontario)
-}
+maine <- download_assessment_list(database = 56)
+maine_invs <- assessment_list_inventory(maine)
 
 }

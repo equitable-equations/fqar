@@ -16,9 +16,10 @@ assessments in specified databases can be viewed with the
 \value{
 An untidy data frame in the original format of the Universal FQA
   website. Use \code{\link[=transect_glance]{transect_glance()}} for a tidy
-  summary, \code{\link[=transect_phys]{transect_phys()}} for a physiognometric
-  overview, and \code{\link[=transect_inventory]{transect_inventory()}} for
-  species-level data.
+  summary, \code{\link[=transect_phys]{transect_phys()}} for a
+  physiognometric overview, and
+  \code{\link[=transect_inventory]{transect_inventory()}} for species-level
+  data.
 }
 \description{
 \code{download_transect()} retrieves a specified floristic quality transect
@@ -28,12 +29,9 @@ numbers for transect assessments in various databases can be found using the
 }
 \examples{
 \donttest{
-databases <- index_fqa_databases() # Note database 1 is the original 1994 Chicago edition.
+databases <- index_fqa_databases() # Database 1 is the original 1994 Chicago edition.
 chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
 cbg <- download_transect(5932)
-cbg_tidy <- transect_glance(cbg)
-cbg_species <- transect_inventory(cbg)
-cbg_phys <- transect_phys(cbg)
 }
 
 }
