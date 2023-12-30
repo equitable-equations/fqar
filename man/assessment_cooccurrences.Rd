@@ -40,9 +40,9 @@ allowing for meaningful summary statistics to be computed.
 # download_assessment_list() and assessment_list_inventory().
 
 \donttest{
-ontario <- download_assessment_list(database = 2)
-ontario_invs <- assessment_list_inventory(ontario)
-ontario_cooccurrences <- assessment_cooccurrences(ontario_invs)
+maine <- download_assessment_list(database = 56)
+maine_invs <- assessment_list_inventory(maine)
+maine_cooccurrences <- assessment_cooccurrences(maine_invs)
 }
 
 }
