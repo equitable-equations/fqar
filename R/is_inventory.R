@@ -7,7 +7,7 @@
 #'   it's definitely not.
 #'
 #' @noRd
-#'
+
 
 is_inventory <- function(possible_inv){
 
