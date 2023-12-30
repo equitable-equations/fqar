@@ -8,48 +8,29 @@
 #'
 #' @noRd
 
+is_inventory_list <- function(possible_inventory) {
 
-
-is_inventory_list <- function(possible_list) {
-  return <- TRUE
-
-  if (is.null(possible_list)) {
-    return <- FALSE
-  }
+  return <- FALSE
 
   tryCatch({
-    if (!is.list(possible_list)) {
-      return <- FALSE
-    }
 
-    if (length(possible_list) == 0) {
-      return <- FALSE
-    }
-
-    if (!is.data.frame(possible_list[[1]])) {
-      return <- FALSE
-    }
-
-    if (ncol(possible_list[[1]]) != 9) {
-      return <- FALSE
-    }
-
-    if (colnames(possible_list[[1]])[1] != "scientific_name" |
-        colnames(possible_list[[1]])[2] != "family" |
-        colnames(possible_list[[1]])[3] != "acronym" |
-        colnames(possible_list[[1]])[4] != "nativity" |
-        colnames(possible_list[[1]])[5] != "c" |
-        colnames(possible_list[[1]])[6] != "w" |
-        colnames(possible_list[[1]])[7] != "physiognomy" |
-        colnames(possible_list[[1]])[8] != "duration" |
-        colnames(possible_list[[1]])[9] != "common_name") {
+    if (is.list(possible_inventory) & (length(possible_inventory) != 0)) {
+      outcomes <- lapply(possible_inventory,
+                         is_inventory) |>
+        as.logical()
+      return <- all(outcomes)
+    } else {
       return <- FALSE
     }
 
   },
   error = function(e) {
     return <- FALSE
+  },
+  warning = function(w){
+    return <- FALSE
   })
 
   return
+
 }
