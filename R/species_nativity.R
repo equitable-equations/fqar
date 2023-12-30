@@ -47,12 +47,18 @@ species_nativity <-
     }
 
     if (!is.null(database_id) & !is.null(database_inventory)) {
-      stop("database_id or database_inventory cannto both be specified.",
+      stop("database_id or database_inventory cannot both be specified.",
            call. = FALSE)
     }
 
     if (!is.null(database_id)) {
       db <- download_database(database_id)
+
+      if (nrow(db) == 0){
+        message("Specified database is empty.")
+        return(NA)
+      }
+
       database_inventory <- database_inventory(db)
     }
 
@@ -66,7 +72,8 @@ species_nativity <-
     }
 
     if (!(species %in% database_inventory$scientific_name)) {
-      stop("Species not found in specified database.", call. = FALSE)
+      message("Species not found in specified database.")
+      return(NA)
     }
 
     species_row <- database_inventory |>
@@ -75,6 +82,7 @@ species_nativity <-
     nativity <- species_row$nativity[1]
 
     nativity
+
   }
 
 
