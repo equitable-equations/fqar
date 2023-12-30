@@ -7,7 +7,7 @@
 #' allowing for meaningful summary statistics to be computed.
 #'
 #' @param inventory_list A list of site inventories having the format of
-#' \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}
+#'   \code{\link[=assessment_list_inventory]{assessment_list_inventory()}}
 #'
 #' @return A data frame with 13 columns:
 #' \itemize{
@@ -34,9 +34,9 @@
 #' # download_assessment_list() and assessment_list_inventory().
 #'
 #' \donttest{
-#' ontario <- download_assessment_list(database = 2)
-#' ontario_invs <- assessment_list_inventory(ontario)
-#' ontario_cooccurrences <- assessment_cooccurrences(ontario_invs)
+#' maine <- download_assessment_list(database = 56)
+#' maine_invs <- assessment_list_inventory(maine)
+#' maine_cooccurrences <- assessment_cooccurrences(maine_invs)
 #' }
 #'
 #' @export
@@ -104,16 +104,16 @@ assessment_cooccurrences <- function(inventory_list) {
   for (sp in seq_along(species_df$species)) {
     included <- vector("logical")
     for (inventory in seq_along(inventory_list)) {
-        index1 <- grepl(species_df$species[sp], inventory_list[[inventory]]$scientific_name) # matches name
-        index2 <- grepl(species_df$species_c[sp], inventory_list[[inventory]]$c) # matches c
-        included[inventory] <- any(index1 & index2)
+      index1 <- grepl(species_df$species[sp], inventory_list[[inventory]]$scientific_name) # matches name
+      index2 <- grepl(species_df$species_c[sp], inventory_list[[inventory]]$c) # matches c
+      included[inventory] <- any(index1 & index2)
     } # gives a logical vector indicating which inventories include the given species
 
     target_species_n <-
       sum(included) # number of assessments that include the target species
     if (target_species_n == 0 | is.na(target_species_n)){ # why would this ever be NA??
       next
-      }
+    }
 
     short_list <- inventory_list[included]
     short_list_combined <- bind_rows(short_list)
