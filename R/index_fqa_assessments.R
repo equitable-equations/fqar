@@ -21,11 +21,8 @@
 #' @importFrom memoise drop_cache
 #'
 #' @examples
-#' \donttest{
-#' databases <- index_fqa_databases()
-#' # Note that the 2017 Chicago database has id_number 149
+#' databases <- index_fqa_databases() # The 2017 Chicago database has id_number 149
 #' chicago_2017_assessments <- index_fqa_assessments(149)
-#' }
 #'
 #' @export
 
