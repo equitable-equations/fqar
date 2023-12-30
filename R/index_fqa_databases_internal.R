@@ -8,12 +8,13 @@
 #'
 #' @noRd
 
+
 index_fqa_databases_internal <- memoise::memoise(function() {
 
   empty_df <- data.frame(database_id = numeric(0),
-    region = character(0),
-    year = numeric(0),
-    description = character(0)
+                         region = character(0),
+                         year = numeric(0),
+                         description = character(0)
   )
 
   databases_address <- "http://universalfqa.org/get/database/"
