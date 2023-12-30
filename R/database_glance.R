@@ -1,7 +1,7 @@
 #' Obtain tidy summary information for a floristic quality database
 #'
-#' \code{database_glance()} tidies a floristic quality database
-#' obtained from \href{https://universalfqa.org/}{universalfqa.org}.
+#' \code{database_glance()} tidies a floristic quality database obtained from
+#' \href{https://universalfqa.org/}{universalfqa.org}.
 #'
 #' @param database A database downloaded from
 #'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
@@ -30,6 +30,7 @@
 #' chicago_db_summary <- database_glance(chicago_db)
 #'
 #' @export
+
 
 database_glance <- function(database) {
 
