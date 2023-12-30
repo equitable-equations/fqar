@@ -26,10 +26,10 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
   }
 
   empty_df <- data.frame(id = numeric(0),
-    assessment = character(0),
-    date = numeric(0),
-    site = character(0),
-    practitioner = character(0)
+                         assessment = character(0),
+                         date = numeric(0),
+                         site = character(0),
+                         practitioner = character(0)
   )
 
   empty_df$date <- as.Date(empty_df$Date)
