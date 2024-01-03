@@ -69,8 +69,10 @@
 #' # manually from the universal FQA website, it is most typically used
 #' # in combination with download_assessment_list().
 #'
+#' \donttest{
 #' maine <- download_assessment_list(database = 56)
 #' assessment_list_glance(maine)
+#' }
 #'
 #' @export
 
