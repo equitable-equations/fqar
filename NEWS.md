@@ -1,4 +1,6 @@
-# fqar 0.4.4
+# fqar 0.5.1
+
+* New database_glance() function provides summary information about species included in a specified database.
 
 * Internal improvements to unit testing and error handling. 
 
