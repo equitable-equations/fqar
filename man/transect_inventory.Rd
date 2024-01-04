@@ -39,7 +39,9 @@ included in a floristic quality transect assessment obtained from
 # manually from the universal FQA website, it is most typically used
 # in combination with download_transect().
 
+\donttest{
 tyler <- download_transect(6352)
 transect_inventory(tyler)
+}
 
 }

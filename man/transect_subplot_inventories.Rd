@@ -32,7 +32,9 @@ assessment data set obtained from
 species inventories, one per quadrat/subplot.
 }
 \examples{
- cbg_fen <- download_transect(5932)
- cbg_inventories <- transect_subplot_inventories(cbg_fen)
+\donttest{
+cbg_fen <- download_transect(5932)
+cbg_inventories <- transect_subplot_inventories(cbg_fen)
+}
 
 }
