@@ -2,7 +2,7 @@
 
 0 errors | 0 warnings | 1 note
 
-* This packages was archived due to examples that threw an error when run without internet connectivity. I previously communicated with Uwe about this issue and believed it to be within cran policy. Regardless, the relevant functions have now been re-structured so that all examples and tests run without internet. I apologize for any extra work this might have caused you!
+* This packages was archived due to examples that threw an error when run without internet connectivity. I previously communicated with Uwe about this issue. Regardless, the relevant functions have now been re-structured so that all examples and tests run without internet. I apologize for any extra work this might have caused you!
 
 * Additionally, rhub::check_for_cran sometimes produces the following notes, which I understand to be noise:
 
