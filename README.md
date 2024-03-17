@@ -5,6 +5,7 @@
   <!-- badges: start -->
   [![R-CMD-check](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml)
    [![CRAN status](https://www.r-pkg.org/badges/version/fqar)](https://CRAN.R-project.org/package=fqar)
+   [![status](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9/status.svg)](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9)
   <!-- badges: end -->
   
 Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from [universalfqa.org](https://universalfqa.org/).
@@ -46,7 +47,7 @@ chicago_transects <- index_fqa_transects(database_id = 149)
 Floristic quality assessments can be downloaded individually by ID number or collectively using `dplyr::filter` syntax.
 
 ```{r downloading}
-# download a single assessment:
+# download a single assessment using the `assessment_id` assigned by [universalfqa.org](https://universalfqa.org/). These identifiers can be found using `index_fqa_assessments`.
 woodland <- download_assessment(assessment_id = 25640)
 
 # download multiple assessments:
