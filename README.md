@@ -47,7 +47,9 @@ chicago_transects <- index_fqa_transects(database_id = 149)
 Floristic quality assessments can be downloaded individually by ID number or collectively using `dplyr::filter` syntax.
 
 ```{r downloading}
-# download a single assessment using the `assessment_id` assigned by [universalfqa.org](https://universalfqa.org/). These identifiers can be found using `index_fqa_assessments`.
+# download a single assessment using the `assessment_id` assigned by
+# [universalfqa.org](https://universalfqa.org/). These identifiers 
+# can be found using `index_fqa_assessments`.
 woodland <- download_assessment(assessment_id = 25640)
 
 # download multiple assessments:
