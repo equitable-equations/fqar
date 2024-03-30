@@ -52,11 +52,11 @@ species_nativity <-
     }
 
     if (!is.null(database_id)) {
-      db <- download_database(database_id)
+      db <- suppressMessages(download_database(database_id))
 
       if (nrow(db) == 0){
-        message("Specified database is empty.")
-        return(NA)
+        message("No inventory data returned by universalFQA.org.")
+        return(invisible(NA))
       }
 
       database_inventory <- database_inventory(db)

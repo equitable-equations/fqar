@@ -9,12 +9,17 @@ test_that("download_database works", {
 
   skip_if_offline()
 
-  test_db <- download_database(1)
-  expect_equal(test_db$V1[1], "Chicago Region")
-  expect_equal(ncol(test_db), 9)
-  expect_equal(class(test_db), c("tbl_df",
-                                 "tbl",
-                                 "data.frame"))
-
   expect_message(download_database(3))
+
+  test_db <- suppressMessages(download_database(1))
+  if (nrow(test_db != 0)){
+    expect_equal(test_db$V1[1], "Chicago Region")
+    expect_equal(ncol(test_db), 9)
+    expect_equal(class(test_db), c("tbl_df",
+                                   "tbl",
+                                   "data.frame"))
+  } else {
+    expect_message(download_database(1))
+  }
+
 })

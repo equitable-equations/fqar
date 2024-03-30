@@ -45,6 +45,7 @@ download_transect_list <- function(database_id, ...) {
 
   if (nrow(transects_summary) == 0){
     return(invisible(list()))
+    message("No data returned for specified database.")
   }
 
   transects_requested <- transects_summary |>

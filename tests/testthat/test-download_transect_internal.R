@@ -9,9 +9,10 @@ test_that("download_transect_internal works", {
 
   skip_if_offline()
 
-  test_tr <- download_transect_internal(6322)
+  test_tr <- suppressWarnings(download_transect_internal(6322))
   expect_equal(ncol(test_tr), 14)
   expect_equal(class(test_tr), c("tbl_df",
                                  "tbl",
                                  "data.frame"))
+  # expect_gt(nrow(test_tr), 1) assumes response from server
 })

@@ -142,6 +142,10 @@ transect_glance <- function(data_set) {
 
   bad_df$date <- as.Date(bad_df$date)
 
+  class(bad_df) <- c("tbl_df",
+                     "tbl",
+                     "data.frame")
+
   if (!is.data.frame(data_set)) {
     message(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
@@ -149,7 +153,7 @@ transect_glance <- function(data_set) {
     return(invisible(bad_df))
   }
 
-  if (ncol(data_set) == 0) {
+  if ((ncol(data_set) == 0) | nrow(data_set) == 0) {
     message(
       "data_set must be a dataframe obtained from the universalFQA.org website. Type ?download_transect for help."
     )

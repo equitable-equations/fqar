@@ -9,8 +9,11 @@ test_that("download_assessment works", {
 
   skip_if_offline()
 
-  test_assessment <- download_assessment(25002)
+  test_assessment <- suppressMessages(download_assessment(25002))
   expect_equal(ncol(test_assessment), 9)
+
+  if (nrow(test_assessment) !=0){
   expect_equal(memoise::has_cache(download_assessment_internal)(25002), TRUE)
+  }
 })
 

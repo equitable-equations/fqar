@@ -51,11 +51,11 @@ species_w <-
     }
 
     if (!is.null(database_id)) {
-      db <- download_database(database_id)
+      db <- suppressMessages(download_database(database_id))
 
       if (nrow(db) == 0){
-        message("Specified database is empty.")
-        return(NA)
+        message("No inventory data returned by universalFQA.org.")
+        return(invisible(NA))
       }
 
       database_inventory <- database_inventory(db)
@@ -72,7 +72,7 @@ species_w <-
 
     if (!(species %in% database_inventory$scientific_name)) {
       message("Species not found in specified database.")
-      return(NA)
+      return(invisible(NA))
     }
 
     species_row <- database_inventory |>

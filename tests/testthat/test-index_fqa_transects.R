@@ -10,7 +10,7 @@ test_that("index_fqa_transects works", {
 
   skip_if_offline()
 
-  transects <- index_fqa_transects(1)
+  transects <- suppressMessages(index_fqa_transects(1))
 
   expect_equal(ncol(transects), 5)
   expect_equal(names(transects),

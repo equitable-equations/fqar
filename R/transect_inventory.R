@@ -57,6 +57,7 @@ transect_inventory <- function(data_set) {
                          relative_coverage_percent = numeric(0),
                          relative_importance_value = numeric(0)
   )
+  class(new) <- c("tbl_df", "tbl", "data.frame")
 
   if (!is.data.frame(data_set)) {
     message(

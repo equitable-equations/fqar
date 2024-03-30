@@ -31,8 +31,11 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
                          site = character(0),
                          practitioner = character(0)
   )
+  class(empty_df) <- c("tbl_df",
+                       "tbl",
+                       "data.frame")
 
-  empty_df$date <- as.Date(empty_df$Date)
+  empty_df$date <- as.Date(empty_df$date)
 
   if (database_id == -40000) {
     return(invisible(empty_df))
@@ -45,9 +48,11 @@ index_fqa_assessments_internal <- memoise::memoise(function(database_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  assessments_get <- tryCatch(httr::GET(assessments_address, ua),
+  assessments_get <- tryCatch(httr::GET(assessments_address,
+                                        ua,
+                                        timeout(2)),
                               error = function(e){
-                                message("Unable to connect. Please check internet connection.")
+                                message("No response from universalFQA.org. Please check internet connection.")
                                 character(0)
                               }
   )

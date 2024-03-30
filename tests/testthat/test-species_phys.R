@@ -13,8 +13,8 @@ test_that("species_phys works", {
 
   skip_if_offline()
 
-  db <- download_database(1)
-  db_inv <- database_inventory(db)
+  db <- suppressMessages(download_database(1))
+  db_inv <- suppressMessages(database_inventory(db))
 
   expect_error(species_phys(species, 149, db_inv),
                "database_id or database_inventory cannot both be specified.")
@@ -23,8 +23,15 @@ test_that("species_phys works", {
   expect_true(is.na(suppressMessages(species_phys("fake_species",
                                                database_inventory = db_inv))))
 
-  expect_equal(species_phys(species, 149), "forb")
-  expect_equal(species_phys(species3, 149), "forb")
-  expect_equal(species_phys(species2, database_inventory = db_inv), "shrub")
+  if (!is.na(suppressMessages(species_phys(species, 149)))) {
+    expect_equal(species_phys(species, 149), "forb")
+    expect_equal(species_phys(species3, 149), "forb")
+    expect_equal(species_phys(species2, database_inventory = db_inv), "shrub")
+    expect_message(species_phys("fake_species", database_inventory = db_inv),
+                   "Species not found in specified database.")
+  } else {
+    # for when database download fails
+    expect_message(species_phys(species, 149))
+  }
 
 })

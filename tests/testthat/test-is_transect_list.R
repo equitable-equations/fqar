@@ -16,5 +16,5 @@ test_that("is_transect_list works",  {
   expect_false(is_transect_list(bad_list))
 
   internal_list <- list(test_transect, test_transect)
-  expect_true(is_transect_list(internal_list))
+  expect_true(is_transect_list(test_transect_list))
 })

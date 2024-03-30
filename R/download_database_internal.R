@@ -37,6 +37,9 @@ download_database_internal <- memoise::memoise(function(database_id) {
                       V7 = character(0),
                       V8 = character(0),
                       V9 = character(0))
+  class(empty) <- c("tbl_df",
+                    "tbl",
+                    "data.frame")
 
   if (database_id == -40000){
     return(invisible(empty))
@@ -48,9 +51,11 @@ download_database_internal <- memoise::memoise(function(database_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  database_get <- tryCatch(httr::GET(database_address, ua),
+  database_get <- tryCatch(httr::GET(database_address,
+                                     ua,
+                                     timeout(2)),
                            error = function(e){
-                             message("Unable to connect. Please check internet connection.")
+                             message("No response from universalFQA.org. Please check internet connection.")
                              character(0)
                            }
   )

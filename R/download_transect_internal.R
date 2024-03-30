@@ -36,6 +36,9 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
                       V12 = character(0),
                       V13 = character(0),
                       V14 = character(0))
+  class(empty) <- c("tbl_df",
+                    "tbl",
+                    "data.frame")
 
   if (transect_id == -40000) {
     return(invisible(empty))
@@ -46,9 +49,11 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  trans_get <- tryCatch(httr::GET(trans_address, ua),
+  trans_get <- tryCatch(httr::GET(trans_address,
+                                  ua,
+                                  timeout(2)),
                         error = function(e){
-                          message("Unable to connect. Please check internet connection.")
+                          message("No response from universalFQA.org. Please check internet connection.")
                           character(0)
                         }
   )

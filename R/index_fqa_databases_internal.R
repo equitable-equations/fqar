@@ -16,14 +16,19 @@ index_fqa_databases_internal <- memoise::memoise(function() {
                          year = numeric(0),
                          description = character(0)
   )
+  class(empty_df) <- c("tbl_df",
+                       "tbl",
+                       "data.frame")
 
   databases_address <- "http://universalfqa.org/get/database/"
   ua <-
     httr::user_agent("https://github.com/equitable-equations/fqar")
 
-  databases_get <- tryCatch(httr::GET(databases_address, ua),
+  databases_get <- tryCatch(httr::GET(databases_address,
+                                      ua,
+                                      timeout(2)),
                             error = function(e){
-                              message("Unable to connect. Please check internet connection.")
+                              message("No response from UniversalFQA.org. Please check internet connection.")
                               character(0)
                             }
   )

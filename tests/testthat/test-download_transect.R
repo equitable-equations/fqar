@@ -9,6 +9,10 @@ test_that("download_transect works", {
 
   skip_if_offline()
 
-  expect_equal(ncol(download_transect(6322)), 14)
+  test_tr <- suppressMessages(download_transect(6322))
+  expect_equal(ncol(test_tr), 14)
+  expect_equal(class(test_tr), c("tbl_df",
+                                 "tbl",
+                                 "data.frame"))
 })
 

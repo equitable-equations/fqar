@@ -36,7 +36,6 @@ is_inventory <- function(possible_inv){
   )
 
   tryCatch({
-
     if (!identical(colnames(possible_inv), names)){
       return <- FALSE
     }

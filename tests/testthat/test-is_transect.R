@@ -9,7 +9,8 @@ test_that("is_transect works", {
 
   skip_if_offline()
 
-  test_raw <- download_transect(4492)
+  test_raw <- suppressMessages(download_transect(4492))
+
   expect_true(is_transect(test_raw))
 
 })

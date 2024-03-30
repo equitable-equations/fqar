@@ -12,17 +12,20 @@ test_that("species_w works", {
 
   skip_if_offline()
 
-  db <- download_database(1)
-  db_inv <- database_inventory(db)
+  db <- suppressMessages(download_database(1))
+  db_inv <- suppressMessages(database_inventory(db))
 
   expect_error(species_w(species, 149, db_inv),
                "database_id or database_inventory cannot both be specified.")
-  expect_message(species_w("fake_species", database_inventory = db_inv),
-                 "Species not found in specified database.")
   expect_true(is.na(suppressMessages(species_w("fake_species",
                                                database_inventory = db_inv))))
 
-  expect_equal(species_w(species, 149), -1)
-  expect_equal(species_w(species2, database_inventory = db_inv), -5)
-
+  if (!is.na(suppressMessages(species_w(species, 149)))) {
+    expect_equal(species_w(species, 149), -1)
+    expect_equal(species_w(species2, database_inventory = db_inv), -5)
+    expect_message(species_w("fake_species", database_inventory = db_inv),
+                   "Species not found in specified database.")
+  } else{
+    expect_message(species_w(species, 149))
+  }
 })

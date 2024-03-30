@@ -1,4 +1,4 @@
-test_that("assessment_coccurrences_summary works", {
+test_that("assessment_coocurrences_summary works", {
 
   bad_list1 <- list(faithful)
   bad_list2 <- list(test_assessment, faithful)

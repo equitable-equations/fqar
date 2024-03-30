@@ -10,7 +10,7 @@ test_that("index_fqa_assessments_internal works", {
 
   skip_if_offline()
 
-  assessments <- index_fqa_assessments_internal(2)
+  assessments <- suppressMessages(index_fqa_assessments_internal(2))
 
   expect_equal(ncol(assessments), 5)
   expect_equal(names(assessments),
