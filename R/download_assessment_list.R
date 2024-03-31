@@ -45,7 +45,7 @@ download_assessment_list <- function(database_id, ...) {
   inventories_summary <- index_fqa_assessments(database_id)
 
   if (nrow(inventories_summary) == 0){
-    return(list())
+    return(invisible(list()))
   }
 
   inventories_requested <- inventories_summary |>
@@ -78,7 +78,7 @@ download_assessment_list <- function(database_id, ...) {
   }
 
   if (length(results) == 0){
-    warning("No matches found. Empty list returned.", call. = FALSE)
+    message("No matches found. Empty list returned.")
   }
 
   results

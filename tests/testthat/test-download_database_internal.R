@@ -7,12 +7,16 @@ test_that("download_database_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_database_internal)(-40000), TRUE)
 
-  skip_if_offline()
-
   test_db <- suppressMessages(download_database_internal(1))
-  expect_equal(ncol(test_db), 9)
-  expect_equal(test_db$V1[1], "Chicago Region")
-  expect_equal(class(test_db), c("tbl_df",
-                                 "tbl",
-                                 "data.frame"))
+
+  if (nrow(test_db) != 0) {
+    expect_equal(ncol(test_db), 9)
+    expect_equal(test_db$V1[1], "Chicago Region")
+    expect_equal(class(test_db), c("tbl_df",
+                                   "tbl",
+                                   "data.frame"))
+  } else {
+    # for when server doesn't respond
+    expect_message(download_database_internal(1))
+  }
 })

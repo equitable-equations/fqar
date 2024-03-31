@@ -6,8 +6,12 @@ test_that("is_assessment works", {
   expect_false(is_assessment("hi"))
   expect_false(is_assessment(data.frame()))
 
-  skip_if_offline()
+  test_raw <- suppressMessages(download_assessment(25002))
 
-  test_raw <- download_assessment(25002)
-  expect_true(is_assessment(test_raw))
+  if (nrow(test_raw) != 0) {
+    expect_true(is_assessment(test_raw))
+  } else {
+    # for when server doesn't respond
+    expect_false(is_assessment(test_raw))
+  }
 })

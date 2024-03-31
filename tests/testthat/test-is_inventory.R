@@ -6,9 +6,13 @@ test_that("is_inventory works", {
   expect_false(is_inventory(NULL))
   expect_false(is_inventory(test_assessment))
 
-  skip_if_offline()
+  edison <- suppressMessages(download_assessment(25002))
 
-  edison <- download_assessment(25002)
-  expect_true(is_inventory(assessment_inventory(edison)))
+  if (nrow(edison) != 0) {
+    expect_true(is_inventory(assessment_inventory(edison)))
+  } else {
+    # for when server doesn't respond
+    expect_false(is_inventory(assessment_inventory(edison)))
+  }
 
 })

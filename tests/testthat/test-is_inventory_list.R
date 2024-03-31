@@ -1,4 +1,5 @@
 test_that("is_inventory_list works", {
+
   test_list <- list(test_assessment, test_assessment)
   test_inv_list <- assessment_list_inventory(test_list)
   bad_list <- list(faithful, faithful)
