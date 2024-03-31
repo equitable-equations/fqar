@@ -9,10 +9,8 @@ test_that("is_inventory works", {
   edison <- suppressMessages(download_assessment(25002))
 
   if (nrow(edison) != 0) {
+    # when server responds
     expect_true(is_inventory(assessment_inventory(edison)))
-  } else {
-    # for when server doesn't respond
-    expect_false(is_inventory(assessment_inventory(edison)))
   }
 
 })

@@ -7,8 +7,6 @@ test_that("download_assessment_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_assessment_internal)(-40000), TRUE)
 
-  skip_if_offline()
-
   test_a <- suppressMessages(download_assessment_internal(25002))
   expect_equal(class(test_a), c("tbl_df",
                                 "tbl",
