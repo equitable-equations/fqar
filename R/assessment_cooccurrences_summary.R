@@ -68,6 +68,9 @@ assessment_cooccurrences_summary <- function(inventory_list) {
     percent_native_high_c = numeric(0),
     discrepancy_c = numeric(0)
   )
+  class(bad_df) <- c("tbl_df",
+                    "tbl",
+                    "data.frame")
 
   if (!is_inventory_list(inventory_list)) {
     message(

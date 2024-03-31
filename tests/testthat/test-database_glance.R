@@ -14,8 +14,6 @@ test_that("database_glance works", {
   expect_equal(names(test_man)[5], "native_species")
   expect_equal(typeof(test_man$total_species), "double")
 
-  skip_if_offline()
-
   test_auto <- suppressMessages(download_database(1))
 
   if (nrow(test_auto != 0)) {

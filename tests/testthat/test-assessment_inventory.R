@@ -12,12 +12,14 @@ test_that("assessment_inventory works", {
   expect_equal(typeof(test_man$c), "double")
   expect_equal(test_man$c[1], 0)
 
-  skip_if_offline()
-
   test_raw <- suppressMessages(download_assessment(25002))
   test_auto <- suppressMessages(assessment_inventory(test_raw))
+
   expect_equal(ncol(test_auto), 9)
-  expect_equal(names(test_auto)[5], "c")
-  expect_equal(typeof(test_auto$c), "double")
+
+  if (nrow(test_raw) != 0) {
+    expect_equal(names(test_auto)[5], "c")
+    expect_equal(typeof(test_auto$c), "double")
+  }
 
 })

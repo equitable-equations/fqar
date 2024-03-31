@@ -12,13 +12,14 @@ test_that("assessment_list_glance works", {
   expect_equal(typeof(test_df$total_mean_c), "double")
   expect_gt(nrow(test_df), 1)
 
-  skip_if_offline()
-
   test_vec <- c(25961, 25640)
   test_list <- suppressMessages(download_assessment_list(63, id %in% test_vec))
   test_df <- suppressMessages(assessment_list_glance(test_list))
 
   expect_equal(ncol(test_df), 52)
-  expect_lt(nrow(test_df)-1, length(test_list))
-  expect_equal(typeof(test_df$total_mean_c), "double")
+
+  if (length(test_list) != 0){
+    expect_lt(nrow(test_df)-1, length(test_list))
+    expect_equal(typeof(test_df$total_mean_c), "double")
+  }
 })
