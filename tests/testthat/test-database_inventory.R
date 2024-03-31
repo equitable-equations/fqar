@@ -11,8 +11,6 @@ test_that("database_inventory works", {
   expect_equal(names(test_man)[5], "c")
   expect_equal(typeof(test_man$c), "double")
 
-  skip_if_offline()
-
   test_raw <- suppressMessages(download_assessment(25002))
 
   if (nrow(test_raw != 0)) {

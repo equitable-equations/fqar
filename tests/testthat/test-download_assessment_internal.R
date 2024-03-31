@@ -17,5 +17,8 @@ test_that("download_assessment_internal works", {
     expect_equal(nrow(test_a), 140)
     expect_equal(ncol(test_a), 9)
     expect_equal(test_a$V1[1], "Edison dune and swale")
+  } else {
+    expect_message(download_assessment_internal(25002))
   }
+
 })

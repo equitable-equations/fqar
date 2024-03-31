@@ -19,6 +19,7 @@ test_that("assessment_list_glance works", {
   expect_equal(ncol(test_df), 52)
 
   if (length(test_list) != 0){
+    # when server responds
     expect_lt(nrow(test_df)-1, length(test_list))
     expect_equal(typeof(test_df$total_mean_c), "double")
   }
