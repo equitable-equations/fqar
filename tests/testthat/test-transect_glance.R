@@ -21,7 +21,12 @@ test_that("transect_glance works", {
     expect_equal(names(test_normal)[9], "fqa_db_region")
     expect_equal(names(test_normal)[13], "custom_fqa_db_name")
     expect_equal(typeof(test_normal$total_mean_c), "double")
+  } else {
+    # for when server doesn't respond
+    expect_message(download_transect(4492))
+  }
 
+  if (nrow(suppressMessages(download_transect(7025))) != 0) {
     test_custom <- download_transect(7025) |>
       transect_glance()  # custom database
     expect_equal(ncol(test_custom), 54)
@@ -29,7 +34,12 @@ test_that("transect_glance works", {
     expect_equal(names(test_custom)[9], "fqa_db_region")
     expect_equal(names(test_custom)[13], "custom_fqa_db_name")
     expect_equal(typeof(test_custom$total_mean_c), "double")
+  } else {
+    # for when server doesn't respond
+    expect_message(download_transect(7025))
+  }
 
+  if (nrow(suppressMessages(download_transect(6444))) != 0) {
    test_omernik <- download_transect(6444) |>
       transect_glance()  # includes omernik classification
     expect_equal(ncol(test_omernik), 54)
@@ -39,7 +49,7 @@ test_that("transect_glance works", {
     expect_equal(typeof(test_omernik$total_mean_c), "double")
   } else {
     # for when server doesn't respond
-    expect_message(download_transect(4492))
+    expect_message(download_transect(6444))
   }
 
 })

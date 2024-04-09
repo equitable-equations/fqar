@@ -14,20 +14,31 @@ test_that("transect_phys works", {
     expect_equal(ncol(test), 6)
     expect_equal(typeof(test[[2]]), "double")
     expect_equal(names(test)[2], "frequency")
+  } else {
+    # for when API is down
+    expect_message(download_transect(4492))
+  }
 
+  if (nrow(suppressMessages(download_transect(7025))) != 0) {
     test_raw <- download_transect(7025) # custom database
     test <- transect_phys(test_raw)
     expect_equal(ncol(test), 6)
     expect_equal(typeof(test[[2]]), "double")
     expect_equal(names(test)[2], "frequency")
+  } else {
+    # for when API is down
+    expect_message(download_transect(7025))
+  }
 
+  if (nrow(suppressMessages(download_transect(6444))) != 0) {
     test_raw <- download_transect(6444) # includes omernik
     test <- transect_phys(test_raw)
     expect_equal(ncol(test), 6)
     expect_equal(typeof(test[[2]]), "double")
     expect_equal(names(test)[2], "frequency")
   } else {
-    expect_message(download_transect(4492))
+    # for when API is down
+    expect_message(download_transect(6444))
   }
 
 })
