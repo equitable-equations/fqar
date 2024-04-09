@@ -25,8 +25,10 @@
 #' chicago_assessments <- index_fqa_assessments(1) # Edison dune and swale has id number 25002.
 #' edison <- download_assessment(25002)
 #'
+#' donttest{
 #' edison_tidy <- assessment_glance(edison)
 #' edison_species <- assessment_inventory(edison)
+#' }
 #'
 #' @export
 
