@@ -1,3 +1,7 @@
+# fqar 0.5.2
+
+* increased stability when universalFQA fails, which is becoming more common over time.
+
 # fqar 0.5.1
 
 * New database_glance() function provides summary information about species included in a specified database.
