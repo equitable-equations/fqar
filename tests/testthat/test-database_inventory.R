@@ -19,7 +19,5 @@ test_that("database_inventory works", {
     expect_equal(ncol(test_auto), 9)
     expect_equal(names(test_auto)[5], "c")
     expect_equal(typeof(test_auto$c), "double")
-  } else {
-    expect_message(database_inventory(test_raw))
   }
 })

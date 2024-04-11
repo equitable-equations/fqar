@@ -2,8 +2,6 @@ test_that("index_fqa_databases_internal works", {
 
   expect_error(index_fqa_databases_internal("hi"))
 
-  skip_if_offline()
-
   databases <- suppressMessages(index_fqa_databases_internal())
 
   expect_equal(ncol(databases), 4)

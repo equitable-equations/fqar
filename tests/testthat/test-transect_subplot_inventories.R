@@ -3,8 +3,9 @@ test_that("transect_subplot_inventories works", {
   expect_message(transect_subplot_inventories("hi"))
   expect_message(transect_subplot_inventories(faithful))
 
-  if (nrow(suppressMessages(download_transect(5932))) != 0){
-    test_transect <- download_transect(5932)
+  test_transect <- suppressMessages(download_transect(5932))
+
+  if (nrow(test_transect) != 0){
     inv <- transect_subplot_inventories(test_transect)
 
     expect_equal(length(inv), 6)

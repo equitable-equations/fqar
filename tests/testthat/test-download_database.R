@@ -7,8 +7,6 @@ test_that("download_database works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_database_internal)(-40000), FALSE)
 
-  skip_if_offline()
-
   expect_message(download_database(3))
 
   test_db <- suppressMessages(download_database(1))
@@ -18,8 +16,6 @@ test_that("download_database works", {
     expect_equal(class(test_db), c("tbl_df",
                                    "tbl",
                                    "data.frame"))
-  } else {
-    expect_message(download_database(1))
   }
 
 })

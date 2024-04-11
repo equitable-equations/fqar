@@ -13,27 +13,28 @@ test_that("transect_inventory works", {
   expect_equal(typeof(test_manual[[5]]), "double")
   expect_equal(test_manual[[5]], 0)
 
-  if (nrow(suppressMessages(download_transect(4492))) != 0){
-    test_raw <- download_transect(4492) # normal database
+  test_raw <- suppressMessages(download_transect(4492)) # normal database
+  if (nrow(test_raw) != 0){
     test <- transect_inventory(test_raw)
     expect_equal(ncol(test), 13)
     expect_equal(names(test)[5], "c")
     expect_equal(typeof(test[[5]]), "double")
+  }
 
-    test_raw <- download_transect(7025) # custom database
+  test_raw <- suppressMessages(download_transect(7025)) # custom database
+  if (nrow(test_raw) != 0){
     test <- transect_inventory(test_raw)
     expect_equal(ncol(test), 13)
     expect_equal(names(test)[5], "c")
     expect_equal(typeof(test[[5]]), "double")
+  }
 
-    test_raw <- download_transect(6444) # included omernik
+  test_raw <- suppressMessages(download_transect(6444)) # included omernik
+  if (nrow(test_raw) != 0){
     test <- transect_inventory(test_raw)
     expect_equal(ncol(test), 13)
     expect_equal(names(test)[5], "c")
     expect_equal(typeof(test[[5]]), "double")
-  } else {
-    # for when server doesn't respond
-    expect_message(download_transect(4492))
   }
 
 })

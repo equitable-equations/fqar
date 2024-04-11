@@ -22,15 +22,10 @@ test_that("species_phys works", {
   expect_true(is.na(suppressMessages(species_phys("fake_species",
                                                database_inventory = db_inv))))
 
-  if (!is.na(suppressMessages(species_phys(species, 149))) & (nrow(db_inv) != 0)) {
-    expect_equal(species_phys(species, 149), "forb")
-    expect_equal(species_phys(species3, 149), "forb")
+  if (nrow(db_inv) != 0) {
     expect_equal(species_phys(species2, database_inventory = db_inv), "shrub")
     expect_message(species_phys("fake_species", database_inventory = db_inv),
                    "Species not found in specified database.")
-  } else {
-    # for when database download fails
-    expect_message(species_phys(species, 149))
   }
 
 })

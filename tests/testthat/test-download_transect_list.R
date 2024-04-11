@@ -1,7 +1,5 @@
 test_that("download_transect_list works", {
 
-  skip_if_offline()
-
   expect_equal(length(suppressMessages(download_transect_list(-2))), 0)
 
   expect_message(download_transect_list(1, id == "hi"))

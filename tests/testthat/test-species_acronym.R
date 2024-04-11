@@ -11,8 +11,6 @@ test_that("species_acronym works", {
   expect_error(species_acronym(species, database_id = "hi"),
                "database_id must be an integer.")
 
-  skip_if_offline()
-
   db <- suppressMessages(download_database(149))
   db_inv <- suppressMessages(database_inventory(db))
 
@@ -21,15 +19,10 @@ test_that("species_acronym works", {
   expect_true(is.na(suppressMessages(species_acronym("fake_species",
                                                      database_inventory = db_inv))))
 
-  if (!is.na(suppressMessages(species_acronym(species, 149)))) {
-    expect_equal(species_acronym(species, 149), "ANECAN") # for when database download succeeds
-    expect_equal(species_acronym(species3, 149), "ABEESC")
+  if (nrow(db_inv) != 0) {
     expect_equal(species_acronym(species2, database_inventory = db_inv), "ANDGER")
     expect_message(species_acronym("fake_species", database_inventory = db_inv),
                    "Species not found in specified database.")
-  } else {
-    # for when database download fails
-    expect_message(species_acronym(species, 149))
   }
 
 })

@@ -7,8 +7,6 @@ test_that("download_transect works", {
   expect_equal(nrow(null_output), 0)
   expect_false(memoise::has_cache(download_transect_internal)(-40000))
 
-  skip_if_offline()
-
   test_tr <- suppressMessages(download_transect(6322))
   expect_equal(ncol(test_tr), 14)
   expect_equal(class(test_tr), c("tbl_df",

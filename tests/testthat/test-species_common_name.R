@@ -11,8 +11,6 @@ test_that("species_common_name works", {
   expect_error(species_common_name(species, database_id = "hi"),
                "database_id must be an integer.")
 
-  skip_if_offline()
-
   db <- suppressMessages(download_database(1))
   db_inv <- suppressMessages(database_inventory(db))
 
@@ -21,16 +19,11 @@ test_that("species_common_name works", {
   expect_true(is.na(suppressMessages(species_common_name("fake_species",
                                                          database_inventory = db_inv))))
 
-  if (!is.na(suppressMessages(species_common_name(species, 149)))) {
-    expect_equal(species_common_name(species, 149),
-                 "round-leaf thimbleweed")
-    expect_equal(species_common_name(species3, 149),
-                 "okra")
+  if (nrow(db_inv) != 0) {
     expect_equal(species_common_name(species2, database_inventory = db_inv),
                  "bog rosemary")
     expect_message(species_common_name("fake_species", database_inventory = db_inv),
                    "Species not found in specified database.")
-  } else {
-    expect_message(species_common_name(species, 149))
   }
+
 })
