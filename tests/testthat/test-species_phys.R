@@ -11,7 +11,6 @@ test_that("species_phys works", {
   expect_error(species_phys(species, database_id = "hi"),
                "database_id must be an integer.")
 
-  skip_if_offline()
 
   db <- suppressMessages(download_database(1))
   db_inv <- suppressMessages(database_inventory(db))
@@ -23,7 +22,7 @@ test_that("species_phys works", {
   expect_true(is.na(suppressMessages(species_phys("fake_species",
                                                database_inventory = db_inv))))
 
-  if (!is.na(suppressMessages(species_phys(species, 149)))) {
+  if (!is.na(suppressMessages(species_phys(species, 149))) & (nrow(db_inv) != 0)) {
     expect_equal(species_phys(species, 149), "forb")
     expect_equal(species_phys(species3, 149), "forb")
     expect_equal(species_phys(species2, database_inventory = db_inv), "shrub")
