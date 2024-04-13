@@ -26,7 +26,8 @@
 #'   \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
 #'   summary.
 #'
-#' @import dplyr utils
+#' @import dplyr
+#' @importFrom utils txtProgressBar
 #' @importFrom memoise has_cache
 #' @importFrom rlang is_interactive
 #'

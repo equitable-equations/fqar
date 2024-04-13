@@ -26,7 +26,8 @@
 #'   \code{\link[=assessment_list_glance]{assessment_list_glance()}} for a tidy
 #'   summary.
 #'
-#' @import dplyr utils
+#' @import dplyr
+#' @importFrom utils txtProgressBar
 #' @importFrom memoise has_cache
 #' @importFrom rlang is_interactive
 #'
