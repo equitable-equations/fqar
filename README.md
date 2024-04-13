@@ -8,7 +8,7 @@
    [![status](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9/status.svg)](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9)
   <!-- badges: end -->
   
-Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from [universalfqa.org](https://universalfqa.org/).
+Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from [universalfqa.org](https://universalfqa.org/), an online database maintained by [Openands](https://openlands.org/).
 
 ## Installation
  
@@ -126,7 +126,12 @@ Of particular note is the `species_profile()` function, which returns the freque
 aster_profile <- species_profile("Aster lateriflorus", ontario_invs)
 ```
 
-
 ## Learn More 
+
 * Read the ${\tt fqar}$ [vignette](https://github.com/equitable-equations/fqar/blob/main/vignettes/fqar.Rmd) to learn how to download and analyze FQAs with fqar.
 * View the help files of any function in the ${\tt fqar}$ package for more examples. 
+
+## Contribute
+
+To contribute to ${\tt fqar}$ you can fork this repository and create pull requests to add features you think will be useful for users. You can also open an issue if you find a bug or wish to make a suggestion. 
+
