@@ -9,7 +9,6 @@
   <!-- badges: end -->
   
 Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from [universalfqa.org](https://universalfqa.org/).
-.
 
 ## Installation
  
@@ -30,6 +29,8 @@ devtools::install_github("equitable-equations/fqar")
 The ${\tt fqar}$ package consists of four categories of functions: indexing, downloading, tidying, and analytic functions. ${\tt fqar}$ also includes two sample data sets. 
 
 ### Indexing functions
+
+At the simplest level, `fqar` allows users to obtain specific information about the databases, assessments, and transect assessments available from [universalfqa.org](https://universalfqa.org/). 
 
 ```{r indexing}
 # download a list of all fqa databases:
