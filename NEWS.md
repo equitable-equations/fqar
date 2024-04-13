@@ -1,6 +1,6 @@
 
 
-# fqar 0.5.2 - 0.5.4
+# fqar 0.5.2 & 0.5.3
 
 * increased stability when universalFQA fails.
 
