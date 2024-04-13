@@ -1,6 +1,10 @@
-# fqar 0.5.2 and 0.5.3
+
+
+# fqar 0.5.2 - 0.5.4
 
 * increased stability when universalFQA fails.
+
+* improvements to documentation and testing
 
 # fqar 0.5.1
 
