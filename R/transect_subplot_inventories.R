@@ -24,6 +24,7 @@
 #'
 #' @import dplyr
 #' @importFrom rlang .data
+#' @importFrom utils tail
 #'
 #' @examples
 #' \donttest{
@@ -64,7 +65,7 @@ transect_subplot_inventories <- function(transect) {
   }
 
   lengths <- diff(boundary_rows) - 3
-  lengths <- c(lengths, nrow(transect) - tail(boundary_rows, 1) - 2)
+  lengths <- c(lengths, nrow(transect) - utils::tail(boundary_rows, 1) - 2)
 
   start_rows <- boundary_rows + 2
   end_rows <- start_rows + lengths - 1
