@@ -4,3 +4,4 @@
 .RData
 .Ruserdata
 .DS_Store
+.github/workflows/.draft-pdf.yml
