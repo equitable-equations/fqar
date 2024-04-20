@@ -6,6 +6,9 @@
   [![R-CMD-check](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml)
    [![CRAN status](https://www.r-pkg.org/badges/version/fqar)](https://CRAN.R-project.org/package=fqar)
    [![status](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9/status.svg)](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9)
+   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11002086.svg)](https://doi.org/10.5281/zenodo.11002086)
+
+
   <!-- badges: end -->
   
 Floristic Quality Assessment (FQA) is a standardized method for rating the ecological value of natural areas based on the plant species found within them. The ${\tt fqar}$ package provides tools to download and analyze floristic quality assessments from [universalfqa.org](https://universalfqa.org/), an online database maintained by [Openlands](https://openlands.org/).
