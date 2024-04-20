@@ -105,7 +105,7 @@ Thorough documentation is provided. A long-form vignette gives a birds-eye overv
 
 # Acknowledgements
 
-Partial funding for this project was provided by the James Rocco Program. The authors also wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc ([NatureCITE](https://www.naturecite.org/)) for their insight into floristic quality assessment. 
+Partial funding for this project was provided by the James Rocco Program. The authors also wish to thanks Glenn Adelson, Ph.D  (Lake Forest College) and Justin Thomas, M.Sc (NatureCITE) for their insight into floristic quality assessment. 
 
 # References
 
