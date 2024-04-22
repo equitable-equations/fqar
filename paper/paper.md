@@ -50,7 +50,7 @@ There is currently great need in the ecological community to validate and potent
 
 # Typical workflow
 
-Analysts using `fqar` will typically download and reformat assessments of interest before using functions like `assessment_cooccurrence_summary` to analyze the data. The following workflow does just this for the *Flora of the Chicago Region* database, an updated version of the original floristic quality manual [@wilhelm2017flora]. Depending on the needs of the specific user, such analysis can be restricted to particular practitioners, organizations, or locations, or redirected entirely along the lines described in the previous section.
+Analysts using `fqar` will typically download and reformat assessments of interest before using functions like `assessment_cooccurrence_summary` to analyze the data. The following workflow does just this for the *Flora of the Chicago Region* database, an updated version of the original floristic quality manual [@rericha]. Depending on the needs of the specific user, such analysis can be restricted to particular practitioners, organizations, or locations, or redirected entirely along the lines described in the previous section.
 
 First, download all public assessments in the desired database and reshape them into a standard format:
 
