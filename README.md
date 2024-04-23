@@ -4,9 +4,9 @@
 
   <!-- badges: start -->
   [![R-CMD-check](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/equitable-equations/fqar/actions/workflows/R-CMD-check.yaml)
-   [![CRAN status](https://www.r-pkg.org/badges/version/fqar)](https://CRAN.R-project.org/package=fqar)
-   [![status](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9/status.svg)](https://joss.theoj.org/papers/7f3485f770c22ba09f37f74036d8ecd9)
-   [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11002086.svg)](https://doi.org/10.5281/zenodo.11002086)
+  [![CRAN status](https://www.r-pkg.org/badges/version/fqar)](https://CRAN.R-project.org/package=fqar)
+  [![DOI](https://joss.theoj.org/papers/10.21105/joss.06366/status.svg)](https://doi.org/10.21105/joss.06366)
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11002086.svg)](https://doi.org/10.5281/zenodo.11002086)
 
 
   <!-- badges: end -->
