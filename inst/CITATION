@@ -1,12 +1,12 @@
 bibentry(
   bibtype  = "Article",
-  title    = "The fqar package: R tools for analyzing floristic quality assessment data"
-  author   = "Andrew Gard and Alexia Myers and Irene Luwabelwa"
-  journal  = "Journal of Open Source Software"
-  year     = "2024"
-  volume   = "9"
-  number   = "96"
-  pages    = "6366"
+  title    = "The fqar package: R tools for analyzing floristic quality assessment data",
+  author   = "Andrew Gard and Alexia Myers and Irene Luwabelwa",
+  journal  = "Journal of Open Source Software",
+  year     = "2024",
+  volume   = "9",
+  number   = "96",
+  pages    = "6366",
   url      = "https://doi.org/10.21105/joss.06366"
 )
 
