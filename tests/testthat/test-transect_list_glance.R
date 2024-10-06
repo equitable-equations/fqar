@@ -14,7 +14,7 @@ test_that("transect_list_glance works", {
   test_list <- suppressMessages(download_transect_list(63, id %in% test_vec))
 
   if (length(test_list) != 0) {
-    test_df <- transect_list_glance(test_list)
+    test_df <- suppressMessages(transect_list_glance(test_list))
 
     expect_equal(ncol(test_df), 54)
     expect_equal(typeof(test_df$total_mean_c), "double")
