@@ -11,7 +11,7 @@ test_that("species_acronym works", {
   expect_error(species_acronym(species, database_id = "hi"),
                "database_id must be an integer.")
 
-  db <- suppressMessages(download_database(149))
+  db <- suppressMessages(download_database(1))
   db_inv <- suppressMessages(database_inventory(db))
 
   expect_error(species_acronym(species, 149, db_inv),
