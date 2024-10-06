@@ -69,7 +69,7 @@ download_database_internal <- memoise::memoise(function(database_id) {
     message(
       paste(
         "API request to universalFQA.org failed. Error",
-        httr::status_code(assessments_get)
+        httr::status_code(database_get)
       )
     )
     return(invisible(empty))
@@ -78,6 +78,12 @@ download_database_internal <- memoise::memoise(function(database_id) {
   database_text <- httr::content(database_get,
                                  "text",
                                  encoding = "ISO-8859-1")
+  if (database_text == "" |
+      database_text == "{ \"status\" : \"success\", \"data\" : }") {
+    message("No data returned. Specified database may be empty")
+    return(invisible(empty))
+  }
+
   database_json <- jsonlite::fromJSON(database_text)
   list_data <- database_json[[2]]
 
