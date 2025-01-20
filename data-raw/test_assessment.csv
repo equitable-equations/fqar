@@ -1,6 +1,7 @@
 V1,V2,V3,V4,V5,V6,V7,V8,V9
+99999,NA,NA,NA,NA,NA,NA,NA,NA
 Enhancement Wetland 1,NA,NA,NA,NA,NA,NA,NA,NA
-2018-07-24,NA,NA,NA,NA,NA,NA,NA,NA
+7/24/18,NA,NA,NA,NA,NA,NA,NA,NA
 CBG Skokie River,NA,NA,NA,NA,NA,NA,NA,NA
 Glencoe,NA,NA,NA,NA,NA,NA,NA,NA
 Cook,NA,NA,NA,NA,NA,NA,NA,NA
@@ -35,8 +36,8 @@ Native Herbaceous Mean C:,4.4,NA,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA
 Species Richness:,NA,NA,NA,NA,NA,NA,NA,NA
 Total Species:,54,NA,NA,NA,NA,NA,NA,NA
-Native Species:,46,85.2%,NA,NA,NA,NA,NA,NA
-Non-native Species:,8,14.8%,NA,NA,NA,NA,NA,NA
+Native Species:,46,85.20%,NA,NA,NA,NA,NA,NA
+Non-native Species:,8,14.80%,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA
 Species Wetness:,NA,NA,NA,NA,NA,NA,NA,NA
 Mean Wetness:,-2.5,NA,NA,NA,NA,NA,NA,NA
@@ -44,21 +45,21 @@ Native Mean Wetness:,-3,NA,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA
 Physiognomy Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
 Tree:,0,0%,NA,NA,NA,NA,NA,NA
-Shrub:,1,1.9%,NA,NA,NA,NA,NA,NA
+Shrub:,1,1.90%,NA,NA,NA,NA,NA,NA
 Vine:,0,0%,NA,NA,NA,NA,NA,NA
-Forb:,40,74.1%,NA,NA,NA,NA,NA,NA
-Grass:,4,7.4%,NA,NA,NA,NA,NA,NA
+Forb:,40,74.10%,NA,NA,NA,NA,NA,NA
+Grass:,4,7.40%,NA,NA,NA,NA,NA,NA
 Sedge:,7,13%,NA,NA,NA,NA,NA,NA
-Rush:,2,3.7%,NA,NA,NA,NA,NA,NA
+Rush:,2,3.70%,NA,NA,NA,NA,NA,NA
 Fern:,0,0%,NA,NA,NA,NA,NA,NA
 Bryophyte:,0,0%,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA
 Duration Metrics:,NA,NA,NA,NA,NA,NA,NA,NA
-Annual:,2,3.7%,NA,NA,NA,NA,NA,NA
-Perennial:,52,96.3%,NA,NA,NA,NA,NA,NA
+Annual:,2,3.70%,NA,NA,NA,NA,NA,NA
+Perennial:,52,96.30%,NA,NA,NA,NA,NA,NA
 Biennial:,0,0%,NA,NA,NA,NA,NA,NA
-Native Annual:,1,1.9%,NA,NA,NA,NA,NA,NA
-Native Perennial:,45,83.3%,NA,NA,NA,NA,NA,NA
+Native Annual:,1,1.90%,NA,NA,NA,NA,NA,NA
+Native Perennial:,45,83.30%,NA,NA,NA,NA,NA,NA
 Native Biennial:,0,0%,NA,NA,NA,NA,NA,NA
 NA,NA,NA,NA,NA,NA,NA,NA,NA
 Species:,NA,NA,NA,NA,NA,NA,NA,NA
