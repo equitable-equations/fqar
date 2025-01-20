@@ -12,8 +12,9 @@ assessment_list_glance(assessment_list)
 \code{\link[=download_assessment_list]{download_assessment_list()}}.}
 }
 \value{
-A data frame with 52 columns:
+A data frame with 53 columns:
 \itemize{
+   \item assessment_id (numeric)
    \item title (character)
    \item date (date)
    \item site_name (character)
