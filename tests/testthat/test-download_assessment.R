@@ -12,8 +12,8 @@ test_that("download_assessment works", {
 
   if (nrow(test_assessment) !=0){
     expect_equal(memoise::has_cache(download_assessment_internal)(25002), TRUE)
-    expect_equal(nrow(test_assessment), 140)
-    expect_equal(test_assessment$V1[1], "Edison dune and swale")
+    expect_equal(nrow(test_assessment), 141)
+    expect_equal(test_assessment$V1[2], "Edison dune and swale")
   }
 })
 

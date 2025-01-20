@@ -14,9 +14,9 @@ test_that("download_assessment_internal works", {
 
   if (nrow(test_a) != 0){
     # when server responds
-    expect_equal(nrow(test_a), 140)
+    expect_equal(nrow(test_a), 141)
     expect_equal(ncol(test_a), 9)
-    expect_equal(test_a$V1[1], "Edison dune and swale")
+    expect_equal(test_a$V1[2], "Edison dune and swale")
   }
 
 })

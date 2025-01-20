@@ -8,8 +8,9 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org}, typically using
 #'   \code{\link[=download_assessment_list]{download_assessment_list()}}.
 #'
-#' @return A data frame with 52 columns:
+#' @return A data frame with 53 columns:
 #' \itemize{
+#'    \item assessment_id (numeric)
 #'    \item title (character)
 #'    \item date (date)
 #'    \item site_name (character)
@@ -79,7 +80,8 @@
 
 assessment_list_glance <- function(assessment_list) {
 
-  df_bad <- data.frame(title = character(0),
+  df_bad <- data.frame(assessment_id = numeric(0),
+                       title = character(0),
                        date = numeric(0),
                        site_name = character(0),
                        city = character(0),

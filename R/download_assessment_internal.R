@@ -4,7 +4,8 @@
 #'   assessment
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
-#'   website.
+#'   website, except that the assessment id number has been appended in the
+#'   first row.
 #'
 #' @import httr jsonlite
 #' @importFrom memoise memoise
@@ -46,7 +47,7 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
 
   assessment_get <- tryCatch(httr::GET(assessment_address,
                                        ua,
-                                       timeout(2)),
+                                       httr::timeout(5)),
                              error = function(e){
                                message("No response from universalFQA.org. Please check internet connection.")
                                character(0)},
@@ -92,6 +93,10 @@ download_assessment_internal <- memoise::memoise(function(assessment_id) {
                       })
 
   out <- as.data.frame(do.call(rbind, list_data))
+
+  id_row <- data.frame(V1 = assessment_id,
+                       V2 = NA, V3 = NA, V4 = NA, V5 = NA, V6 = NA, V7 = NA, V8 = NA, V9 = NA)
+  out <- rbind(id_row, out)
 
   class(out) <- c("tbl_df",
                   "tbl",

@@ -7,8 +7,9 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
 #'   \code{\link[=download_assessment]{download_assessment()}}
 #'
-#' @return A data frame with 52 columns:
+#' @return A data frame with 53 columns:
 #' \itemize{
+#'    \item assessment_id (numeric)
 #'    \item title (character)
 #'    \item date (date)
 #'    \item site_name (character)
@@ -79,7 +80,8 @@
 
 assessment_glance <- function(data_set) {
 
-  df_bad <- data.frame(title = character(0),
+  df_bad <- data.frame(assessment_id = numeric(0),
+                       title = character(0),
                        date = numeric(0),
                        site_name = character(0),
                        city = character(0),
@@ -173,6 +175,10 @@ assessment_glance <- function(data_set) {
       fill = "right",
       extra = "merge"
     )
+    idnum <- NA
+  } else {
+    idnum <- data_set[1,1]
+    data_set <- data_set[2:nrow(data_set), ]
   }
 
   data_set <-
@@ -218,12 +224,19 @@ assessment_glance <- function(data_set) {
   small <- selected |>
     filter(row_number() < which(.data$V1 == "Species:"))
 
+  id_df <- data.frame(V1 = "assessment_id",
+                      V2 = idnum)
+  colnames(id_df) <- c("V1", "V2")
+  small <- rbind(id_df, small)
+
   pivoted <- small |> pivot_wider(names_from = "V1",
                                   values_from = "V2")
 
+
   suppressWarnings(final <- pivoted |>
-                     mutate(across(22:57, as.double),
-                            Date = as.Date(.data$Date)))
+                     mutate(across(23:58, as.double),
+                            Date = as.Date(.data$Date,
+                                           "%m/%d/%y")))
   final <- final |>
     select(
       -c(
@@ -236,6 +249,7 @@ assessment_glance <- function(data_set) {
     )
 
   names(final) <- c(
+    "assessmemnt_id",
     "title",
     "date",
     "site_name",
