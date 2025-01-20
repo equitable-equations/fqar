@@ -53,7 +53,7 @@ download_database_internal <- memoise::memoise(function(database_id) {
 
   database_get <- tryCatch(httr::GET(database_address,
                                      ua,
-                                     timeout(2)),
+                                     httr::timeout(5)),
                            error = function(e){
                              message("No response from universalFQA.org. Please check internet connection.")
                              character(0)

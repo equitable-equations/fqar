@@ -51,7 +51,7 @@ download_transect_internal <- memoise::memoise(function(transect_id) {
 
   trans_get <- tryCatch(httr::GET(trans_address,
                                   ua,
-                                  timeout(2)),
+                                  httr::timeout(5)),
                         error = function(e){
                           message("No response from universalFQA.org. Please check internet connection.")
                           character(0)

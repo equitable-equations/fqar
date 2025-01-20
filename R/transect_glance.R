@@ -239,7 +239,8 @@ transect_glance <- function(data_set) {
 
   suppressWarnings(data <- pivoted |>
                      mutate(across(c(26:28, 32:54), as.numeric),
-                            Date = as.Date(.data$Date)))
+                            Date = as.Date(.data$Date,
+                                           "%m/%d/%y")))
 
   names(data) <- gsub(":", "", names(data))
 
