@@ -4,7 +4,7 @@
 \alias{download_transect}
 \title{Download a single floristic quality transect assessment}
 \usage{
-download_transect(transect_id, timeout = 5)
+download_transect(transect_id, timeout = 4)
 }
 \arguments{
 \item{transect_id}{A numeric identifier of the desired floristic quality
@@ -34,7 +34,7 @@ numbers for transect assessments in various databases can be found using the
 \donttest{
 databases <- index_fqa_databases() # Database 1 is the original 1994 Chicago edition.
 chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
-cbg <- download_transect(5932)
+cbg <- download_transect(5932, timeout = 10)
 }
 
 }

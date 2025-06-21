@@ -31,7 +31,7 @@
 
 
 index_fqa_assessments <- function(database_id,
-                                  timeout = 5) {
+                                  timeout = 4) {
 
   out <- index_fqa_assessments_internal(database_id,
                                         timeout)

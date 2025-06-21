@@ -4,7 +4,7 @@
 \alias{index_fqa_assessments}
 \title{List all available public floristic quality assessments}
 \usage{
-index_fqa_assessments(database_id, timeout = 5)
+index_fqa_assessments(database_id, timeout = 4)
 }
 \arguments{
 \item{database_id}{A numeric identifier of the desired database, as specified

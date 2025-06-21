@@ -36,7 +36,7 @@
 
 
 download_assessment <- function(assessment_id,
-                                timeout = 5) {
+                                timeout = 4) {
 
   out <- download_assessment_internal(assessment_id,
                                       timeout)

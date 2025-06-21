@@ -28,7 +28,7 @@
 
 
 download_database <- function(database_id,
-                              timeout = 5) {
+                              timeout = 4) {
 
   out <- download_database_internal(database_id,
                                     timeout)

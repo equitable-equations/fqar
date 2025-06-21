@@ -31,7 +31,7 @@
 
 
 index_fqa_transects <- function(database_id,
-                                timeout = 5) {
+                                timeout = 4) {
 
   out <- index_fqa_transects_internal(database_id,
                                       timeout)

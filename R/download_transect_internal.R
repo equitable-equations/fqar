@@ -15,7 +15,7 @@
 
 download_transect_internal <-
   memoise::memoise(function(transect_id,
-                            timeout = 5) {
+                            timeout = 4) {
 
     if (!is.numeric(transect_id)) {
       stop("transect_id must be an integer.", call. = FALSE)

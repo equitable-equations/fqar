@@ -11,7 +11,7 @@
 
 index_fqa_assessments_internal <-
   memoise::memoise(function(database_id,
-                            timeout = 5) {
+                            timeout = 4) {
 
     if (!is.numeric(database_id)) {
       stop(

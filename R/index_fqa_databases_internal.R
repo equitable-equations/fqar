@@ -10,7 +10,7 @@
 
 
 index_fqa_databases_internal <-
-  memoise::memoise(function(timeout = 5) {
+  memoise::memoise(function(timeout = 4) {
 
     if(!is.numeric(timeout)){
       stop("timeout must be an integer.",

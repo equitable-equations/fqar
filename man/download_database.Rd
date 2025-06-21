@@ -4,7 +4,7 @@
 \alias{download_database}
 \title{Download a single floristic quality database}
 \usage{
-download_database(database_id, timeout = 5)
+download_database(database_id, timeout = 4)
 }
 \arguments{
 \item{database_id}{A numeric identifier of the desired floristic quality

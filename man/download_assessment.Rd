@@ -4,7 +4,7 @@
 \alias{download_assessment}
 \title{Download a single floristic quality assessment}
 \usage{
-download_assessment(assessment_id, timeout = 5)
+download_assessment(assessment_id, timeout = 4)
 }
 \arguments{
 \item{assessment_id}{A numeric identifier of the desired floristic quality

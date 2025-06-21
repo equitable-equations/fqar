@@ -15,7 +15,7 @@
 
 download_assessment_internal <-
   memoise::memoise(function(assessment_id,
-                            timeout = 5) {
+                            timeout = 4) {
 
     if (!is.numeric(assessment_id)) {
       stop("assessment_id must be an integer.", call. = FALSE)

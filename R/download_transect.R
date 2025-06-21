@@ -33,7 +33,7 @@
 
 
 download_transect <- function(transect_id,
-                              timeout = 5) {
+                              timeout = 4) {
 
   out <- download_transect_internal(transect_id,
                                     timeout)
