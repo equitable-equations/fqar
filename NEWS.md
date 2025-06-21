@@ -1,6 +1,8 @@
+# fqar 0.5.5
 
+* Added option timeout argument to downloading and indexing functions
 
-# fqar 0.5.2 & 0.5.3
+# fqar 0.5.2 - 0.5.4
 
 * increased stability when universalFQA fails.
 
