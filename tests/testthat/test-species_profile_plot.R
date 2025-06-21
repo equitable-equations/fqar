@@ -18,7 +18,7 @@ test_that("species_profile_plot works", {
 
   p <- species_profile_plot(species, good_list)
 
-  expect_equal(class(p), c("gg", "ggplot"))
+  expect_true(ggplot2::is_ggplot(p))
   expect_equal(p$data$cospecies_c, 0:10)
   expect_equal(p$labels$y, "Frequency")
 
