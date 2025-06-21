@@ -11,7 +11,7 @@ test_that("download_database_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_database_internal)(-40000), TRUE)
 
-  test_db <- suppressMessages(download_database_internal(1))
+  test_db <- suppressMessages(download_database_internal(1, timeout = 10))
 
   if (nrow(test_db) != 0) {
     # when server responds

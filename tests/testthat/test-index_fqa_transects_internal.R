@@ -10,7 +10,8 @@ test_that("index_fqa_transects_internal works", {
   expect_equal(ncol(empty_output), 5)
   expect_true(memoise::has_cache(index_fqa_transects_internal)(-40000))
 
-  transects <- suppressMessages(index_fqa_transects_internal(1))
+  transects <- suppressMessages(
+    index_fqa_transects_internal(1, timeout = 10))
 
   expect_equal(ncol(transects), 5)
   expect_equal(names(transects),

@@ -26,7 +26,7 @@
 #' \donttest{
 #' databases <- index_fqa_databases() # Database 1 is the original 1994 Chicago edition.
 #' chicago_transects <- index_fqa_transects(1) # CBG Sand prairie swale fen A has id number 5932.
-#' cbg <- download_transect(5932)
+#' cbg <- download_transect(5932, timeout = 10)
 #' }
 #'
 #' @export

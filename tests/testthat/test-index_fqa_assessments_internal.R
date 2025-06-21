@@ -10,7 +10,8 @@ test_that("index_fqa_assessments_internal works", {
   expect_equal(ncol(empty_output), 5)
   expect_equal(memoise::has_cache(index_fqa_assessments_internal)(-40000), TRUE)
 
-  assessments <- suppressMessages(index_fqa_assessments_internal(2))
+  assessments <- suppressMessages(
+    index_fqa_assessments_internal(2, timeout = 10))
 
   expect_equal(ncol(assessments), 5)
   expect_equal(names(assessments),

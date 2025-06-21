@@ -11,7 +11,8 @@ test_that("download_assessment_internal works", {
   expect_equal(nrow(null_output), 0)
   expect_equal(memoise::has_cache(download_assessment_internal)(-40000), TRUE)
 
-  test_a <- suppressMessages(download_assessment_internal(25002))
+  test_a <- suppressMessages(download_assessment_internal(25002,
+                                                          timeout = 10))
   expect_equal(class(test_a), c("tbl_df",
                                 "tbl",
                                 "data.frame"))
