@@ -8,6 +8,7 @@
 #'   by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
 #'   be viewed with the
 #'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
 #'
 #' @return A data frame with 5 columns:
 #' \itemize{
@@ -29,9 +30,11 @@
 #' @export
 
 
-index_fqa_transects <- function(database_id) {
+index_fqa_transects <- function(database_id,
+                                timeout = 5) {
 
-  out <- index_fqa_transects_internal(database_id)
+  out <- index_fqa_transects_internal(database_id,
+                                      timeout)
 
   if (nrow(out) == 0){
     memoise::drop_cache(index_fqa_transects_internal)({{ database_id }})

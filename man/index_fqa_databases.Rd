@@ -4,7 +4,10 @@
 \alias{index_fqa_databases}
 \title{List all available floristic quality assessment databases}
 \usage{
-index_fqa_databases()
+index_fqa_databases(timeout = 5)
+}
+\arguments{
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 A data frame with 4 columns:

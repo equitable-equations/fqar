@@ -10,6 +10,7 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #'   assessments in specified databases can be viewed with the
 #'   \code{\link[=index_fqa_assessments]{index_fqa_assessments()}} function.
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website, except that the assessment id number has been appended in the
@@ -34,9 +35,11 @@
 #' @export
 
 
-download_assessment <- function(assessment_id) {
+download_assessment <- function(assessment_id,
+                                timeout = 5) {
 
-  out <- download_assessment_internal(assessment_id)
+  out <- download_assessment_internal(assessment_id,
+                                      timeout)
 
   if (nrow(out) == 0){
     memoise::drop_cache(download_assessment_internal)({{ assessment_id }})

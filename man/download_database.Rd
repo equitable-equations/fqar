@@ -4,7 +4,7 @@
 \alias{download_database}
 \title{Download a single floristic quality database}
 \usage{
-download_database(database_id)
+download_database(database_id, timeout = 5)
 }
 \arguments{
 \item{database_id}{A numeric identifier of the desired floristic quality
@@ -12,6 +12,8 @@ database, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 databases recognized this site can be viewed with the
 \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.}
+
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 An untidy data frame in the original format of the Universal FQA

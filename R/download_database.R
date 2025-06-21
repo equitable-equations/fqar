@@ -10,6 +10,7 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 #'   databases recognized this site can be viewed with the
 #'   \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website. Use \code{\link[=database_glance]{database_glance()}} for a tidy
@@ -26,9 +27,11 @@
 #' @export
 
 
-download_database <- function(database_id) {
+download_database <- function(database_id,
+                              timeout = 5) {
 
-  out <- download_database_internal(database_id)
+  out <- download_database_internal(database_id,
+                                    timeout)
 
   if (nrow(out) == 0 | out$V2[5] == 0){
     memoise::drop_cache(download_database_internal)({{ database_id }})

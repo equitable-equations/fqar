@@ -1,7 +1,11 @@
 test_that("download_transect_internal works", {
 
-  expect_error(download_transect_internal("hi"), "transect_id must be an integer.")
-  expect_error(download_transect_internal(2.5), "transect_id must be an integer.")
+  expect_error(download_transect_internal("hi"),
+               "transect_id must be an integer.")
+  expect_error(download_transect_internal(2.5),
+               "transect_id must be an integer.")
+  expect_error(download_transect_internal(6322, "hi"),
+               "timeout must be an integer.")
 
   null_output <- download_transect_internal(-40000)
   expect_equal(nrow(null_output), 0)

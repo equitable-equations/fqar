@@ -4,7 +4,7 @@
 \alias{download_assessment}
 \title{Download a single floristic quality assessment}
 \usage{
-download_assessment(assessment_id)
+download_assessment(assessment_id, timeout = 5)
 }
 \arguments{
 \item{assessment_id}{A numeric identifier of the desired floristic quality
@@ -12,6 +12,8 @@ assessment, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for
 assessments in specified databases can be viewed with the
 \code{\link[=index_fqa_assessments]{index_fqa_assessments()}} function.}
+
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 An untidy data frame in the original format of the Universal FQA

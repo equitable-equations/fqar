@@ -1,7 +1,11 @@
 test_that("download_database_internal works", {
 
-  expect_error(download_database("hi"), "database_id must be an integer.")
-  expect_error(download_database(2.5), "database_id must be an integer.")
+  expect_error(download_database_internal("hi"),
+               "database_id must be an integer.")
+  expect_error(download_database_internal(2.5),
+               "database_id must be an integer.")
+  expect_error(download_database_internal(1, "hi"),
+               "timeout must be an integer.")
 
   null_output <- download_database_internal(-40000)
   expect_equal(nrow(null_output), 0)

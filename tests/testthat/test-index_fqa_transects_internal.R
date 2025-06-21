@@ -2,6 +2,8 @@ test_that("index_fqa_transects_internal works", {
 
   expect_error(index_fqa_transects_internal(1.5))
   expect_error(index_fqa_transects_internal("hi"))
+  expect_error(index_fqa_transects_internal(1, "hi"),
+               "timeout must be an integer.")
 
   empty_output <- index_fqa_transects_internal(-40000)
   expect_equal(nrow(empty_output), 0)

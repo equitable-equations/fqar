@@ -10,8 +10,9 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org}, typically using
 #'   \code{\link[=download_transect_list]{download_transect_list()}}.
 #'
-#' @return A data frame with 1 row and 54 columns:
+#' @return A data frame with 1 row and 55 columns:
 #' \itemize{
+#'    \item transect_id (numeric)
 #'    \item title (character)
 #'    \item date (date)
 #'    \item site_name (character)
@@ -85,6 +86,7 @@
 transect_list_glance <- function(transect_list) {
 
   bad_df <- data.frame(
+    transect_id = numeric(0),
     title = character(0),
     date = numeric(0),
     site_name = character(0),

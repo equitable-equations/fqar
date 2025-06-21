@@ -13,8 +13,9 @@ transect_list_glance(transect_list)
 \code{\link[=download_transect_list]{download_transect_list()}}.}
 }
 \value{
-A data frame with 1 row and 54 columns:
+A data frame with 1 row and 55 columns:
 \itemize{
+   \item transect_id (numeric)
    \item title (character)
    \item date (date)
    \item site_name (character)

@@ -1,6 +1,7 @@
 test_that("index_fqa_databases works", {
 
-  expect_error(index_fqa_databases("hi"))
+  expect_error(index_fqa_databases("hi"),
+               "timeout must be an integer.")
 
   databases <- suppressMessages(index_fqa_databases())
   expect_equal(ncol(databases), 4)

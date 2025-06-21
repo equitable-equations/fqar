@@ -4,7 +4,7 @@
 \alias{download_transect}
 \title{Download a single floristic quality transect assessment}
 \usage{
-download_transect(transect_id)
+download_transect(transect_id, timeout = 5)
 }
 \arguments{
 \item{transect_id}{A numeric identifier of the desired floristic quality
@@ -12,10 +12,13 @@ transect assessment, as specified by
 \href{https://universalfqa.org/}{universalfqa.org}. ID numbers for transect
 assessments in specified databases can be viewed with the
 \code{\link[=index_fqa_transects]{index_fqa_transects()}} function.}
+
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 An untidy data frame in the original format of the Universal FQA
-  website. Use \code{\link[=transect_glance]{transect_glance()}} for a tidy
+  website, except that the transect id number has been appended in the
+  first row.. Use \code{\link[=transect_glance]{transect_glance()}} for a tidy
   summary, \code{\link[=transect_phys]{transect_phys()}} for a
   physiognometric overview, and
   \code{\link[=transect_inventory]{transect_inventory()}} for species-level

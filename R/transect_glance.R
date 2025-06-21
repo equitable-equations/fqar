@@ -7,8 +7,9 @@
 #'   \href{https://universalfqa.org/}{universalfqa.org} either manually or using
 #'   \code{\link[=download_transect]{download_transect()}}.
 #'
-#' @return A data frame with 1 row and 54 columns:
+#' @return A data frame with 1 row and 55 columns:
 #' \itemize{
+#'    \item transect_id (numeric)
 #'    \item title (character)
 #'    \item date (date)
 #'    \item site_name (character)
@@ -84,6 +85,7 @@
 transect_glance <- function(data_set) {
 
   bad_df <- data.frame(
+    transect_id = numeric(0),
     title = character(0),
     date = numeric(0),
     site_name = character(0),
@@ -178,6 +180,10 @@ transect_glance <- function(data_set) {
       fill = "right",
       extra = "merge"
     )
+    transect_id <- NA
+  } else {
+    transect_id <- data_set[1,1]
+    data_set <- data_set[2:nrow(data_set), ]
   }
 
   data_set <-
@@ -237,14 +243,17 @@ transect_glance <- function(data_set) {
   pivoted <- selected |> pivot_wider(names_from = "V1",
                                      values_from = "V2")
 
+  pivoted <- cbind(transect_id = transect_id, pivoted)
+
   suppressWarnings(data <- pivoted |>
-                     mutate(across(c(26:28, 32:54), as.numeric),
+                     mutate(across(c(27:29, 33:55), as.numeric),
                             Date = as.Date(.data$Date,
                                            "%m/%d/%y")))
 
   names(data) <- gsub(":", "", names(data))
 
   names(data) <- c(
+    "transect_id",
     "title",
     "date",
     "site_name",

@@ -6,7 +6,7 @@ test_that("transect_list_glance works", {
   test_list <- list(test_transect, test_transect)
   test_df <- transect_list_glance(test_list)
 
-  expect_equal(ncol(test_df), 54)
+  expect_equal(ncol(test_df), 55)
   expect_equal(typeof(test_df$total_mean_c), "double")
   expect_equal(nrow(test_df), 2)
 
@@ -16,7 +16,7 @@ test_that("transect_list_glance works", {
   if (length(test_list) != 0) {
     test_df <- suppressMessages(transect_list_glance(test_list))
 
-    expect_equal(ncol(test_df), 54)
+    expect_equal(ncol(test_df), 55)
     expect_equal(typeof(test_df$total_mean_c), "double")
   }
 })

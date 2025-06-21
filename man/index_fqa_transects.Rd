@@ -4,13 +4,15 @@
 \alias{index_fqa_transects}
 \title{List all available public floristic quality transect assessments}
 \usage{
-index_fqa_transects(database_id)
+index_fqa_transects(database_id, timeout = 5)
 }
 \arguments{
 \item{database_id}{A numeric identifier of the desired database, as specified
 by \href{https://universalfqa.org/}{universalfqa.org}. The id numbers can
 be viewed with the
 \code{\link[=index_fqa_databases]{index_fqa_databases()}} function.}
+
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 A data frame with 5 columns:
