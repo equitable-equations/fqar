@@ -21,6 +21,8 @@
 #'   \item practitioner (character)
 #' }
 #'
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
+#'
 #' @return A list of data frames matching the search criteria. Each is an untidy
 #'   data frame in the original format of the Universal FQA website. Use
 #'   \code{\link[=assessment_list_glance]{assessment_list_glance()}} for a tidy
@@ -41,9 +43,12 @@
 #' @export
 
 
-download_assessment_list <- function(database_id, ...) {
+download_assessment_list <- function(database_id,
+                                     ...,
+                                     timeout = 4) {
 
-  inventories_summary <- index_fqa_assessments(database_id)
+  inventories_summary <- index_fqa_assessments(database_id,
+                                               timeout = timeout)
 
   if (nrow(inventories_summary) == 0){
     return(invisible(list()))
@@ -71,7 +76,8 @@ download_assessment_list <- function(database_id, ...) {
     )
 
     for (i in seq_along(inventories_requested$id)) {
-      results[[i]] <-  download_assessment(inventories_requested$id[i])
+      results[[i]] <-  download_assessment(inventories_requested$id[i],
+                                           timeout = timeout)
       utils::setTxtProgressBar(pb, i)
     }
     close(pb)

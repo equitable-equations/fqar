@@ -21,6 +21,8 @@
 #'   \item practitioner (character)
 #' }
 #'
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
+#'
 #' @return A list of data frames matching the search criteria. Each is an untidy
 #'   data frame in the original format of the Universal FQA website. Use
 #'   \code{\link[=transect_list_glance]{transect_list_glance()}} for a tidy
@@ -40,9 +42,12 @@
 #' @export
 
 
-download_transect_list <- function(database_id, ...) {
+download_transect_list <- function(database_id,
+                                   ...,
+                                   timeout = 4) {
 
-  transects_summary <- index_fqa_transects(database_id)
+  transects_summary <- index_fqa_transects(database_id,
+                                           timeout = timeout)
 
   if (nrow(transects_summary) == 0){
     return(invisible(list()))
@@ -70,7 +75,8 @@ download_transect_list <- function(database_id, ...) {
     )
 
     for (i in seq_along(transects_requested$id)) {
-      results[[i]] <-  download_transect(transects_requested$id[i])
+      results[[i]] <-  download_transect(transects_requested$id[i],
+                                         timeout = tiemout)
       utils::setTxtProgressBar(pb, i)
     }
     close(pb)

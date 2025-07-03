@@ -4,7 +4,10 @@ test_that("download_transect_list works", {
 
   expect_message(download_transect_list(1, id == "hi"))
 
-  two_transects <- suppressMessages(download_transect_list(1, id == 6570 | id == 6322))
+  two_transects <-
+    suppressMessages(download_transect_list(1,
+                                            timeout = 5,
+                                            id == 6570 | id == 6322))
 
   if (length(two_transects) !=0){
     expect_equal(class(two_transects), "list")

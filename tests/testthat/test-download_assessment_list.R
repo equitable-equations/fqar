@@ -3,7 +3,9 @@ test_that("download_assessment_list works", {
   expect_equal(class(suppressMessages(download_assessment_list(-2))), "list")
 
   two_assessments <- suppressMessages(
-    download_assessment_list(1,id == 8 | id == 12)
+    download_assessment_list(1,
+                             id == 8 | id == 12,
+                             timeout = 5)
     )
   if(length(two_assessments) != 0) {
     # when server responds

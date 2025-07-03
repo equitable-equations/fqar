@@ -4,7 +4,7 @@
 \alias{download_transect_list}
 \title{Download multiple floristic quality transect assessments}
 \usage{
-download_transect_list(database_id, ...)
+download_transect_list(database_id, ..., timeout = 4)
 }
 \arguments{
 \item{database_id}{Numeric identifier of the desired floristic quality
@@ -22,6 +22,8 @@ be viewed with the
   \item site (character)
   \item practitioner (character)
 }}
+
+\item{timeout}{Number of seconds to query UniversalFQA before timing out.}
 }
 \value{
 A list of data frames matching the search criteria. Each is an untidy
