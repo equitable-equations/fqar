@@ -76,7 +76,7 @@ download_transect_list <- function(database_id,
 
     for (i in seq_along(transects_requested$id)) {
       results[[i]] <-  download_transect(transects_requested$id[i],
-                                         timeout = tiemout)
+                                         timeout = timeout)
       utils::setTxtProgressBar(pb, i)
     }
     close(pb)
