@@ -47,8 +47,9 @@ transect_list_inventory <- function(transect_list) {
     return(invisible(list()))
   }
 
-  applied <- lapply(transect_list,
-                    transect_inventory)
+  applied <- suppressMessages(
+    lapply(transect_list,
+           transect_inventory))
 
   applied
 }

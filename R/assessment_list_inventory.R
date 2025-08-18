@@ -54,8 +54,9 @@ assessment_list_inventory <- function(assessment_list) {
     return(invisible(bad_df))
   }
 
-  applied <- lapply(assessment_list,
-                    assessment_inventory)
+  applied <- suppressMessages(
+    lapply(assessment_list,
+           assessment_inventory))
 
   applied
 }
