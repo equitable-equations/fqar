@@ -37,7 +37,8 @@ index_fqa_transects <- function(database_id,
                                       timeout)
 
   if (nrow(out) == 0){
-    memoise::drop_cache(index_fqa_transects_internal)({{ database_id }})
+    memoise::drop_cache(index_fqa_transects_internal)({{ database_id }},
+                                                      {{ timeout }})
     return(invisible(out))
   }
 

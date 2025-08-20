@@ -39,7 +39,8 @@ download_transect <- function(transect_id,
                                     timeout)
 
   if (nrow(out) == 0){
-    memoise::drop_cache(download_transect_internal)({{ transect_id }})
+    memoise::drop_cache(download_transect_internal)({{ transect_id }},
+                                                    {{ timeout }})
     return(invisible(out))
   }
 

@@ -42,7 +42,8 @@ download_assessment <- function(assessment_id,
                                       timeout)
 
   if (nrow(out) == 0){
-    memoise::drop_cache(download_assessment_internal)({{ assessment_id }})
+    memoise::drop_cache(download_assessment_internal)({{ assessment_id }},
+                                                      {{ timeout }})
     return(invisible(out))
   }
 

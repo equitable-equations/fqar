@@ -34,7 +34,8 @@ download_database <- function(database_id,
                                     timeout)
 
   if (nrow(out) == 0 | out$V2[5] == 0){
-    memoise::drop_cache(download_database_internal)({{ database_id }})
+    memoise::drop_cache(download_database_internal)({{ database_id }},
+                                                    {{ timeout }})
     return(invisible(out))
   }
 
