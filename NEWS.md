@@ -1,6 +1,8 @@
-# fqar 0.5.5
+# fqar 0.5.5 - 0.5.6
 
-* Added option timeout argument to downloading and indexing functions
+* Added option timeout argument to downloading and indexing functions. 
+
+* Bug fixes in memosation 
 
 # fqar 0.5.2 - 0.5.4
 
