@@ -22,7 +22,7 @@
 #' @export
 
 
-index_fqa_databases <- function(timeout = 5) {
+index_fqa_databases <- function(timeout = 4) {
 
   out <- index_fqa_databases_internal(timeout)
 

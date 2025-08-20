@@ -2,6 +2,7 @@
 #'
 #' @param assessment_id A numeric identifier of the desired floristic quality
 #'   assessment
+#'   @param timeout Number of seconds to query UniversalFQA before timing out.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website, except that the assessment id number has been appended in the
@@ -52,17 +53,18 @@ download_assessment_internal <-
     ua <-
       httr::user_agent("https://github.com/equitable-equations/fqar")
 
-    assessment_get <- tryCatch(httr::GET(assessment_address,
-                                         ua,
-                                         httr::timeout(timeout)),
-                               error = function(e){
-                                 message("No response from universalFQA.org. Please check internet connection.")
-                                 character(0)},
-                               message = function(m){
-                                 message("No response from universalFQA.org. Please check internet connection.")
-                                 character(0)
-                               }
-    )
+    assessment_get <-
+      tryCatch(httr::GET(assessment_address,
+                         ua,
+                         httr::timeout(timeout)),
+               error = function(e){
+                 message("No response from universalFQA.org. Please check internet connection.")
+                 character(0)},
+               message = function(m){
+                 message("No response from universalFQA.org. Please check internet connection.")
+                 character(0)
+               }
+      )
 
     cl <- class(assessment_get)
     if (cl != "response"){

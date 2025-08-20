@@ -43,12 +43,14 @@
 #' @export
 
 
-download_assessment_list <- function(database_id,
-                                     ...,
-                                     timeout = 4) {
+download_assessment_list <-
+  function(database_id,
+           ...,
+           timeout = 4) {
 
-  inventories_summary <- index_fqa_assessments(database_id,
-                                               timeout = timeout)
+  inventories_summary <-
+    index_fqa_assessments(database_id,
+                          timeout = timeout)
 
   if (nrow(inventories_summary) == 0){
     return(invisible(list()))

@@ -2,6 +2,7 @@
 #'
 #' @param A numeric identifier of the desired floristic quality
 #'   database
+#'   @param timeout Number of seconds to query UniversalFQA before timing out.
 #'
 #' @return An untidy data frame in the original format of the Universal FQA
 #'   website.

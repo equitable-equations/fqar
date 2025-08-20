@@ -1,6 +1,8 @@
 #' List all available public floristic quality assessments
 #'
 #' @param database_id A numeric identifier of the desired database
+#' @param timeout Number of seconds to query UniversalFQA before timing out.
+#'
 #' @return A data frame with 5 columns
 #'
 #' @import jsonlite httr
